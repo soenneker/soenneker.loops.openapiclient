@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net9.0</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU</Platforms>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>A Loops (loops.so) .NET client generated from their OpenAPI schema, updated daily</Description>
+        <Version Condition="'$(BUILD_VERSION)' == ''">3.0.0</Version>
+        <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
+        <AssemblyName>Soenneker.Loops.OpenApiClient</AssemblyName>
+        <PackageId>Soenneker.Loops.OpenApiClient</PackageId>
+        <PackageTags>loops openapiclient openapi so open api client loopsopenapiclient kiota csharp dotnet c# .net</PackageTags>
+        <Copyright>Copyright © 2025 Jake Soenneker</Copyright>
+        <Authors>Jake Soenneker</Authors>
+        <Company>https://soenneker.com</Company>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <IsPackable>true</IsPackable>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/soenneker/soenneker.loops.openapiclient</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/soenneker/soenneker.loops.openapiclient</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryBranch>main</RepositoryBranch>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <LangVersion>latest</LangVersion>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+        <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.17.2" />
+    </ItemGroup>
+</Project>
