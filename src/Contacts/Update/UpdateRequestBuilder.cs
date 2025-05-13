@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.Contacts.Update
         {
         }
         /// <summary>
-        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
+        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact&apos;s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.Contacts.Update
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
+        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact&apos;s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
