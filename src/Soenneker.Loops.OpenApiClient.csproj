@@ -38,15 +38,14 @@
 
         <None Include="..\README.md" Pack="true" PackagePath="\" />
         <None Include="..\LICENSE" Pack="true" PackagePath="\" />
-        <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+        <None Include="..\icon.png" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.17.3" />
-        <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.17.2" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.17.2" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.17.2" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.17.2" />
-        <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.17.2" />
+        <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.17.3" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.17.3" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.17.3" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.17.3" />
+        <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.17.3" />
     </ItemGroup>
 </Project>
