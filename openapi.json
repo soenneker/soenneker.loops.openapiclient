@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.4.3"
+    "version": "1.5.0"
   },
   "servers": [
     {
@@ -149,13 +149,13 @@
       "put": {
         "tags": ["Contacts"],
         "summary": "Update a contact",
-        "description": "Update a contact by `email` or `userId`.<br>If you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.",
+        "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.<br>If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).<br>Make sure to create the properties in Loops before using them in API calls.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ContactRequest"
+                "$ref": "#/components/schemas/ContactUpdateRequest"
               }
             }
           },
@@ -676,6 +676,38 @@
       "ContactRequest": {
         "type": "object",
         "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "subscribed": {
+            "type": "boolean"
+          },
+          "userGroup": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "mailingLists": {
+            "type": "object",
+            "description": "An object of mailing list IDs and boolean subscription statuses.",
+            "examples": [
+              {
+                "list_123": true
+              }
+            ]
+          }
+        }
+      },
+      "ContactUpdateRequest": {
+        "type": "object",
         "properties": {
           "email": {
             "type": "string"

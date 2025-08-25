@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.Contacts.Update
         {
         }
         /// <summary>
-        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact&apos;s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
+        /// Update a contact by `email` or `userId`. You must provide one of these parameters.&lt;br&gt;If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -43,11 +43,11 @@ namespace Soenneker.Loops.OpenApiClient.Contacts.Update
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.ContactFailureResponse">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse?> PutAsync(global::Soenneker.Loops.OpenApiClient.Models.ContactRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse?> PutAsync(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse> PutAsync(global::Soenneker.Loops.OpenApiClient.Models.ContactRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse> PutAsync(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -59,18 +59,18 @@ namespace Soenneker.Loops.OpenApiClient.Contacts.Update
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ContactSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a contact by `email` or `userId`.&lt;br&gt;If you want to update a contact&apos;s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
+        /// Update a contact by `email` or `userId`. You must provide one of these parameters.&lt;br&gt;If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.ContactRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPutRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.ContactRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPutRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
