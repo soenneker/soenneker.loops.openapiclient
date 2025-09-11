@@ -24,7 +24,17 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
         public string Error { get; set; }
 #endif
         /// <summary>The primary error message.</summary>
-        public override string Message { get => base.Message; }
+        public override string Message { get => MessageEscaped ?? string.Empty; }
+        /// <summary>The message property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MessageEscaped { get; set; }
+#nullable restore
+#else
+        public string MessageEscaped { get; set; }
+#endif
+        /// <summary>The success property</summary>
+        public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKey401Error"/> and sets the default values.
         /// </summary>
@@ -51,6 +61,8 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "message", n => { MessageEscaped = n.GetStringValue(); } },
+                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -61,6 +73,8 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
+            writer.WriteStringValue("message", MessageEscaped);
+            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

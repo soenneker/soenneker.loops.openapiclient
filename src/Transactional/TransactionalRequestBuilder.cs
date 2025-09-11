@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.Transactional
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure2Response">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.IdempotencyKeyFailureResponse">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.Transactional
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "404", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure2Response.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.IdempotencyKeyFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
