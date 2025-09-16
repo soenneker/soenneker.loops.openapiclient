@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.5.0"
+    "version": "1.6.0"
   },
   "servers": [
     {
@@ -38,9 +38,7 @@
   "paths": {
     "/api-key": {
       "get": {
-        "tags": [
-          "API key"
-        ],
+        "tags": ["API key"],
         "summary": "Test your API key",
         "responses": {
           "200": {
@@ -52,22 +50,15 @@
                   "properties": {
                     "success": {
                       "type": "boolean",
-                      "examples": [
-                        true
-                      ]
+                      "examples": [true]
                     },
                     "teamName": {
                       "type": "string",
                       "description": "The name of the team the API key belongs to.",
-                      "examples": [
-                        "Company name"
-                      ]
+                      "examples": ["Company name"]
                     }
                   },
-                  "required": [
-                    "success",
-                    "teamName"
-                  ]
+                  "required": ["success", "teamName"]
                 }
               }
             }
@@ -81,21 +72,15 @@
                   "properties": {
                     "success": {
                       "type": "boolean",
-                      "examples": [
-                        false
-                      ]
+                      "examples": [false]
                     },
                     "message": {
                       "type": "string",
-                      "examples": [
-                        "Invalid API key."
-                      ]
+                      "examples": ["Invalid API key"]
                     },
                     "error": {
                       "type": "string",
-                      "examples": [
-                        "Invalid API key."
-                      ]
+                      "examples": ["Invalid API key"]
                     }
                   }
                 }
@@ -112,9 +97,7 @@
     },
     "/contacts/create": {
       "post": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "summary": "Create a contact",
         "description": "Add a contact to your audience.",
         "requestBody": {
@@ -172,9 +155,7 @@
     },
     "/contacts/update": {
       "put": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "summary": "Update a contact",
         "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.<br>If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.",
         "requestBody": {
@@ -222,9 +203,7 @@
     },
     "/contacts/find": {
       "get": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "summary": "Find a contact",
         "description": "Search for a contact by `email` or `userId`. Only one parameter is allowed.",
         "parameters": [
@@ -283,9 +262,7 @@
     },
     "/contacts/delete": {
       "post": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "summary": "Delete a contact",
         "description": "Delete a contact by `email` or `userId`.",
         "requestBody": {
@@ -343,9 +320,7 @@
     },
     "/contacts/properties": {
       "post": {
-        "tags": [
-          "Contact properties"
-        ],
+        "tags": ["Contact properties"],
         "summary": "Create a contact property",
         "description": "Add a contact property to your team.",
         "requestBody": {
@@ -391,9 +366,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "Contact properties"
-        ],
+        "tags": ["Contact properties"],
         "summary": "Get a list of contact properties",
         "description": "Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query \"all\" or \"custom\" properties.",
         "parameters": [
@@ -434,9 +407,7 @@
     },
     "/lists": {
       "get": {
-        "tags": [
-          "Mailing lists"
-        ],
+        "tags": ["Mailing lists"],
         "summary": "Get a list of mailing lists",
         "description": "Retrieve a list of your account's mailing lists.",
         "responses": {
@@ -466,9 +437,7 @@
     },
     "/events/send": {
       "post": {
-        "tags": [
-          "Events"
-        ],
+        "tags": ["Events"],
         "summary": "Send an event",
         "description": "Send events to trigger emails in Loops.",
         "requestBody": {
@@ -537,9 +506,7 @@
     },
     "/transactional": {
       "post": {
-        "tags": [
-          "Transactional emails"
-        ],
+        "tags": ["Transactional emails"],
         "summary": "Send a transactional email",
         "description": "Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.",
         "requestBody": {
@@ -631,9 +598,7 @@
         ]
       },
       "get": {
-        "tags": [
-          "Transactional emails"
-        ],
+        "tags": ["Transactional emails"],
         "summary": "List transactional emails",
         "description": "Get a list of published transactional emails.",
         "parameters": [
@@ -724,9 +689,7 @@
       },
       "ContactRequest": {
         "type": "object",
-        "required": [
-          "email"
-        ],
+        "required": ["email"],
         "properties": {
           "email": {
             "type": "string"
@@ -755,6 +718,19 @@
               }
             ]
           }
+        },
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
         }
       },
       "ContactUpdateRequest": {
@@ -787,6 +763,19 @@
               }
             ]
           }
+        },
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
         }
       },
       "ContactSuccessResponse": {
@@ -794,36 +783,26 @@
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              true
-            ]
+            "examples": [true]
           },
           "id": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "id"
-        ]
+        "required": ["success", "id"]
       },
       "ContactFailureResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "ContactDeleteRequest": {
         "type": "object",
@@ -835,38 +814,25 @@
             "type": "string"
           }
         },
-        "required": [
-          "email",
-          "userId"
-        ]
+        "required": ["email", "userId"]
       },
       "ContactDeleteResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              true
-            ]
+            "examples": [true]
           },
           "message": {
             "type": "string",
-            "examples": [
-              "Contact deleted."
-            ]
+            "examples": ["Contact deleted."]
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "ContactPropertyCreateRequest": {
         "type": "object",
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "properties": {
           "name": {
             "type": "string"
@@ -881,38 +847,27 @@
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              true
-            ]
+            "examples": [true]
           }
         },
-        "required": [
-          "success"
-        ]
+        "required": ["success"]
       },
       "ContactPropertyFailureResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "EventRequest": {
         "type": "object",
-        "required": [
-          "eventName"
-        ],
+        "required": ["eventName"],
         "properties": {
           "email": {
             "type": "string"
@@ -936,6 +891,19 @@
               }
             ]
           }
+        },
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
         }
       },
       "EventSuccessResponse": {
@@ -943,39 +911,27 @@
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              true
-            ]
+            "examples": [true]
           }
         },
-        "required": [
-          "success"
-        ]
+        "required": ["success"]
       },
       "EventFailureResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "TransactionalRequest": {
         "type": "object",
-        "required": [
-          "email",
-          "transactionalId"
-        ],
+        "required": ["email", "transactionalId"],
         "properties": {
           "email": {
             "type": "string"
@@ -1003,11 +959,7 @@
             "description": "A list containing file objects to be sent along with an email message.",
             "items": {
               "type": "object",
-              "required": [
-                "filename",
-                "contentType",
-                "data"
-              ],
+              "required": ["filename", "contentType", "data"],
               "properties": {
                 "filename": {
                   "type": "string",
@@ -1031,41 +983,30 @@
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              true
-            ]
+            "examples": [true]
           }
         },
-        "required": [
-          "success"
-        ]
+        "required": ["success"]
       },
       "TransactionalFailureResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "TransactionalFailure2Response": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
@@ -1074,20 +1015,14 @@
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message",
-          "path"
-        ]
+        "required": ["success", "message", "path"]
       },
       "TransactionalFailure3Response": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
@@ -1104,20 +1039,14 @@
             }
           }
         },
-        "required": [
-          "success",
-          "message",
-          "error"
-        ]
+        "required": ["success", "message", "error"]
       },
       "TransactionalFailure4Response": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
@@ -1134,20 +1063,14 @@
             }
           }
         },
-        "required": [
-          "success",
-          "message",
-          "error"
-        ]
+        "required": ["success", "message", "error"]
       },
       "TransactionalFailure5Response": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
@@ -1167,30 +1090,20 @@
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message",
-          "error",
-          "transactionalId"
-        ]
+        "required": ["success", "message", "error", "transactionalId"]
       },
       "IdempotencyKeyFailureResponse": {
         "type": "object",
         "properties": {
           "success": {
             "type": "boolean",
-            "examples": [
-              false
-            ]
+            "examples": [false]
           },
           "message": {
             "type": "string"
           }
         },
-        "required": [
-          "success",
-          "message"
-        ]
+        "required": ["success", "message"]
       },
       "TransactionalEmail": {
         "type": "object",
@@ -1213,17 +1126,10 @@
             "id": "cll42l54f20i1la0lfooe3z12",
             "name": "Sign up confirmation",
             "lastUpdated": "2025-02-02T02:56:28.845Z",
-            "dataVariables": [
-              "confirmationUrl"
-            ]
+            "dataVariables": ["confirmationUrl"]
           }
         ],
-        "required": [
-          "id",
-          "name",
-          "lastUpdated",
-          "dataVariables"
-        ]
+        "required": ["id", "name", "lastUpdated", "dataVariables"]
       },
       "ContactProperty": {
         "type": "object",
@@ -1245,11 +1151,7 @@
             "type": "string"
           }
         ],
-        "required": [
-          "key",
-          "label",
-          "type"
-        ]
+        "required": ["key", "label", "type"]
       },
       "MailingList": {
         "type": "object",
@@ -1275,12 +1177,7 @@
             "isPublic": true
           }
         ],
-        "required": [
-          "id",
-          "name",
-          "description",
-          "isPublic"
-        ]
+        "required": ["id", "name", "description", "isPublic"]
       }
     },
     "securitySchemes": {
