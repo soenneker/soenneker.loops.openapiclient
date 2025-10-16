@@ -54,6 +54,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.Contact_mailingLists MailingLists { get; set; }
 #endif
+        /// <summary>Double opt-in status.</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.Contact_optInStatus? OptInStatus { get; set; }
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,6 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
                 { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Contact_mailingLists>(global::Soenneker.Loops.OpenApiClient.Models.Contact_mailingLists.CreateFromDiscriminatorValue); } },
+                { "optInStatus", n => { OptInStatus = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Contact_optInStatus>(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
@@ -128,6 +131,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lastName", LastName);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Contact_mailingLists>("mailingLists", MailingLists);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Contact_optInStatus>("optInStatus", OptInStatus);
             writer.WriteStringValue("source", Source);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);

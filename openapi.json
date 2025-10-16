@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.6.0"
+    "version": "1.6.1"
   },
   "servers": [
     {
@@ -659,10 +659,10 @@
             "type": "string"
           },
           "firstName": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "lastName": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "source": {
             "type": "string"
@@ -674,7 +674,7 @@
             "type": "string"
           },
           "userId": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "mailingLists": {
             "type": "object",
@@ -684,6 +684,11 @@
                 "list_123": true
               }
             ]
+          },
+          "optInStatus": {
+            "type": ["string", "null"],
+            "description": "Double opt-in status.",
+            "enum": ["accepted", "pending", "rejected", null]
           }
         }
       },
