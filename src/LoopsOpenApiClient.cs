@@ -8,6 +8,7 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Loops.OpenApiClient.ApiKey;
 using Soenneker.Loops.OpenApiClient.Contacts;
+using Soenneker.Loops.OpenApiClient.DedicatedSendingIps;
 using Soenneker.Loops.OpenApiClient.Events;
 using Soenneker.Loops.OpenApiClient.Lists;
 using Soenneker.Loops.OpenApiClient.Transactional;
@@ -32,6 +33,11 @@ namespace Soenneker.Loops.OpenApiClient
         public global::Soenneker.Loops.OpenApiClient.Contacts.ContactsRequestBuilder Contacts
         {
             get => new global::Soenneker.Loops.OpenApiClient.Contacts.ContactsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The dedicatedSendingIps property</summary>
+        public global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder DedicatedSendingIps
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The events property</summary>
         public global::Soenneker.Loops.OpenApiClient.Events.EventsRequestBuilder Events
