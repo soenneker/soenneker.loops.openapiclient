@@ -36,20 +36,20 @@ namespace Soenneker.Loops.OpenApiClient.Transactional
         /// <summary>
         /// Get a list of published transactional emails.
         /// </summary>
-        /// <returns>A List&lt;global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail&gt;</returns>
+        /// <returns>A List&lt;global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>?> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>?> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();
         }
         /// <summary>

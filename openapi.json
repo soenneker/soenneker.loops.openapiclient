@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.6.1"
+    "version": "1.7.0"
   },
   "servers": [
     {
@@ -685,7 +685,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/TransactionalEmail"
+                    "$ref": "#/components/schemas/ListTransactionalsResponse"
                   }
                 }
               }
@@ -1191,6 +1191,40 @@
           }
         ],
         "required": ["id", "name", "lastUpdated", "dataVariables"]
+      },
+      "ListTransactionalsResponse": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "totalResults": {
+                "type": "number"
+              },
+              "returnedResults": {
+                "type": "number"
+              },
+              "perPage": {
+                "type": "number"
+              },
+              "totalPages": {
+                "type": "number"
+              },
+              "nextCursor": {
+                "type": ["string", "null"]
+              },
+              "nextPage": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionalEmail"
+            }
+          }
+        }
       },
       "ContactProperty": {
         "type": "object",
