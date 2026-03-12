@@ -1,6 +1,6 @@
 {
   "descriptionHash": "10E877227BA3686CF6D4F14C373A76C90AB69CFB0F3C46BFA09E9F0411E9517CE78098C921DCAF01EAF8B58FD7C1B862E3231261D6F8B780DD7A1E311516EE4B",
-  "descriptionLocation": "../openapi.json",
+  "descriptionLocation": "../../openapi.json",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.30.0",
   "clientClassName": "LoopsOpenApiClient",
