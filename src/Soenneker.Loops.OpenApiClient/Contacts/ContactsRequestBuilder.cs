@@ -6,6 +6,7 @@ using Soenneker.Loops.OpenApiClient.Contacts.Create;
 using Soenneker.Loops.OpenApiClient.Contacts.Delete;
 using Soenneker.Loops.OpenApiClient.Contacts.Find;
 using Soenneker.Loops.OpenApiClient.Contacts.Properties;
+using Soenneker.Loops.OpenApiClient.Contacts.Suppression;
 using Soenneker.Loops.OpenApiClient.Contacts.Update;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +39,11 @@ namespace Soenneker.Loops.OpenApiClient.Contacts
         public global::Soenneker.Loops.OpenApiClient.Contacts.Properties.PropertiesRequestBuilder Properties
         {
             get => new global::Soenneker.Loops.OpenApiClient.Contacts.Properties.PropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The suppression property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Contacts.Suppression.SuppressionRequestBuilder Suppression
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.Contacts.Suppression.SuppressionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The update property</summary>
         public global::Soenneker.Loops.OpenApiClient.Contacts.Update.UpdateRequestBuilder Update

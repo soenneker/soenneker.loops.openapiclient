@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.7.0"
+    "version": "1.8.0"
   },
   "servers": [
     {
@@ -293,6 +293,136 @@
           },
           "400": {
             "description": "Bad request (e.g. `email` and `userId` are both provided).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/contacts/suppression": {
+      "get": {
+        "tags": ["Contacts"],
+        "summary": "Get suppression status for a contact",
+        "description": "Retrieve suppression status and removal quota for a contact by `email` or `userId`. Include only one query parameter.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "description": "Email address (URI-encoded)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactSuppressionStatusResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (e.g. invalid email address).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["Contacts"],
+        "summary": "Remove a contact from suppression list",
+        "description": "Remove a suppressed contact from the suppression list by `email` or `userId`. Include only one query parameter.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "description": "Email address (URI-encoded)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful removal.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactSuppressionRemoveResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (e.g. contact is not suppressed).",
             "content": {
               "application/json": {
                 "schema": {
@@ -887,6 +1017,62 @@
           }
         },
         "required": ["success", "message"]
+      },
+      "ContactSuppressionStatusResponse": {
+        "type": "object",
+        "properties": {
+          "contact": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "userId": {
+                "type": ["string", "null"]
+              }
+            },
+            "required": ["id", "email", "userId"]
+          },
+          "isSuppressed": {
+            "type": "boolean"
+          },
+          "removalQuota": {
+            "$ref": "#/components/schemas/ContactSuppressionRemovalQuota"
+          }
+        },
+        "required": ["contact", "isSuppressed", "removalQuota"]
+      },
+      "ContactSuppressionRemoveResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "message": {
+            "type": "string",
+            "examples": ["Email removed from suppression list."]
+          },
+          "removalQuota": {
+            "$ref": "#/components/schemas/ContactSuppressionRemovalQuota"
+          }
+        },
+        "required": ["success", "message", "removalQuota"]
+      },
+      "ContactSuppressionRemovalQuota": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "number"
+          },
+          "remaining": {
+            "type": "number"
+          }
+        },
+        "required": ["limit", "remaining"]
       },
       "ContactPropertyCreateRequest": {
         "type": "object",
