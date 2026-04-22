@@ -35,6 +35,14 @@
       "description": "Send and view transactional emails"
     },
     {
+      "name": "Themes",
+      "description": "View email themes"
+    },
+    {
+      "name": "Components",
+      "description": "View email components"
+    },
+    {
       "name": "Dedicated sending IPs",
       "description": "View dedicated sending IP addresses"
     }
@@ -828,6 +836,248 @@
           }
         ]
       }
+    },
+    "/themes/{themeId}": {
+      "parameters": [
+        {
+          "name": "themeId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the theme.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Themes"],
+        "summary": "Get a theme",
+        "description": "Retrieve a single theme by ID.",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `themeId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Theme not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/themes": {
+      "get": {
+        "tags": ["Themes"],
+        "summary": "List themes",
+        "description": "Retrieve a paginated list of email themes, most recently created first.",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListThemesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `perPage` value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/components/{componentId}": {
+      "parameters": [
+        {
+          "name": "componentId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the component.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Components"],
+        "summary": "Get a component",
+        "description": "Retrieve a single component by ID.",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `componentId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Component not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/components": {
+      "get": {
+        "tags": ["Components"],
+        "summary": "List components",
+        "description": "Retrieve a paginated list of email components.",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListComponentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `perPage` value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -1456,6 +1706,264 @@
           }
         ],
         "required": ["id", "name", "description", "isPublic"]
+      },
+      "Theme": {
+        "type": "object",
+        "properties": {
+          "themeId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "styles": {
+            "$ref": "#/components/schemas/ThemeStyles"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this theme is the team's default."
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          }
+        },
+        "required": [
+          "themeId",
+          "name",
+          "styles",
+          "isDefault",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "ThemeStyles": {
+        "type": "object",
+        "description": "Flat map of style attributes, matching the attribute names accepted by the LMX `<Style />` tag. Only keys with a value set on the theme are returned; all keys are optional.",
+        "properties": {
+          "backgroundColor": { "type": "string" },
+          "backgroundXPadding": { "type": "number" },
+          "backgroundYPadding": { "type": "number" },
+          "bodyColor": { "type": "string" },
+          "bodyXPadding": { "type": "number" },
+          "bodyYPadding": { "type": "number" },
+          "bodyFontFamily": { "type": "string" },
+          "bodyFontCategory": { "type": "string" },
+          "borderColor": { "type": "string" },
+          "borderWidth": { "type": "number" },
+          "borderRadius": { "type": "number" },
+          "buttonBodyColor": { "type": "string" },
+          "buttonBodyXPadding": { "type": "number" },
+          "buttonBodyYPadding": { "type": "number" },
+          "buttonBorderColor": { "type": "string" },
+          "buttonBorderWidth": { "type": "number" },
+          "buttonBorderRadius": { "type": "number" },
+          "buttonTextColor": { "type": "string" },
+          "buttonTextFormat": { "type": "number" },
+          "buttonTextFontSize": { "type": "number" },
+          "dividerColor": { "type": "string" },
+          "dividerBorderWidth": { "type": "number" },
+          "textBaseColor": { "type": "string" },
+          "textBaseFontSize": { "type": "number" },
+          "textBaseLineHeight": { "type": "number" },
+          "textBaseLetterSpacing": { "type": "number" },
+          "textLinkColor": { "type": "string" },
+          "heading1Color": { "type": "string" },
+          "heading1FontSize": { "type": "number" },
+          "heading1LineHeight": { "type": "number" },
+          "heading1LetterSpacing": { "type": "number" },
+          "heading2Color": { "type": "string" },
+          "heading2FontSize": { "type": "number" },
+          "heading2LineHeight": { "type": "number" },
+          "heading2LetterSpacing": { "type": "number" },
+          "heading3Color": { "type": "string" },
+          "heading3FontSize": { "type": "number" },
+          "heading3LineHeight": { "type": "number" },
+          "heading3LetterSpacing": { "type": "number" }
+        }
+      },
+      "ListThemesResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "totalResults": {
+                "type": "number"
+              },
+              "returnedResults": {
+                "type": "number"
+              },
+              "perPage": {
+                "type": "number"
+              },
+              "totalPages": {
+                "type": "number"
+              },
+              "nextCursor": {
+                "type": ["string", "null"]
+              },
+              "nextPage": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Theme"
+            }
+          }
+        },
+        "required": ["success", "pagination", "data"]
+      },
+      "ThemeResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "themeId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "styles": {
+            "$ref": "#/components/schemas/ThemeStyles"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this theme is the team's default."
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          }
+        },
+        "required": [
+          "success",
+          "themeId",
+          "name",
+          "styles",
+          "isDefault",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "ThemeFailureResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [false]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["success", "message"]
+      },
+      "Component": {
+        "type": "object",
+        "properties": {
+          "componentId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The component body serialized as LMX."
+          }
+        },
+        "required": ["componentId", "name", "lmx"]
+      },
+      "ListComponentsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "totalResults": {
+                "type": "number"
+              },
+              "returnedResults": {
+                "type": "number"
+              },
+              "perPage": {
+                "type": "number"
+              },
+              "totalPages": {
+                "type": "number"
+              },
+              "nextCursor": {
+                "type": ["string", "null"]
+              },
+              "nextPage": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Component"
+            }
+          }
+        },
+        "required": ["success", "pagination", "data"]
+      },
+      "ComponentResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "componentId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The component body serialized as LMX."
+          }
+        },
+        "required": ["success", "componentId", "name", "lmx"]
+      },
+      "ComponentFailureResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [false]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["success", "message"]
       }
     },
     "securitySchemes": {
