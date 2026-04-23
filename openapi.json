@@ -45,6 +45,14 @@
     {
       "name": "Dedicated sending IPs",
       "description": "View dedicated sending IP addresses"
+    },
+    {
+      "name": "Campaigns",
+      "description": "Create and manage email campaigns"
+    },
+    {
+      "name": "Email messages",
+      "description": "Manage email message content for campaigns"
     }
   ],
   "paths": {
@@ -1078,6 +1086,382 @@
           }
         ]
       }
+    },
+    "/campaigns": {
+      "get": {
+        "tags": ["Campaigns"],
+        "summary": "List campaigns",
+        "description": "Retrieve a paginated list of campaigns.",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCampaignsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `perPage` value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Campaigns"],
+        "summary": "Create a campaign",
+        "description": "Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampaignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Campaign created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCampaignResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or no sending domain configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/campaigns/{campaignId}": {
+      "parameters": [
+        {
+          "name": "campaignId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the campaign.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Campaigns"],
+        "summary": "Get a campaign",
+        "description": "Retrieve a single campaign by ID.",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `campaignId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Campaign not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Campaigns"],
+        "summary": "Update a campaign",
+        "description": "Update a draft campaign's name. Campaigns can only be updated while in draft status.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCampaignRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campaign updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Campaign not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Campaign is not in draft status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/email-messages/{emailMessageId}": {
+      "parameters": [
+        {
+          "name": "emailMessageId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the email message.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "get": {
+        "tags": ["Email messages"],
+        "summary": "Get an email message",
+        "description": "Retrieve an email message, including its compiled LMX content.",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `emailMessageId` or no sending domain configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Email messages"],
+        "summary": "Update an email message",
+        "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEmailMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email message updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Campaign is not in draft status, `contentRevisionId` is stale, or content cannot be parsed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "LMX failed to compile.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -1953,6 +2337,301 @@
         "required": ["success", "componentId", "name", "lmx"]
       },
       "ComponentFailureResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [false]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["success", "message"]
+      },
+      "CampaignListItem": {
+        "type": "object",
+        "properties": {
+          "campaignId": {
+            "type": "string"
+          },
+          "emailMessageId": {
+            "type": ["string", "null"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "Campaign lifecycle status.",
+            "examples": ["Draft", "Scheduled", "Sending", "Sent"]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "campaignId",
+          "emailMessageId",
+          "name",
+          "subject",
+          "status",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "ListCampaignsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "totalResults": {
+                "type": "number"
+              },
+              "returnedResults": {
+                "type": "number"
+              },
+              "perPage": {
+                "type": "number"
+              },
+              "totalPages": {
+                "type": "number"
+              },
+              "nextCursor": {
+                "type": ["string", "null"]
+              },
+              "nextPage": {
+                "type": ["string", "null"]
+              }
+            }
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CampaignListItem"
+            }
+          }
+        },
+        "required": ["success", "pagination", "data"]
+      },
+      "CreateCampaignRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The campaign name.",
+            "examples": ["Spring announcement"]
+          }
+        },
+        "required": ["name"],
+        "additionalProperties": false
+      },
+      "CreateCampaignResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "campaignId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "examples": ["Draft"]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the empty email message created for this campaign. Use `/email-messages/{emailMessageId}` to set its fields and LMX content."
+          },
+          "emailMessageContentRevisionId": {
+            "type": ["string", "null"],
+            "description": "The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update."
+          }
+        },
+        "required": [
+          "success",
+          "campaignId",
+          "name",
+          "status",
+          "createdAt",
+          "updatedAt",
+          "emailMessageId",
+          "emailMessageContentRevisionId"
+        ]
+      },
+      "UpdateCampaignRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["name"],
+        "additionalProperties": false
+      },
+      "CampaignResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "campaignId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "emailMessageId": {
+            "type": ["string", "null"]
+          }
+        },
+        "required": [
+          "success",
+          "campaignId",
+          "name",
+          "status",
+          "createdAt",
+          "updatedAt",
+          "emailMessageId"
+        ]
+      },
+      "CampaignFailureResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [false]
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["success", "message"]
+      },
+      "UpdateEmailMessageRequest": {
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "type": "string",
+            "description": "The `contentRevisionId` you last fetched. Used for optimistic concurrency — the request is rejected with 409 if the server's revision has advanced."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "previewText": {
+            "type": "string"
+          },
+          "fromName": {
+            "type": "string"
+          },
+          "fromEmail": {
+            "type": "string",
+            "description": "The sender username (without `@` or domain). The team's sending domain is appended automatically."
+          },
+          "replyToEmail": {
+            "type": "string",
+            "description": "Reply-to email. Must be empty or a valid email address."
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The email body serialized as LMX. Styles must be embedded in the LMX `<Style />` tag."
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailMessageResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "examples": [true]
+          },
+          "emailMessageId": {
+            "type": "string"
+          },
+          "campaignId": {
+            "type": ["string", "null"]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "previewText": {
+            "type": "string"
+          },
+          "fromName": {
+            "type": "string"
+          },
+          "fromEmail": {
+            "type": "string"
+          },
+          "replyToEmail": {
+            "type": "string"
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The email body serialized as LMX."
+          },
+          "contentRevisionId": {
+            "type": ["string", "null"],
+            "description": "The current content revision. Pass this as `expectedRevisionId` on your next update."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "success",
+          "emailMessageId",
+          "campaignId",
+          "subject",
+          "previewText",
+          "fromName",
+          "fromEmail",
+          "replyToEmail",
+          "lmx",
+          "contentRevisionId",
+          "updatedAt"
+        ]
+      },
+      "EmailMessageFailureResponse": {
         "type": "object",
         "properties": {
           "success": {

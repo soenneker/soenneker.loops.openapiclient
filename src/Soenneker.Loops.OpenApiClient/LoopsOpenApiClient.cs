@@ -7,9 +7,11 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Loops.OpenApiClient.ApiKey;
+using Soenneker.Loops.OpenApiClient.Campaigns;
 using Soenneker.Loops.OpenApiClient.Components;
 using Soenneker.Loops.OpenApiClient.Contacts;
 using Soenneker.Loops.OpenApiClient.DedicatedSendingIps;
+using Soenneker.Loops.OpenApiClient.EmailMessages;
 using Soenneker.Loops.OpenApiClient.Events;
 using Soenneker.Loops.OpenApiClient.Lists;
 using Soenneker.Loops.OpenApiClient.Themes;
@@ -31,6 +33,11 @@ namespace Soenneker.Loops.OpenApiClient
         {
             get => new global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The campaigns property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Campaigns.CampaignsRequestBuilder Campaigns
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.Campaigns.CampaignsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The components property</summary>
         public global::Soenneker.Loops.OpenApiClient.Components.ComponentsRequestBuilder Components
         {
@@ -45,6 +52,11 @@ namespace Soenneker.Loops.OpenApiClient
         public global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder DedicatedSendingIps
         {
             get => new global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The emailMessages property</summary>
+        public global::Soenneker.Loops.OpenApiClient.EmailMessages.EmailMessagesRequestBuilder EmailMessages
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.EmailMessages.EmailMessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The events property</summary>
         public global::Soenneker.Loops.OpenApiClient.Events.EventsRequestBuilder Events
