@@ -27,12 +27,12 @@
       "description": "View mailing lists"
     },
     {
-      "name": "Events",
-      "description": "Trigger email sending with events"
+      "name": "Campaigns",
+      "description": "Create and manage email campaigns"
     },
     {
-      "name": "Transactional emails",
-      "description": "Send and view transactional emails"
+      "name": "Email messages",
+      "description": "Manage email message content for campaigns"
     },
     {
       "name": "Themes",
@@ -43,16 +43,16 @@
       "description": "View email components"
     },
     {
+      "name": "Events",
+      "description": "Trigger email sending with events"
+    },
+    {
+      "name": "Transactional emails",
+      "description": "Send and view transactional emails"
+    },
+    {
       "name": "Dedicated sending IPs",
       "description": "View dedicated sending IP addresses"
-    },
-    {
-      "name": "Campaigns",
-      "description": "Create and manage email campaigns"
-    },
-    {
-      "name": "Email messages",
-      "description": "Manage email message content for campaigns"
     }
   ],
   "paths": {
