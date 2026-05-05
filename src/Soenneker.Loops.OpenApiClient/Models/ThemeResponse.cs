@@ -32,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag. Only keys with a value set on the theme are returned; all keys are optional.</summary>
+        /// <summary>Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag. All attributes are returned with the values stored on the theme.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles? Styles { get; set; }
