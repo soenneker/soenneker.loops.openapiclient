@@ -1376,6 +1376,16 @@
           },
           "405": {
             "description": "Wrong HTTP request method."
+          },
+          "409": {
+            "description": "Email message uses MJML format or content cannot be parsed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1433,7 +1443,17 @@
             }
           },
           "409": {
-            "description": "Campaign is not in draft status, `contentRevisionId` is stale, or content cannot be parsed.",
+            "description": "Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "LMX payload exceeds the 100KB limit.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2615,6 +2635,29 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "warnings": {
+            "type": "array",
+            "description": "Non-fatal issues raised while compiling the submitted LMX. Only present on update responses when warnings were produced.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rule": {
+                  "type": "string"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": ["warning"]
+                },
+                "message": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": ["rule", "severity", "message"]
+            }
           }
         },
         "required": [

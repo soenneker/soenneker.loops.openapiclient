@@ -90,6 +90,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public bool? Success { get; set; }
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>Non-fatal issues raised while compiling the submitted LMX. Only present on update responses when warnings were produced.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>? Warnings { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings> Warnings { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse"/> and sets the default values.
         /// </summary>
@@ -126,6 +134,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -146,6 +155,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("subject", Subject);
             writer.WriteBoolValue("success", Success);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
