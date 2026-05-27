@@ -17,10 +17,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The contact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse_contact? Contact { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact? Contact { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse_contact Contact { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact Contact { get; set; }
 #endif
         /// <summary>The isSuppressed property</summary>
         public bool? IsSuppressed { get; set; }
@@ -57,7 +57,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "contact", n => { Contact = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse_contact>(global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse_contact.CreateFromDiscriminatorValue); } },
+                { "contact", n => { Contact = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact>(global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact.CreateFromDiscriminatorValue); } },
                 { "isSuppressed", n => { IsSuppressed = n.GetBoolValue(); } },
                 { "removalQuota", n => { RemovalQuota = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota>(global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota.CreateFromDiscriminatorValue); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse_contact>("contact", Contact);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact>("contact", Contact);
             writer.WriteBoolValue("isSuppressed", IsSuppressed);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota>("removalQuota", RemovalQuota);
             writer.WriteAdditionalData(AdditionalData);

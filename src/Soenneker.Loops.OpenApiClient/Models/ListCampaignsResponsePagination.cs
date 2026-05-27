@@ -9,7 +9,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListCampaignsResponse_pagination : IAdditionalDataHolder, IParsable
+    public partial class ListCampaignsResponsePagination : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -39,21 +39,21 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The totalResults property</summary>
         public double? TotalResults { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination"/> and sets the default values.
         /// </summary>
-        public ListCampaignsResponse_pagination()
+        public ListCampaignsResponsePagination()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination();
+            return new global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination();
         }
         /// <summary>
         /// The deserialization information for the current model

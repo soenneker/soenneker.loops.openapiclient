@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Loops.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,25 +36,25 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
         /// <summary>
         /// Test your API key
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.GetApiKey200"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKey401Error">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.GetApiKey401">When receiving a 401 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.GetApiKey200?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.GetApiKey200> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "401", global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKey401Error.CreateFromDiscriminatorValue },
+                { "401", global::Soenneker.Loops.OpenApiClient.Models.GetApiKey401.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.GetApiKey200>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.GetApiKey200.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Test your API key

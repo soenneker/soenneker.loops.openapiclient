@@ -25,10 +25,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination? Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination? Pagination { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination Pagination { get; set; }
 #endif
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem>(global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination>(global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination.CreateFromDiscriminatorValue); } },
+                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse_pagination>("pagination", Pagination);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination>("pagination", Pagination);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }

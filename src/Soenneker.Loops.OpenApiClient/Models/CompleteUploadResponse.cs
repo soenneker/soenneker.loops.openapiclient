@@ -5,41 +5,49 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Soenneker.Loops.OpenApiClient.ApiKey
+namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ApiKeyGetResponse : IAdditionalDataHolder, IParsable
+    public partial class CompleteUploadResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
-        /// <summary>The name of the team the API key belongs to.</summary>
+        /// <summary>The emailAssetId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TeamName { get; set; }
+        public string? EmailAssetId { get; set; }
 #nullable restore
 #else
-        public string TeamName { get; set; }
+        public string EmailAssetId { get; set; }
 #endif
+        /// <summary>The public URL of the uploaded asset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FinalUrl { get; set; }
+#nullable restore
+#else
+        public string FinalUrl { get; set; }
+#endif
+        /// <summary>The success property</summary>
+        public bool? Success { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse"/> and sets the default values.
         /// </summary>
-        public ApiKeyGetResponse()
+        public CompleteUploadResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyGetResponse();
+            return new global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +57,9 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "emailAssetId", n => { EmailAssetId = n.GetStringValue(); } },
+                { "finalUrl", n => { FinalUrl = n.GetStringValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
-                { "teamName", n => { TeamName = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -60,8 +69,9 @@ namespace Soenneker.Loops.OpenApiClient.ApiKey
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("emailAssetId", EmailAssetId);
+            writer.WriteStringValue("finalUrl", FinalUrl);
             writer.WriteBoolValue("success", Success);
-            writer.WriteStringValue("teamName", TeamName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

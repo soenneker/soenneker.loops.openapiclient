@@ -16,6 +16,7 @@ using Soenneker.Loops.OpenApiClient.Events;
 using Soenneker.Loops.OpenApiClient.Lists;
 using Soenneker.Loops.OpenApiClient.Themes;
 using Soenneker.Loops.OpenApiClient.Transactional;
+using Soenneker.Loops.OpenApiClient.Uploads;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -77,6 +78,11 @@ namespace Soenneker.Loops.OpenApiClient
         public global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder Transactional
         {
             get => new global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The uploads property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Uploads.UploadsRequestBuilder Uploads
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.Uploads.UploadsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.LoopsOpenApiClient"/> and sets the default values.

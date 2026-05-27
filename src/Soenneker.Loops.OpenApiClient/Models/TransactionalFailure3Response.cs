@@ -18,10 +18,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response_error? Error { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError? Error { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response_error Error { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError Error { get; set; }
 #endif
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
@@ -60,7 +60,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "error", n => { Error = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response_error>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response_error.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError.CreateFromDiscriminatorValue); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response_error>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError>("error", Error);
             writer.WriteStringValue("message", MessageEscaped);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);

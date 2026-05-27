@@ -25,10 +25,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse_pagination? Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponsePagination? Pagination { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse_pagination Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponsePagination Pagination { get; set; }
 #endif
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
@@ -58,7 +58,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.Theme>(global::Soenneker.Loops.OpenApiClient.Models.Theme.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse_pagination>(global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse_pagination.CreateFromDiscriminatorValue); } },
+                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponsePagination.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
@@ -70,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.Theme>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse_pagination>("pagination", Pagination);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponsePagination>("pagination", Pagination);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }

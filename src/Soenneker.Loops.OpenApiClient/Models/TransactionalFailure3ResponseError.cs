@@ -9,43 +9,43 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListTransactionalsResponse : IAdditionalDataHolder, IParsable
+    public partial class TransactionalFailure3ResponseError : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The data property</summary>
+        /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>? Data { get; set; }
+        public string? Message { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail> Data { get; set; }
+        public string Message { get; set; }
 #endif
-        /// <summary>The pagination property</summary>
+        /// <summary>The path property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponsePagination? Pagination { get; set; }
+        public string? Path { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponsePagination Pagination { get; set; }
+        public string Path { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError"/> and sets the default values.
         /// </summary>
-        public ListTransactionalsResponse()
+        public TransactionalFailure3ResponseError()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse();
+            return new global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3ResponseError();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +55,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponsePagination.CreateFromDiscriminatorValue); } },
+                { "message", n => { Message = n.GetStringValue(); } },
+                { "path", n => { Path = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -66,8 +66,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponsePagination>("pagination", Pagination);
+            writer.WriteStringValue("message", Message);
+            writer.WriteStringValue("path", Path);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
