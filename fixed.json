@@ -736,6 +736,353 @@
         ]
       }
     },
+    "/transactionals": {
+      "get": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "List transactionals",
+        "description": "Retrieve a paginated list of transactionals, most recently created first.",
+        "operationId": "get_transactionals",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTransactionalsResourceResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `perPage` value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "Create a transactional",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/transactionals/{transactionalId}/publish` to publish.",
+        "operationId": "post_transactionals",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransactionalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Transactional created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or no sending domain configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      }
+    },
+    "/transactionals/{transactionalId}": {
+      "get": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "Get a transactional",
+        "description": "Retrieve a single transactional by ID.",
+        "operationId": "get_transactionals_transactionalId",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `transactionalId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "Update a transactional",
+        "description": "Update a transactional's name.",
+        "operationId": "post_transactionals_transactionalId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTransactionalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transactional updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or `transactionalId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "transactionalId",
+          "in": "path",
+          "description": "The ID of the transactional.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/transactionals/{transactionalId}/draft": {
+      "post": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "Ensure a draft email message",
+        "description": "Ensure the transactional has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/email-messages/{emailMessageId}` to edit the draft's content.",
+        "operationId": "post_transactionals_transactionalId_draft",
+        "responses": {
+          "200": {
+            "description": "Draft ready.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `transactionalId` or no sending domain configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "transactionalId",
+          "in": "path",
+          "description": "The ID of the transactional.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/transactionals/{transactionalId}/publish": {
+      "post": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "Publish a transactional draft",
+        "description": "Publish the transactional's current draft email message. The draft becomes the published version and the draft is cleared.",
+        "operationId": "post_transactionals_transactionalId_publish",
+        "responses": {
+          "200": {
+            "description": "Transactional published.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalResource"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `transactionalId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "No draft to publish.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Draft failed validation, sending domain is not verified, or content was flagged as unsafe.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [ ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "transactionalId",
+          "in": "path",
+          "description": "The ID of the transactional.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
     "/themes/{themeId}": {
       "get": {
         "tags": [
@@ -2007,6 +2354,127 @@
           }
         }
       },
+      "TransactionalSummary": {
+        "required": [
+          "transactionalId",
+          "name",
+          "draftEmailMessageId",
+          "publishedEmailMessageId",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "transactionalId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "draftEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "publishedEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TransactionalResource": {
+        "required": [
+          "success",
+          "transactionalId",
+          "name",
+          "draftEmailMessageId",
+          "publishedEmailMessageId",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "transactionalId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "draftEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "publishedEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ListTransactionalsResourceResponse": {
+        "required": [
+          "success",
+          "pagination",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/ListTransactionalsResourceResponsePagination"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionalSummary"
+            }
+          }
+        }
+      },
+      "CreateTransactionalRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The transactional name."
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTransactionalRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "ContactProperty": {
         "required": [
           "key",
@@ -2835,6 +3303,31 @@
         }
       },
       "ListTransactionalsResponsePagination": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number"
+          },
+          "returnedResults": {
+            "type": "number"
+          },
+          "perPage": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ListTransactionalsResourceResponsePagination": {
         "type": "object",
         "properties": {
           "totalResults": {
