@@ -36,18 +36,18 @@ namespace Soenneker.Loops.OpenApiClient.Transactionals.Item.Draft
         /// <summary>
         /// Ensure the transactional has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/email-messages/{emailMessageId}` to edit the draft&apos;s content.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -56,7 +56,7 @@ namespace Soenneker.Loops.OpenApiClient.Transactionals.Item.Draft
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Ensure the transactional has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/email-messages/{emailMessageId}` to edit the draft&apos;s content.

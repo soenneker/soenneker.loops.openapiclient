@@ -36,7 +36,7 @@ namespace Soenneker.Loops.OpenApiClient.Transactionals.Item.Publish
         /// <summary>
         /// Publish the transactional&apos;s current draft email message. The draft becomes the published version and the draft is cleared.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse">When receiving a 400 status code</exception>
@@ -45,11 +45,11 @@ namespace Soenneker.Loops.OpenApiClient.Transactionals.Item.Publish
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
@@ -60,7 +60,7 @@ namespace Soenneker.Loops.OpenApiClient.Transactionals.Item.Publish
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Publish the transactional&apos;s current draft email message. The draft becomes the published version and the draft is cleared.

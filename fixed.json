@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.8.1"
+    "version": "1.9.0"
   },
   "servers": [
     {
@@ -812,7 +812,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionalResource"
+                  "$ref": "#/components/schemas/TransactionalDraftResponse"
                 }
               }
             }
@@ -849,7 +849,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionalResource"
+                  "$ref": "#/components/schemas/TransactionalResponse"
                 }
               }
             }
@@ -903,7 +903,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionalResource"
+                  "$ref": "#/components/schemas/TransactionalResponse"
                 }
               }
             }
@@ -961,7 +961,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionalResource"
+                  "$ref": "#/components/schemas/TransactionalDraftResponse"
                 }
               }
             }
@@ -1019,7 +1019,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TransactionalResource"
+                  "$ref": "#/components/schemas/TransactionalResponse"
                 }
               }
             }
@@ -2354,7 +2354,7 @@
           }
         }
       },
-      "TransactionalSummary": {
+      "TransactionalEmailResource": {
         "required": [
           "transactionalId",
           "name",
@@ -2389,7 +2389,7 @@
           }
         }
       },
-      "TransactionalResource": {
+      "TransactionalResponse": {
         "required": [
           "success",
           "transactionalId",
@@ -2412,6 +2412,51 @@
           },
           "draftEmailMessageId": {
             "type": "string",
+            "nullable": true
+          },
+          "publishedEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "TransactionalDraftResponse": {
+        "required": [
+          "success",
+          "transactionalId",
+          "name",
+          "draftEmailMessageId",
+          "draftEmailMessageContentRevisionId",
+          "publishedEmailMessageId",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "transactionalId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "draftEmailMessageId": {
+            "type": "string",
+            "nullable": true
+          },
+          "draftEmailMessageContentRevisionId": {
+            "type": "string",
+            "description": "The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `/email-messages/{emailMessageId}`.",
             "nullable": true
           },
           "publishedEmailMessageId": {
@@ -2445,7 +2490,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TransactionalSummary"
+              "$ref": "#/components/schemas/TransactionalEmailResource"
             }
           }
         }
