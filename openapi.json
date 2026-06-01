@@ -3,11 +3,11 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.9.0"
+    "version": "1.10.0"
   },
   "servers": [
     {
-      "url": "https://app.loops.so/api/v1"
+      "url": "https://app.loops.so/api"
     }
   ],
   "tags": [
@@ -52,7 +52,7 @@
     },
     {
       "name": "Transactional emails",
-      "description": "Send and view transactional emails"
+      "description": "Create, manage, and send transactional emails"
     },
     {
       "name": "Dedicated sending IPs",
@@ -60,7 +60,7 @@
     }
   ],
   "paths": {
-    "/api-key": {
+    "/v1/api-key": {
       "get": {
         "tags": ["API key"],
         "summary": "Test your API key",
@@ -119,7 +119,7 @@
         ]
       }
     },
-    "/contacts/create": {
+    "/v1/contacts/create": {
       "post": {
         "tags": ["Contacts"],
         "summary": "Create a contact",
@@ -177,7 +177,7 @@
         ]
       }
     },
-    "/contacts/update": {
+    "/v1/contacts/update": {
       "put": {
         "tags": ["Contacts"],
         "summary": "Update a contact",
@@ -225,7 +225,7 @@
         ]
       }
     },
-    "/contacts/find": {
+    "/v1/contacts/find": {
       "get": {
         "tags": ["Contacts"],
         "summary": "Find a contact",
@@ -284,7 +284,7 @@
         ]
       }
     },
-    "/contacts/delete": {
+    "/v1/contacts/delete": {
       "post": {
         "tags": ["Contacts"],
         "summary": "Delete a contact",
@@ -342,7 +342,7 @@
         ]
       }
     },
-    "/contacts/suppression": {
+    "/v1/contacts/suppression": {
       "get": {
         "tags": ["Contacts"],
         "summary": "Get suppression status for a contact",
@@ -472,7 +472,7 @@
         ]
       }
     },
-    "/contacts/properties": {
+    "/v1/contacts/properties": {
       "post": {
         "tags": ["Contact properties"],
         "summary": "Create a contact property",
@@ -559,7 +559,7 @@
         ]
       }
     },
-    "/dedicated-sending-ips": {
+    "/v1/dedicated-sending-ips": {
       "get": {
         "tags": ["Dedicated sending IPs"],
         "summary": "Get dedicated sending IP addresses",
@@ -611,7 +611,7 @@
         ]
       }
     },
-    "/lists": {
+    "/v1/lists": {
       "get": {
         "tags": ["Mailing lists"],
         "summary": "Get a list of mailing lists",
@@ -641,7 +641,7 @@
         ]
       }
     },
-    "/events/send": {
+    "/v1/events/send": {
       "post": {
         "tags": ["Events"],
         "summary": "Send an event",
@@ -710,7 +710,7 @@
         ]
       }
     },
-    "/transactional": {
+    "/v1/transactional": {
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Send a transactional email",
@@ -804,6 +804,7 @@
         ]
       },
       "get": {
+        "deprecated": true,
         "tags": ["Transactional emails"],
         "summary": "List transactional emails",
         "description": "Get a list of published transactional emails.",
@@ -849,7 +850,7 @@
         ]
       }
     },
-    "/transactionals": {
+    "/v2/transactional": {
       "get": {
         "tags": ["Transactional emails"],
         "summary": "List transactionals",
@@ -907,7 +908,7 @@
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/transactionals/{transactionalId}/publish` to publish.",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.",
         "requestBody": {
           "required": true,
           "content": {
@@ -949,19 +950,19 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/transactionals/{transactionalId}": {
+    "/v2/transactional/{transactionalId}": {
       "parameters": [
         {
           "name": "transactionalId",
           "in": "path",
           "required": true,
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "schema": { "type": "string" }
         }
       ],
       "get": {
         "tags": ["Transactional emails"],
-        "summary": "Get a transactional",
+        "summary": "Get a transactional email",
         "description": "Retrieve a single transactional by ID.",
         "responses": {
           "200": {
@@ -988,7 +989,7 @@
             "description": "Invalid API key or content API not enabled for this team."
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1005,8 +1006,8 @@
       },
       "post": {
         "tags": ["Transactional emails"],
-        "summary": "Update a transactional",
-        "description": "Update a transactional's name.",
+        "summary": "Update a transactional email",
+        "description": "Update a transactional email.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1019,7 +1020,7 @@
         },
         "responses": {
           "200": {
-            "description": "Transactional updated.",
+            "description": "Transactional email updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1042,7 +1043,7 @@
             "description": "Invalid API key or content API not enabled for this team."
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1058,20 +1059,20 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/transactionals/{transactionalId}/draft": {
+    "/v2/transactional/{transactionalId}/draft": {
       "parameters": [
         {
           "name": "transactionalId",
           "in": "path",
           "required": true,
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "schema": { "type": "string" }
         }
       ],
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Ensure a draft email message",
-        "description": "Ensure the transactional has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/email-messages/{emailMessageId}` to edit the draft's content.",
+        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft's content.",
         "responses": {
           "200": {
             "description": "Draft ready.",
@@ -1097,7 +1098,7 @@
             "description": "Invalid API key or content API not enabled for this team."
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1113,23 +1114,23 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/transactionals/{transactionalId}/publish": {
+    "/v2/transactional/{transactionalId}/publish": {
       "parameters": [
         {
           "name": "transactionalId",
           "in": "path",
           "required": true,
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "schema": { "type": "string" }
         }
       ],
       "post": {
         "tags": ["Transactional emails"],
-        "summary": "Publish a transactional draft",
-        "description": "Publish the transactional's current draft email message. The draft becomes the published version and the draft is cleared.",
+        "summary": "Publish a transactional email draft",
+        "description": "Publish the transactional email's current draft email message. The draft becomes the published version and the draft is cleared.",
         "responses": {
           "200": {
-            "description": "Transactional published.",
+            "description": "Transactional email published.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1152,7 +1153,7 @@
             "description": "Invalid API key or content API not enabled for this team."
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1188,7 +1189,7 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/themes/{themeId}": {
+    "/v1/themes/{themeId}": {
       "parameters": [
         {
           "name": "themeId",
@@ -1249,7 +1250,7 @@
         ]
       }
     },
-    "/themes": {
+    "/v1/themes": {
       "get": {
         "tags": ["Themes"],
         "summary": "List themes",
@@ -1309,7 +1310,7 @@
         ]
       }
     },
-    "/components/{componentId}": {
+    "/v1/components/{componentId}": {
       "parameters": [
         {
           "name": "componentId",
@@ -1370,7 +1371,7 @@
         ]
       }
     },
-    "/components": {
+    "/v1/components": {
       "get": {
         "tags": ["Components"],
         "summary": "List components",
@@ -1430,7 +1431,7 @@
         ]
       }
     },
-    "/campaigns": {
+    "/v1/campaigns": {
       "get": {
         "tags": ["Campaigns"],
         "summary": "List campaigns",
@@ -1538,7 +1539,7 @@
         ]
       }
     },
-    "/campaigns/{campaignId}": {
+    "/v1/campaigns/{campaignId}": {
       "parameters": [
         {
           "name": "campaignId",
@@ -1667,7 +1668,7 @@
         ]
       }
     },
-    "/email-messages/{emailMessageId}": {
+    "/v1/email-messages/{emailMessageId}": {
       "parameters": [
         {
           "name": "emailMessageId",
@@ -1826,7 +1827,7 @@
         ]
       }
     },
-    "/uploads": {
+    "/v1/uploads": {
       "post": {
         "tags": ["Uploads"],
         "summary": "Create an upload",
@@ -1896,7 +1897,7 @@
         ]
       }
     },
-    "/uploads/{id}/complete": {
+    "/v1/uploads/{id}/complete": {
       "parameters": [
         {
           "name": "id",
@@ -2545,7 +2546,12 @@
           "draftEmailMessageId": { "type": ["string", "null"] },
           "publishedEmailMessageId": { "type": ["string", "null"] },
           "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "dataVariables": {
+            "type": "array",
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "items": { "type": "string" }
+          }
         },
         "required": [
           "transactionalId",
@@ -2553,7 +2559,8 @@
           "draftEmailMessageId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ]
       },
       "TransactionalResponse": {
@@ -2565,7 +2572,12 @@
           "draftEmailMessageId": { "type": ["string", "null"] },
           "publishedEmailMessageId": { "type": ["string", "null"] },
           "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "dataVariables": {
+            "type": "array",
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "items": { "type": "string" }
+          }
         },
         "required": [
           "success",
@@ -2574,7 +2586,8 @@
           "draftEmailMessageId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ]
       },
       "TransactionalDraftResponse": {
@@ -2590,7 +2603,12 @@
           },
           "publishedEmailMessageId": { "type": ["string", "null"] },
           "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "dataVariables": {
+            "type": "array",
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "items": { "type": "string" }
+          }
         },
         "required": [
           "success",
@@ -2600,7 +2618,8 @@
           "draftEmailMessageContentRevisionId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ]
       },
       "ListTransactionalsResourceResponse": {
@@ -2632,7 +2651,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The transactional name.",
+            "description": "The name of the transactional email.",
             "examples": ["Welcome email"]
           }
         },

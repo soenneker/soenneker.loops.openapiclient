@@ -16,6 +16,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The createdAt property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>Data variable names used by the published email. Empty for unpublished transactionals.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? DataVariables { get; set; }
+#nullable restore
+#else
+        public List<string> DataVariables { get; set; }
+#endif
         /// <summary>The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `/email-messages/{emailMessageId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +94,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "dataVariables", n => { DataVariables = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "draftEmailMessageContentRevisionId", n => { DraftEmailMessageContentRevisionId = n.GetStringValue(); } },
                 { "draftEmailMessageId", n => { DraftEmailMessageId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -103,6 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
+            writer.WriteCollectionOfPrimitiveValues<string>("dataVariables", DataVariables);
             writer.WriteStringValue("draftEmailMessageContentRevisionId", DraftEmailMessageContentRevisionId);
             writer.WriteStringValue("draftEmailMessageId", DraftEmailMessageId);
             writer.WriteStringValue("name", Name);

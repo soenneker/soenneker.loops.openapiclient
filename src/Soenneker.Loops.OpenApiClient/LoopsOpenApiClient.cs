@@ -6,18 +6,8 @@ using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
-using Soenneker.Loops.OpenApiClient.ApiKey;
-using Soenneker.Loops.OpenApiClient.Campaigns;
-using Soenneker.Loops.OpenApiClient.Components;
-using Soenneker.Loops.OpenApiClient.Contacts;
-using Soenneker.Loops.OpenApiClient.DedicatedSendingIps;
-using Soenneker.Loops.OpenApiClient.EmailMessages;
-using Soenneker.Loops.OpenApiClient.Events;
-using Soenneker.Loops.OpenApiClient.Lists;
-using Soenneker.Loops.OpenApiClient.Themes;
-using Soenneker.Loops.OpenApiClient.Transactional;
-using Soenneker.Loops.OpenApiClient.Transactionals;
-using Soenneker.Loops.OpenApiClient.Uploads;
+using Soenneker.Loops.OpenApiClient.V1;
+using Soenneker.Loops.OpenApiClient.V2;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -30,65 +20,15 @@ namespace Soenneker.Loops.OpenApiClient
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LoopsOpenApiClient : BaseRequestBuilder
     {
-        /// <summary>The apiKey property</summary>
-        public global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyRequestBuilder ApiKey
+        /// <summary>The v1 property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.V1RequestBuilder V1
         {
-            get => new global::Soenneker.Loops.OpenApiClient.ApiKey.ApiKeyRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Loops.OpenApiClient.V1.V1RequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The campaigns property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Campaigns.CampaignsRequestBuilder Campaigns
+        /// <summary>The v2 property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V2.V2RequestBuilder V2
         {
-            get => new global::Soenneker.Loops.OpenApiClient.Campaigns.CampaignsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The components property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Components.ComponentsRequestBuilder Components
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Components.ComponentsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The contacts property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Contacts.ContactsRequestBuilder Contacts
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Contacts.ContactsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The dedicatedSendingIps property</summary>
-        public global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder DedicatedSendingIps
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.DedicatedSendingIps.DedicatedSendingIpsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The emailMessages property</summary>
-        public global::Soenneker.Loops.OpenApiClient.EmailMessages.EmailMessagesRequestBuilder EmailMessages
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.EmailMessages.EmailMessagesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The events property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Events.EventsRequestBuilder Events
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The lists property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Lists.ListsRequestBuilder Lists
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Lists.ListsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The themes property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Themes.ThemesRequestBuilder Themes
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Themes.ThemesRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The transactional property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder Transactional
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Transactional.TransactionalRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The transactionals property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Transactionals.TransactionalsRequestBuilder Transactionals
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Transactionals.TransactionalsRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The uploads property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Uploads.UploadsRequestBuilder Uploads
-        {
-            get => new global::Soenneker.Loops.OpenApiClient.Uploads.UploadsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Loops.OpenApiClient.V2.V2RequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.LoopsOpenApiClient"/> and sets the default values.
@@ -105,7 +45,7 @@ namespace Soenneker.Loops.OpenApiClient
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
             if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
             {
-                RequestAdapter.BaseUrl = "https://app.loops.so/api/v1";
+                RequestAdapter.BaseUrl = "https://app.loops.so/api";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }

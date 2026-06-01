@@ -3,28 +3,28 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.9.0"
+    "version": "1.10.0"
   },
   "servers": [
     {
-      "url": "https://app.loops.so/api/v1"
+      "url": "https://app.loops.so/api"
     }
   ],
   "paths": {
-    "/api-key": {
+    "/v1/api-key": {
       "get": {
         "tags": [
           "API key"
         ],
         "summary": "Test your API key",
-        "operationId": "get_api_key",
+        "operationId": "get_v1_api_key",
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetApiKey200"
+                  "$ref": "#/components/schemas/GetV1ApiKey200"
                 }
               }
             }
@@ -34,7 +34,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetApiKey401"
+                  "$ref": "#/components/schemas/GetV1ApiKey401"
                 }
               }
             }
@@ -47,14 +47,14 @@
         ]
       }
     },
-    "/contacts/create": {
+    "/v1/contacts/create": {
       "post": {
         "tags": [
           "Contacts"
         ],
         "summary": "Create a contact",
         "description": "Add a contact to your audience.",
-        "operationId": "post_contacts_create",
+        "operationId": "post_v1_contacts_create",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).<br>Make sure to create the properties in Loops before using them in API calls.",
           "content": {
@@ -104,14 +104,14 @@
         ]
       }
     },
-    "/contacts/update": {
+    "/v1/contacts/update": {
       "put": {
         "tags": [
           "Contacts"
         ],
         "summary": "Update a contact",
         "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.<br>If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.",
-        "operationId": "put_contacts_update",
+        "operationId": "put_v1_contacts_update",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).<br>Make sure to create the properties in Loops before using them in API calls.",
           "content": {
@@ -151,14 +151,14 @@
         ]
       }
     },
-    "/contacts/find": {
+    "/v1/contacts/find": {
       "get": {
         "tags": [
           "Contacts"
         ],
         "summary": "Find a contact",
         "description": "Search for a contact by `email` or `userId`. Only one parameter is allowed.",
-        "operationId": "get_contacts_find",
+        "operationId": "get_v1_contacts_find",
         "parameters": [
           {
             "name": "email",
@@ -208,14 +208,14 @@
         ]
       }
     },
-    "/contacts/delete": {
+    "/v1/contacts/delete": {
       "post": {
         "tags": [
           "Contacts"
         ],
         "summary": "Delete a contact",
         "description": "Delete a contact by `email` or `userId`.",
-        "operationId": "post_contacts_delete",
+        "operationId": "post_v1_contacts_delete",
         "requestBody": {
           "description": "Include only one of `email` or `userId`.",
           "content": {
@@ -265,14 +265,14 @@
         ]
       }
     },
-    "/contacts/suppression": {
+    "/v1/contacts/suppression": {
       "get": {
         "tags": [
           "Contacts"
         ],
         "summary": "Get suppression status for a contact",
         "description": "Retrieve suppression status and removal quota for a contact by `email` or `userId`. Include only one query parameter.",
-        "operationId": "get_contacts_suppression",
+        "operationId": "get_v1_contacts_suppression",
         "parameters": [
           {
             "name": "email",
@@ -334,7 +334,7 @@
         ],
         "summary": "Remove a contact from suppression list",
         "description": "Remove a suppressed contact from the suppression list by `email` or `userId`. Include only one query parameter.",
-        "operationId": "delete_contacts_suppression",
+        "operationId": "delete_v1_contacts_suppression",
         "parameters": [
           {
             "name": "email",
@@ -391,14 +391,14 @@
         ]
       }
     },
-    "/contacts/properties": {
+    "/v1/contacts/properties": {
       "post": {
         "tags": [
           "Contact properties"
         ],
         "summary": "Create a contact property",
         "description": "Add a contact property to your team.",
-        "operationId": "post_contacts_properties",
+        "operationId": "post_v1_contacts_properties",
         "requestBody": {
           "description": "The name value must be in camelCase, like `planName`.",
           "content": {
@@ -443,7 +443,7 @@
         ],
         "summary": "Get a list of contact properties",
         "description": "Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query \"all\" or \"custom\" properties.",
-        "operationId": "get_contacts_properties",
+        "operationId": "get_v1_contacts_properties",
         "parameters": [
           {
             "name": "list",
@@ -476,14 +476,14 @@
         ]
       }
     },
-    "/dedicated-sending-ips": {
+    "/v1/dedicated-sending-ips": {
       "get": {
         "tags": [
           "Dedicated sending IPs"
         ],
         "summary": "Get dedicated sending IP addresses",
         "description": "Retrieve a list of Loops' dedicated sending IP addresses.",
-        "operationId": "get_dedicated_sending_ips",
+        "operationId": "get_v1_dedicated_sending_ips",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -505,7 +505,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetDedicatedSendingIps500"
+                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps500"
                 }
               }
             }
@@ -518,14 +518,14 @@
         ]
       }
     },
-    "/lists": {
+    "/v1/lists": {
       "get": {
         "tags": [
           "Mailing lists"
         ],
         "summary": "Get a list of mailing lists",
         "description": "Retrieve a list of your account's mailing lists.",
-        "operationId": "get_lists",
+        "operationId": "get_v1_lists",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -548,14 +548,14 @@
         ]
       }
     },
-    "/events/send": {
+    "/v1/events/send": {
       "post": {
         "tags": [
           "Events"
         ],
         "summary": "Send an event",
         "description": "Send events to trigger emails in Loops.",
-        "operationId": "post_events_send",
+        "operationId": "post_v1_events_send",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -616,14 +616,14 @@
         ]
       }
     },
-    "/transactional": {
+    "/v1/transactional": {
       "post": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "Send a transactional email",
         "description": "Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.",
-        "operationId": "post_transactional",
+        "operationId": "post_v1_transactional",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -660,7 +660,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostTransactional400"
+                  "$ref": "#/components/schemas/PostV1Transactional400"
                 }
               }
             }
@@ -691,59 +691,16 @@
             "apiKey": [ ]
           }
         ]
-      },
-      "get": {
-        "tags": [
-          "Transactional emails"
-        ],
-        "summary": "List transactional emails",
-        "description": "Get a list of published transactional emails.",
-        "operationId": "get_transactional",
-        "parameters": [
-          {
-            "name": "perPage",
-            "in": "query",
-            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "A cursor, to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ListTransactionalsResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "apiKey": [ ]
-          }
-        ]
       }
     },
-    "/transactionals": {
+    "/v2/transactional": {
       "get": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "List transactionals",
         "description": "Retrieve a paginated list of transactionals, most recently created first.",
-        "operationId": "get_transactionals",
+        "operationId": "get_v2_transactional",
         "parameters": [
           {
             "name": "perPage",
@@ -795,8 +752,8 @@
           "Transactional emails"
         ],
         "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/transactionals/{transactionalId}/publish` to publish.",
-        "operationId": "post_transactionals",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.",
+        "operationId": "post_v2_transactional",
         "requestBody": {
           "content": {
             "application/json": {
@@ -835,14 +792,14 @@
         ]
       }
     },
-    "/transactionals/{transactionalId}": {
+    "/v2/transactional/{transactionalId}": {
       "get": {
         "tags": [
           "Transactional emails"
         ],
-        "summary": "Get a transactional",
+        "summary": "Get a transactional email",
         "description": "Retrieve a single transactional by ID.",
-        "operationId": "get_transactionals_transactionalId",
+        "operationId": "get_v2_transactional_transactionalId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -865,7 +822,7 @@
             }
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -885,9 +842,9 @@
         "tags": [
           "Transactional emails"
         ],
-        "summary": "Update a transactional",
-        "description": "Update a transactional's name.",
-        "operationId": "post_transactionals_transactionalId",
+        "summary": "Update a transactional email",
+        "description": "Update a transactional email.",
+        "operationId": "post_v2_transactional_transactionalId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -899,7 +856,7 @@
         },
         "responses": {
           "200": {
-            "description": "Transactional updated.",
+            "description": "Transactional email updated.",
             "content": {
               "application/json": {
                 "schema": {
@@ -919,7 +876,7 @@
             }
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -939,7 +896,7 @@
         {
           "name": "transactionalId",
           "in": "path",
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "required": true,
           "schema": {
             "type": "string"
@@ -947,14 +904,14 @@
         }
       ]
     },
-    "/transactionals/{transactionalId}/draft": {
+    "/v2/transactional/{transactionalId}/draft": {
       "post": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "Ensure a draft email message",
-        "description": "Ensure the transactional has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/email-messages/{emailMessageId}` to edit the draft's content.",
-        "operationId": "post_transactionals_transactionalId_draft",
+        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft's content.",
+        "operationId": "post_v2_transactional_transactionalId_draft",
         "responses": {
           "200": {
             "description": "Draft ready.",
@@ -977,7 +934,7 @@
             }
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -997,7 +954,7 @@
         {
           "name": "transactionalId",
           "in": "path",
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "required": true,
           "schema": {
             "type": "string"
@@ -1005,17 +962,17 @@
         }
       ]
     },
-    "/transactionals/{transactionalId}/publish": {
+    "/v2/transactional/{transactionalId}/publish": {
       "post": {
         "tags": [
           "Transactional emails"
         ],
-        "summary": "Publish a transactional draft",
-        "description": "Publish the transactional's current draft email message. The draft becomes the published version and the draft is cleared.",
-        "operationId": "post_transactionals_transactionalId_publish",
+        "summary": "Publish a transactional email draft",
+        "description": "Publish the transactional email's current draft email message. The draft becomes the published version and the draft is cleared.",
+        "operationId": "post_v2_transactional_transactionalId_publish",
         "responses": {
           "200": {
-            "description": "Transactional published.",
+            "description": "Transactional email published.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1035,7 +992,7 @@
             }
           },
           "404": {
-            "description": "Transactional not found.",
+            "description": "Transactional email not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1075,7 +1032,7 @@
         {
           "name": "transactionalId",
           "in": "path",
-          "description": "The ID of the transactional.",
+          "description": "The ID of the transactional email.",
           "required": true,
           "schema": {
             "type": "string"
@@ -1083,14 +1040,14 @@
         }
       ]
     },
-    "/themes/{themeId}": {
+    "/v1/themes/{themeId}": {
       "get": {
         "tags": [
           "Themes"
         ],
         "summary": "Get a theme",
         "description": "Retrieve a single theme by ID.",
-        "operationId": "get_themes_themeId",
+        "operationId": "get_v1_themes_themeId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1141,14 +1098,14 @@
         }
       ]
     },
-    "/themes": {
+    "/v1/themes": {
       "get": {
         "tags": [
           "Themes"
         ],
         "summary": "List themes",
         "description": "Retrieve a paginated list of email themes, most recently created first.",
-        "operationId": "get_themes",
+        "operationId": "get_v1_themes",
         "parameters": [
           {
             "name": "perPage",
@@ -1196,14 +1153,14 @@
         ]
       }
     },
-    "/components/{componentId}": {
+    "/v1/components/{componentId}": {
       "get": {
         "tags": [
           "Components"
         ],
         "summary": "Get a component",
         "description": "Retrieve a single component by ID.",
-        "operationId": "get_components_componentId",
+        "operationId": "get_v1_components_componentId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1254,14 +1211,14 @@
         }
       ]
     },
-    "/components": {
+    "/v1/components": {
       "get": {
         "tags": [
           "Components"
         ],
         "summary": "List components",
         "description": "Retrieve a paginated list of email components.",
-        "operationId": "get_components",
+        "operationId": "get_v1_components",
         "parameters": [
           {
             "name": "perPage",
@@ -1309,14 +1266,14 @@
         ]
       }
     },
-    "/campaigns": {
+    "/v1/campaigns": {
       "get": {
         "tags": [
           "Campaigns"
         ],
         "summary": "List campaigns",
         "description": "Retrieve a paginated list of campaigns.",
-        "operationId": "get_campaigns",
+        "operationId": "get_v1_campaigns",
         "parameters": [
           {
             "name": "perPage",
@@ -1369,7 +1326,7 @@
         ],
         "summary": "Create a campaign",
         "description": "Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content.",
-        "operationId": "post_campaigns",
+        "operationId": "post_v1_campaigns",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1408,14 +1365,14 @@
         ]
       }
     },
-    "/campaigns/{campaignId}": {
+    "/v1/campaigns/{campaignId}": {
       "get": {
         "tags": [
           "Campaigns"
         ],
         "summary": "Get a campaign",
         "description": "Retrieve a single campaign by ID.",
-        "operationId": "get_campaigns_campaignId",
+        "operationId": "get_v1_campaigns_campaignId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1460,7 +1417,7 @@
         ],
         "summary": "Update a campaign",
         "description": "Update a draft campaign's name. Campaigns can only be updated while in draft status.",
-        "operationId": "post_campaigns_campaignId",
+        "operationId": "post_v1_campaigns_campaignId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1530,14 +1487,14 @@
         }
       ]
     },
-    "/email-messages/{emailMessageId}": {
+    "/v1/email-messages/{emailMessageId}": {
       "get": {
         "tags": [
           "Email messages"
         ],
         "summary": "Get an email message",
         "description": "Retrieve an email message, including its compiled LMX content.",
-        "operationId": "get_email_messages_emailMessageId",
+        "operationId": "get_v1_email_messages_emailMessageId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1592,7 +1549,7 @@
         ],
         "summary": "Update an email message",
         "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
-        "operationId": "post_email_messages_emailMessageId",
+        "operationId": "post_v1_email_messages_emailMessageId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1682,14 +1639,14 @@
         }
       ]
     },
-    "/uploads": {
+    "/v1/uploads": {
       "post": {
         "tags": [
           "Uploads"
         ],
         "summary": "Create an upload",
         "description": "Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{id}/complete` to finalize the asset.",
-        "operationId": "post_uploads",
+        "operationId": "post_v1_uploads",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1748,14 +1705,14 @@
         ]
       }
     },
-    "/uploads/{id}/complete": {
+    "/v1/uploads/{id}/complete": {
       "post": {
         "tags": [
           "Uploads"
         ],
         "summary": "Complete an upload",
         "description": "Finalize an asset after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded asset.",
-        "operationId": "post_uploads_id_complete",
+        "operationId": "post_v1_uploads_id_complete",
         "responses": {
           "200": {
             "description": "Upload completed.",
@@ -2361,7 +2318,8 @@
           "draftEmailMessageId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ],
         "type": "object",
         "properties": {
@@ -2386,6 +2344,13 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "dataVariables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
           }
         }
       },
@@ -2397,7 +2362,8 @@
           "draftEmailMessageId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ],
         "type": "object",
         "properties": {
@@ -2425,6 +2391,13 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "dataVariables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
           }
         }
       },
@@ -2437,7 +2410,8 @@
           "draftEmailMessageContentRevisionId",
           "publishedEmailMessageId",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "dataVariables"
         ],
         "type": "object",
         "properties": {
@@ -2470,6 +2444,13 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "dataVariables": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
           }
         }
       },
@@ -2503,7 +2484,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The transactional name."
+            "description": "The name of the transactional email."
           }
         },
         "additionalProperties": false
@@ -3472,7 +3453,7 @@
           }
         }
       },
-      "GetApiKey200": {
+      "GetV1ApiKey200": {
         "required": [
           "success",
           "teamName"
@@ -3488,7 +3469,7 @@
           }
         }
       },
-      "GetApiKey401": {
+      "GetV1ApiKey401": {
         "type": "object",
         "properties": {
           "success": {
@@ -3502,19 +3483,19 @@
           }
         }
       },
-      "GetContactsFind200": {
+      "GetV1ContactsFind200": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
         }
       },
-      "GetContactsProperties200": {
+      "GetV1ContactsProperties200": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ContactProperty"
         }
       },
-      "GetDedicatedSendingIps200": {
+      "GetV1DedicatedSendingIps200": {
         "type": "array",
         "items": {
           "type": "string",
@@ -3522,7 +3503,7 @@
         },
         "description": "List of dedicated sending IP addresses"
       },
-      "GetDedicatedSendingIps500": {
+      "GetV1DedicatedSendingIps500": {
         "required": [
           "success",
           "message"
@@ -3537,13 +3518,13 @@
           }
         }
       },
-      "GetLists200": {
+      "GetV1Lists200": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MailingList"
         }
       },
-      "PostTransactional400": {
+      "PostV1Transactional400": {
         "required": [
           "type"
         ],
@@ -3653,7 +3634,7 @@
     },
     {
       "name": "Transactional emails",
-      "description": "Send and view transactional emails"
+      "description": "Create, manage, and send transactional emails"
     },
     {
       "name": "Dedicated sending IPs",
