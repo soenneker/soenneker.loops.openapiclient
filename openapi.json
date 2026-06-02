@@ -754,7 +754,7 @@
                 "schema": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/TransactionalFailureResponse"
+                      "$ref": "#/components/schemas/TransactionalSendFailureResponse"
                     },
                     {
                       "$ref": "#/components/schemas/TransactionalFailure2Response"
@@ -2364,6 +2364,15 @@
       "TransactionalFailureResponse": {
         "type": "object",
         "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["message"]
+      },
+      "TransactionalSendFailureResponse": {
+        "type": "object",
+        "properties": {
           "success": {
             "type": "boolean",
             "examples": [false]
@@ -2541,7 +2550,7 @@
       "TransactionalEmailResource": {
         "type": "object",
         "properties": {
-          "transactionalId": { "type": "string" },
+          "id": { "type": "string" },
           "name": { "type": "string" },
           "draftEmailMessageId": { "type": ["string", "null"] },
           "publishedEmailMessageId": { "type": ["string", "null"] },
@@ -2554,7 +2563,7 @@
           }
         },
         "required": [
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
@@ -2566,8 +2575,7 @@
       "TransactionalResponse": {
         "type": "object",
         "properties": {
-          "success": { "type": "boolean", "examples": [true] },
-          "transactionalId": { "type": "string" },
+          "id": { "type": "string" },
           "name": { "type": "string" },
           "draftEmailMessageId": { "type": ["string", "null"] },
           "publishedEmailMessageId": { "type": ["string", "null"] },
@@ -2580,8 +2588,7 @@
           }
         },
         "required": [
-          "success",
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
@@ -2593,8 +2600,7 @@
       "TransactionalDraftResponse": {
         "type": "object",
         "properties": {
-          "success": { "type": "boolean", "examples": [true] },
-          "transactionalId": { "type": "string" },
+          "id": { "type": "string" },
           "name": { "type": "string" },
           "draftEmailMessageId": { "type": ["string", "null"] },
           "draftEmailMessageContentRevisionId": {
@@ -2611,8 +2617,7 @@
           }
         },
         "required": [
-          "success",
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "draftEmailMessageContentRevisionId",
@@ -2625,7 +2630,6 @@
       "ListTransactionalsResourceResponse": {
         "type": "object",
         "properties": {
-          "success": { "type": "boolean", "examples": [true] },
           "pagination": {
             "type": "object",
             "properties": {
@@ -2644,7 +2648,7 @@
             }
           }
         },
-        "required": ["success", "pagination", "data"]
+        "required": ["pagination", "data"]
       },
       "CreateTransactionalRequest": {
         "type": "object",
@@ -2717,7 +2721,7 @@
       "Theme": {
         "type": "object",
         "properties": {
-          "themeId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2740,7 +2744,7 @@
           }
         },
         "required": [
-          "themeId",
+          "id",
           "name",
           "styles",
           "isDefault",
@@ -2796,10 +2800,6 @@
       "ListThemesResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
           "pagination": {
             "type": "object",
             "properties": {
@@ -2830,16 +2830,12 @@
             }
           }
         },
-        "required": ["success", "pagination", "data"]
+        "required": ["pagination", "data"]
       },
       "ThemeResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
-          "themeId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2862,8 +2858,7 @@
           }
         },
         "required": [
-          "success",
-          "themeId",
+          "id",
           "name",
           "styles",
           "isDefault",
@@ -2874,20 +2869,16 @@
       "ThemeFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string"
           }
         },
-        "required": ["success", "message"]
+        "required": ["message"]
       },
       "Component": {
         "type": "object",
         "properties": {
-          "componentId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2898,15 +2889,11 @@
             "description": "The component body serialized as LMX."
           }
         },
-        "required": ["componentId", "name", "lmx"]
+        "required": ["id", "name", "lmx"]
       },
       "ListComponentsResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
           "pagination": {
             "type": "object",
             "properties": {
@@ -2937,16 +2924,12 @@
             }
           }
         },
-        "required": ["success", "pagination", "data"]
+        "required": ["pagination", "data"]
       },
       "ComponentResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
-          "componentId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2957,25 +2940,21 @@
             "description": "The component body serialized as LMX."
           }
         },
-        "required": ["success", "componentId", "name", "lmx"]
+        "required": ["id", "name", "lmx"]
       },
       "ComponentFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string"
           }
         },
-        "required": ["success", "message"]
+        "required": ["message"]
       },
       "CampaignListItem": {
         "type": "object",
         "properties": {
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "emailMessageId": {
@@ -3002,7 +2981,7 @@
           }
         },
         "required": [
-          "campaignId",
+          "id",
           "emailMessageId",
           "name",
           "subject",
@@ -3014,10 +2993,6 @@
       "ListCampaignsResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
           "pagination": {
             "type": "object",
             "properties": {
@@ -3048,7 +3023,7 @@
             }
           }
         },
-        "required": ["success", "pagination", "data"]
+        "required": ["pagination", "data"]
       },
       "CreateCampaignRequest": {
         "type": "object",
@@ -3065,11 +3040,7 @@
       "CreateCampaignResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -3097,8 +3068,7 @@
           }
         },
         "required": [
-          "success",
-          "campaignId",
+          "id",
           "name",
           "status",
           "createdAt",
@@ -3120,11 +3090,7 @@
       "CampaignResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -3146,8 +3112,7 @@
           }
         },
         "required": [
-          "success",
-          "campaignId",
+          "id",
           "name",
           "status",
           "createdAt",
@@ -3158,15 +3123,11 @@
       "CampaignFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string"
           }
         },
-        "required": ["success", "message"]
+        "required": ["message"]
       },
       "UpdateEmailMessageRequest": {
         "type": "object",
@@ -3202,11 +3163,7 @@
       "EmailMessageResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
-          "emailMessageId": {
+          "id": {
             "type": "string"
           },
           "campaignId": {
@@ -3264,8 +3221,7 @@
           }
         },
         "required": [
-          "success",
-          "emailMessageId",
+          "id",
           "campaignId",
           "subject",
           "previewText",
@@ -3280,15 +3236,11 @@
       "EmailMessageFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string"
           }
         },
-        "required": ["success", "message"]
+        "required": ["message"]
       },
       "CreateUploadRequest": {
         "type": "object",
@@ -3310,10 +3262,6 @@
       "CreateUploadResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
           "emailAssetId": {
             "type": "string",
             "description": "The ID of the created asset. Pass this as `id` to `/uploads/{id}/complete` once the file has been uploaded."
@@ -3323,15 +3271,11 @@
             "description": "The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request."
           }
         },
-        "required": ["success", "emailAssetId", "presignedUrl"]
+        "required": ["emailAssetId", "presignedUrl"]
       },
       "CompleteUploadResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [true]
-          },
           "emailAssetId": {
             "type": "string"
           },
@@ -3340,15 +3284,11 @@
             "description": "The public URL of the uploaded asset."
           }
         },
-        "required": ["success", "emailAssetId", "finalUrl"]
+        "required": ["emailAssetId", "finalUrl"]
       },
       "UploadLimitExceededFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string",
             "examples": [
@@ -3370,10 +3310,6 @@
       "UploadFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "examples": [false]
-          },
           "message": {
             "type": "string"
           },
@@ -3389,7 +3325,7 @@
             "description": "Present when the upload exceeds the size limit. The maximum allowed size in bytes."
           }
         },
-        "required": ["success", "message"]
+        "required": ["message"]
       }
     },
     "securitySchemes": {

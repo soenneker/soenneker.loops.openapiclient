@@ -39,7 +39,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.DedicatedSendingIps
         /// <returns>A List&lt;string&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.GetV1DedicatedSendingIps500">When receiving a 500 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.GetV1DedicatedSendingIps500Response">When receiving a 500 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<List<string>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -52,7 +52,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.DedicatedSendingIps
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "500", global::Soenneker.Loops.OpenApiClient.Models.GetV1DedicatedSendingIps500.CreateFromDiscriminatorValue },
+                { "500", global::Soenneker.Loops.OpenApiClient.Models.GetV1DedicatedSendingIps500Response.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendPrimitiveCollectionAsync<string>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

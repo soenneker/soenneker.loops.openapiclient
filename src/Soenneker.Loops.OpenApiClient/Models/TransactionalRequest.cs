@@ -19,18 +19,18 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>A list containing file objects to be sent along with an email message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_attachments>? Attachments { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>? Attachments { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_attachments> Attachments { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem> Attachments { get; set; }
 #endif
         /// <summary>An object containing contact data as defined by the data variables added to the transactional email template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables? DataVariables { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty? DataVariables { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables DataVariables { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty DataVariables { get; set; }
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -74,8 +74,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "addToAudience", n => { AddToAudience = n.GetBoolValue(); } },
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_attachments>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_attachments.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "dataVariables", n => { DataVariables = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables.CreateFromDiscriminatorValue); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "dataVariables", n => { DataVariables = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "transactionalId", n => { TransactionalId = n.GetStringValue(); } },
             };
@@ -88,8 +88,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("addToAudience", AddToAudience);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_attachments>("attachments", Attachments);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables>("dataVariables", DataVariables);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>("attachments", Attachments);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty>("dataVariables", DataVariables);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("transactionalId", TransactionalId);
             writer.WriteAdditionalData(AdditionalData);

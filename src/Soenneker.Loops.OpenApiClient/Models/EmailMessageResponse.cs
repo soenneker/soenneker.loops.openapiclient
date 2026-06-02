@@ -30,14 +30,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ContentRevisionId { get; set; }
 #endif
-        /// <summary>The emailMessageId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EmailMessageId { get; set; }
-#nullable restore
-#else
-        public string EmailMessageId { get; set; }
-#endif
         /// <summary>The fromEmail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -53,6 +45,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string FromName { get; set; }
+#endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
 #endif
         /// <summary>The email body serialized as LMX.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -86,17 +86,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Subject { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>Non-fatal issues raised while compiling the submitted LMX. Only present on update responses when warnings were produced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>? Warnings { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem>? Warnings { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings> Warnings { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem> Warnings { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse"/> and sets the default values.
@@ -125,16 +123,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "campaignId", n => { CampaignId = n.GetStringValue(); } },
                 { "contentRevisionId", n => { ContentRevisionId = n.GetStringValue(); } },
-                { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
                 { "fromEmail", n => { FromEmail = n.GetStringValue(); } },
                 { "fromName", n => { FromName = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "lmx", n => { Lmx = n.GetStringValue(); } },
                 { "previewText", n => { PreviewText = n.GetStringValue(); } },
                 { "replyToEmail", n => { ReplyToEmail = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -146,16 +143,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("campaignId", CampaignId);
             writer.WriteStringValue("contentRevisionId", ContentRevisionId);
-            writer.WriteStringValue("emailMessageId", EmailMessageId);
             writer.WriteStringValue("fromEmail", FromEmail);
             writer.WriteStringValue("fromName", FromName);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lmx", Lmx);
             writer.WriteStringValue("previewText", PreviewText);
             writer.WriteStringValue("replyToEmail", ReplyToEmail);
             writer.WriteStringValue("subject", Subject);
-            writer.WriteBoolValue("success", Success);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

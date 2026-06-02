@@ -14,14 +14,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The campaignId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? CampaignId { get; set; }
-#nullable restore
-#else
-        public string CampaignId { get; set; }
-#endif
         /// <summary>The createdAt property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update.</summary>
@@ -40,6 +32,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string EmailMessageId { get; set; }
 #endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,8 +56,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -85,13 +83,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "campaignId", n => { CampaignId = n.GetStringValue(); } },
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "emailMessageContentRevisionId", n => { EmailMessageContentRevisionId = n.GetStringValue(); } },
                 { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -102,13 +99,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("campaignId", CampaignId);
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteStringValue("emailMessageContentRevisionId", EmailMessageContentRevisionId);
             writer.WriteStringValue("emailMessageId", EmailMessageId);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("status", Status);
-            writer.WriteBoolValue("success", Success);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

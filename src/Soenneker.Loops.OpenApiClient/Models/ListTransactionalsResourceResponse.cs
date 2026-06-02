@@ -30,8 +30,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponsePagination Pagination { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse"/> and sets the default values.
         /// </summary>
@@ -59,7 +57,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmailResource>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmailResource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponsePagination.CreateFromDiscriminatorValue); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +68,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmailResource>("data", Data);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponsePagination>("pagination", Pagination);
-            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -27,8 +27,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string MessageEscaped { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>Present when the request was rejected for an unsupported `contentType`. Lists the accepted MIME types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,7 +62,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "maxBytes", n => { MaxBytes = n.GetIntValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
                 { "supportedContentTypes", n => { SupportedContentTypes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }
@@ -77,7 +74,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("maxBytes", MaxBytes);
             writer.WriteStringValue("message", MessageEscaped);
-            writer.WriteBoolValue("success", Success);
             writer.WriteCollectionOfPrimitiveValues<string>("supportedContentTypes", SupportedContentTypes);
             writer.WriteAdditionalData(AdditionalData);
         }

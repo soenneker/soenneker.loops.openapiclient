@@ -32,6 +32,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string DraftEmailMessageId { get; set; }
 #endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,16 +55,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string PublishedEmailMessageId { get; set; }
-#endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
-        /// <summary>The transactionalId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TransactionalId { get; set; }
-#nullable restore
-#else
-        public string TransactionalId { get; set; }
 #endif
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -88,10 +86,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "dataVariables", n => { DataVariables = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "draftEmailMessageId", n => { DraftEmailMessageId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "publishedEmailMessageId", n => { PublishedEmailMessageId = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
-                { "transactionalId", n => { TransactionalId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -105,10 +102,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("dataVariables", DataVariables);
             writer.WriteStringValue("draftEmailMessageId", DraftEmailMessageId);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("publishedEmailMessageId", PublishedEmailMessageId);
-            writer.WriteBoolValue("success", Success);
-            writer.WriteStringValue("transactionalId", TransactionalId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

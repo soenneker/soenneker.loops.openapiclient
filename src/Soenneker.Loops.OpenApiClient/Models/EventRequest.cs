@@ -33,18 +33,18 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>An object containing event property data for the event, available in emails sent by the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties? EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty? EventProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty EventProperties { get; set; }
 #endif
         /// <summary>An object of mailing list IDs and boolean subscription statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequest_mailingLists? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequest_mailingLists MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty MailingLists { get; set; }
 #endif
         /// <summary>The userId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -81,8 +81,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "eventName", n => { EventName = n.GetStringValue(); } },
-                { "eventProperties", n => { EventProperties = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties>(global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties.CreateFromDiscriminatorValue); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequest_mailingLists>(global::Soenneker.Loops.OpenApiClient.Models.EventRequest_mailingLists.CreateFromDiscriminatorValue); } },
+                { "eventProperties", n => { EventProperties = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty>(global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty.CreateFromDiscriminatorValue); } },
                 { "userId", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -95,8 +95,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("eventName", EventName);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties>("eventProperties", EventProperties);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequest_mailingLists>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty>("eventProperties", EventProperties);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty>("mailingLists", MailingLists);
             writer.WriteStringValue("userId", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

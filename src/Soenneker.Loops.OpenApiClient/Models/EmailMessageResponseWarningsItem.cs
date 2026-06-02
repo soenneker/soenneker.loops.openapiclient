@@ -9,7 +9,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class EmailMessageResponse_warnings : IAdditionalDataHolder, IParsable
+    public partial class EmailMessageResponseWarningsItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -39,23 +39,23 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string Rule { get; set; }
 #endif
         /// <summary>The severity property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings_severity? Severity { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity? Severity { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem"/> and sets the default values.
         /// </summary>
-        public EmailMessageResponse_warnings()
+        public EmailMessageResponseWarningsItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings();
+            return new global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,7 +68,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "rule", n => { Rule = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings_severity>(); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("rule", Rule);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse_warnings_severity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

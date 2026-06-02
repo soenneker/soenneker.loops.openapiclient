@@ -22,6 +22,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
+        /// <summary>The id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
         /// <summary>Whether this theme is the team&apos;s default.</summary>
         public bool? IsDefault { get; set; }
         /// <summary>The name property</summary>
@@ -39,14 +47,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles Styles { get; set; }
-#endif
-        /// <summary>The themeId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ThemeId { get; set; }
-#nullable restore
-#else
-        public string ThemeId { get; set; }
 #endif
         /// <summary>ISO 8601 timestamp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -82,10 +82,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "isDefault", n => { IsDefault = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "styles", n => { Styles = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles>(global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles.CreateFromDiscriminatorValue); } },
-                { "themeId", n => { ThemeId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
@@ -97,10 +97,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("createdAt", CreatedAt);
+            writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("isDefault", IsDefault);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles>("styles", Styles);
-            writer.WriteStringValue("themeId", ThemeId);
             writer.WriteStringValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

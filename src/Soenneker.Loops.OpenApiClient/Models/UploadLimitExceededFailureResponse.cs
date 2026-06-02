@@ -27,8 +27,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string MessageEscaped { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>The number of hours in the upload limit window.</summary>
         public int? WindowHours { get; set; }
         /// <summary>
@@ -58,7 +56,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "maxUploads", n => { MaxUploads = n.GetIntValue(); } },
                 { "message", n => { MessageEscaped = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
                 { "windowHours", n => { WindowHours = n.GetIntValue(); } },
             };
         }
@@ -71,7 +68,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("maxUploads", MaxUploads);
             writer.WriteStringValue("message", MessageEscaped);
-            writer.WriteBoolValue("success", Success);
             writer.WriteIntValue("windowHours", WindowHours);
             writer.WriteAdditionalData(AdditionalData);
         }

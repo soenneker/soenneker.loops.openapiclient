@@ -30,8 +30,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string PresignedUrl { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse"/> and sets the default values.
         /// </summary>
@@ -59,7 +57,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "emailAssetId", n => { EmailAssetId = n.GetStringValue(); } },
                 { "presignedUrl", n => { PresignedUrl = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +68,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("emailAssetId", EmailAssetId);
             writer.WriteStringValue("presignedUrl", PresignedUrl);
-            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

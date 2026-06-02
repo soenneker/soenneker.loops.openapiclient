@@ -17,14 +17,14 @@
           "API key"
         ],
         "summary": "Test your API key",
-        "operationId": "get_v1_api_key",
+        "operationId": "GetV1ApiKey",
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ApiKey200"
+                  "$ref": "#/components/schemas/GetV1ApiKey200Response"
                 }
               }
             }
@@ -34,7 +34,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ApiKey401"
+                  "$ref": "#/components/schemas/GetV1ApiKey401Response"
                 }
               }
             }
@@ -42,7 +42,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -54,9 +54,9 @@
         ],
         "summary": "Create a contact",
         "description": "Add a contact to your audience.",
-        "operationId": "post_v1_contacts_create",
+        "operationId": "PostV1ContactsCreate",
         "requestBody": {
-          "description": "You can add custom contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).<br>Make sure to create the properties in Loops before using them in API calls.",
+          "description": "You can add custom contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060 ([see available date formats](https://loops.so/docs/contacts/properties#dates))).\u003Cbr\u003EMake sure to create the properties in Loops before using them in API calls.",
           "content": {
             "application/json": {
               "schema": {
@@ -87,7 +87,7 @@
             }
           },
           "409": {
-            "description": "Email or `userId` already exists.",
+            "description": "Email or \u0060userId\u0060 already exists.",
             "content": {
               "application/json": {
                 "schema": {
@@ -99,7 +99,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -110,10 +110,10 @@
           "Contacts"
         ],
         "summary": "Update a contact",
-        "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.<br>If you want to update a contact’s email address, the contact will first need a `userId` value. You can then make a request containing the userId field along with an updated email address.",
-        "operationId": "put_v1_contacts_update",
+        "description": "Update a contact by \u0060email\u0060 or \u0060userId\u0060. You must provide one of these parameters.\u003Cbr\u003EIf you want to update a contact\u2019s email address, the contact will first need a \u0060userId\u0060 value. You can then make a request containing the userId field along with an updated email address.",
+        "operationId": "PutV1ContactsUpdate",
         "requestBody": {
-          "description": "You can add custom contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).<br>Make sure to create the properties in Loops before using them in API calls.",
+          "description": "You can add custom contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060 ([see available date formats](https://loops.so/docs/contacts/properties#dates))).\u003Cbr\u003EMake sure to create the properties in Loops before using them in API calls.",
           "content": {
             "application/json": {
               "schema": {
@@ -134,7 +134,7 @@
             }
           },
           "400": {
-            "description": "Bad request (e.g. `email` or `userId` are missing).",
+            "description": "Bad request (e.g. \u0060email\u0060 or \u0060userId\u0060 are missing).",
             "content": {
               "application/json": {
                 "schema": {
@@ -146,7 +146,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -157,8 +157,8 @@
           "Contacts"
         ],
         "summary": "Find a contact",
-        "description": "Search for a contact by `email` or `userId`. Only one parameter is allowed.",
-        "operationId": "get_v1_contacts_find",
+        "description": "Search for a contact by \u0060email\u0060 or \u0060userId\u0060. Only one parameter is allowed.",
+        "operationId": "GetV1ContactsFind",
         "parameters": [
           {
             "name": "email",
@@ -182,10 +182,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Contact"
-                  }
+                  "$ref": "#/components/schemas/GetV1ContactsFind200ResponseResponseJson"
                 }
               }
             }
@@ -203,7 +200,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -214,10 +211,10 @@
           "Contacts"
         ],
         "summary": "Delete a contact",
-        "description": "Delete a contact by `email` or `userId`.",
-        "operationId": "post_v1_contacts_delete",
+        "description": "Delete a contact by \u0060email\u0060 or \u0060userId\u0060.",
+        "operationId": "PostV1ContactsDelete",
         "requestBody": {
-          "description": "Include only one of `email` or `userId`.",
+          "description": "Include only one of \u0060email\u0060 or \u0060userId\u0060.",
           "content": {
             "application/json": {
               "schema": {
@@ -238,7 +235,7 @@
             }
           },
           "400": {
-            "description": "Bad request (e.g. `email` and `userId` are both provided).",
+            "description": "Bad request (e.g. \u0060email\u0060 and \u0060userId\u0060 are both provided).",
             "content": {
               "application/json": {
                 "schema": {
@@ -260,7 +257,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -271,8 +268,8 @@
           "Contacts"
         ],
         "summary": "Get suppression status for a contact",
-        "description": "Retrieve suppression status and removal quota for a contact by `email` or `userId`. Include only one query parameter.",
-        "operationId": "get_v1_contacts_suppression",
+        "description": "Retrieve suppression status and removal quota for a contact by \u0060email\u0060 or \u0060userId\u0060. Include only one query parameter.",
+        "operationId": "GetV1ContactsSuppression",
         "parameters": [
           {
             "name": "email",
@@ -324,7 +321,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -333,8 +330,8 @@
           "Contacts"
         ],
         "summary": "Remove a contact from suppression list",
-        "description": "Remove a suppressed contact from the suppression list by `email` or `userId`. Include only one query parameter.",
-        "operationId": "delete_v1_contacts_suppression",
+        "description": "Remove a suppressed contact from the suppression list by \u0060email\u0060 or \u0060userId\u0060. Include only one query parameter.",
+        "operationId": "DeleteV1ContactsSuppression",
         "parameters": [
           {
             "name": "email",
@@ -386,7 +383,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -398,9 +395,9 @@
         ],
         "summary": "Create a contact property",
         "description": "Add a contact property to your team.",
-        "operationId": "post_v1_contacts_properties",
+        "operationId": "PostV1ContactsProperties",
         "requestBody": {
-          "description": "The name value must be in camelCase, like `planName`.",
+          "description": "The name value must be in camelCase, like \u0060planName\u0060.",
           "content": {
             "application/json": {
               "schema": {
@@ -433,7 +430,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -442,13 +439,13 @@
           "Contact properties"
         ],
         "summary": "Get a list of contact properties",
-        "description": "Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query \"all\" or \"custom\" properties.",
-        "operationId": "get_v1_contacts_properties",
+        "description": "Retrieve a list of your account\u0027s contact properties.\u003Cbr\u003EUse the \u0060list\u0060 parameter to query \u0022all\u0022 or \u0022custom\u0022 properties.",
+        "operationId": "GetV1ContactsProperties",
         "parameters": [
           {
             "name": "list",
             "in": "query",
-            "description": "\\\"all\\\" (default) or \\\"custom\\\"",
+            "description": "\\\u0022all\\\u0022 (default) or \\\u0022custom\\\u0022",
             "schema": {
               "type": "string"
             }
@@ -460,10 +457,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ContactProperty"
-                  }
+                  "$ref": "#/components/schemas/GetV1ContactsProperties200ResponseResponseJson"
                 }
               }
             }
@@ -471,7 +465,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -482,20 +476,15 @@
           "Dedicated sending IPs"
         ],
         "summary": "Get dedicated sending IP addresses",
-        "description": "Retrieve a list of Loops' dedicated sending IP addresses.",
-        "operationId": "get_v1_dedicated_sending_ips",
+        "description": "Retrieve a list of Loops\u0027 dedicated sending IP addresses.",
+        "operationId": "GetV1DedicatedSendingIps",
         "responses": {
           "200": {
             "description": "Successful.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "description": "IP address"
-                  },
-                  "description": "List of dedicated sending IP addresses"
+                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps200ResponseResponseJson"
                 }
               }
             }
@@ -505,7 +494,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps500"
+                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps500Response"
                 }
               }
             }
@@ -513,7 +502,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -524,18 +513,15 @@
           "Mailing lists"
         ],
         "summary": "Get a list of mailing lists",
-        "description": "Retrieve a list of your account's mailing lists.",
-        "operationId": "get_v1_lists",
+        "description": "Retrieve a list of your account\u0027s mailing lists.",
+        "operationId": "GetV1Lists",
         "responses": {
           "200": {
             "description": "Successful.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/MailingList"
-                  }
+                  "$ref": "#/components/schemas/GetV1Lists200ResponseResponseJson"
                 }
               }
             }
@@ -543,7 +529,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -555,7 +541,7 @@
         ],
         "summary": "Send an event",
         "description": "Send events to trigger emails in Loops.",
-        "operationId": "post_v1_events_send",
+        "operationId": "PostV1EventsSend",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -568,7 +554,7 @@
           }
         ],
         "requestBody": {
-          "description": "Provide either `email` or `userId` to identify the contact ([read more](https://loops.so/docs/api-reference/send-event#body)).<br>You can add event properties, which will be available in emails sent by this event. Values can be of type string, number, boolean or date ([see allowed date formats](https://loops.so/docs/events/properties#important-information-about-event-properties)).<br>Make sure to create the properties in Loops before using them in API calls.<br>You can add contact properties as keys in this request (of type `string`, `number`, `boolean` or `date` ([see available date formats](https://loops.so/docs/contacts/properties#dates))).",
+          "description": "Provide either \u0060email\u0060 or \u0060userId\u0060 to identify the contact ([read more](https://loops.so/docs/api-reference/send-event#body)).\u003Cbr\u003EYou can add event properties, which will be available in emails sent by this event. Values can be of type string, number, boolean or date ([see allowed date formats](https://loops.so/docs/events/properties#important-information-about-event-properties)).\u003Cbr\u003EMake sure to create the properties in Loops before using them in API calls.\u003Cbr\u003EYou can add contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060 ([see available date formats](https://loops.so/docs/contacts/properties#dates))).",
           "content": {
             "application/json": {
               "schema": {
@@ -589,7 +575,7 @@
             }
           },
           "400": {
-            "description": "Bad request (e.g. `eventName` is missing).",
+            "description": "Bad request (e.g. \u0060eventName\u0060 is missing).",
             "content": {
               "application/json": {
                 "schema": {
@@ -611,7 +597,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -622,8 +608,8 @@
           "Transactional emails"
         ],
         "summary": "Send a transactional email",
-        "description": "Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.",
-        "operationId": "post_v1_transactional",
+        "description": "Send a transactional email to a contact.\u003Cbr\u003EPlease [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.",
+        "operationId": "PostV1Transactional",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -660,7 +646,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostV1Transactional400"
+                  "$ref": "#/components/schemas/PostV1Transactional400Response"
                 }
               }
             }
@@ -688,7 +674,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -700,7 +686,7 @@
         ],
         "summary": "List transactionals",
         "description": "Retrieve a paginated list of transactionals, most recently created first.",
-        "operationId": "get_v2_transactional",
+        "operationId": "GetV2Transactional",
         "parameters": [
           {
             "name": "perPage",
@@ -713,7 +699,7 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
             "schema": {
               "type": "string"
             }
@@ -731,7 +717,7 @@
             }
           },
           "400": {
-            "description": "Invalid `perPage` value.",
+            "description": "Invalid \u0060perPage\u0060 value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -743,7 +729,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -752,8 +738,8 @@
           "Transactional emails"
         ],
         "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.",
-        "operationId": "post_v2_transactional",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060/api/v1/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content, then call \u0060/api/v2/transactional/{transactionalId}/publish\u0060 to publish.",
+        "operationId": "PostV2Transactional",
         "requestBody": {
           "content": {
             "application/json": {
@@ -787,7 +773,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -799,7 +785,7 @@
         ],
         "summary": "Get a transactional email",
         "description": "Retrieve a single transactional by ID.",
-        "operationId": "get_v2_transactional_transactionalId",
+        "operationId": "GetV2TransactionalByTransactionalId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -812,7 +798,7 @@
             }
           },
           "400": {
-            "description": "Invalid `transactionalId`.",
+            "description": "Invalid \u0060transactionalId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -834,7 +820,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -844,7 +830,7 @@
         ],
         "summary": "Update a transactional email",
         "description": "Update a transactional email.",
-        "operationId": "post_v2_transactional_transactionalId",
+        "operationId": "PostV2TransactionalByTransactionalId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -866,7 +852,7 @@
             }
           },
           "400": {
-            "description": "Invalid request body or `transactionalId`.",
+            "description": "Invalid request body or \u0060transactionalId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -888,7 +874,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -910,8 +896,8 @@
           "Transactional emails"
         ],
         "summary": "Ensure a draft email message",
-        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft's content.",
-        "operationId": "post_v2_transactional_transactionalId_draft",
+        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use \u0060/v1/email-messages/{emailMessageId}\u0060 to edit the draft\u0027s content.",
+        "operationId": "PostV2TransactionalByTransactionalIdDraft",
         "responses": {
           "200": {
             "description": "Draft ready.",
@@ -924,7 +910,7 @@
             }
           },
           "400": {
-            "description": "Invalid `transactionalId` or no sending domain configured.",
+            "description": "Invalid \u0060transactionalId\u0060 or no sending domain configured.",
             "content": {
               "application/json": {
                 "schema": {
@@ -946,7 +932,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -968,8 +954,8 @@
           "Transactional emails"
         ],
         "summary": "Publish a transactional email draft",
-        "description": "Publish the transactional email's current draft email message. The draft becomes the published version and the draft is cleared.",
-        "operationId": "post_v2_transactional_transactionalId_publish",
+        "description": "Publish the transactional email\u0027s current draft email message. The draft becomes the published version and the draft is cleared.",
+        "operationId": "PostV2TransactionalByTransactionalIdPublish",
         "responses": {
           "200": {
             "description": "Transactional email published.",
@@ -982,7 +968,7 @@
             }
           },
           "400": {
-            "description": "Invalid `transactionalId`.",
+            "description": "Invalid \u0060transactionalId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1024,7 +1010,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1047,7 +1033,7 @@
         ],
         "summary": "Get a theme",
         "description": "Retrieve a single theme by ID.",
-        "operationId": "get_v1_themes_themeId",
+        "operationId": "GetV1ThemesByThemeId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1060,7 +1046,7 @@
             }
           },
           "400": {
-            "description": "Invalid `themeId`.",
+            "description": "Invalid \u0060themeId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1082,7 +1068,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1105,7 +1091,7 @@
         ],
         "summary": "List themes",
         "description": "Retrieve a paginated list of email themes, most recently created first.",
-        "operationId": "get_v1_themes",
+        "operationId": "GetV1Themes",
         "parameters": [
           {
             "name": "perPage",
@@ -1118,7 +1104,7 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
             "schema": {
               "type": "string"
             }
@@ -1136,7 +1122,7 @@
             }
           },
           "400": {
-            "description": "Invalid `perPage` value.",
+            "description": "Invalid \u0060perPage\u0060 value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1148,7 +1134,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -1160,7 +1146,7 @@
         ],
         "summary": "Get a component",
         "description": "Retrieve a single component by ID.",
-        "operationId": "get_v1_components_componentId",
+        "operationId": "GetV1ComponentsByComponentId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1173,7 +1159,7 @@
             }
           },
           "400": {
-            "description": "Invalid `componentId`.",
+            "description": "Invalid \u0060componentId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1195,7 +1181,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1218,7 +1204,7 @@
         ],
         "summary": "List components",
         "description": "Retrieve a paginated list of email components.",
-        "operationId": "get_v1_components",
+        "operationId": "GetV1Components",
         "parameters": [
           {
             "name": "perPage",
@@ -1231,7 +1217,7 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
             "schema": {
               "type": "string"
             }
@@ -1249,7 +1235,7 @@
             }
           },
           "400": {
-            "description": "Invalid `perPage` value.",
+            "description": "Invalid \u0060perPage\u0060 value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1261,7 +1247,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -1273,7 +1259,7 @@
         ],
         "summary": "List campaigns",
         "description": "Retrieve a paginated list of campaigns.",
-        "operationId": "get_v1_campaigns",
+        "operationId": "GetV1Campaigns",
         "parameters": [
           {
             "name": "perPage",
@@ -1286,7 +1272,7 @@
           {
             "name": "cursor",
             "in": "query",
-            "description": "A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
             "schema": {
               "type": "string"
             }
@@ -1304,7 +1290,7 @@
             }
           },
           "400": {
-            "description": "Invalid `perPage` value.",
+            "description": "Invalid \u0060perPage\u0060 value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1316,7 +1302,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1325,8 +1311,8 @@
           "Campaigns"
         ],
         "summary": "Create a campaign",
-        "description": "Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content.",
-        "operationId": "post_v1_campaigns",
+        "description": "Create a new draft campaign. An empty email message is created automatically and its \u0060emailMessageId\u0060 is returned. Use the \u0060/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content.",
+        "operationId": "PostV1Campaigns",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1360,7 +1346,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -1372,7 +1358,7 @@
         ],
         "summary": "Get a campaign",
         "description": "Retrieve a single campaign by ID.",
-        "operationId": "get_v1_campaigns_campaignId",
+        "operationId": "GetV1CampaignsByCampaignId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1385,7 +1371,7 @@
             }
           },
           "400": {
-            "description": "Invalid `campaignId`.",
+            "description": "Invalid \u0060campaignId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1407,7 +1393,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1416,8 +1402,8 @@
           "Campaigns"
         ],
         "summary": "Update a campaign",
-        "description": "Update a draft campaign's name. Campaigns can only be updated while in draft status.",
-        "operationId": "post_v1_campaigns_campaignId",
+        "description": "Update a draft campaign\u0027s name. Campaigns can only be updated while in draft status.",
+        "operationId": "PostV1CampaignsByCampaignId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1471,7 +1457,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1494,7 +1480,7 @@
         ],
         "summary": "Get an email message",
         "description": "Retrieve an email message, including its compiled LMX content.",
-        "operationId": "get_v1_email_messages_emailMessageId",
+        "operationId": "GetV1EmailMessagesByEmailMessageId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1507,7 +1493,7 @@
             }
           },
           "400": {
-            "description": "Invalid `emailMessageId` or no sending domain configured.",
+            "description": "Invalid \u0060emailMessageId\u0060 or no sending domain configured.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1539,7 +1525,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1548,8 +1534,8 @@
           "Email messages"
         ],
         "summary": "Update an email message",
-        "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
-        "operationId": "post_v1_email_messages_emailMessageId",
+        "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply \u0060expectedRevisionId\u0060 matching the current \u0060contentRevisionId\u0060 \u2014 the server rejects mismatched revisions with 409.",
+        "operationId": "PostV1EmailMessagesByEmailMessageId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1591,7 +1577,7 @@
             }
           },
           "409": {
-            "description": "Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
+            "description": "Campaign is not in draft status, \u0060contentRevisionId\u0060 is stale, content cannot be parsed, or email message uses MJML format.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1623,7 +1609,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1645,8 +1631,8 @@
           "Uploads"
         ],
         "summary": "Create an upload",
-        "description": "Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{id}/complete` to finalize the asset.",
-        "operationId": "post_v1_uploads",
+        "description": "Request a pre-signed URL to upload an image asset. Upload the file with an HTTP \u0060PUT\u0060 to the returned \u0060presignedUrl\u0060 (sending the same \u0060Content-Type\u0060 and \u0060Content-Length\u0060), then call \u0060/uploads/{id}/complete\u0060 to finalize the asset.",
+        "operationId": "PostV1Uploads",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1668,7 +1654,7 @@
             }
           },
           "400": {
-            "description": "Invalid request body or unsupported `contentType`.",
+            "description": "Invalid request body or unsupported \u0060contentType\u0060.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1700,7 +1686,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       }
@@ -1712,7 +1698,7 @@
         ],
         "summary": "Complete an upload",
         "description": "Finalize an asset after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded asset.",
-        "operationId": "post_v1_uploads_id_complete",
+        "operationId": "PostV1UploadsByIdComplete",
         "responses": {
           "200": {
             "description": "Upload completed.",
@@ -1747,7 +1733,7 @@
         },
         "security": [
           {
-            "apiKey": [ ]
+            "apiKey": []
           }
         ]
       },
@@ -1755,7 +1741,7 @@
         {
           "name": "id",
           "in": "path",
-          "description": "The `emailAssetId` returned when the upload was created.",
+          "description": "The \u0060emailAssetId\u0060 returned when the upload was created.",
           "required": true,
           "schema": {
             "type": "string"
@@ -1797,19 +1783,10 @@
             "nullable": true
           },
           "mailingLists": {
-            "type": "object",
-            "description": "An object of mailing list IDs and boolean subscription statuses."
+            "$ref": "#/components/schemas/ContactMailingListsProperty"
           },
           "optInStatus": {
-            "enum": [
-              "accepted",
-              "pending",
-              "rejected"
-            ],
-            "type": "string",
-            "additionalProperties": false,
-            "description": "Double opt-in status.",
-            "nullable": true
+            "$ref": "#/components/schemas/ContactOptInStatus"
           }
         }
       },
@@ -1838,17 +1815,11 @@
             "type": "string"
           },
           "mailingLists": {
-            "type": "object",
-            "description": "An object of mailing list IDs and boolean subscription statuses."
+            "$ref": "#/components/schemas/ContactRequestMailingListsProperty"
           }
         },
         "additionalProperties": {
-          "type": "object",
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/UnionBranch"
-            }
-          ]
+          "$ref": "#/components/schemas/ContactRequestAdditionalProperties"
         }
       },
       "ContactUpdateRequest": {
@@ -1873,17 +1844,11 @@
             "type": "string"
           },
           "mailingLists": {
-            "type": "object",
-            "description": "An object of mailing list IDs and boolean subscription statuses."
+            "$ref": "#/components/schemas/ContactUpdateRequestMailingListsProperty"
           }
         },
         "additionalProperties": {
-          "type": "object",
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/UnionBranch"
-            }
-          ]
+          "$ref": "#/components/schemas/ContactUpdateRequestAdditionalProperties"
         }
       },
       "ContactSuccessResponse": {
@@ -2056,21 +2021,14 @@
             "type": "string"
           },
           "eventProperties": {
-            "type": "object",
-            "description": "An object containing event property data for the event, available in emails sent by the event."
+            "$ref": "#/components/schemas/EventRequestEventPropertiesProperty"
           },
           "mailingLists": {
-            "type": "object",
-            "description": "An object of mailing list IDs and boolean subscription statuses."
+            "$ref": "#/components/schemas/EventRequestMailingListsProperty"
           }
         },
         "additionalProperties": {
-          "type": "object",
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/UnionBranch"
-            }
-          ]
+          "$ref": "#/components/schemas/EventRequestAdditionalProperties"
         }
       },
       "EventSuccessResponse": {
@@ -2115,35 +2073,15 @@
           },
           "addToAudience": {
             "type": "boolean",
-            "description": "If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist)."
+            "description": "If \u0060true\u0060, a contact will be created in your audience using the \u0060email\u0060 value (if a matching contact doesn\u0027t already exist)."
           },
           "dataVariables": {
-            "type": "object",
-            "description": "An object containing contact data as defined by the data variables added to the transactional email template."
+            "$ref": "#/components/schemas/TransactionalRequestDataVariablesProperty"
           },
           "attachments": {
             "type": "array",
             "items": {
-              "required": [
-                "filename",
-                "contentType",
-                "data"
-              ],
-              "type": "object",
-              "properties": {
-                "filename": {
-                  "type": "string",
-                  "description": "The name of the file, shown in email clients."
-                },
-                "contentType": {
-                  "type": "string",
-                  "description": "The MIME type of the file."
-                },
-                "data": {
-                  "type": "string",
-                  "description": "The base64-encoded content of the file."
-                }
-              }
+              "$ref": "#/components/schemas/TransactionalRequestAttachmentsItem"
             },
             "description": "A list containing file objects to be sent along with an email message."
           }
@@ -2161,6 +2099,17 @@
         }
       },
       "TransactionalFailureResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "TransactionalSendFailureResponse": {
         "required": [
           "success",
           "message"
@@ -2313,7 +2262,7 @@
       },
       "TransactionalEmailResource": {
         "required": [
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
@@ -2323,7 +2272,7 @@
         ],
         "type": "object",
         "properties": {
-          "transactionalId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2356,8 +2305,7 @@
       },
       "TransactionalResponse": {
         "required": [
-          "success",
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
@@ -2367,10 +2315,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "transactionalId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2403,8 +2348,7 @@
       },
       "TransactionalDraftResponse": {
         "required": [
-          "success",
-          "transactionalId",
+          "id",
           "name",
           "draftEmailMessageId",
           "draftEmailMessageContentRevisionId",
@@ -2415,10 +2359,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "transactionalId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2430,7 +2371,7 @@
           },
           "draftEmailMessageContentRevisionId": {
             "type": "string",
-            "description": "The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `/email-messages/{emailMessageId}`.",
+            "description": "The \u0060contentRevisionId\u0060 of the draft email message. Pass this as \u0060expectedRevisionId\u0060 on your first update via \u0060/email-messages/{emailMessageId}\u0060.",
             "nullable": true
           },
           "publishedEmailMessageId": {
@@ -2456,15 +2397,11 @@
       },
       "ListTransactionalsResourceResponse": {
         "required": [
-          "success",
           "pagination",
           "data"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "pagination": {
             "$ref": "#/components/schemas/ListTransactionalsResourceResponsePagination"
           },
@@ -2545,7 +2482,7 @@
       },
       "Theme": {
         "required": [
-          "themeId",
+          "id",
           "name",
           "styles",
           "isDefault",
@@ -2554,7 +2491,7 @@
         ],
         "type": "object",
         "properties": {
-          "themeId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2565,7 +2502,7 @@
           },
           "isDefault": {
             "type": "boolean",
-            "description": "Whether this theme is the team's default."
+            "description": "Whether this theme is the team\u0027s default."
           },
           "createdAt": {
             "type": "string",
@@ -2698,19 +2635,15 @@
             "type": "number"
           }
         },
-        "description": "Flat map of style attributes, matching the attribute names accepted by the LMX `<Style />` tag. All attributes are returned with the values stored on the theme."
+        "description": "Flat map of style attributes, matching the attribute names accepted by the LMX \u0060\u003CStyle /\u003E\u0060 tag. All attributes are returned with the values stored on the theme."
       },
       "ListThemesResponse": {
         "required": [
-          "success",
           "pagination",
           "data"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "pagination": {
             "$ref": "#/components/schemas/ListThemesResponsePagination"
           },
@@ -2724,8 +2657,7 @@
       },
       "ThemeResponse": {
         "required": [
-          "success",
-          "themeId",
+          "id",
           "name",
           "styles",
           "isDefault",
@@ -2734,10 +2666,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "themeId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2748,7 +2677,7 @@
           },
           "isDefault": {
             "type": "boolean",
-            "description": "Whether this theme is the team's default."
+            "description": "Whether this theme is the team\u0027s default."
           },
           "createdAt": {
             "type": "string",
@@ -2762,14 +2691,10 @@
       },
       "ThemeFailureResponse": {
         "required": [
-          "success",
           "message"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           }
@@ -2777,13 +2702,13 @@
       },
       "Component": {
         "required": [
-          "componentId",
+          "id",
           "name",
           "lmx"
         ],
         "type": "object",
         "properties": {
-          "componentId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2797,15 +2722,11 @@
       },
       "ListComponentsResponse": {
         "required": [
-          "success",
           "pagination",
           "data"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "pagination": {
             "$ref": "#/components/schemas/ListComponentsResponsePagination"
           },
@@ -2819,17 +2740,13 @@
       },
       "ComponentResponse": {
         "required": [
-          "success",
-          "componentId",
+          "id",
           "name",
           "lmx"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "componentId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2843,14 +2760,10 @@
       },
       "ComponentFailureResponse": {
         "required": [
-          "success",
           "message"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           }
@@ -2858,7 +2771,7 @@
       },
       "CampaignListItem": {
         "required": [
-          "campaignId",
+          "id",
           "emailMessageId",
           "name",
           "subject",
@@ -2868,7 +2781,7 @@
         ],
         "type": "object",
         "properties": {
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "emailMessageId": {
@@ -2897,15 +2810,11 @@
       },
       "ListCampaignsResponse": {
         "required": [
-          "success",
           "pagination",
           "data"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "pagination": {
             "$ref": "#/components/schemas/ListCampaignsResponsePagination"
           },
@@ -2932,8 +2841,7 @@
       },
       "CreateCampaignResponse": {
         "required": [
-          "success",
-          "campaignId",
+          "id",
           "name",
           "status",
           "createdAt",
@@ -2943,10 +2851,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -2965,11 +2870,11 @@
           },
           "emailMessageId": {
             "type": "string",
-            "description": "The ID of the empty email message created for this campaign. Use `/email-messages/{emailMessageId}` to set its fields and LMX content."
+            "description": "The ID of the empty email message created for this campaign. Use \u0060/email-messages/{emailMessageId}\u0060 to set its fields and LMX content."
           },
           "emailMessageContentRevisionId": {
             "type": "string",
-            "description": "The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update.",
+            "description": "The \u0060contentRevisionId\u0060 of the newly created email message. Pass this as \u0060expectedRevisionId\u0060 on your first update.",
             "nullable": true
           }
         }
@@ -2988,8 +2893,7 @@
       },
       "CampaignResponse": {
         "required": [
-          "success",
-          "campaignId",
+          "id",
           "name",
           "status",
           "createdAt",
@@ -2998,10 +2902,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "campaignId": {
+          "id": {
             "type": "string"
           },
           "name": {
@@ -3026,14 +2927,10 @@
       },
       "CampaignFailureResponse": {
         "required": [
-          "success",
           "message"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           }
@@ -3044,7 +2941,7 @@
         "properties": {
           "expectedRevisionId": {
             "type": "string",
-            "description": "The `contentRevisionId` you last fetched. Used for optimistic concurrency — the request is rejected with 409 if the server's revision has advanced."
+            "description": "The \u0060contentRevisionId\u0060 you last fetched. Used for optimistic concurrency \u2014 the request is rejected with 409 if the server\u0027s revision has advanced."
           },
           "subject": {
             "type": "string"
@@ -3057,7 +2954,7 @@
           },
           "fromEmail": {
             "type": "string",
-            "description": "The sender username (without `@` or domain). The team's sending domain is appended automatically."
+            "description": "The sender username (without \u0060@\u0060 or domain). The team\u0027s sending domain is appended automatically."
           },
           "replyToEmail": {
             "type": "string",
@@ -3065,15 +2962,14 @@
           },
           "lmx": {
             "type": "string",
-            "description": "The email body serialized as LMX. Styles must be embedded in the LMX `<Style />` tag."
+            "description": "The email body serialized as LMX. Styles must be embedded in the LMX \u0060\u003CStyle /\u003E\u0060 tag."
           }
         },
         "additionalProperties": false
       },
       "EmailMessageResponse": {
         "required": [
-          "success",
-          "emailMessageId",
+          "id",
           "campaignId",
           "subject",
           "previewText",
@@ -3086,10 +2982,7 @@
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "emailMessageId": {
+          "id": {
             "type": "string"
           },
           "campaignId": {
@@ -3117,7 +3010,7 @@
           },
           "contentRevisionId": {
             "type": "string",
-            "description": "The current content revision. Pass this as `expectedRevisionId` on your next update.",
+            "description": "The current content revision. Pass this as \u0060expectedRevisionId\u0060 on your next update.",
             "nullable": true
           },
           "updatedAt": {
@@ -3127,30 +3020,7 @@
           "warnings": {
             "type": "array",
             "items": {
-              "required": [
-                "rule",
-                "severity",
-                "message"
-              ],
-              "type": "object",
-              "properties": {
-                "rule": {
-                  "type": "string"
-                },
-                "severity": {
-                  "enum": [
-                    "warning"
-                  ],
-                  "type": "string",
-                  "additionalProperties": false
-                },
-                "message": {
-                  "type": "string"
-                },
-                "path": {
-                  "type": "string"
-                }
-              }
+              "$ref": "#/components/schemas/EmailMessageResponseWarningsItem"
             },
             "description": "Non-fatal issues raised while compiling the submitted LMX. Only present on update responses when warnings were produced."
           }
@@ -3158,14 +3028,10 @@
       },
       "EmailMessageFailureResponse": {
         "required": [
-          "success",
           "message"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           }
@@ -3180,7 +3046,7 @@
         "properties": {
           "contentType": {
             "type": "string",
-            "description": "The MIME type of the file to upload. Supported types are `image/jpeg`, `image/png`, `image/gif` and `image/webp`."
+            "description": "The MIME type of the file to upload. Supported types are \u0060image/jpeg\u0060, \u0060image/png\u0060, \u0060image/gif\u0060 and \u0060image/webp\u0060."
           },
           "contentLength": {
             "type": "integer",
@@ -3191,36 +3057,28 @@
       },
       "CreateUploadResponse": {
         "required": [
-          "success",
           "emailAssetId",
           "presignedUrl"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "emailAssetId": {
             "type": "string",
-            "description": "The ID of the created asset. Pass this as `id` to `/uploads/{id}/complete` once the file has been uploaded."
+            "description": "The ID of the created asset. Pass this as \u0060id\u0060 to \u0060/uploads/{id}/complete\u0060 once the file has been uploaded."
           },
           "presignedUrl": {
             "type": "string",
-            "description": "The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request."
+            "description": "The pre-signed URL to upload the file to with an HTTP \u0060PUT\u0060 request. Send the same \u0060Content-Type\u0060 and \u0060Content-Length\u0060 used in the create request."
           }
         }
       },
       "CompleteUploadResponse": {
         "required": [
-          "success",
           "emailAssetId",
           "finalUrl"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "emailAssetId": {
             "type": "string"
           },
@@ -3233,9 +3091,6 @@
       "UploadLimitExceededFailureResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           },
@@ -3251,14 +3106,10 @@
       },
       "UploadFailureResponse": {
         "required": [
-          "success",
           "message"
         ],
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean"
-          },
           "message": {
             "type": "string"
           },
@@ -3267,13 +3118,67 @@
             "items": {
               "type": "string"
             },
-            "description": "Present when the request was rejected for an unsupported `contentType`. Lists the accepted MIME types."
+            "description": "Present when the request was rejected for an unsupported \u0060contentType\u0060. Lists the accepted MIME types."
           },
           "maxBytes": {
             "type": "integer",
             "description": "Present when the upload exceeds the size limit. The maximum allowed size in bytes."
           }
         }
+      },
+      "ContactRequestAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "ContactUpdateRequestAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "EventRequestAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "ContactMailingLists": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "ContactRequestMailingLists": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "ContactUpdateRequestMailingLists": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
       },
       "ContactSuppressionStatusResponseContact": {
         "required": [
@@ -3292,6 +3197,40 @@
           "userId": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "EventRequestEventProperties": {
+        "type": "object",
+        "description": "An object containing event property data for the event, available in emails sent by the event."
+      },
+      "EventRequestMailingLists": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "TransactionalRequestDataVariables": {
+        "type": "object",
+        "description": "An object containing contact data as defined by the data variables added to the transactional email template."
+      },
+      "TransactionalRequestAttachmentsItem": {
+        "required": [
+          "filename",
+          "contentType",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "description": "The name of the file, shown in email clients."
+          },
+          "contentType": {
+            "type": "string",
+            "description": "The MIME type of the file."
+          },
+          "data": {
+            "type": "string",
+            "description": "The base64-encoded content of the file."
           }
         }
       },
@@ -3453,7 +3392,29 @@
           }
         }
       },
-      "GetV1ApiKey200": {
+      "EmailMessageResponseWarningsItem": {
+        "required": [
+          "rule",
+          "severity",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "rule": {
+            "type": "string"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/EmailMessageResponseWarningsItemSeverity"
+          },
+          "message": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "GetV1ApiKey200Response": {
         "required": [
           "success",
           "teamName"
@@ -3469,7 +3430,7 @@
           }
         }
       },
-      "GetV1ApiKey401": {
+      "GetV1ApiKey401Response": {
         "type": "object",
         "properties": {
           "success": {
@@ -3483,19 +3444,19 @@
           }
         }
       },
-      "GetV1ContactsFind200": {
+      "GetV1ContactsFind200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
         }
       },
-      "GetV1ContactsProperties200": {
+      "GetV1ContactsProperties200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ContactProperty"
         }
       },
-      "GetV1DedicatedSendingIps200": {
+      "GetV1DedicatedSendingIps200Response": {
         "type": "array",
         "items": {
           "type": "string",
@@ -3503,7 +3464,7 @@
         },
         "description": "List of dedicated sending IP addresses"
       },
-      "GetV1DedicatedSendingIps500": {
+      "GetV1DedicatedSendingIps500Response": {
         "required": [
           "success",
           "message"
@@ -3518,20 +3479,20 @@
           }
         }
       },
-      "GetV1Lists200": {
+      "GetV1Lists200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MailingList"
         }
       },
-      "PostV1Transactional400": {
+      "PostV1Transactional400Response": {
         "required": [
           "type"
         ],
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/TransactionalFailureResponse"
+            "$ref": "#/components/schemas/TransactionalSendFailureResponse"
           },
           {
             "$ref": "#/components/schemas/TransactionalFailure2Response"
@@ -3555,7 +3516,7 @@
         "discriminator": {
           "propertyName": "type",
           "mapping": {
-            "TransactionalFailureResponse": "#/components/schemas/TransactionalFailureResponse",
+            "TransactionalSendFailureResponse": "#/components/schemas/TransactionalSendFailureResponse",
             "TransactionalFailure2Response": "#/components/schemas/TransactionalFailure2Response",
             "TransactionalFailure3Response": "#/components/schemas/TransactionalFailure3Response",
             "TransactionalFailure4Response": "#/components/schemas/TransactionalFailure4Response",
@@ -3567,15 +3528,100 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "UnionBranch": {
-        "required": [
-          "value"
-        ],
+      "GetV1ContactsFind200ResponseResponseJson": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Contact"
+        }
+      },
+      "GetV1ContactsProperties200ResponseResponseJson": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ContactProperty"
+        }
+      },
+      "GetV1DedicatedSendingIps200ResponseResponseJson": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "description": "IP address"
+        },
+        "description": "List of dedicated sending IP addresses"
+      },
+      "GetV1Lists200ResponseResponseJson": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MailingList"
+        }
+      },
+      "ContactMailingListsProperty": {
         "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "ContactRequestMailingListsProperty": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "ContactUpdateRequestMailingListsProperty": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "EventRequestEventPropertiesProperty": {
+        "type": "object",
+        "description": "An object containing event property data for the event, available in emails sent by the event."
+      },
+      "EventRequestMailingListsProperty": {
+        "type": "object",
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
+      "TransactionalRequestDataVariablesProperty": {
+        "type": "object",
+        "description": "An object containing contact data as defined by the data variables added to the transactional email template."
+      },
+      "ContactOptInStatus": {
+        "enum": [
+          "accepted",
+          "pending",
+          "rejected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Double opt-in status.",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "ContactOptInStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "accepted",
+              "name": "Accepted"
+            },
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "rejected",
+              "name": "Rejected"
+            }
+          ]
+        }
+      },
+      "EmailMessageResponseWarningsItemSeverity": {
+        "enum": [
+          "warning"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EmailMessageResponseWarningsItemSeverity",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "warning",
+              "name": "Warning"
+            }
+          ]
         }
       }
     },

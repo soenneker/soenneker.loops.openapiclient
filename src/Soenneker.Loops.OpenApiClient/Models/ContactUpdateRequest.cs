@@ -41,10 +41,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>An object of mailing list IDs and boolean subscription statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest_mailingLists? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingListsProperty? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest_mailingLists MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingListsProperty MailingLists { get; set; }
 #endif
         /// <summary>The subscribed property</summary>
         public bool? Subscribed { get; set; }
@@ -92,7 +92,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "firstName", n => { FirstName = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest_mailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest_mailingLists.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingListsProperty.CreateFromDiscriminatorValue); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
                 { "userId", n => { UserId = n.GetStringValue(); } },
@@ -108,7 +108,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("firstName", FirstName);
             writer.WriteStringValue("lastName", LastName);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest_mailingLists>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingListsProperty>("mailingLists", MailingLists);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);
             writer.WriteStringValue("userId", UserId);

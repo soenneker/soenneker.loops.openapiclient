@@ -5,7 +5,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>Double opt-in status.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum Contact_optInStatus
+    public enum ContactOptInStatus
     {
         [EnumMember(Value = "accepted")]
         #pragma warning disable CS1591

@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// An object containing event property data for the event, available in emails sent by the event.
+    /// An object of mailing list IDs and boolean subscription statuses.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class EventRequest_eventProperties : IAdditionalDataHolder, IParsable
+    public partial class ContactMailingListsProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty"/> and sets the default values.
         /// </summary>
-        public EventRequest_eventProperties()
+        public ContactMailingListsProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.EventRequest_eventProperties();
+            return new global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -30,8 +30,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination Pagination { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse"/> and sets the default values.
         /// </summary>
@@ -59,7 +57,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem>(global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination.CreateFromDiscriminatorValue); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -71,7 +68,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem>("data", Data);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponsePagination>("pagination", Pagination);
-            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

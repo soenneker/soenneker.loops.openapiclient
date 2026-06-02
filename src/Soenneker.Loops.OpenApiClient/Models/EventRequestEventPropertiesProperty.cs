@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// An object containing contact data as defined by the data variables added to the transactional email template.
+    /// An object containing event property data for the event, available in emails sent by the event.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TransactionalRequest_dataVariables : IAdditionalDataHolder, IParsable
+    public partial class EventRequestEventPropertiesProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty"/> and sets the default values.
         /// </summary>
-        public TransactionalRequest_dataVariables()
+        public EventRequestEventPropertiesProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequest_dataVariables();
+            return new global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -14,13 +14,13 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The componentId property</summary>
+        /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComponentId { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string ComponentId { get; set; }
+        public string Id { get; set; }
 #endif
         /// <summary>The component body serialized as LMX.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -38,8 +38,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The success property</summary>
-        public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ComponentResponse"/> and sets the default values.
         /// </summary>
@@ -65,10 +63,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "componentId", n => { ComponentId = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "lmx", n => { Lmx = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -78,10 +75,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("componentId", ComponentId);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lmx", Lmx);
             writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
