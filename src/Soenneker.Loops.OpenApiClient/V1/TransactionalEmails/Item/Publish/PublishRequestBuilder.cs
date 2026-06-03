@@ -9,28 +9,28 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish
+namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\transactional\{transactionalId}\publish
+    /// Builds and executes requests for operations under \v1\transactional-emails\{transactionalId}\publish
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PublishRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PublishRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional/{transactionalId}/publish", pathParameters)
+        public PublishRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails/{transactionalId}/publish", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PublishRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional/{transactionalId}/publish", rawUrl)
+        public PublishRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails/{transactionalId}/publish", rawUrl)
         {
         }
         /// <summary>
@@ -84,11 +84,11 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

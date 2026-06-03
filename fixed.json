@@ -679,14 +679,14 @@
         ]
       }
     },
-    "/v2/transactional": {
+    "/v1/transactional-emails": {
       "get": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "List transactionals",
         "description": "Retrieve a paginated list of transactionals, most recently created first.",
-        "operationId": "GetV2Transactional",
+        "operationId": "GetV1TransactionalEmails",
         "parameters": [
           {
             "name": "perPage",
@@ -738,8 +738,8 @@
           "Transactional emails"
         ],
         "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060/api/v1/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content, then call \u0060/api/v2/transactional/{transactionalId}/publish\u0060 to publish.",
-        "operationId": "PostV2Transactional",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060/api/v1/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content, then call \u0060/api/v1/transactional-emails/{transactionalId}/publish\u0060 to publish.",
+        "operationId": "PostV1TransactionalEmails",
         "requestBody": {
           "content": {
             "application/json": {
@@ -778,14 +778,14 @@
         ]
       }
     },
-    "/v2/transactional/{transactionalId}": {
+    "/v1/transactional-emails/{transactionalId}": {
       "get": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "Get a transactional email",
         "description": "Retrieve a single transactional by ID.",
-        "operationId": "GetV2TransactionalByTransactionalId",
+        "operationId": "GetV1TransactionalEmailsByTransactionalId",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -830,7 +830,7 @@
         ],
         "summary": "Update a transactional email",
         "description": "Update a transactional email.",
-        "operationId": "PostV2TransactionalByTransactionalId",
+        "operationId": "PostV1TransactionalEmailsByTransactionalId",
         "requestBody": {
           "content": {
             "application/json": {
@@ -890,14 +890,14 @@
         }
       ]
     },
-    "/v2/transactional/{transactionalId}/draft": {
+    "/v1/transactional-emails/{transactionalId}/draft": {
       "post": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "Ensure a draft email message",
         "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use \u0060/v1/email-messages/{emailMessageId}\u0060 to edit the draft\u0027s content.",
-        "operationId": "PostV2TransactionalByTransactionalIdDraft",
+        "operationId": "PostV1TransactionalEmailsByTransactionalIdDraft",
         "responses": {
           "200": {
             "description": "Draft ready.",
@@ -948,14 +948,14 @@
         }
       ]
     },
-    "/v2/transactional/{transactionalId}/publish": {
+    "/v1/transactional-emails/{transactionalId}/publish": {
       "post": {
         "tags": [
           "Transactional emails"
         ],
         "summary": "Publish a transactional email draft",
         "description": "Publish the transactional email\u0027s current draft email message. The draft becomes the published version and the draft is cleared.",
-        "operationId": "PostV2TransactionalByTransactionalIdPublish",
+        "operationId": "PostV1TransactionalEmailsByTransactionalIdPublish",
         "responses": {
           "200": {
             "description": "Transactional email published.",

@@ -12,6 +12,7 @@ using Soenneker.Loops.OpenApiClient.V1.Events;
 using Soenneker.Loops.OpenApiClient.V1.Lists;
 using Soenneker.Loops.OpenApiClient.V1.Themes;
 using Soenneker.Loops.OpenApiClient.V1.Transactional;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails;
 using Soenneker.Loops.OpenApiClient.V1.Uploads;
 using System.Collections.Generic;
 using System.IO;
@@ -74,6 +75,11 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder Transactional
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The transactionalEmails property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder TransactionalEmails
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The uploads property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Uploads.UploadsRequestBuilder Uploads

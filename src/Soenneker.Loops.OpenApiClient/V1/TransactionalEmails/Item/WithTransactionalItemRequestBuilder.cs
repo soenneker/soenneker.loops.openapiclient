@@ -4,45 +4,45 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
-using Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Draft;
-using Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Loops.OpenApiClient.V2.Transactional.Item
+namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\transactional\{transactionalId}
+    /// Builds and executes requests for operations under \v1\transactional-emails\{transactionalId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithTransactionalItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The draft property</summary>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Draft.DraftRequestBuilder Draft
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft.DraftRequestBuilder Draft
         {
-            get => new global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Draft.DraftRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft.DraftRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The publish property</summary>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder Publish
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder Publish
         {
-            get => new global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.Publish.PublishRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTransactionalItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional/{transactionalId}", pathParameters)
+        public WithTransactionalItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails/{transactionalId}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithTransactionalItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional/{transactionalId}", rawUrl)
+        public WithTransactionalItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails/{transactionalId}", rawUrl)
         {
         }
         /// <summary>
@@ -141,11 +141,11 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

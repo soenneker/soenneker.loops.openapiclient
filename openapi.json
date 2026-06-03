@@ -850,7 +850,7 @@
         ]
       }
     },
-    "/v2/transactional": {
+    "/v1/transactional-emails": {
       "get": {
         "tags": ["Transactional emails"],
         "summary": "List transactionals",
@@ -908,7 +908,7 @@
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.",
+        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v1/transactional-emails/{transactionalId}/publish` to publish.",
         "requestBody": {
           "required": true,
           "content": {
@@ -950,7 +950,7 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/v2/transactional/{transactionalId}": {
+    "/v1/transactional-emails/{transactionalId}": {
       "parameters": [
         {
           "name": "transactionalId",
@@ -1059,7 +1059,7 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/v2/transactional/{transactionalId}/draft": {
+    "/v1/transactional-emails/{transactionalId}/draft": {
       "parameters": [
         {
           "name": "transactionalId",
@@ -1114,7 +1114,7 @@
         "security": [{ "apiKey": [] }]
       }
     },
-    "/v2/transactional/{transactionalId}/publish": {
+    "/v1/transactional-emails/{transactionalId}/publish": {
       "parameters": [
         {
           "name": "transactionalId",

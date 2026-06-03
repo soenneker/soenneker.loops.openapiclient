@@ -4,46 +4,46 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
-using Soenneker.Loops.OpenApiClient.V2.Transactional.Item;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Loops.OpenApiClient.V2.Transactional
+namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v2\transactional
+    /// Builds and executes requests for operations under \v1\transactional-emails
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TransactionalRequestBuilder : BaseRequestBuilder
+    public partial class TransactionalEmailsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Soenneker.Loops.OpenApiClient.v2.transactional.item collection</summary>
+        /// <summary>Gets an item from the Soenneker.Loops.OpenApiClient.v1.transactionalEmails.item collection</summary>
         /// <param name="position">The ID of the transactional email.</param>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder"/></returns>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder"/></returns>
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("transactionalId", position);
-                return new global::Soenneker.Loops.OpenApiClient.V2.Transactional.Item.WithTransactionalItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.WithTransactionalItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional{?cursor*,perPage*}", pathParameters)
+        public TransactionalEmailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v2/transactional{?cursor*,perPage*}", rawUrl)
+        public TransactionalEmailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "", rawUrl)
         {
         }
         /// <summary>
@@ -55,11 +55,11 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailureResponse">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder.TransactionalEmailsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder.TransactionalEmailsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -70,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResourceResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.
+        /// Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v1/transactional-emails/{transactionalId}/publish` to publish.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -101,11 +101,11 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder.TransactionalEmailsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder.TransactionalEmailsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -114,7 +114,7 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional
             return requestInfo;
         }
         /// <summary>
-        /// Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v2/transactional/{transactionalId}/publish` to publish.
+        /// Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v1/transactional-emails/{transactionalId}/publish` to publish.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
@@ -138,17 +138,17 @@ namespace Soenneker.Loops.OpenApiClient.V2.Transactional
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Loops.OpenApiClient.V2.Transactional.TransactionalRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Retrieve a paginated list of transactionals, most recently created first.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class TransactionalRequestBuilderGetQueryParameters 
+        public partial class TransactionalEmailsRequestBuilderGetQueryParameters 
         {
             /// <summary>A cursor to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
