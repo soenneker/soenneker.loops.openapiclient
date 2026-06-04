@@ -108,7 +108,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Campaigns.CampaignsRequestBuilder.CampaignsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/v1/campaigns{?cursor*,perPage*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -129,7 +129,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/v1/campaigns", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);

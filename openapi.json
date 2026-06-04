@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.10.0"
+    "version": "1.11.0"
   },
   "servers": [
     {
@@ -853,8 +853,8 @@
     "/v1/transactional-emails": {
       "get": {
         "tags": ["Transactional emails"],
-        "summary": "List transactionals",
-        "description": "Retrieve a paginated list of transactionals, most recently created first.",
+        "summary": "List transactional emails",
+        "description": "Retrieve a paginated list of transactional emails, most recently created first.",
         "parameters": [
           {
             "name": "perPage",
@@ -907,8 +907,8 @@
       },
       "post": {
         "tags": ["Transactional emails"],
-        "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v1/transactional-emails/{transactionalId}/publish` to publish.",
+        "summary": "Create a transactional email",
+        "description": "Create a new transactional email. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `/api/v1/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content, then call `/api/v1/transactional-emails/{transactionalId}/publish` to publish.",
         "requestBody": {
           "required": true,
           "content": {
@@ -921,7 +921,7 @@
         },
         "responses": {
           "201": {
-            "description": "Transactional created.",
+            "description": "Transactional email created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -963,7 +963,7 @@
       "get": {
         "tags": ["Transactional emails"],
         "summary": "Get a transactional email",
-        "description": "Retrieve a single transactional by ID.",
+        "description": "Retrieve a single transactional email by ID.",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1007,7 +1007,7 @@
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Update a transactional email",
-        "description": "Update a transactional email.",
+        "description": "Update a transactional email by ID.",
         "requestBody": {
           "required": true,
           "content": {
@@ -2558,7 +2558,7 @@
           "updatedAt": { "type": "string", "format": "date-time" },
           "dataVariables": {
             "type": "array",
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails.",
             "items": { "type": "string" }
           }
         },
@@ -2583,7 +2583,7 @@
           "updatedAt": { "type": "string", "format": "date-time" },
           "dataVariables": {
             "type": "array",
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails.",
             "items": { "type": "string" }
           }
         },
@@ -2612,7 +2612,7 @@
           "updatedAt": { "type": "string", "format": "date-time" },
           "dataVariables": {
             "type": "array",
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals.",
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails.",
             "items": { "type": "string" }
           }
         },

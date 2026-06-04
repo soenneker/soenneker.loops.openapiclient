@@ -16,7 +16,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The createdAt property</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>Data variable names used by the published email. Empty for unpublished transactionals.</summary>
+        /// <summary>Data variable names used by the published email. Empty for unpublished transactional emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? DataVariables { get; set; }

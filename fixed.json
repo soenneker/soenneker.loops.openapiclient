@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.10.0"
+    "version": "1.11.0"
   },
   "servers": [
     {
@@ -684,8 +684,8 @@
         "tags": [
           "Transactional emails"
         ],
-        "summary": "List transactionals",
-        "description": "Retrieve a paginated list of transactionals, most recently created first.",
+        "summary": "List transactional emails",
+        "description": "Retrieve a paginated list of transactional emails, most recently created first.",
         "operationId": "GetV1TransactionalEmails",
         "parameters": [
           {
@@ -737,8 +737,8 @@
         "tags": [
           "Transactional emails"
         ],
-        "summary": "Create a transactional",
-        "description": "Create a new transactional. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060/api/v1/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content, then call \u0060/api/v1/transactional-emails/{transactionalId}/publish\u0060 to publish.",
+        "summary": "Create a transactional email",
+        "description": "Create a new transactional email. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060/api/v1/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content, then call \u0060/api/v1/transactional-emails/{transactionalId}/publish\u0060 to publish.",
         "operationId": "PostV1TransactionalEmails",
         "requestBody": {
           "content": {
@@ -751,7 +751,7 @@
         },
         "responses": {
           "201": {
-            "description": "Transactional created.",
+            "description": "Transactional email created.",
             "content": {
               "application/json": {
                 "schema": {
@@ -784,7 +784,7 @@
           "Transactional emails"
         ],
         "summary": "Get a transactional email",
-        "description": "Retrieve a single transactional by ID.",
+        "description": "Retrieve a single transactional email by ID.",
         "operationId": "GetV1TransactionalEmailsByTransactionalId",
         "responses": {
           "200": {
@@ -829,7 +829,7 @@
           "Transactional emails"
         ],
         "summary": "Update a transactional email",
-        "description": "Update a transactional email.",
+        "description": "Update a transactional email by ID.",
         "operationId": "PostV1TransactionalEmailsByTransactionalId",
         "requestBody": {
           "content": {
@@ -2299,7 +2299,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails."
           }
         }
       },
@@ -2342,7 +2342,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails."
           }
         }
       },
@@ -2391,7 +2391,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Data variable names used by the published email. Empty for unpublished transactionals."
+            "description": "Data variable names used by the published email. Empty for unpublished transactional emails."
           }
         }
       },

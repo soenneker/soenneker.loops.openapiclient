@@ -46,7 +46,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
         {
         }
         /// <summary>
-        /// Retrieve a single transactional by ID.
+        /// Retrieve a single transactional email by ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -71,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a transactional email.
+        /// Update a transactional email by ID.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -98,7 +98,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a single transactional by ID.
+        /// Retrieve a single transactional email by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -117,7 +117,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a transactional email.
+        /// Update a transactional email by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

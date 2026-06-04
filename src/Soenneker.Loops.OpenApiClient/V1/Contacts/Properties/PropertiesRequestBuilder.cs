@@ -91,7 +91,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Properties
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Contacts.Properties.PropertiesRequestBuilder.PropertiesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, "{+baseurl}/v1/contacts/properties{?list*}", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -112,7 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Properties
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/v1/contacts/properties", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
