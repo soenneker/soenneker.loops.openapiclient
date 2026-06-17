@@ -41,6 +41,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.UploadLimitExceededFailureResponse">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,6 +56,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Loops.OpenApiClient.Models.UploadLimitExceededFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

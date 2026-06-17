@@ -70,13 +70,14 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListCampaignsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content.
+        /// Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content. The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via update.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse?> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -91,6 +92,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -114,7 +116,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns
             return requestInfo;
         }
         /// <summary>
-        /// Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content.
+        /// Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content. The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via update.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.11.0"
+    "version": "1.12.0"
   },
   "servers": [
     {
@@ -1252,6 +1252,119 @@
         ]
       }
     },
+    "/v1/audience-segments/{audienceSegmentId}": {
+      "get": {
+        "tags": [
+          "Audience segments"
+        ],
+        "summary": "Get an audience segment",
+        "description": "Retrieve a single audience segment by ID.",
+        "operationId": "GetV1AudienceSegmentsByAudienceSegmentId",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060audienceSegmentId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Audience segment not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "audienceSegmentId",
+          "in": "path",
+          "description": "The ID of the audience segment.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/audience-segments": {
+      "get": {
+        "tags": [
+          "Audience segments"
+        ],
+        "summary": "List audience segments",
+        "description": "Retrieve a paginated list of audience segments, most recently created first.",
+        "operationId": "GetV1AudienceSegments",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAudienceSegmentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/v1/campaigns": {
       "get": {
         "tags": [
@@ -1311,7 +1424,7 @@
           "Campaigns"
         ],
         "summary": "Create a campaign",
-        "description": "Create a new draft campaign. An empty email message is created automatically and its \u0060emailMessageId\u0060 is returned. Use the \u0060/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content.",
+        "description": "Create a new draft campaign. An empty email message is created automatically and its \u0060emailMessageId\u0060 is returned. Use the \u0060/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content. The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via update.",
         "operationId": "PostV1Campaigns",
         "requestBody": {
           "content": {
@@ -1334,7 +1447,17 @@
             }
           },
           "400": {
-            "description": "Invalid request body or no sending domain configured.",
+            "description": "Invalid request body, campaign group not found, or no sending domain configured.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Referenced mailing list or audience segment not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1402,7 +1525,7 @@
           "Campaigns"
         ],
         "summary": "Update a campaign",
-        "description": "Update a draft campaign\u0027s name. Campaigns can only be updated while in draft status.",
+        "description": "Update a draft campaign\u0027s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.",
         "operationId": "PostV1CampaignsByCampaignId",
         "requestBody": {
           "content": {
@@ -1425,7 +1548,7 @@
             }
           },
           "400": {
-            "description": "Invalid request body.",
+            "description": "Invalid request body or campaign group not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1435,7 +1558,7 @@
             }
           },
           "404": {
-            "description": "Campaign not found.",
+            "description": "Campaign, mailing list, or audience segment not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1625,6 +1748,495 @@
         }
       ]
     },
+    "/v1/email-messages/{emailMessageId}/preview": {
+      "post": {
+        "tags": [
+          "Email messages"
+        ],
+        "summary": "Send a preview of an email message",
+        "description": "Send a test preview of an email message to one or more addresses. The accepted variable fields depend on the parent\u0027s type - campaign previews accept \u0060contactProperties\u0060, workflow previews accept \u0060contactProperties\u0060 and \u0060eventProperties\u0060, and transactional previews accept \u0060dataVariables\u0060. Supplying a field the parent cannot reference is rejected with 400.",
+        "operationId": "PostV1EmailMessagesByEmailMessageIdPreview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailMessagePreviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Preview scheduled.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessagePreviewResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, a variable field the parent cannot reference, or the daily preview limit was reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "emailMessageId",
+          "in": "path",
+          "description": "The ID of the email message.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/campaign-groups": {
+      "get": {
+        "tags": [
+          "Campaign groups"
+        ],
+        "summary": "List campaign groups",
+        "description": "Retrieve a paginated list of campaign groups, most recently created first.",
+        "operationId": "GetV1CampaignGroups",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListGroupsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Campaign groups"
+        ],
+        "summary": "Create a campaign group",
+        "description": "Create a new campaign group.",
+        "operationId": "PostV1CampaignGroups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campaign group created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or reserved group name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/v1/campaign-groups/{campaignGroupId}": {
+      "get": {
+        "tags": [
+          "Campaign groups"
+        ],
+        "summary": "Get a campaign group",
+        "description": "Retrieve a single campaign group by ID.",
+        "operationId": "GetV1CampaignGroupsByCampaignGroupId",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060campaignGroupId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Campaign groups"
+        ],
+        "summary": "Update a campaign group",
+        "description": "Update a campaign group\u0027s name or description. At least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.",
+        "operationId": "PostV1CampaignGroupsByCampaignGroupId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Campaign group updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, reserved group name, or the Unsorted group cannot be edited.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Campaign group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "campaignGroupId",
+          "in": "path",
+          "description": "The ID of the campaign group.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/transactional-groups": {
+      "get": {
+        "tags": [
+          "Transactional groups"
+        ],
+        "summary": "List transactional groups",
+        "description": "Retrieve a paginated list of transactional groups, most recently created first.",
+        "operationId": "GetV1TransactionalGroups",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListGroupsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Transactional groups"
+        ],
+        "summary": "Create a transactional group",
+        "description": "Create a new transactional group.",
+        "operationId": "PostV1TransactionalGroups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transactional group created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or reserved group name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/v1/transactional-groups/{transactionalGroupId}": {
+      "get": {
+        "tags": [
+          "Transactional groups"
+        ],
+        "summary": "Get a transactional group",
+        "description": "Retrieve a single transactional group by ID.",
+        "operationId": "GetV1TransactionalGroupsByTransactionalGroupId",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060transactionalGroupId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Transactional groups"
+        ],
+        "summary": "Update a transactional group",
+        "description": "Update a transactional group\u0027s name or description. At least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.",
+        "operationId": "PostV1TransactionalGroupsByTransactionalGroupId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Transactional group updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, reserved group name, or the Unsorted group cannot be edited.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Transactional group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "transactionalGroupId",
+          "in": "path",
+          "description": "The ID of the transactional group.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
     "/v1/uploads": {
       "post": {
         "tags": [
@@ -1672,16 +2284,6 @@
                 }
               }
             }
-          },
-          "429": {
-            "description": "Upload limit exceeded.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UploadLimitExceededFailureResponse"
-                }
-              }
-            }
           }
         },
         "security": [
@@ -1726,6 +2328,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/UploadFailureResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Upload limit exceeded.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadLimitExceededFailureResponse"
                 }
               }
             }
@@ -2266,6 +2878,7 @@
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
+          "transactionalGroupId",
           "createdAt",
           "updatedAt",
           "dataVariables"
@@ -2284,6 +2897,11 @@
           },
           "publishedEmailMessageId": {
             "type": "string",
+            "nullable": true
+          },
+          "transactionalGroupId": {
+            "type": "string",
+            "description": "The ID of the group this transactional email belongs to.",
             "nullable": true
           },
           "createdAt": {
@@ -2309,6 +2927,7 @@
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
+          "transactionalGroupId",
           "createdAt",
           "updatedAt",
           "dataVariables"
@@ -2327,6 +2946,11 @@
           },
           "publishedEmailMessageId": {
             "type": "string",
+            "nullable": true
+          },
+          "transactionalGroupId": {
+            "type": "string",
+            "description": "The ID of the group this transactional email belongs to.",
             "nullable": true
           },
           "createdAt": {
@@ -2378,6 +3002,11 @@
             "type": "string",
             "nullable": true
           },
+          "transactionalGroupId": {
+            "type": "string",
+            "description": "The ID of the group this transactional email belongs to. Returned when creating a transactional email.",
+            "nullable": true
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -2422,6 +3051,10 @@
           "name": {
             "type": "string",
             "description": "The name of the transactional email."
+          },
+          "transactionalGroupId": {
+            "type": "string",
+            "description": "The ID of the group to add this transactional email to. Defaults to the team\u0027s default group when omitted."
           }
         },
         "additionalProperties": false
@@ -2434,6 +3067,10 @@
         "properties": {
           "name": {
             "type": "string"
+          },
+          "transactionalGroupId": {
+            "type": "string",
+            "description": "The ID of the group to move this transactional email to."
           }
         },
         "additionalProperties": false
@@ -2769,44 +3406,233 @@
           }
         }
       },
-      "CampaignListItem": {
+      "AudienceSegment": {
         "required": [
           "id",
-          "emailMessageId",
           "name",
-          "subject",
-          "status",
+          "description",
           "createdAt",
-          "updatedAt"
+          "updatedAt",
+          "filter"
         ],
         "type": "object",
         "properties": {
           "id": {
             "type": "string"
           },
-          "emailMessageId": {
-            "type": "string",
-            "nullable": true
-          },
           "name": {
             "type": "string"
           },
-          "subject": {
-            "type": "string"
-          },
-          "status": {
+          "description": {
             "type": "string",
-            "description": "Campaign lifecycle status."
+            "nullable": true
           },
           "createdAt": {
             "type": "string",
-            "format": "date-time"
+            "description": "ISO 8601 timestamp."
           },
           "updatedAt": {
             "type": "string",
-            "format": "date-time"
+            "description": "ISO 8601 timestamp."
+          },
+          "filter": {
+            "$ref": "#/components/schemas/AudienceFilter"
           }
         }
+      },
+      "ListAudienceSegmentsResponse": {
+        "required": [
+          "pagination",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/ListAudienceSegmentsResponsePagination"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AudienceSegment"
+            }
+          }
+        }
+      },
+      "AudienceSegmentResponse": {
+        "$ref": "#/components/schemas/AudienceSegment"
+      },
+      "AudienceSegmentFailureResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "CampaignScheduling": {
+        "required": [
+          "method",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "method": {
+            "$ref": "#/components/schemas/CampaignSchedulingMethod"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "ISO 8601 send time. Null when the method is \u0060now\u0060.",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "description": "When the campaign is scheduled to send."
+      },
+      "CampaignSchedulingRequest": {
+        "required": [
+          "method"
+        ],
+        "type": "object",
+        "properties": {
+          "method": {
+            "$ref": "#/components/schemas/CampaignSchedulingRequestMethod"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "When the campaign should send. \u0060timestamp\u0060 is required and must be in the future when \u0060method\u0060 is \u0060schedule\u0060, and must be omitted when \u0060method\u0060 is \u0060now\u0060."
+      },
+      "AudienceFilter": {
+        "required": [
+          "match",
+          "conditions"
+        ],
+        "type": "object",
+        "properties": {
+          "match": {
+            "$ref": "#/components/schemas/AudienceFilterMatch"
+          },
+          "conditions": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AudienceFilterCondition"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "description": "A tree of audience conditions combined with \u0060match\u0060. Null when the campaign targets a mailing list or segment without an explicit filter.",
+        "nullable": true
+      },
+      "AudienceFilterCondition": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PropertyCondition"
+          },
+          {
+            "$ref": "#/components/schemas/OptInCondition"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityCondition"
+          }
+        ],
+        "properties": {
+          "type": {
+            "title": "type",
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "PropertyCondition": "#/components/schemas/PropertyCondition",
+            "OptInCondition": "#/components/schemas/OptInCondition",
+            "ActivityCondition": "#/components/schemas/ActivityCondition"
+          }
+        }
+      },
+      "PropertyCondition": {
+        "required": [
+          "type",
+          "key",
+          "operator"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PropertyConditionType"
+          },
+          "key": {
+            "type": "string",
+            "description": "The contact property name."
+          },
+          "operator": {
+            "$ref": "#/components/schemas/PropertyConditionOperator"
+          },
+          "value": {
+            "$ref": "#/components/schemas/PropertyConditionValue"
+          }
+        },
+        "description": "Matches contacts by a property value."
+      },
+      "OptInCondition": {
+        "required": [
+          "type",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/OptInConditionType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OptInConditionStatus"
+          }
+        },
+        "description": "Matches contacts by mailing-list opt-in status."
+      },
+      "ActivityCondition": {
+        "required": [
+          "type",
+          "action",
+          "negate",
+          "target",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ActivityConditionType"
+          },
+          "action": {
+            "$ref": "#/components/schemas/ActivityConditionAction"
+          },
+          "negate": {
+            "type": "boolean"
+          },
+          "target": {
+            "$ref": "#/components/schemas/ActivityConditionTarget"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the campaign, workflow, or workflow email."
+          }
+        },
+        "description": "Matches contacts by their activity on a campaign or workflow."
+      },
+      "CampaignListItem": {
+        "$ref": "#/components/schemas/CampaignResponse"
       },
       "ListCampaignsResponse": {
         "required": [
@@ -2821,7 +3647,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CampaignListItem"
+              "$ref": "#/components/schemas/CampaignResponse"
             }
           }
         }
@@ -2835,6 +3661,26 @@
           "name": {
             "type": "string",
             "description": "The campaign name."
+          },
+          "campaignGroupId": {
+            "type": "string",
+            "description": "The ID of the group to add this campaign to. Defaults to the team\u0027s default group when omitted."
+          },
+          "mailingListId": {
+            "type": "string",
+            "description": "The ID of the mailing list to send to.",
+            "nullable": true
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of an audience segment. Setting this clears any \u0060audienceFilter\u0060.",
+            "nullable": true
+          },
+          "audienceFilter": {
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/CampaignSchedulingRequest"
           }
         },
         "additionalProperties": false
@@ -2847,7 +3693,12 @@
           "createdAt",
           "updatedAt",
           "emailMessageId",
-          "emailMessageContentRevisionId"
+          "emailMessageContentRevisionId",
+          "campaignGroupId",
+          "mailingListId",
+          "audienceSegmentId",
+          "audienceFilter",
+          "scheduling"
         ],
         "type": "object",
         "properties": {
@@ -2870,26 +3721,63 @@
           },
           "emailMessageId": {
             "type": "string",
-            "description": "The ID of the empty email message created for this campaign. Use \u0060/email-messages/{emailMessageId}\u0060 to set its fields and LMX content."
+            "description": "The ID of the empty email message created for this campaign. Use \u0060/email-messages/{emailMessageId}\u0060 to set its fields and LMX content.",
+            "nullable": true
           },
           "emailMessageContentRevisionId": {
             "type": "string",
             "description": "The \u0060contentRevisionId\u0060 of the newly created email message. Pass this as \u0060expectedRevisionId\u0060 on your first update.",
             "nullable": true
+          },
+          "campaignGroupId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailingListId": {
+            "type": "string",
+            "nullable": true
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "audienceFilter": {
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/CampaignScheduling"
           }
         }
       },
       "UpdateCampaignRequest": {
-        "required": [
-          "name"
-        ],
         "type": "object",
         "properties": {
           "name": {
             "type": "string"
+          },
+          "campaignGroupId": {
+            "type": "string",
+            "description": "The ID of the group to move this campaign to."
+          },
+          "mailingListId": {
+            "type": "string",
+            "description": "The ID of the mailing list to send to.",
+            "nullable": true
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of an audience segment. Setting this clears any \u0060audienceFilter\u0060.",
+            "nullable": true
+          },
+          "audienceFilter": {
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/CampaignSchedulingRequest"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "At least one field must be provided."
       },
       "CampaignResponse": {
         "required": [
@@ -2898,7 +3786,12 @@
           "status",
           "createdAt",
           "updatedAt",
-          "emailMessageId"
+          "emailMessageId",
+          "campaignGroupId",
+          "mailingListId",
+          "audienceSegmentId",
+          "audienceFilter",
+          "scheduling"
         ],
         "type": "object",
         "properties": {
@@ -2922,10 +3815,117 @@
           "emailMessageId": {
             "type": "string",
             "nullable": true
+          },
+          "campaignGroupId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailingListId": {
+            "type": "string",
+            "nullable": true
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "audienceFilter": {
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "scheduling": {
+            "$ref": "#/components/schemas/CampaignScheduling"
           }
         }
       },
       "CampaignFailureResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "GroupResponse": {
+        "required": [
+          "id",
+          "name",
+          "description",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ListGroupsResponse": {
+        "required": [
+          "pagination",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/ListGroupsResponsePagination"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupResponse"
+            }
+          }
+        }
+      },
+      "CreateGroupRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The group name. Cannot be the reserved name \u0022Unsorted\u0022."
+          },
+          "description": {
+            "type": "string",
+            "description": "An optional description for the group."
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateGroupRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The group name. Cannot be the reserved name \u0022Unsorted\u0022."
+          },
+          "description": {
+            "type": "string",
+            "description": "A description for the group."
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupFailureResponse": {
         "required": [
           "message"
         ],
@@ -2960,9 +3960,33 @@
             "type": "string",
             "description": "Reply-to email. Must be empty or a valid email address."
           },
+          "ccEmail": {
+            "type": "string",
+            "description": "CC email address. Requires the team to have CC/BCC enabled."
+          },
+          "bccEmail": {
+            "type": "string",
+            "description": "BCC email address. Requires the team to have CC/BCC enabled."
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "Language code for the email. Requires translation to be enabled for the team."
+          },
+          "emailFormat": {
+            "$ref": "#/components/schemas/UpdateEmailMessageRequestEmailFormat"
+          },
           "lmx": {
             "type": "string",
             "description": "The email body serialized as LMX. Styles must be embedded in the LMX \u0060\u003CStyle /\u003E\u0060 tag."
+          },
+          "contactPropertiesFallbacks": {
+            "$ref": "#/components/schemas/UpdateEmailMessageRequestContactPropertiesFallbacksProperty"
+          },
+          "eventPropertiesFallbacks": {
+            "$ref": "#/components/schemas/UpdateEmailMessageRequestEventPropertiesFallbacksProperty"
+          },
+          "dataVariablesFallbacks": {
+            "$ref": "#/components/schemas/UpdateEmailMessageRequestDataVariablesFallbacksProperty"
           }
         },
         "additionalProperties": false
@@ -2970,12 +3994,12 @@
       "EmailMessageResponse": {
         "required": [
           "id",
-          "campaignId",
           "subject",
           "previewText",
           "fromName",
           "fromEmail",
           "replyToEmail",
+          "emailFormat",
           "lmx",
           "contentRevisionId",
           "updatedAt"
@@ -2987,7 +4011,11 @@
           },
           "campaignId": {
             "type": "string",
-            "nullable": true
+            "description": "The campaign this email message belongs to. Present only when the message belongs to a campaign (mutually exclusive with \u0060transactionalId\u0060)."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The transactional email this email message belongs to. Present only when the message belongs to a transactional email (mutually exclusive with \u0060campaignId\u0060)."
           },
           "subject": {
             "type": "string"
@@ -3004,6 +4032,21 @@
           "replyToEmail": {
             "type": "string"
           },
+          "ccEmail": {
+            "type": "string",
+            "description": "Only present when set."
+          },
+          "bccEmail": {
+            "type": "string",
+            "description": "Only present when set."
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "Only present when set."
+          },
+          "emailFormat": {
+            "$ref": "#/components/schemas/EmailMessageResponseEmailFormat"
+          },
           "lmx": {
             "type": "string",
             "description": "The email body serialized as LMX."
@@ -3016,6 +4059,15 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "contactPropertiesFallbacks": {
+            "$ref": "#/components/schemas/EmailMessageResponseContactPropertiesFallbacksProperty"
+          },
+          "eventPropertiesFallbacks": {
+            "$ref": "#/components/schemas/EmailMessageResponseEventPropertiesFallbacksProperty"
+          },
+          "dataVariablesFallbacks": {
+            "$ref": "#/components/schemas/EmailMessageResponseDataVariablesFallbacksProperty"
           },
           "warnings": {
             "type": "array",
@@ -3034,6 +4086,44 @@
         "properties": {
           "message": {
             "type": "string"
+          }
+        }
+      },
+      "EmailMessagePreviewRequest": {
+        "required": [
+          "emails"
+        ],
+        "type": "object",
+        "properties": {
+          "emails": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "One or more addresses to send the preview to."
+          },
+          "contactProperties": {
+            "$ref": "#/components/schemas/EmailMessagePreviewRequestContactPropertiesProperty"
+          },
+          "eventProperties": {
+            "$ref": "#/components/schemas/EmailMessagePreviewRequestEventPropertiesProperty"
+          },
+          "dataVariables": {
+            "$ref": "#/components/schemas/EmailMessagePreviewRequestDataVariablesProperty"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailMessagePreviewResponse": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the email message the preview was sent for."
           }
         }
       },
@@ -3167,6 +4257,55 @@
             "type": "boolean"
           }
         ]
+      },
+      "PropertyConditionValue": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/PropertyConditionValueBranch1"
+          },
+          {
+            "$ref": "#/components/schemas/PropertyConditionValueBranch2"
+          },
+          {
+            "$ref": "#/components/schemas/PropertyConditionValueOneOf3"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "description": "The comparison value. Omitted for value-less operators (e.g. \u0060isTrue\u0060, \u0060empty\u0060). A \u0060{ from, to }\u0060 object for \u0060between\u0060.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "PropertyConditionValue_1": "#/components/schemas/PropertyConditionValueBranch1",
+            "PropertyConditionValue_2": "#/components/schemas/PropertyConditionValueBranch2",
+            "PropertyConditionValueOneOf3": "#/components/schemas/PropertyConditionValueOneOf3"
+          }
+        }
+      },
+      "PropertyConditionValueOneOf3": {
+        "required": [
+          "from",
+          "to"
+        ],
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
       },
       "ContactMailingLists": {
         "type": "object",
@@ -3367,6 +4506,31 @@
           }
         }
       },
+      "ListAudienceSegmentsResponsePagination": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number"
+          },
+          "returnedResults": {
+            "type": "number"
+          },
+          "perPage": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "ListCampaignsResponsePagination": {
         "type": "object",
         "properties": {
@@ -3392,6 +4556,76 @@
           }
         }
       },
+      "ListGroupsResponsePagination": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number"
+          },
+          "returnedResults": {
+            "type": "number"
+          },
+          "perPage": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateEmailMessageRequestContactPropertiesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for contact properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "UpdateEmailMessageRequestEventPropertiesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for event properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "UpdateEmailMessageRequestDataVariablesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for data variables, keyed by variable name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "EmailMessageResponseContactPropertiesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for contact properties. Only present when set."
+      },
+      "EmailMessageResponseEventPropertiesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for event properties. Only present when set."
+      },
+      "EmailMessageResponseDataVariablesFallbacks": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for data variables. Only present when set."
+      },
       "EmailMessageResponseWarningsItem": {
         "required": [
           "rule",
@@ -3413,6 +4647,24 @@
             "type": "string"
           }
         }
+      },
+      "EmailMessagePreviewRequestContactProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Contact property values to render. Accepted for campaign and workflow previews."
+      },
+      "EmailMessagePreviewRequestEventProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Event property values to render. Accepted for workflow previews only."
+      },
+      "EmailMessagePreviewRequestDataVariables": {
+        "type": "object",
+        "description": "Transactional data variables to render. Accepted for transactional previews only."
       },
       "GetV1ApiKey200Response": {
         "required": [
@@ -3524,6 +4776,28 @@
           }
         }
       },
+      "PropertyConditionValueBranch1": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "PropertyConditionValueBranch2": {
+        "required": [
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          }
+        }
+      },
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
@@ -3578,6 +4852,69 @@
         "type": "object",
         "description": "An object containing contact data as defined by the data variables added to the transactional email template."
       },
+      "UpdateEmailMessageRequestContactPropertiesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for contact properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "UpdateEmailMessageRequestEventPropertiesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for event properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "UpdateEmailMessageRequestDataVariablesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "nullable": true
+        },
+        "description": "Fallback values for data variables, keyed by variable name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+      },
+      "EmailMessageResponseContactPropertiesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for contact properties. Only present when set."
+      },
+      "EmailMessageResponseEventPropertiesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for event properties. Only present when set."
+      },
+      "EmailMessageResponseDataVariablesFallbacksProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Fallback values for data variables. Only present when set."
+      },
+      "EmailMessagePreviewRequestContactPropertiesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Contact property values to render. Accepted for campaign and workflow previews."
+      },
+      "EmailMessagePreviewRequestEventPropertiesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Event property values to render. Accepted for workflow previews only."
+      },
+      "EmailMessagePreviewRequestDataVariablesProperty": {
+        "type": "object",
+        "description": "Transactional data variables to render. Accepted for transactional previews only."
+      },
       "ContactOptInStatus": {
         "enum": [
           "accepted",
@@ -3603,6 +4940,343 @@
             {
               "value": "rejected",
               "name": "Rejected"
+            }
+          ]
+        }
+      },
+      "CampaignSchedulingMethod": {
+        "enum": [
+          "now",
+          "schedule"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CampaignSchedulingMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "now",
+              "name": "Now"
+            },
+            {
+              "value": "schedule",
+              "name": "Schedule"
+            }
+          ]
+        }
+      },
+      "CampaignSchedulingRequestMethod": {
+        "enum": [
+          "now",
+          "schedule"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CampaignSchedulingRequestMethod",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "now",
+              "name": "Now"
+            },
+            {
+              "value": "schedule",
+              "name": "Schedule"
+            }
+          ]
+        }
+      },
+      "AudienceFilterMatch": {
+        "enum": [
+          "all",
+          "any"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "AudienceFilterMatch",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "any",
+              "name": "Any"
+            }
+          ]
+        }
+      },
+      "PropertyConditionType": {
+        "enum": [
+          "property"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PropertyConditionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "property",
+              "name": "Property"
+            }
+          ]
+        }
+      },
+      "PropertyConditionOperator": {
+        "enum": [
+          "any",
+          "contains",
+          "notContains",
+          "equals",
+          "notEquals",
+          "greaterThan",
+          "lessThan",
+          "isTrue",
+          "isFalse",
+          "empty",
+          "notEmpty",
+          "dateEmpty",
+          "dateNotEmpty",
+          "after",
+          "before",
+          "between"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "PropertyConditionOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "any",
+              "name": "Any"
+            },
+            {
+              "value": "contains",
+              "name": "Contains"
+            },
+            {
+              "value": "notContains",
+              "name": "NotContains"
+            },
+            {
+              "value": "equals",
+              "name": "Equals"
+            },
+            {
+              "value": "notEquals",
+              "name": "NotEquals"
+            },
+            {
+              "value": "greaterThan",
+              "name": "GreaterThan"
+            },
+            {
+              "value": "lessThan",
+              "name": "LessThan"
+            },
+            {
+              "value": "isTrue",
+              "name": "IsTrue"
+            },
+            {
+              "value": "isFalse",
+              "name": "IsFalse"
+            },
+            {
+              "value": "empty",
+              "name": "Empty"
+            },
+            {
+              "value": "notEmpty",
+              "name": "NotEmpty"
+            },
+            {
+              "value": "dateEmpty",
+              "name": "DateEmpty"
+            },
+            {
+              "value": "dateNotEmpty",
+              "name": "DateNotEmpty"
+            },
+            {
+              "value": "after",
+              "name": "After"
+            },
+            {
+              "value": "before",
+              "name": "Before"
+            },
+            {
+              "value": "between",
+              "name": "Between"
+            }
+          ]
+        }
+      },
+      "OptInConditionType": {
+        "enum": [
+          "optIn"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "OptInConditionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "optIn",
+              "name": "OptIn"
+            }
+          ]
+        }
+      },
+      "OptInConditionStatus": {
+        "enum": [
+          "accepted",
+          "pending",
+          "rejected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "OptInConditionStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "accepted",
+              "name": "Accepted"
+            },
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "rejected",
+              "name": "Rejected"
+            }
+          ]
+        }
+      },
+      "ActivityConditionType": {
+        "enum": [
+          "activity"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ActivityConditionType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "activity",
+              "name": "Activity"
+            }
+          ]
+        }
+      },
+      "ActivityConditionAction": {
+        "enum": [
+          "sent",
+          "opened",
+          "clicked"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ActivityConditionAction",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sent",
+              "name": "Sent"
+            },
+            {
+              "value": "opened",
+              "name": "Opened"
+            },
+            {
+              "value": "clicked",
+              "name": "Clicked"
+            }
+          ]
+        }
+      },
+      "ActivityConditionTarget": {
+        "enum": [
+          "campaign",
+          "workflow",
+          "workflowEmail"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "ActivityConditionTarget",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "campaign",
+              "name": "Campaign"
+            },
+            {
+              "value": "workflow",
+              "name": "Workflow"
+            },
+            {
+              "value": "workflowEmail",
+              "name": "WorkflowEmail"
+            }
+          ]
+        }
+      },
+      "UpdateEmailMessageRequestEmailFormat": {
+        "enum": [
+          "styled",
+          "plain"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The rendering format of the email.",
+        "x-ms-enum": {
+          "name": "UpdateEmailMessageRequestEmailFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "styled",
+              "name": "Styled"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ]
+        }
+      },
+      "EmailMessageResponseEmailFormat": {
+        "enum": [
+          "styled",
+          "plain"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The rendering format of the email.",
+        "x-ms-enum": {
+          "name": "EmailMessageResponseEmailFormat",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "styled",
+              "name": "Styled"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
             }
           ]
         }
@@ -3659,6 +5333,14 @@
       "description": "Create and manage email campaigns"
     },
     {
+      "name": "Campaign groups",
+      "description": "Organize campaigns into groups"
+    },
+    {
+      "name": "Transactional groups",
+      "description": "Organize transactional emails into groups"
+    },
+    {
       "name": "Email messages",
       "description": "Manage email message content for campaigns"
     },
@@ -3673,6 +5355,10 @@
     {
       "name": "Components",
       "description": "View email components"
+    },
+    {
+      "name": "Audience segments",
+      "description": "View audience segments"
     },
     {
       "name": "Events",

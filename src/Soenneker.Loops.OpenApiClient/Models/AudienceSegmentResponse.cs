@@ -9,20 +9,34 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CampaignListItem : IAdditionalDataHolder, IParsable
+    public partial class AudienceSegmentResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The createdAt property</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The emailMessageId property</summary>
+        /// <summary>ISO 8601 timestamp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EmailMessageId { get; set; }
+        public string? CreatedAt { get; set; }
 #nullable restore
 #else
-        public string EmailMessageId { get; set; }
+        public string CreatedAt { get; set; }
+#endif
+        /// <summary>The description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
+        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? Filter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter Filter { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -40,40 +54,30 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Campaign lifecycle status.</summary>
+        /// <summary>ISO 8601 timestamp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? UpdatedAt { get; set; }
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string UpdatedAt { get; set; }
 #endif
-        /// <summary>The subject property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Subject { get; set; }
-#nullable restore
-#else
-        public string Subject { get; set; }
-#endif
-        /// <summary>The updatedAt property</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse"/> and sets the default values.
         /// </summary>
-        public CampaignListItem()
+        public AudienceSegmentResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.CampaignListItem();
+            return new global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,13 +87,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
+                { "createdAt", n => { CreatedAt = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
-                { "subject", n => { Subject = n.GetStringValue(); } },
-                { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "updatedAt", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -99,13 +102,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
-            writer.WriteStringValue("emailMessageId", EmailMessageId);
+            writer.WriteStringValue("createdAt", CreatedAt);
+            writer.WriteStringValue("description", Description);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("filter", Filter);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("status", Status);
-            writer.WriteStringValue("subject", Subject);
-            writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            writer.WriteStringValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -56,6 +56,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string PublishedEmailMessageId { get; set; }
 #endif
+        /// <summary>The ID of the group this transactional email belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TransactionalGroupId { get; set; }
+#nullable restore
+#else
+        public string TransactionalGroupId { get; set; }
+#endif
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -89,6 +97,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "publishedEmailMessageId", n => { PublishedEmailMessageId = n.GetStringValue(); } },
+                { "transactionalGroupId", n => { TransactionalGroupId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -105,6 +114,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("publishedEmailMessageId", PublishedEmailMessageId);
+            writer.WriteStringValue("transactionalGroupId", TransactionalGroupId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

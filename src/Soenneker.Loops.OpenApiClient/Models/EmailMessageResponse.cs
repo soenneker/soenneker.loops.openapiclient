@@ -14,13 +14,37 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The campaignId property</summary>
+        /// <summary>Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BccEmail { get; set; }
+#nullable restore
+#else
+        public string BccEmail { get; set; }
+#endif
+        /// <summary>The campaign this email message belongs to. Present only when the message belongs to a campaign (mutually exclusive with `transactionalId`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CampaignId { get; set; }
 #nullable restore
 #else
         public string CampaignId { get; set; }
+#endif
+        /// <summary>Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CcEmail { get; set; }
+#nullable restore
+#else
+        public string CcEmail { get; set; }
+#endif
+        /// <summary>Fallback values for contact properties. Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseContactPropertiesFallbacksProperty? ContactPropertiesFallbacks { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseContactPropertiesFallbacksProperty ContactPropertiesFallbacks { get; set; }
 #endif
         /// <summary>The current content revision. Pass this as `expectedRevisionId` on your next update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -29,6 +53,24 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string ContentRevisionId { get; set; }
+#endif
+        /// <summary>Fallback values for data variables. Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty? DataVariablesFallbacks { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty DataVariablesFallbacks { get; set; }
+#endif
+        /// <summary>The rendering format of the email.</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEmailFormat? EmailFormat { get; set; }
+        /// <summary>Fallback values for event properties. Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty? EventPropertiesFallbacks { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty EventPropertiesFallbacks { get; set; }
 #endif
         /// <summary>The fromEmail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -53,6 +95,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string Id { get; set; }
+#endif
+        /// <summary>Only present when set.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? LanguageCode { get; set; }
+#nullable restore
+#else
+        public string LanguageCode { get; set; }
 #endif
         /// <summary>The email body serialized as LMX.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,6 +135,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string Subject { get; set; }
+#endif
+        /// <summary>The transactional email this email message belongs to. Present only when the message belongs to a transactional email (mutually exclusive with `campaignId`).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TransactionalId { get; set; }
+#nullable restore
+#else
+        public string TransactionalId { get; set; }
 #endif
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -121,15 +179,23 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "bccEmail", n => { BccEmail = n.GetStringValue(); } },
                 { "campaignId", n => { CampaignId = n.GetStringValue(); } },
+                { "ccEmail", n => { CcEmail = n.GetStringValue(); } },
+                { "contactPropertiesFallbacks", n => { ContactPropertiesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseContactPropertiesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseContactPropertiesFallbacksProperty.CreateFromDiscriminatorValue); } },
                 { "contentRevisionId", n => { ContentRevisionId = n.GetStringValue(); } },
+                { "dataVariablesFallbacks", n => { DataVariablesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty.CreateFromDiscriminatorValue); } },
+                { "emailFormat", n => { EmailFormat = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEmailFormat>(); } },
+                { "eventPropertiesFallbacks", n => { EventPropertiesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty.CreateFromDiscriminatorValue); } },
                 { "fromEmail", n => { FromEmail = n.GetStringValue(); } },
                 { "fromName", n => { FromName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "languageCode", n => { LanguageCode = n.GetStringValue(); } },
                 { "lmx", n => { Lmx = n.GetStringValue(); } },
                 { "previewText", n => { PreviewText = n.GetStringValue(); } },
                 { "replyToEmail", n => { ReplyToEmail = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
+                { "transactionalId", n => { TransactionalId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "warnings", n => { Warnings = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -141,15 +207,23 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("bccEmail", BccEmail);
             writer.WriteStringValue("campaignId", CampaignId);
+            writer.WriteStringValue("ccEmail", CcEmail);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseContactPropertiesFallbacksProperty>("contactPropertiesFallbacks", ContactPropertiesFallbacks);
             writer.WriteStringValue("contentRevisionId", ContentRevisionId);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty>("dataVariablesFallbacks", DataVariablesFallbacks);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEmailFormat>("emailFormat", EmailFormat);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty>("eventPropertiesFallbacks", EventPropertiesFallbacks);
             writer.WriteStringValue("fromEmail", FromEmail);
             writer.WriteStringValue("fromName", FromName);
             writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("languageCode", LanguageCode);
             writer.WriteStringValue("lmx", Lmx);
             writer.WriteStringValue("previewText", PreviewText);
             writer.WriteStringValue("replyToEmail", ReplyToEmail);
             writer.WriteStringValue("subject", Subject);
+            writer.WriteStringValue("transactionalId", TransactionalId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem>("warnings", Warnings);
             writer.WriteAdditionalData(AdditionalData);

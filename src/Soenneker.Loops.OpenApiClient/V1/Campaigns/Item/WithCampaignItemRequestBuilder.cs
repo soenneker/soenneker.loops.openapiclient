@@ -59,10 +59,10 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a draft campaign&apos;s name. Campaigns can only be updated while in draft status.
+        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">At least one field must be provided.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse">When receiving a 400 status code</exception>
@@ -107,10 +107,10 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a draft campaign&apos;s name. Campaigns can only be updated while in draft status.
+        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">At least one field must be provided.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

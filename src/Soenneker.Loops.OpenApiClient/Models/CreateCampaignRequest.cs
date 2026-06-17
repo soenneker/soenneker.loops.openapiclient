@@ -12,6 +12,38 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class CreateCampaignRequest : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter AudienceFilter { get; set; }
+#endif
+        /// <summary>The ID of an audience segment. Setting this clears any `audienceFilter`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AudienceSegmentId { get; set; }
+#nullable restore
+#else
+        public string AudienceSegmentId { get; set; }
+#endif
+        /// <summary>The ID of the group to add this campaign to. Defaults to the team&apos;s default group when omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CampaignGroupId { get; set; }
+#nullable restore
+#else
+        public string CampaignGroupId { get; set; }
+#endif
+        /// <summary>The ID of the mailing list to send to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MailingListId { get; set; }
+#nullable restore
+#else
+        public string MailingListId { get; set; }
+#endif
         /// <summary>The campaign name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -19,6 +51,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string Name { get; set; }
+#endif
+        /// <summary>When the campaign should send. `timestamp` is required and must be in the future when `method` is `schedule`, and must be omitted when `method` is `now`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest? Scheduling { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest Scheduling { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +78,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
+                { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
+                { "campaignGroupId", n => { CampaignGroupId = n.GetStringValue(); } },
+                { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "scheduling", n => { Scheduling = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest>(global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -48,7 +93,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("audienceFilter", AudienceFilter);
+            writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
+            writer.WriteStringValue("campaignGroupId", CampaignGroupId);
+            writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest>("scheduling", Scheduling);
         }
     }
 }

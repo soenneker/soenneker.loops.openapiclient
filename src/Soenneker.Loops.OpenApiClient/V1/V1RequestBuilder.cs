@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.V1.ApiKey;
+using Soenneker.Loops.OpenApiClient.V1.AudienceSegments;
+using Soenneker.Loops.OpenApiClient.V1.CampaignGroups;
 using Soenneker.Loops.OpenApiClient.V1.Campaigns;
 using Soenneker.Loops.OpenApiClient.V1.Components;
 using Soenneker.Loops.OpenApiClient.V1.Contacts;
@@ -13,6 +15,7 @@ using Soenneker.Loops.OpenApiClient.V1.Lists;
 using Soenneker.Loops.OpenApiClient.V1.Themes;
 using Soenneker.Loops.OpenApiClient.V1.Transactional;
 using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalGroups;
 using Soenneker.Loops.OpenApiClient.V1.Uploads;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +33,16 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.ApiKey.ApiKeyRequestBuilder ApiKey
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.ApiKey.ApiKeyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The audienceSegments property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.AudienceSegments.AudienceSegmentsRequestBuilder AudienceSegments
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.AudienceSegments.AudienceSegmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The campaignGroups property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.CampaignGroups.CampaignGroupsRequestBuilder CampaignGroups
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.CampaignGroups.CampaignGroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The campaigns property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Campaigns.CampaignsRequestBuilder Campaigns
@@ -80,6 +93,11 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder TransactionalEmails
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.TransactionalEmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The transactionalGroups property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalGroups.TransactionalGroupsRequestBuilder TransactionalGroups
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalGroups.TransactionalGroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The uploads property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Uploads.UploadsRequestBuilder Uploads
