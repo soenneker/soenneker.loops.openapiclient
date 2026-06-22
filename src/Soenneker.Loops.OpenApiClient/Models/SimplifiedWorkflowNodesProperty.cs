@@ -7,37 +7,29 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>
-    /// At least one field must be provided.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateTransactionalRequest : IParsable
+    #pragma warning disable CS1591
+    public partial class SimplifiedWorkflowNodesProperty : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>The name property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Name { get; set; }
-#nullable restore
-#else
-        public string Name { get; set; }
-#endif
-        /// <summary>The ID of the group to move this transactional email to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TransactionalGroupId { get; set; }
-#nullable restore
-#else
-        public string TransactionalGroupId { get; set; }
-#endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty"/> and sets the default values.
+        /// </summary>
+        public SimplifiedWorkflowNodesProperty()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateTransactionalRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.UpdateTransactionalRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateTransactionalRequest();
+            return new global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,8 +39,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "transactionalGroupId", n => { TransactionalGroupId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,8 +48,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("transactionalGroupId", TransactionalGroupId);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.12.0"
+    "version": "1.14.0"
   },
   "servers": [
     {
@@ -1777,7 +1777,7 @@
             }
           },
           "400": {
-            "description": "Invalid request body, a variable field the parent cannot reference, or the daily preview limit was reached.",
+            "description": "Invalid request body, or a variable field the parent cannot reference.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1788,6 +1788,16 @@
           },
           "404": {
             "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The daily preview limit was reached.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1808,6 +1818,186 @@
           "name": "emailMessageId",
           "in": "path",
           "description": "The ID of the email message.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/workflows": {
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "List workflows",
+        "description": "Retrieve a paginated list of workflows.",
+        "operationId": "ListWorkflows",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListWorkflowsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 or \u0060cursor\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/v1/workflows/{workflowId}": {
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "Get a simplified workflow",
+        "description": "Retrieve a workflow graph with node type names, connections, and selected display fields.",
+        "operationId": "GetWorkflow",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimplifiedWorkflow"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060workflowId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Workflow not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "workflowId",
+          "in": "path",
+          "description": "The ID of the workflow.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/workflows/{workflowId}/nodes/{nodeId}": {
+      "get": {
+        "tags": [
+          "Workflows"
+        ],
+        "summary": "Get workflow node details",
+        "description": "Retrieve detailed data for a single workflow node.",
+        "operationId": "GetWorkflowNode",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060workflowId\u0060 or \u0060nodeId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Workflow or workflow node not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "workflowId",
+          "in": "path",
+          "description": "The ID of the workflow.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "nodeId",
+          "in": "path",
+          "description": "The ID of the workflow node.",
           "required": true,
           "schema": {
             "type": "string"
@@ -3060,9 +3250,7 @@
         "additionalProperties": false
       },
       "UpdateTransactionalRequest": {
-        "required": [
-          "name"
-        ],
+        "minProperties": 1,
         "type": "object",
         "properties": {
           "name": {
@@ -3073,7 +3261,8 @@
             "description": "The ID of the group to move this transactional email to."
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "At least one field must be provided."
       },
       "ContactProperty": {
         "required": [
@@ -3847,6 +4036,1022 @@
           }
         }
       },
+      "WorkflowSummary": {
+        "required": [
+          "id",
+          "name",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ListWorkflowsResponse": {
+        "required": [
+          "pagination",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/ListWorkflowsResponsePagination"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowSummary"
+            }
+          }
+        }
+      },
+      "SimplifiedWorkflow": {
+        "required": [
+          "id",
+          "rootNodeId",
+          "nodes"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "emoji": {
+            "type": "string"
+          },
+          "mailingListId": {
+            "type": "string",
+            "nullable": true
+          },
+          "rootNodeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "nodes": {
+            "$ref": "#/components/schemas/SimplifiedWorkflowNodesProperty"
+          }
+        }
+      },
+      "SimplifiedWorkflowNode": {
+        "required": [
+          "typeName"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedEventTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedAddToListTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedBlankTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedAudienceFilterWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedTimerActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedSendEmailActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedExitActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedBranchWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedExperimentBranchWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SimplifiedVariantWorkflowNode"
+          }
+        ],
+        "properties": {
+          "typeName": {
+            "title": "typeName",
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode",
+            "EventTrigger": "#/components/schemas/SimplifiedEventTriggerWorkflowNode",
+            "ContactPropertyTrigger": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNode",
+            "AddToListTrigger": "#/components/schemas/SimplifiedAddToListTriggerWorkflowNode",
+            "BlankTrigger": "#/components/schemas/SimplifiedBlankTriggerWorkflowNode",
+            "AudienceFilter": "#/components/schemas/SimplifiedAudienceFilterWorkflowNode",
+            "TimerAction": "#/components/schemas/SimplifiedTimerActionWorkflowNode",
+            "SendEmailAction": "#/components/schemas/SimplifiedSendEmailActionWorkflowNode",
+            "ExitAction": "#/components/schemas/SimplifiedExitActionWorkflowNode",
+            "BranchNode": "#/components/schemas/SimplifiedBranchWorkflowNode",
+            "ExperimentBranchNode": "#/components/schemas/SimplifiedExperimentBranchWorkflowNode",
+            "VariantNode": "#/components/schemas/SimplifiedVariantWorkflowNode",
+            "SimplifiedSignupTriggerWorkflowNode": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode",
+            "SimplifiedEventTriggerWorkflowNode": "#/components/schemas/SimplifiedEventTriggerWorkflowNode",
+            "SimplifiedContactPropertyTriggerWorkflowNode": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNode",
+            "SimplifiedAddToListTriggerWorkflowNode": "#/components/schemas/SimplifiedAddToListTriggerWorkflowNode",
+            "SimplifiedBlankTriggerWorkflowNode": "#/components/schemas/SimplifiedBlankTriggerWorkflowNode",
+            "SimplifiedAudienceFilterWorkflowNode": "#/components/schemas/SimplifiedAudienceFilterWorkflowNode",
+            "SimplifiedTimerActionWorkflowNode": "#/components/schemas/SimplifiedTimerActionWorkflowNode",
+            "SimplifiedSendEmailActionWorkflowNode": "#/components/schemas/SimplifiedSendEmailActionWorkflowNode",
+            "SimplifiedExitActionWorkflowNode": "#/components/schemas/SimplifiedExitActionWorkflowNode",
+            "SimplifiedBranchWorkflowNode": "#/components/schemas/SimplifiedBranchWorkflowNode",
+            "SimplifiedExperimentBranchWorkflowNode": "#/components/schemas/SimplifiedExperimentBranchWorkflowNode",
+            "SimplifiedVariantWorkflowNode": "#/components/schemas/SimplifiedVariantWorkflowNode"
+          }
+        }
+      },
+      "SimplifiedSignupTriggerWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedSignupTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedEventTriggerWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedEventTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedContactPropertyTriggerWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedAddToListTriggerWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedAddToListTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mailingList": {
+            "type": "string"
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedBlankTriggerWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedBlankTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedAudienceFilterWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedAudienceFilterWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedTimerActionWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedTimerActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "amount": {
+            "type": "number"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedSendEmailActionWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedSendEmailActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "emailMessageId": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedExitActionWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedExitActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedBranchWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedBranchWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedExperimentBranchWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedExperimentBranchWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "samplingRate": {
+            "type": "number"
+          },
+          "url": {
+            "type": "string"
+          },
+          "experimentId": {
+            "type": "string"
+          },
+          "experimentType": {
+            "$ref": "#/components/schemas/WorkflowExperimentType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SimplifiedVariantWorkflowNode": {
+        "required": [
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "typeName": {
+            "$ref": "#/components/schemas/SimplifiedVariantWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "variantId": {
+            "type": "string"
+          },
+          "isControl": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkflowNode": {
+        "required": [
+          "typeName"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SignupTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/EventTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/AddToListTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/BlankTriggerWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/AudienceFilterWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/TimerActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/SendEmailActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/ExitActionWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/BranchWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/ExperimentBranchWorkflowNode"
+          },
+          {
+            "$ref": "#/components/schemas/VariantWorkflowNode"
+          }
+        ],
+        "properties": {
+          "typeName": {
+            "title": "typeName",
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "discriminator": {
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowNode",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowNode",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowNode",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowNode",
+            "BlankTrigger": "#/components/schemas/BlankTriggerWorkflowNode",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowNode",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowNode",
+            "SendEmailAction": "#/components/schemas/SendEmailActionWorkflowNode",
+            "ExitAction": "#/components/schemas/ExitActionWorkflowNode",
+            "BranchNode": "#/components/schemas/BranchWorkflowNode",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowNode",
+            "VariantNode": "#/components/schemas/VariantWorkflowNode",
+            "SignupTriggerWorkflowNode": "#/components/schemas/SignupTriggerWorkflowNode",
+            "EventTriggerWorkflowNode": "#/components/schemas/EventTriggerWorkflowNode",
+            "ContactPropertyTriggerWorkflowNode": "#/components/schemas/ContactPropertyTriggerWorkflowNode",
+            "AddToListTriggerWorkflowNode": "#/components/schemas/AddToListTriggerWorkflowNode",
+            "BlankTriggerWorkflowNode": "#/components/schemas/BlankTriggerWorkflowNode",
+            "AudienceFilterWorkflowNode": "#/components/schemas/AudienceFilterWorkflowNode",
+            "TimerActionWorkflowNode": "#/components/schemas/TimerActionWorkflowNode",
+            "SendEmailActionWorkflowNode": "#/components/schemas/SendEmailActionWorkflowNode",
+            "ExitActionWorkflowNode": "#/components/schemas/ExitActionWorkflowNode",
+            "BranchWorkflowNode": "#/components/schemas/BranchWorkflowNode",
+            "ExperimentBranchWorkflowNode": "#/components/schemas/ExperimentBranchWorkflowNode",
+            "VariantWorkflowNode": "#/components/schemas/VariantWorkflowNode"
+          }
+        }
+      },
+      "SignupTriggerWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SignupTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventTriggerWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "reEligible"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/EventTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "eventName": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            }
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ContactPropertyTriggerWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "contactPropertyQuery",
+          "reEligible"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeContactPropertyQuery"
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddToListTriggerWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "reEligible"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AddToListTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reEligible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BlankTriggerWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BlankTriggerWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "AudienceFilterWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AudienceFilterWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "audienceFilter": {
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimerActionWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "amount",
+          "unit"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/TimerActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "amount": {
+            "type": "number"
+          },
+          "unit": {
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendEmailActionWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SendEmailActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subject": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExitActionWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExitActionWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "BranchWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BranchWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evalStrategy": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExperimentBranchWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "samplingRate",
+          "experimentType"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExperimentBranchWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "samplingRate": {
+            "type": "number"
+          },
+          "url": {
+            "type": "string"
+          },
+          "experimentId": {
+            "type": "string"
+          },
+          "experimentType": {
+            "$ref": "#/components/schemas/WorkflowExperimentType"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VariantWorkflowNode": {
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workflowId": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/VariantWorkflowNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "variantId": {
+            "type": "string"
+          },
+          "isControl": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkflowEventProperty": {
+        "required": [
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WorkflowEventPropertyType"
+          }
+        }
+      },
+      "WorkflowContactPropertyQuery": {
+        "required": [
+          "key",
+          "is",
+          "was"
+        ],
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "is": {
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
+          },
+          "was": {
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
+          }
+        }
+      },
+      "WorkflowContactPropertyComparison": {
+        "required": [
+          "value",
+          "operator"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparisonValue"
+          },
+          "operator": {
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparisonOperator"
+          }
+        }
+      },
+      "WorkflowTimerUnit": {
+        "enum": [
+          "m",
+          "h",
+          "d",
+          "s"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "WorkflowTimerUnit",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "m",
+              "name": "M"
+            },
+            {
+              "value": "h",
+              "name": "H"
+            },
+            {
+              "value": "d",
+              "name": "D"
+            },
+            {
+              "value": "s",
+              "name": "S"
+            }
+          ]
+        }
+      },
+      "WorkflowExperimentType": {
+        "enum": [
+          "webhook",
+          "autosplit"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "WorkflowExperimentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "webhook",
+              "name": "Webhook"
+            },
+            {
+              "value": "autosplit",
+              "name": "Autosplit"
+            }
+          ]
+        }
+      },
+      "WorkflowFailureResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
       "GroupResponse": {
         "required": [
           "id",
@@ -4290,6 +5495,44 @@
           }
         }
       },
+      "ContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "nullable": true,
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "WorkflowContactPropertyQuery": "#/components/schemas/WorkflowContactPropertyQuery"
+          }
+        }
+      },
+      "WorkflowContactPropertyComparisonValue": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
       "PropertyConditionValueOneOf3": {
         "required": [
           "from",
@@ -4554,6 +5797,37 @@
             "type": "string",
             "nullable": true
           }
+        }
+      },
+      "ListWorkflowsResponsePagination": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number"
+          },
+          "returnedResults": {
+            "type": "number"
+          },
+          "perPage": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "SimplifiedWorkflowNodes": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/SimplifiedWorkflowNode"
         }
       },
       "ListGroupsResponsePagination": {
@@ -4851,6 +6125,12 @@
       "TransactionalRequestDataVariablesProperty": {
         "type": "object",
         "description": "An object containing contact data as defined by the data variables added to the transactional email template."
+      },
+      "SimplifiedWorkflowNodesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/SimplifiedWorkflowNode"
+        }
       },
       "UpdateEmailMessageRequestContactPropertiesFallbacksProperty": {
         "type": "object",
@@ -5235,6 +6515,343 @@
           ]
         }
       },
+      "SimplifiedSignupTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "SignupTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedEventTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "EventTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedContactPropertyTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "ContactPropertyTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedAddToListTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "AddToListTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedBlankTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "BlankTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedAudienceFilterWorkflowNodeTypeName": {
+        "enum": [
+          "AudienceFilter"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedTimerActionWorkflowNodeTypeName": {
+        "enum": [
+          "TimerAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedSendEmailActionWorkflowNodeTypeName": {
+        "enum": [
+          "SendEmailAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedExitActionWorkflowNodeTypeName": {
+        "enum": [
+          "ExitAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedBranchWorkflowNodeTypeName": {
+        "enum": [
+          "BranchNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedExperimentBranchWorkflowNodeTypeName": {
+        "enum": [
+          "ExperimentBranchNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SimplifiedVariantWorkflowNodeTypeName": {
+        "enum": [
+          "VariantNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SignupTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "SignupTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "EventTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "EventTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "ContactPropertyTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "ContactPropertyTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "AddToListTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "AddToListTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "BlankTriggerWorkflowNodeTypeName": {
+        "enum": [
+          "BlankTrigger"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "AudienceFilterWorkflowNodeTypeName": {
+        "enum": [
+          "AudienceFilter"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "TimerActionWorkflowNodeTypeName": {
+        "enum": [
+          "TimerAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "SendEmailActionWorkflowNodeTypeName": {
+        "enum": [
+          "SendEmailAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "ExitActionWorkflowNodeTypeName": {
+        "enum": [
+          "ExitAction"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "BranchWorkflowNodeTypeName": {
+        "enum": [
+          "BranchNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "ExperimentBranchWorkflowNodeTypeName": {
+        "enum": [
+          "ExperimentBranchNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "VariantWorkflowNodeTypeName": {
+        "enum": [
+          "VariantNode"
+        ],
+        "type": "string",
+        "additionalProperties": false
+      },
+      "WorkflowEventPropertyType": {
+        "enum": [
+          "string",
+          "number",
+          "boolean",
+          "date"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "WorkflowEventPropertyType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "string",
+              "name": "StringValue"
+            },
+            {
+              "value": "number",
+              "name": "Number"
+            },
+            {
+              "value": "boolean",
+              "name": "Boolean"
+            },
+            {
+              "value": "date",
+              "name": "Date"
+            }
+          ]
+        }
+      },
+      "WorkflowContactPropertyComparisonOperator": {
+        "enum": [
+          "any",
+          "contains",
+          "not_contains",
+          "empty",
+          "not_empty",
+          "equal",
+          "not_equal",
+          "greater_than",
+          "less_than",
+          "true",
+          "false",
+          "numeric_equal",
+          "numeric_not_equal",
+          "date_empty",
+          "date_not_empty",
+          "after",
+          "before",
+          "between",
+          "campaign",
+          "any_loop_email",
+          "specific_loop_email",
+          "accepted_opt_in",
+          "rejected_opt_in",
+          "pending_opt_in",
+          "not_opt_in"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "WorkflowContactPropertyComparisonOperator",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "any",
+              "name": "Any"
+            },
+            {
+              "value": "contains",
+              "name": "Contains"
+            },
+            {
+              "value": "not_contains",
+              "name": "NotContains"
+            },
+            {
+              "value": "empty",
+              "name": "Empty"
+            },
+            {
+              "value": "not_empty",
+              "name": "NotEmpty"
+            },
+            {
+              "value": "equal",
+              "name": "Equal"
+            },
+            {
+              "value": "not_equal",
+              "name": "NotEqual"
+            },
+            {
+              "value": "greater_than",
+              "name": "GreaterThan"
+            },
+            {
+              "value": "less_than",
+              "name": "LessThan"
+            },
+            {
+              "value": "true",
+              "name": "TrueValue"
+            },
+            {
+              "value": "false",
+              "name": "FalseValue"
+            },
+            {
+              "value": "numeric_equal",
+              "name": "NumericEqual"
+            },
+            {
+              "value": "numeric_not_equal",
+              "name": "NumericNotEqual"
+            },
+            {
+              "value": "date_empty",
+              "name": "DateEmpty"
+            },
+            {
+              "value": "date_not_empty",
+              "name": "DateNotEmpty"
+            },
+            {
+              "value": "after",
+              "name": "After"
+            },
+            {
+              "value": "before",
+              "name": "Before"
+            },
+            {
+              "value": "between",
+              "name": "Between"
+            },
+            {
+              "value": "campaign",
+              "name": "Campaign"
+            },
+            {
+              "value": "any_loop_email",
+              "name": "AnyLoopEmail"
+            },
+            {
+              "value": "specific_loop_email",
+              "name": "SpecificLoopEmail"
+            },
+            {
+              "value": "accepted_opt_in",
+              "name": "AcceptedOptIn"
+            },
+            {
+              "value": "rejected_opt_in",
+              "name": "RejectedOptIn"
+            },
+            {
+              "value": "pending_opt_in",
+              "name": "PendingOptIn"
+            },
+            {
+              "value": "not_opt_in",
+              "name": "NotOptIn"
+            }
+          ]
+        }
+      },
       "UpdateEmailMessageRequestEmailFormat": {
         "enum": [
           "styled",
@@ -5343,6 +6960,10 @@
     {
       "name": "Email messages",
       "description": "Manage email message content for campaigns"
+    },
+    {
+      "name": "Workflows",
+      "description": "View workflows and workflow nodes"
     },
     {
       "name": "Uploads",

@@ -17,6 +17,7 @@ using Soenneker.Loops.OpenApiClient.V1.Transactional;
 using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails;
 using Soenneker.Loops.OpenApiClient.V1.TransactionalGroups;
 using Soenneker.Loops.OpenApiClient.V1.Uploads;
+using Soenneker.Loops.OpenApiClient.V1.Workflows;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -103,6 +104,11 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.Uploads.UploadsRequestBuilder Uploads
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.Uploads.UploadsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The workflows property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Workflows.WorkflowsRequestBuilder Workflows
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.WorkflowsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.V1RequestBuilder"/> and sets the default values.

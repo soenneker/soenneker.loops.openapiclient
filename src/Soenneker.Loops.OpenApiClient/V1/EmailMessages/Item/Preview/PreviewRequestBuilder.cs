@@ -42,6 +42,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse">When receiving a 429 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewResponse?> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,6 +58,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
+                { "429", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
