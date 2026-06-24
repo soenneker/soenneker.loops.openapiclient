@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.14.0"
+    "version": "1.14.2"
   },
   "servers": [
     {
@@ -3856,7 +3856,14 @@
             "$ref": "#/components/schemas/AudienceFilter"
           }
         },
-        "required": ["id", "name", "description", "createdAt", "updatedAt", "filter"]
+        "required": [
+          "id",
+          "name",
+          "description",
+          "createdAt",
+          "updatedAt",
+          "filter"
+        ]
       },
       "ListAudienceSegmentsResponse": {
         "type": "object",
@@ -4444,7 +4451,7 @@
               "type": "string"
             }
           },
-          "mailingList": {
+          "mailingListId": {
             "type": "string"
           },
           "reEligible": {
@@ -4720,7 +4727,7 @@
             }
           },
           "eventName": {
-            "type": ["string", "null"]
+            "type": "string"
           },
           "eventProperties": {
             "type": "array",
@@ -4803,6 +4810,9 @@
               "type": "string"
             }
           },
+          "mailingListId": {
+            "type": "string"
+          },
           "reEligible": {
             "type": "boolean"
           }
@@ -4812,6 +4822,7 @@
           "workflowId",
           "typeName",
           "nextNodeIds",
+          "mailingListId",
           "reEligible"
         ],
         "additionalProperties": false
@@ -4923,11 +4934,20 @@
               "type": "string"
             }
           },
+          "emailMessageId": {
+            "type": "string"
+          },
           "subject": {
             "type": "string"
           }
         },
-        "required": ["id", "workflowId", "typeName", "nextNodeIds"],
+        "required": [
+          "id",
+          "workflowId",
+          "typeName",
+          "nextNodeIds",
+          "emailMessageId"
+        ],
         "additionalProperties": false
       },
       "ExitActionWorkflowNode": {

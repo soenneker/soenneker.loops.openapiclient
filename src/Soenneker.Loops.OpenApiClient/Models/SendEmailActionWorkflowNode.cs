@@ -12,6 +12,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class SendEmailActionWorkflowNode : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The emailMessageId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EmailMessageId { get; set; }
+#nullable restore
+#else
+        public string EmailMessageId { get; set; }
+#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -64,6 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -78,6 +87,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("emailMessageId", EmailMessageId);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteStringValue("subject", Subject);

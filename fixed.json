@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.14.0"
+    "version": "1.14.2"
   },
   "servers": [
     {
@@ -4277,7 +4277,7 @@
               "type": "string"
             }
           },
-          "mailingList": {
+          "mailingListId": {
             "type": "string"
           },
           "reEligible": {
@@ -4601,8 +4601,7 @@
             }
           },
           "eventName": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "eventProperties": {
             "type": "array",
@@ -4657,6 +4656,7 @@
           "workflowId",
           "typeName",
           "nextNodeIds",
+          "mailingListId",
           "reEligible"
         ],
         "type": "object",
@@ -4675,6 +4675,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "mailingListId": {
+            "type": "string"
           },
           "reEligible": {
             "type": "boolean"
@@ -4782,7 +4785,8 @@
           "id",
           "workflowId",
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "emailMessageId"
         ],
         "type": "object",
         "properties": {
@@ -4800,6 +4804,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "emailMessageId": {
+            "type": "string"
           },
           "subject": {
             "type": "string"

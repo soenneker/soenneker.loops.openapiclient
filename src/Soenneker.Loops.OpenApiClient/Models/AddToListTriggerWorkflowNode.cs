@@ -20,6 +20,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
+        /// <summary>The mailingListId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MailingListId { get; set; }
+#nullable restore
+#else
+        public string MailingListId { get; set; }
+#endif
         /// <summary>The nextNodeIds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -59,6 +67,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
+                { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
                 { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNodeTypeName>(); } },
@@ -73,6 +82,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteBoolValue("reEligible", ReEligible);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNodeTypeName>("typeName", TypeName);
