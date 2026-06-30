@@ -70,6 +70,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string RootNodeId { get; set; }
 #endif
+        /// <summary>The status property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow"/> and sets the default values.
         /// </summary>
@@ -102,6 +104,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "nodes", n => { Nodes = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty.CreateFromDiscriminatorValue); } },
                 { "rootNodeId", n => { RootNodeId = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>(); } },
             };
         }
         /// <summary>
@@ -118,6 +121,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>("nodes", Nodes);
             writer.WriteStringValue("rootNodeId", RootNodeId);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

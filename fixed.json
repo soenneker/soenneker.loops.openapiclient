@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.14.2"
+    "version": "1.15.0"
   },
   "servers": [
     {
@@ -1072,6 +1072,60 @@
           }
         ]
       },
+      "post": {
+        "tags": [
+          "Themes"
+        ],
+        "summary": "Update a theme",
+        "description": "\u0022Update a theme\u0027s name and/or styles. When \u0060styles\u0060 change, the update cascades to every email using this theme, and \u0060affectedEmailCount\u0060 in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme\u0027s new value, after which that email follows the theme for that property.\u0022",
+        "operationId": "PostV1ThemesByThemeId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateThemeBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060themeId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Theme not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
       "parameters": [
         {
           "name": "themeId",
@@ -1137,6 +1191,50 @@
             "apiKey": []
           }
         ]
+      },
+      "post": {
+        "tags": [
+          "Themes"
+        ],
+        "summary": "Create a theme",
+        "description": "Create a new email theme.",
+        "operationId": "PostV1Themes",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateThemeBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Theme created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       }
     },
     "/v1/components/{componentId}": {
@@ -1174,6 +1272,80 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Components"
+        ],
+        "summary": "Update a component",
+        "description": "Update a component\u0027s name and/or body. When the \u0060lmx\u0060 body changes, the update cascades to every email using this component, and \u0060affectedEmailCount\u0060 reports how many were affected. A change that would introduce a dynamic variable an email using the component cannot use is rejected.",
+        "operationId": "PostV1ComponentsByComponentId",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateComponentBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateComponentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060componentId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Component not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "LMX body exceeds the size limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid LMX, or a body change that would break emails using the component.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentValidationFailureResponse"
                 }
               }
             }
@@ -1236,6 +1408,70 @@
           },
           "400": {
             "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Components"
+        ],
+        "summary": "Create a component",
+        "description": "Create a new email component from an LMX body.",
+        "operationId": "PostV1Components",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateComponentBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Component created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "LMX body exceeds the size limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid LMX.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3526,6 +3762,72 @@
           }
         }
       },
+      "CreateThemeBody": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The theme name."
+          },
+          "styles": {
+            "$ref": "#/components/schemas/ThemeStyles"
+          }
+        }
+      },
+      "UpdateThemeBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "styles": {
+            "$ref": "#/components/schemas/ThemeStyles"
+          }
+        },
+        "description": "At least one of \u0060name\u0060 or \u0060styles\u0060 must be provided."
+      },
+      "UpdateThemeResponse": {
+        "required": [
+          "id",
+          "name",
+          "styles",
+          "isDefault",
+          "createdAt",
+          "updatedAt",
+          "affectedEmailCount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "styles": {
+            "$ref": "#/components/schemas/ThemeStyles"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this theme is the team\u0027s default."
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp."
+          },
+          "affectedEmailCount": {
+            "type": "number",
+            "description": "The number of emails using this theme that are affected by the style change. \u00600\u0060 when only the name changed."
+          }
+        }
+      },
       "Component": {
         "required": [
           "id",
@@ -3592,6 +3894,79 @@
         "properties": {
           "message": {
             "type": "string"
+          }
+        }
+      },
+      "ComponentValidationFailureResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "invalidTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The dynamic variables that the change would push into an email that cannot use them. Present only when the update was rejected for that reason."
+          }
+        }
+      },
+      "CreateComponentBody": {
+        "required": [
+          "name",
+          "lmx"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The component name."
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The component body as an LMX string."
+          }
+        }
+      },
+      "UpdateComponentBody": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The component body as an LMX string."
+          }
+        },
+        "description": "At least one of \u0060name\u0060 or \u0060lmx\u0060 must be provided."
+      },
+      "UpdateComponentResponse": {
+        "required": [
+          "id",
+          "name",
+          "lmx",
+          "affectedEmailCount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The component body serialized as LMX."
+          },
+          "affectedEmailCount": {
+            "type": "number",
+            "description": "The number of emails using this component that were updated by the body change. \u00600\u0060 when only the name changed."
           }
         }
       },
@@ -4082,6 +4457,8 @@
       "SimplifiedWorkflow": {
         "required": [
           "id",
+          "status",
+          "mailingListId",
           "rootNodeId",
           "nodes"
         ],
@@ -4089,6 +4466,9 @@
         "properties": {
           "id": {
             "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SimplifiedWorkflowStatus"
           },
           "name": {
             "type": "string"
@@ -4214,7 +4594,9 @@
       "SimplifiedEventTriggerWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "eventName",
+          "reEligible"
         ],
         "type": "object",
         "properties": {
@@ -4228,7 +4610,8 @@
             }
           },
           "eventName": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "reEligible": {
             "type": "boolean"
@@ -4239,7 +4622,9 @@
       "SimplifiedContactPropertyTriggerWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "contactPropertyQuery",
+          "reEligible"
         ],
         "type": "object",
         "properties": {
@@ -4253,7 +4638,7 @@
             }
           },
           "contactPropertyQuery": {
-            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery"
           },
           "reEligible": {
             "type": "boolean"
@@ -4264,7 +4649,9 @@
       "SimplifiedAddToListTriggerWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "mailingListId",
+          "reEligible"
         ],
         "type": "object",
         "properties": {
@@ -4278,7 +4665,8 @@
             }
           },
           "mailingListId": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "reEligible": {
             "type": "boolean"
@@ -4327,7 +4715,9 @@
       "SimplifiedTimerActionWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "amount",
+          "unit"
         ],
         "type": "object",
         "properties": {
@@ -4352,7 +4742,9 @@
       "SimplifiedSendEmailActionWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "emailMessageId",
+          "subject"
         ],
         "type": "object",
         "properties": {
@@ -4366,7 +4758,8 @@
             }
           },
           "emailMessageId": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "subject": {
             "type": "string"
@@ -4415,7 +4808,8 @@
       "SimplifiedExperimentBranchWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "samplingRate"
         ],
         "type": "object",
         "properties": {
@@ -4430,15 +4824,6 @@
           },
           "samplingRate": {
             "type": "number"
-          },
-          "url": {
-            "type": "string"
-          },
-          "experimentId": {
-            "type": "string"
-          },
-          "experimentType": {
-            "$ref": "#/components/schemas/WorkflowExperimentType"
           }
         },
         "additionalProperties": false
@@ -4446,7 +4831,9 @@
       "SimplifiedVariantWorkflowNode": {
         "required": [
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "variantId",
+          "isControl"
         ],
         "type": "object",
         "properties": {
@@ -4717,7 +5104,8 @@
           "id",
           "workflowId",
           "typeName",
-          "nextNodeIds"
+          "nextNodeIds",
+          "appliesDownstream"
         ],
         "type": "object",
         "properties": {
@@ -4741,6 +5129,9 @@
           },
           "audienceSegmentId": {
             "type": "string"
+          },
+          "appliesDownstream": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -4786,7 +5177,8 @@
           "workflowId",
           "typeName",
           "nextNodeIds",
-          "emailMessageId"
+          "emailMessageId",
+          "subject"
         ],
         "type": "object",
         "properties": {
@@ -5470,6 +5862,30 @@
           }
         ]
       },
+      "UpdateThemeResponseAllOf2": {
+        "required": [
+          "affectedEmailCount"
+        ],
+        "type": "object",
+        "properties": {
+          "affectedEmailCount": {
+            "type": "number",
+            "description": "The number of emails using this theme that are affected by the style change. \u00600\u0060 when only the name changed."
+          }
+        }
+      },
+      "UpdateComponentResponseAllOf2": {
+        "required": [
+          "affectedEmailCount"
+        ],
+        "type": "object",
+        "properties": {
+          "affectedEmailCount": {
+            "type": "number",
+            "description": "The number of emails using this component that were updated by the body change. \u00600\u0060 when only the name changed."
+          }
+        }
+      },
       "PropertyConditionValue": {
         "required": [
           "type"
@@ -5499,6 +5915,30 @@
             "PropertyConditionValue_1": "#/components/schemas/PropertyConditionValueBranch1",
             "PropertyConditionValue_2": "#/components/schemas/PropertyConditionValueBranch2",
             "PropertyConditionValueOneOf3": "#/components/schemas/PropertyConditionValueOneOf3"
+          }
+        }
+      },
+      "SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          }
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
+          }
+        },
+        "nullable": true,
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "WorkflowContactPropertyQuery": "#/components/schemas/WorkflowContactPropertyQuery"
           }
         }
       },
@@ -5868,7 +6308,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for contact properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "UpdateEmailMessageRequestEventPropertiesFallbacks": {
         "type": "object",
@@ -5876,7 +6316,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for event properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "UpdateEmailMessageRequestDataVariablesFallbacks": {
         "type": "object",
@@ -5884,7 +6324,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for data variables, keyed by variable name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "EmailMessageResponseContactPropertiesFallbacks": {
         "type": "object",
@@ -6145,7 +6585,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for contact properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "UpdateEmailMessageRequestEventPropertiesFallbacksProperty": {
         "type": "object",
@@ -6153,7 +6593,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for event properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "UpdateEmailMessageRequestDataVariablesFallbacksProperty": {
         "type": "object",
@@ -6161,7 +6601,7 @@
           "type": "string",
           "nullable": true
         },
-        "description": "Fallback values for data variables, keyed by variable name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map."
+        "description": "\u0022Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
       },
       "EmailMessageResponseContactPropertiesFallbacksProperty": {
         "type": "object",
@@ -6521,6 +6961,16 @@
             }
           ]
         }
+      },
+      "SimplifiedWorkflowStatus": {
+        "enum": [
+          "Draft",
+          "Sending",
+          "Paused",
+          "PausedAndQueueing"
+        ],
+        "type": "string",
+        "additionalProperties": false
       },
       "SimplifiedSignupTriggerWorkflowNodeTypeName": {
         "enum": [

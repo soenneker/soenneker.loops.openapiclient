@@ -12,6 +12,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class AudienceFilterWorkflowNode : IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>The appliesDownstream property</summary>
+        public bool? AppliesDownstream { get; set; }
         /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "appliesDownstream", n => { AppliesDownstream = n.GetBoolValue(); } },
                 { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
                 { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -87,6 +90,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("appliesDownstream", AppliesDownstream);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("audienceFilter", AudienceFilter);
             writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
             writer.WriteStringValue("id", Id);

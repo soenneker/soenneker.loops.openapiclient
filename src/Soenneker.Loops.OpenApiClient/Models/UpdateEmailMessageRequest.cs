@@ -28,7 +28,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CcEmail { get; set; }
 #endif
-        /// <summary>Fallback values for contact properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map.</summary>
+        /// <summary>&quot;Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty? ContactPropertiesFallbacks { get; set; }
@@ -36,7 +36,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty ContactPropertiesFallbacks { get; set; }
 #endif
-        /// <summary>Fallback values for data variables, keyed by variable name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map.</summary>
+        /// <summary>&quot;Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty? DataVariablesFallbacks { get; set; }
@@ -46,7 +46,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The rendering format of the email.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat? EmailFormat { get; set; }
-        /// <summary>Fallback values for event properties, keyed by property name. A null value deletes the fallback; a string value sets it. This is a full replacement of the existing map.</summary>
+        /// <summary>&quot;Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty? EventPropertiesFallbacks { get; set; }
