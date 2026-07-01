@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
+using Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Guardian;
 using Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithEmailMessageItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The guardian property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Guardian.GuardianRequestBuilder Guardian
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Guardian.GuardianRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The preview property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview.PreviewRequestBuilder Preview
         {

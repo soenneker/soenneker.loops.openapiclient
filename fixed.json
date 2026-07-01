@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.15.0"
+    "version": "1.16.0"
   },
   "servers": [
     {
@@ -2034,6 +2034,74 @@
           },
           "429": {
             "description": "The daily preview limit was reached.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "emailMessageId",
+          "in": "path",
+          "description": "The ID of the email message.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/email-messages/{emailMessageId}/guardian": {
+      "get": {
+        "tags": [
+          "Email messages"
+        ],
+        "summary": "Run Guardian checks on an email message",
+        "description": "Validate an email message\u0027s content against Guardian rules and return any errors and warnings. Errors must be resolved before the email can be published, warnings are advisory.",
+        "operationId": "GetV1EmailMessagesByEmailMessageIdGuardian",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageGuardianResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060emailMessageId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email message uses MJML format.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5731,6 +5799,84 @@
           }
         }
       },
+      "EmailMessageGuardianResponse": {
+        "required": [
+          "errors",
+          "warnings"
+        ],
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GuardianRule"
+            },
+            "description": "Validation errors. These must be resolved before the email can be published."
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GuardianRule"
+            },
+            "description": "Validation warnings. These are advisory and do not block publishing."
+          }
+        },
+        "example": {
+          "errors": [
+            {
+              "rule": "missingButtonHrefs",
+              "title": "Missing button link",
+              "description": "Buttons won\u0027t work without href value",
+              "items": [
+                {
+                  "label": "Click here"
+                }
+              ]
+            },
+            {
+              "rule": "missingLinkHrefs",
+              "title": "Missing text link",
+              "description": "Links won\u0027t work without href value",
+              "items": [
+                {
+                  "label": "See more"
+                }
+              ]
+            }
+          ],
+          "warnings": []
+        }
+      },
+      "GuardianRule": {
+        "required": [
+          "rule",
+          "title",
+          "description",
+          "items"
+        ],
+        "type": "object",
+        "properties": {
+          "rule": {
+            "type": "string",
+            "description": "The identifier of the Guardian rule that fired."
+          },
+          "title": {
+            "type": "string",
+            "description": "A human-readable title for the rule."
+          },
+          "description": {
+            "type": "string",
+            "description": "A human-readable explanation of the rule."
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GuardianRuleItemsItem"
+            },
+            "description": "The individual items that triggered the rule."
+          }
+        }
+      },
       "CreateUploadRequest": {
         "required": [
           "contentType",
@@ -6386,6 +6532,22 @@
       "EmailMessagePreviewRequestDataVariables": {
         "type": "object",
         "description": "Transactional data variables to render. Accepted for transactional previews only."
+      },
+      "GuardianRuleItemsItem": {
+        "required": [
+          "label"
+        ],
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "A human-readable label for the item."
+          },
+          "codeName": {
+            "type": "string",
+            "description": "The machine name of the item, when applicable."
+          }
+        }
       },
       "GetV1ApiKey200Response": {
         "required": [
