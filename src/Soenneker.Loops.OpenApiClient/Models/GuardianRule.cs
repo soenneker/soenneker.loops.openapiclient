@@ -31,13 +31,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleItemsItem> Items { get; set; }
 #endif
         /// <summary>The identifier of the Guardian rule that fired.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Rule { get; set; }
-#nullable restore
-#else
-        public string Rule { get; set; }
-#endif
+        public global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleRule? Rule { get; set; }
         /// <summary>A human-readable title for the rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,7 +67,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleItemsItem>(global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleItemsItem.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "rule", n => { Rule = n.GetStringValue(); } },
+                { "rule", n => { Rule = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleRule>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
         }
@@ -86,7 +80,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleItemsItem>("items", Items);
-            writer.WriteStringValue("rule", Rule);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleRule>("rule", Rule);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -5958,7 +5958,28 @@
         "properties": {
           "rule": {
             "type": "string",
-            "description": "The identifier of the Guardian rule that fired."
+            "description": "The identifier of the Guardian rule that fired.",
+            "enum": [
+              "unsupportedContactProperties",
+              "missingFallbackContactProperties",
+              "unsupportedEventProperties",
+              "missingFallbackEventProperties",
+              "unsupportedDataVariables",
+              "invalidCustomDataVariables",
+              "missingRequiredDataVariables",
+              "missingButtonHrefs",
+              "invalidButtonHrefs",
+              "shortenedYouTubeButtonHrefs",
+              "missingLinkHrefs",
+              "invalidLinkHrefs",
+              "shortenedYouTubeLinkHrefs",
+              "shortenedYouTubeImageHrefs",
+              "emailWithoutMailtoButtonHrefs",
+              "emailWithoutMailtoLinkHrefs",
+              "emailWithoutMailtoImageHrefs",
+              "bareArrayNodes",
+              "missingSocialIconHrefs"
+            ]
           },
           "title": {
             "type": "string",

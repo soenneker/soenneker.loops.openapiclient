@@ -5857,8 +5857,7 @@
         "type": "object",
         "properties": {
           "rule": {
-            "type": "string",
-            "description": "The identifier of the Guardian rule that fired."
+            "$ref": "#/components/schemas/GuardianRuleRule"
           },
           "title": {
             "type": "string",
@@ -7513,6 +7512,114 @@
             {
               "value": "plain",
               "name": "Plain"
+            }
+          ]
+        }
+      },
+      "GuardianRuleRule": {
+        "enum": [
+          "unsupportedContactProperties",
+          "missingFallbackContactProperties",
+          "unsupportedEventProperties",
+          "missingFallbackEventProperties",
+          "unsupportedDataVariables",
+          "invalidCustomDataVariables",
+          "missingRequiredDataVariables",
+          "missingButtonHrefs",
+          "invalidButtonHrefs",
+          "shortenedYouTubeButtonHrefs",
+          "missingLinkHrefs",
+          "invalidLinkHrefs",
+          "shortenedYouTubeLinkHrefs",
+          "shortenedYouTubeImageHrefs",
+          "emailWithoutMailtoButtonHrefs",
+          "emailWithoutMailtoLinkHrefs",
+          "emailWithoutMailtoImageHrefs",
+          "bareArrayNodes",
+          "missingSocialIconHrefs"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The identifier of the Guardian rule that fired.",
+        "x-ms-enum": {
+          "name": "GuardianRuleRule",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "unsupportedContactProperties",
+              "name": "UnsupportedContactProperties"
+            },
+            {
+              "value": "missingFallbackContactProperties",
+              "name": "MissingFallbackContactProperties"
+            },
+            {
+              "value": "unsupportedEventProperties",
+              "name": "UnsupportedEventProperties"
+            },
+            {
+              "value": "missingFallbackEventProperties",
+              "name": "MissingFallbackEventProperties"
+            },
+            {
+              "value": "unsupportedDataVariables",
+              "name": "UnsupportedDataVariables"
+            },
+            {
+              "value": "invalidCustomDataVariables",
+              "name": "InvalidCustomDataVariables"
+            },
+            {
+              "value": "missingRequiredDataVariables",
+              "name": "MissingRequiredDataVariables"
+            },
+            {
+              "value": "missingButtonHrefs",
+              "name": "MissingButtonHrefs"
+            },
+            {
+              "value": "invalidButtonHrefs",
+              "name": "InvalidButtonHrefs"
+            },
+            {
+              "value": "shortenedYouTubeButtonHrefs",
+              "name": "ShortenedYouTubeButtonHrefs"
+            },
+            {
+              "value": "missingLinkHrefs",
+              "name": "MissingLinkHrefs"
+            },
+            {
+              "value": "invalidLinkHrefs",
+              "name": "InvalidLinkHrefs"
+            },
+            {
+              "value": "shortenedYouTubeLinkHrefs",
+              "name": "ShortenedYouTubeLinkHrefs"
+            },
+            {
+              "value": "shortenedYouTubeImageHrefs",
+              "name": "ShortenedYouTubeImageHrefs"
+            },
+            {
+              "value": "emailWithoutMailtoButtonHrefs",
+              "name": "EmailWithoutMailtoButtonHrefs"
+            },
+            {
+              "value": "emailWithoutMailtoLinkHrefs",
+              "name": "EmailWithoutMailtoLinkHrefs"
+            },
+            {
+              "value": "emailWithoutMailtoImageHrefs",
+              "name": "EmailWithoutMailtoImageHrefs"
+            },
+            {
+              "value": "bareArrayNodes",
+              "name": "BareArrayNodes"
+            },
+            {
+              "value": "missingSocialIconHrefs",
+              "name": "MissingSocialIconHrefs"
             }
           ]
         }
