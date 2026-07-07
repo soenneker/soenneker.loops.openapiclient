@@ -32,14 +32,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The typeName property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNodeTypeName? TypeName { get; set; }
-        /// <summary>The variantId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? VariantId { get; set; }
-#nullable restore
-#else
-        public string VariantId { get; set; }
-#endif
         /// <summary>The workflowId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +62,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "isControl", n => { IsControl = n.GetBoolValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNodeTypeName>(); } },
-                { "variantId", n => { VariantId = n.GetStringValue(); } },
                 { "workflowId", n => { WorkflowId = n.GetStringValue(); } },
             };
         }
@@ -85,7 +76,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteBoolValue("isControl", IsControl);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNodeTypeName>("typeName", TypeName);
-            writer.WriteStringValue("variantId", VariantId);
             writer.WriteStringValue("workflowId", WorkflowId);
         }
     }

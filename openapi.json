@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.16.0"
+    "version": "1.18.0"
   },
   "servers": [
     {
@@ -4731,7 +4731,6 @@
           },
           "name": { "type": "string" },
           "description": { "type": "string" },
-          "emoji": { "type": "string" },
           "mailingListId": {
             "type": ["string", "null"]
           },
@@ -5049,14 +5048,11 @@
               "type": "string"
             }
           },
-          "variantId": {
-            "type": "string"
-          },
           "isControl": {
             "type": "boolean"
           }
         },
-        "required": ["typeName", "nextNodeIds", "variantId", "isControl"],
+        "required": ["typeName", "nextNodeIds", "isControl"],
         "additionalProperties": false
       },
       "WorkflowNode": {
@@ -5501,9 +5497,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "variantId": {
-            "type": "string"
           },
           "isControl": {
             "type": "boolean"

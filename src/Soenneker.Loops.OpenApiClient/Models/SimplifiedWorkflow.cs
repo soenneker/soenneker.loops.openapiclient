@@ -22,14 +22,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The emoji property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Emoji { get; set; }
-#nullable restore
-#else
-        public string Emoji { get; set; }
-#endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,7 +90,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "emoji", n => { Emoji = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -115,7 +106,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("emoji", Emoji);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
