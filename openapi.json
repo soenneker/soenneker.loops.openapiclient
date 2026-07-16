@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.18.0"
+    "version": "1.19.0"
   },
   "servers": [
     {
@@ -4735,7 +4735,7 @@
             "type": ["string", "null"]
           },
           "rootNodeId": {
-            "type": ["string", "null"]
+            "type": "string"
           },
           "nodes": {
             "type": "object",

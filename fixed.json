@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.18.0"
+    "version": "1.19.0"
   },
   "servers": [
     {
@@ -4549,8 +4549,7 @@
             "nullable": true
           },
           "rootNodeId": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "nodes": {
             "$ref": "#/components/schemas/SimplifiedWorkflowNodesProperty"
@@ -6061,6 +6060,11 @@
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          },
+          {
+            "enum": [
+              null
+            ]
           }
         ],
         "properties": {
@@ -6069,7 +6073,6 @@
             "description": "Union discriminator"
           }
         },
-        "nullable": true,
         "discriminator": {
           "propertyName": "type",
           "mapping": {
@@ -6085,6 +6088,11 @@
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          },
+          {
+            "enum": [
+              null
+            ]
           }
         ],
         "properties": {
@@ -6093,7 +6101,6 @@
             "description": "Union discriminator"
           }
         },
-        "nullable": true,
         "discriminator": {
           "propertyName": "type",
           "mapping": {
