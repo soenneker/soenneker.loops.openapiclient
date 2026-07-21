@@ -54,7 +54,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty EventPropertiesFallbacks { get; set; }
 #endif
-        /// <summary>The `contentRevisionId` you last fetched. Used for optimistic concurrency — the request is rejected with 409 if the server&apos;s revision has advanced.</summary>
+        /// <summary>The `contentRevisionId` you last fetched, or the `emailMessageContentRevisionId` you received when creating the campaign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ExpectedRevisionId { get; set; }

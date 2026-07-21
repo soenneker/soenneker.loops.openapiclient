@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
+using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch;
+using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +19,16 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNodeItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The addBranch property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch.AddBranchRequestBuilder AddBranch
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch.AddBranchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recursive property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive.RecursiveRequestBuilder Recursive
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive.RecursiveRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.WithNodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -34,20 +46,49 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
         {
         }
         /// <summary>
+        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts.&quot;
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 409 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse?> DeleteAsync(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse> DeleteAsync(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToDeleteRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Retrieve detailed data for a single workflow node.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -56,7 +97,60 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Update workflow-node-owned fields for a single node. Shared resources such as email messages and audience segments should be updated through their own APIs.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 409 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 501 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse?> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "501", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts.&quot;
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
         }
         /// <summary>
         /// Retrieve detailed data for a single workflow node.
@@ -75,6 +169,28 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Update workflow-node-owned fields for a single node. Shared resources such as email messages and audience segments should be updated through their own APIs.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

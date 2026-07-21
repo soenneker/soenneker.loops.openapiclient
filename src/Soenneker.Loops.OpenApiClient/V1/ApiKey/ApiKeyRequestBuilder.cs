@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.ApiKey
         {
         }
         /// <summary>
-        /// Test your API key
+        /// Test your API key and get team context.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.GetV1ApiKey200Response"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -57,7 +57,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.ApiKey
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.GetV1ApiKey200Response>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.GetV1ApiKey200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Test your API key
+        /// Test your API key and get team context.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

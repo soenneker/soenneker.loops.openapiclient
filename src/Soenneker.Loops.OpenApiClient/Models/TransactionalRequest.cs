@@ -16,7 +16,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn&apos;t already exist).</summary>
         public bool? AddToAudience { get; set; }
-        /// <summary>A list containing file objects to be sent along with an email message.</summary>
+        /// <summary>A list containing file objects to be sent along with an email message. Attachments must be enabled by Loops support before they can be used with the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>? Attachments { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem> Attachments { get; set; }
 #endif
-        /// <summary>An object containing contact data as defined by the data variables added to the transactional email template.</summary>
+        /// <summary>An object containing data as defined by the data variables added to the transactional email template. Values can be of type string or number.If you have added optional data variables to your email, you can exclude them from the dataVariables object or set the value to &quot;&quot;.If you have added an array data variable to your email, make sure to include an array matching the data variables you added to your array block.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty? DataVariables { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty DataVariables { get; set; }
 #endif
-        /// <summary>The email property</summary>
+        /// <summary>The recipient&apos;s email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }

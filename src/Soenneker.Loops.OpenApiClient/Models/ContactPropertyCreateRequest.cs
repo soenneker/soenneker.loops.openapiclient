@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>
+    /// There are a few [reserved names](https://loops.so/docs/contacts/properties#reserved-names) that you cannot use for contact properties.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class ContactPropertyCreateRequest : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>The name of the property. This should be in camelCase, like `planName` or `importDate`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -22,14 +23,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
+        /// <summary>The type of property.</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyCreateRequestType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyCreateRequest"/> and sets the default values.
         /// </summary>
@@ -56,7 +51,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyCreateRequestType>(); } },
             };
         }
         /// <summary>
@@ -67,7 +62,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyCreateRequestType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

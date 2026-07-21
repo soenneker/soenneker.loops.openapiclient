@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
 {
     /// <summary>
-    /// Builds and executes requests for operations under \v1\uploads\{id}\complete
+    /// Builds and executes requests for operations under \v1\uploads\{emailAssetId}\complete
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CompleteRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CompleteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/uploads/{id}/complete", pathParameters)
+        public CompleteRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/uploads/{emailAssetId}/complete", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CompleteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/uploads/{id}/complete", rawUrl)
+        public CompleteRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/uploads/{emailAssetId}/complete", rawUrl)
         {
         }
         /// <summary>
-        /// Finalize an asset after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded asset.
+        /// Finalize an image upload after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded image asset.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Finalize an asset after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded asset.
+        /// Finalize an image upload after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded image asset.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

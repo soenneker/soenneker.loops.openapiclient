@@ -7,108 +7,128 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WorkflowNode : IComposedTypeWrapper, IParsable
+    #pragma warning disable CS1591
+    public partial class WorkflowNode : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode"/></summary>
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The amount of time to wait before triggering the next node. Set to `0` to move to the next node immediately.</summary>
+        public double? Amount { get; set; }
+        /// <summary>If `true`, the audience filter will apply to all downstream nodes. If `false`, the audience filter will only apply to the current node. Matches the &quot;Filter scope&quot; option in the UI.</summary>
+        public bool? AppliesDownstream { get; set; }
+        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode? AddToListTriggerWorkflowNode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode AddToListTriggerWorkflowNode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter AudienceFilter { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode"/></summary>
+        /// <summary>The audienceSegmentId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode? AudienceFilterWorkflowNode { get; set; }
+        public string? AudienceSegmentId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode AudienceFilterWorkflowNode { get; set; }
+        public string AudienceSegmentId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode"/></summary>
+        /// <summary>The contactPropertyQuery property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode? BlankTriggerWorkflowNode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery? ContactPropertyQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode BlankTriggerWorkflowNode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery ContactPropertyQuery { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode"/></summary>
+        /// <summary>The ID of the email message to send. To edit this email, use the `POST /v1/email-messages/{emailMessageId}` endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode? BranchWorkflowNode { get; set; }
+        public string? EmailMessageId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode BranchWorkflowNode { get; set; }
+        public string EmailMessageId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode"/></summary>
+        /// <summary>The name of the event pattern that triggers this node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode? ContactPropertyTriggerWorkflowNode { get; set; }
+        public string? EventName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode ContactPropertyTriggerWorkflowNode { get; set; }
+        public string EventName { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode"/></summary>
+        /// <summary>The properties of the event pattern, which can be used in emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode? EventTriggerWorkflowNode { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>? EventProperties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode EventTriggerWorkflowNode { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> EventProperties { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode"/></summary>
+        /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode? ExitActionWorkflowNode { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode ExitActionWorkflowNode { get; set; }
+        public string Id { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode"/></summary>
+        /// <summary>Whether this is the control variant of an experiment.</summary>
+        public bool? IsControl { get; set; }
+        /// <summary>The mailingListId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode? ExperimentBranchWorkflowNode { get; set; }
+        public string? MailingListId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode ExperimentBranchWorkflowNode { get; set; }
+        public string MailingListId { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode"/></summary>
+        /// <summary>The IDs of the nodes that are downstream of this node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode? SendEmailActionWorkflowNode { get; set; }
+        public List<string>? NextNodeIds { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode SendEmailActionWorkflowNode { get; set; }
+        public List<string> NextNodeIds { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode"/></summary>
+        /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
+        public bool? ReEligible { get; set; }
+        /// <summary>The percentage of contacts that will be sent to variant branches, between `0` and `100`. The remaining percentage will be sent to the control branch. `100` sends all contacts to variant branches.</summary>
+        public double? SamplingRate { get; set; }
+        /// <summary>The subject property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode? SignupTriggerWorkflowNode { get; set; }
+        public string? Subject { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode SignupTriggerWorkflowNode { get; set; }
+        public string Subject { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode"/></summary>
+        /// <summary>Union discriminator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode? TimerActionWorkflowNode { get; set; }
+        public string? TypeName { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode TimerActionWorkflowNode { get; set; }
+        public string TypeName { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode"/></summary>
+        /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
+        /// <summary>The workflowId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode? VariantWorkflowNode { get; set; }
+        public string? WorkflowId { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode VariantWorkflowNode { get; set; }
+        public string WorkflowId { get; set; }
 #endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode"/> and sets the default values.
+        /// </summary>
+        public WorkflowNode()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -117,57 +137,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
-            var result = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode();
-            if("AddToListTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.AddToListTriggerWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode();
-            }
-            else if("AudienceFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.AudienceFilterWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode();
-            }
-            else if("BlankTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.BlankTriggerWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode();
-            }
-            else if("BranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.BranchWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode();
-            }
-            else if("ContactPropertyTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ContactPropertyTriggerWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode();
-            }
-            else if("EventTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.EventTriggerWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode();
-            }
-            else if("ExitAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExitActionWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode();
-            }
-            else if("ExperimentBranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.ExperimentBranchWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode();
-            }
-            else if("SendEmailAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.SendEmailActionWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode();
-            }
-            else if("SignupTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.SignupTriggerWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode();
-            }
-            else if("TimerAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TimerActionWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode();
-            }
-            else if("VariantNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.VariantWorkflowNode = new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode();
-            }
-            return result;
+            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowNode();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -175,55 +145,27 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(AddToListTriggerWorkflowNode != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return AddToListTriggerWorkflowNode.GetFieldDeserializers();
-            }
-            else if(AudienceFilterWorkflowNode != null)
-            {
-                return AudienceFilterWorkflowNode.GetFieldDeserializers();
-            }
-            else if(BlankTriggerWorkflowNode != null)
-            {
-                return BlankTriggerWorkflowNode.GetFieldDeserializers();
-            }
-            else if(BranchWorkflowNode != null)
-            {
-                return BranchWorkflowNode.GetFieldDeserializers();
-            }
-            else if(ContactPropertyTriggerWorkflowNode != null)
-            {
-                return ContactPropertyTriggerWorkflowNode.GetFieldDeserializers();
-            }
-            else if(EventTriggerWorkflowNode != null)
-            {
-                return EventTriggerWorkflowNode.GetFieldDeserializers();
-            }
-            else if(ExitActionWorkflowNode != null)
-            {
-                return ExitActionWorkflowNode.GetFieldDeserializers();
-            }
-            else if(ExperimentBranchWorkflowNode != null)
-            {
-                return ExperimentBranchWorkflowNode.GetFieldDeserializers();
-            }
-            else if(SendEmailActionWorkflowNode != null)
-            {
-                return SendEmailActionWorkflowNode.GetFieldDeserializers();
-            }
-            else if(SignupTriggerWorkflowNode != null)
-            {
-                return SignupTriggerWorkflowNode.GetFieldDeserializers();
-            }
-            else if(TimerActionWorkflowNode != null)
-            {
-                return TimerActionWorkflowNode.GetFieldDeserializers();
-            }
-            else if(VariantWorkflowNode != null)
-            {
-                return VariantWorkflowNode.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
+                { "appliesDownstream", n => { AppliesDownstream = n.GetBoolValue(); } },
+                { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
+                { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
+                { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery.CreateFromDiscriminatorValue); } },
+                { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
+                { "eventName", n => { EventName = n.GetStringValue(); } },
+                { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "isControl", n => { IsControl = n.GetBoolValue(); } },
+                { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
+                { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
+                { "samplingRate", n => { SamplingRate = n.GetDoubleValue(); } },
+                { "subject", n => { Subject = n.GetStringValue(); } },
+                { "typeName", n => { TypeName = n.GetStringValue(); } },
+                { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(); } },
+                { "workflowId", n => { WorkflowId = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -232,54 +174,25 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AddToListTriggerWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowNode>(null, AddToListTriggerWorkflowNode);
-            }
-            else if(AudienceFilterWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowNode>(null, AudienceFilterWorkflowNode);
-            }
-            else if(BlankTriggerWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowNode>(null, BlankTriggerWorkflowNode);
-            }
-            else if(BranchWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowNode>(null, BranchWorkflowNode);
-            }
-            else if(ContactPropertyTriggerWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNode>(null, ContactPropertyTriggerWorkflowNode);
-            }
-            else if(EventTriggerWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowNode>(null, EventTriggerWorkflowNode);
-            }
-            else if(ExitActionWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowNode>(null, ExitActionWorkflowNode);
-            }
-            else if(ExperimentBranchWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowNode>(null, ExperimentBranchWorkflowNode);
-            }
-            else if(SendEmailActionWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowNode>(null, SendEmailActionWorkflowNode);
-            }
-            else if(SignupTriggerWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowNode>(null, SignupTriggerWorkflowNode);
-            }
-            else if(TimerActionWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowNode>(null, TimerActionWorkflowNode);
-            }
-            else if(VariantWorkflowNode != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowNode>(null, VariantWorkflowNode);
-            }
+            writer.WriteDoubleValue("amount", Amount);
+            writer.WriteBoolValue("appliesDownstream", AppliesDownstream);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("audienceFilter", AudienceFilter);
+            writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
+            writer.WriteStringValue("emailMessageId", EmailMessageId);
+            writer.WriteStringValue("eventName", EventName);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>("eventProperties", EventProperties);
+            writer.WriteStringValue("id", Id);
+            writer.WriteBoolValue("isControl", IsControl);
+            writer.WriteStringValue("mailingListId", MailingListId);
+            writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
+            writer.WriteBoolValue("reEligible", ReEligible);
+            writer.WriteDoubleValue("samplingRate", SamplingRate);
+            writer.WriteStringValue("subject", Subject);
+            writer.WriteStringValue("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
+            writer.WriteStringValue("workflowId", WorkflowId);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

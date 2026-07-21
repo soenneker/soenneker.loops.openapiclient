@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>Double opt-in status.</summary>
+    /// <summary>Double opt-in status. This will be `null` for contacts unless they are created via a form while double opt-in is enabled.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ContactOptInStatus
     {

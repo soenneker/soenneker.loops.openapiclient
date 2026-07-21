@@ -70,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListThemesResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a new email theme.
+        /// Create a new email theme for use across Loops emails.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ThemeResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -114,7 +114,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes
             return requestInfo;
         }
         /// <summary>
-        /// Create a new email theme.
+        /// Create a new email theme for use across Loops emails.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

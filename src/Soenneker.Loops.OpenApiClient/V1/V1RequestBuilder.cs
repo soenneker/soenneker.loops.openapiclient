@@ -10,6 +10,7 @@ using Soenneker.Loops.OpenApiClient.V1.Components;
 using Soenneker.Loops.OpenApiClient.V1.Contacts;
 using Soenneker.Loops.OpenApiClient.V1.DedicatedSendingIps;
 using Soenneker.Loops.OpenApiClient.V1.EmailMessages;
+using Soenneker.Loops.OpenApiClient.V1.EventPatterns;
 using Soenneker.Loops.OpenApiClient.V1.Events;
 using Soenneker.Loops.OpenApiClient.V1.Lists;
 using Soenneker.Loops.OpenApiClient.V1.Themes;
@@ -69,6 +70,11 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.EmailMessagesRequestBuilder EmailMessages
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.EmailMessagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The eventPatterns property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.EventPatterns.EventPatternsRequestBuilder EventPatterns
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.EventPatterns.EventPatternsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The events property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Events.EventsRequestBuilder Events

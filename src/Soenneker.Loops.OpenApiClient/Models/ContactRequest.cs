@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>The contact&apos;s email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The firstName property</summary>
+        /// <summary>The contact&apos;s first name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstName { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>The lastName property</summary>
+        /// <summary>The contact&apos;s last name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastName { get; set; }
@@ -38,17 +38,25 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>An object of mailing list IDs and boolean subscription statuses.</summary>
+        /// <summary>Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingListsProperty? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingListsProperty MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists MailingLists { get; set; }
 #endif
-        /// <summary>The subscribed property</summary>
+        /// <summary>A custom source value to replace the default “API”.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Source { get; set; }
+#nullable restore
+#else
+        public string Source { get; set; }
+#endif
+        /// <summary>Whether the contact will receive campaign and workflow emails. All new contacts are subscribed by default.</summary>
         public bool? Subscribed { get; set; }
-        /// <summary>The userGroup property</summary>
+        /// <summary>You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserGroup { get; set; }
@@ -56,7 +64,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string UserGroup { get; set; }
 #endif
-        /// <summary>The userId property</summary>
+        /// <summary>A unique user ID (for example, from an external application).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -92,7 +100,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "firstName", n => { FirstName = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingListsProperty.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetStringValue(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
                 { "userId", n => { UserId = n.GetStringValue(); } },
@@ -108,7 +117,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("firstName", FirstName);
             writer.WriteStringValue("lastName", LastName);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingListsProperty>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists>("mailingLists", MailingLists);
+            writer.WriteStringValue("source", Source);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);
             writer.WriteStringValue("userId", UserId);

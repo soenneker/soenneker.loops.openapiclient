@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description property</summary>
+        /// <summary>The description of the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The mailingListId property</summary>
+        /// <summary>The ID of the mailing list the workflow sends to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MailingListId { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string MailingListId { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>The name of the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -46,7 +46,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The nodes property</summary>
+        /// <summary>A map of node IDs to simplified node objects. Each node includes `typeName` and `nextNodeIds`, plus type-specific fields when present. To get the full node object, use the `GET /v1/workflows/{workflowId}/nodes/{nodeId}` endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty? Nodes { get; set; }
@@ -54,7 +54,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty Nodes { get; set; }
 #endif
-        /// <summary>The rootNodeId property</summary>
+        /// <summary>The ID of the root node in the workflow graph.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? RootNodeId { get; set; }
@@ -64,6 +64,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus? Status { get; set; }
+        /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation. Will be `null` for workflows without a revision token yet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkflowRevisionId { get; set; }
+#nullable restore
+#else
+        public string WorkflowRevisionId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow"/> and sets the default values.
         /// </summary>
@@ -96,6 +104,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "nodes", n => { Nodes = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty.CreateFromDiscriminatorValue); } },
                 { "rootNodeId", n => { RootNodeId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>(); } },
+                { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -112,6 +121,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>("nodes", Nodes);
             writer.WriteStringValue("rootNodeId", RootNodeId);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>("status", Status);
+            writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

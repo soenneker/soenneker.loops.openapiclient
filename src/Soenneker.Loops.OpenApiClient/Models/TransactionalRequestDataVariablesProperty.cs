@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// An object containing contact data as defined by the data variables added to the transactional email template.
+    /// An object containing data as defined by the data variables added to the transactional email template. Values can be of type string or number.If you have added optional data variables to your email, you can exclude them from the dataVariables object or set the value to &quot;&quot;.If you have added an array data variable to your email, make sure to include an array matching the data variables you added to your array block.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TransactionalRequestDataVariablesProperty : IAdditionalDataHolder, IParsable

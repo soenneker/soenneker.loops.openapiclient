@@ -16,7 +16,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of emails using this theme that are affected by the style change. `0` when only the name changed.</summary>
         public double? AffectedEmailCount { get; set; }
-        /// <summary>ISO 8601 timestamp.</summary>
+        /// <summary>ISO 8601 timestamp for when the theme was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedAt { get; set; }
@@ -24,7 +24,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CreatedAt { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the theme.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>Whether this theme is the team&apos;s default.</summary>
         public bool? IsDefault { get; set; }
-        /// <summary>The name property</summary>
+        /// <summary>The name of the theme.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -42,7 +42,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag. All attributes are returned with the values stored on the theme.</summary>
+        /// <summary>Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles? Styles { get; set; }
@@ -50,7 +50,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles Styles { get; set; }
 #endif
-        /// <summary>ISO 8601 timestamp.</summary>
+        /// <summary>ISO 8601 timestamp for when the theme was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedAt { get; set; }

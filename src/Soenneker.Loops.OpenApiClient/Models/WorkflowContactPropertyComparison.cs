@@ -7,14 +7,15 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>
+    /// For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class WorkflowContactPropertyComparison : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The operator property</summary>
+        /// <summary>The comparison operator. It must be valid for the selected contact property&apos;s type and for the `is` or `was` side of the comparison. Number and boolean properties allow `empty` on `was`, but not on `is`.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparisonOperator? Operator { get; set; }
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

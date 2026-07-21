@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>
+    /// A map of node IDs to simplified node objects. Each node includes `typeName` and `nextNodeIds`, plus type-specific fields when present. To get the full node object, use the `GET /v1/workflows/{workflowId}/nodes/{nodeId}` endpoint.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class SimplifiedWorkflowNodesProperty : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

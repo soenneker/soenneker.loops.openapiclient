@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A human-readable explanation of the rule.</summary>
+        /// <summary>A longer explanation of why the issue matters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The individual items that triggered the rule.</summary>
+        /// <summary>The specific elements that triggered the rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleItemsItem>? Items { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The identifier of the Guardian rule that fired.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.GuardianRuleRule? Rule { get; set; }
-        /// <summary>A human-readable title for the rule.</summary>
+        /// <summary>A short summary of the rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Title { get; set; }

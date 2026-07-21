@@ -19,15 +19,15 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads
     public partial class UploadsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Loops.OpenApiClient.v1.uploads.item collection</summary>
-        /// <param name="position">The `emailAssetId` returned when the upload was created.</param>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.UploadsItemRequestBuilder"/></returns>
-        public global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.UploadsItemRequestBuilder this[string position]
+        /// <param name="position">The `emailAssetId` returned when the upload was created via `POST /v1/uploads`.</param>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.WithEmailAssetItemRequestBuilder"/></returns>
+        public global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.WithEmailAssetItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("id", position);
-                return new global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.UploadsItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("emailAssetId", position);
+                return new global::Soenneker.Loops.OpenApiClient.V1.Uploads.Item.WithEmailAssetItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads
         {
         }
         /// <summary>
-        /// Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{id}/complete` to finalize the asset.
+        /// Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{emailAssetId}/complete` to finalize the asset.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -74,7 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{id}/complete` to finalize the asset.
+        /// Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{emailAssetId}/complete` to finalize the asset.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

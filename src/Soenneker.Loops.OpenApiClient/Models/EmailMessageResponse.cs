@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Only present when set.</summary>
+        /// <summary>The email BCC address. Only present when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BccEmail { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CampaignId { get; set; }
 #endif
-        /// <summary>Only present when set.</summary>
+        /// <summary>The email CC address. Only present when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CcEmail { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty EventPropertiesFallbacks { get; set; }
 #endif
-        /// <summary>The fromEmail property</summary>
+        /// <summary>The email sender email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FromEmail { get; set; }
@@ -80,7 +80,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string FromEmail { get; set; }
 #endif
-        /// <summary>The fromName property</summary>
+        /// <summary>The email sender name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FromName { get; set; }
@@ -88,7 +88,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string FromName { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the email message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -112,7 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Lmx { get; set; }
 #endif
-        /// <summary>The previewText property</summary>
+        /// <summary>The email preview text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PreviewText { get; set; }
@@ -120,7 +120,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string PreviewText { get; set; }
 #endif
-        /// <summary>The replyToEmail property</summary>
+        /// <summary>The email reply-to address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ReplyToEmail { get; set; }
@@ -128,7 +128,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ReplyToEmail { get; set; }
 #endif
-        /// <summary>The subject property</summary>
+        /// <summary>The email subject.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Subject { get; set; }

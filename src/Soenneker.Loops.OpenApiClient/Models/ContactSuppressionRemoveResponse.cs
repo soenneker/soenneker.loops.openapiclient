@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota RemovalQuota { get; set; }
 #endif
-        /// <summary>The success property</summary>
+        /// <summary>Whether the suppression removal was successful.</summary>
         public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemoveResponse"/> and sets the default values.

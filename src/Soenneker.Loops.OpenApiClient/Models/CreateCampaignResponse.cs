@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter AudienceFilter { get; set; }
 #endif
-        /// <summary>The audienceSegmentId property</summary>
+        /// <summary>The ID of the audience segment this campaign targets, if set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AudienceSegmentId { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string AudienceSegmentId { get; set; }
 #endif
-        /// <summary>The campaignGroupId property</summary>
+        /// <summary>The ID of the campaign group this campaign belongs to, if set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CampaignGroupId { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CampaignGroupId { get; set; }
 #endif
-        /// <summary>The createdAt property</summary>
+        /// <summary>ISO 8601 timestamp for when the campaign was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -48,7 +48,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string EmailMessageContentRevisionId { get; set; }
 #endif
-        /// <summary>The ID of the empty email message created for this campaign. Use `/email-messages/{emailMessageId}` to set its fields and LMX content.</summary>
+        /// <summary>The ID of the empty email message created for this campaign. Use `POST /v1/email-messages/{emailMessageId}` to set its fields and LMX content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EmailMessageId { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string EmailMessageId { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the campaign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -64,7 +64,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The mailingListId property</summary>
+        /// <summary>The ID of the mailing list this campaign sends to, if set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MailingListId { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string MailingListId { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>The name of the campaign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -88,7 +88,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling Scheduling { get; set; }
 #endif
-        /// <summary>The status property</summary>
+        /// <summary>The status of the campaign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Status { get; set; }
@@ -96,7 +96,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Status { get; set; }
 #endif
-        /// <summary>The updatedAt property</summary>
+        /// <summary>ISO 8601 timestamp for when the campaign was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse"/> and sets the default values.

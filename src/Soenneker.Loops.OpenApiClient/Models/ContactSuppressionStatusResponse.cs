@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact Contact { get; set; }
 #endif
-        /// <summary>The isSuppressed property</summary>
+        /// <summary>Whether the contact is suppressed.</summary>
         public bool? IsSuppressed { get; set; }
         /// <summary>The removalQuota property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

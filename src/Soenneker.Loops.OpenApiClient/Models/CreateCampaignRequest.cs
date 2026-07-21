@@ -12,15 +12,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class CreateCampaignRequest : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`. Setting this without also providing `audienceSegmentId` clears any existing `audienceSegmentId`. When both are provided, this filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? AudienceFilter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest AudienceFilter { get; set; }
 #endif
-        /// <summary>The ID of an audience segment. Setting this clears any `audienceFilter`.</summary>
+        /// <summary>The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AudienceSegmentId { get; set; }
@@ -78,7 +78,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
+                { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest.CreateFromDiscriminatorValue); } },
                 { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
                 { "campaignGroupId", n => { CampaignGroupId = n.GetStringValue(); } },
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
@@ -93,7 +93,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("audienceFilter", AudienceFilter);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest>("audienceFilter", AudienceFilter);
             writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
             writer.WriteStringValue("campaignGroupId", CampaignGroupId);
             writer.WriteStringValue("mailingListId", MailingListId);

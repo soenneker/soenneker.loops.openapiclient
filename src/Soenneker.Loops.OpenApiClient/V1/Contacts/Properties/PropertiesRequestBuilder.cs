@@ -53,10 +53,10 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Properties
             return collectionResult?.AsList();
         }
         /// <summary>
-        /// Add a contact property to your team.
+        /// Create a custom contact property.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertySuccessResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">There are a few [reserved names](https://loops.so/docs/contacts/properties#reserved-names) that you cannot use for contact properties.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyFailureResponse">When receiving a 400 status code</exception>
@@ -97,10 +97,10 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Properties
             return requestInfo;
         }
         /// <summary>
-        /// Add a contact property to your team.
+        /// Create a custom contact property.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">There are a few [reserved names](https://loops.so/docs/contacts/properties#reserved-names) that you cannot use for contact properties.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,7 +133,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Properties
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class PropertiesRequestBuilderGetQueryParameters 
         {
-            /// <summary>\&quot;all\&quot; (default) or \&quot;custom\&quot;</summary>
+            /// <summary>`all` (default) or `custom` (only custom contact properties)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("list")]

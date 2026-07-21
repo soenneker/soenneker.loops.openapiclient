@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag. All attributes are returned with the values stored on the theme.
+    /// Flat map of style attributes, matching the attribute names accepted by the LMX `&lt;Style /&gt;` tag.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ThemeStyles : IAdditionalDataHolder, IParsable

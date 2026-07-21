@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// An object of mailing list IDs and boolean subscription statuses.
+    /// Mailing lists the contact is subscribed to, represented by key-value pairs of mailing list IDs and `true`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContactMailingListsProperty : IAdditionalDataHolder, IParsable

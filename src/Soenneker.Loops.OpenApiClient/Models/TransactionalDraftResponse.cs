@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The createdAt property</summary>
+        /// <summary>ISO 8601 timestamp for when the transactional email was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Data variable names used by the published email. Empty for unpublished transactional emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -24,7 +24,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public List<string> DataVariables { get; set; }
 #endif
-        /// <summary>The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `/email-messages/{emailMessageId}`.</summary>
+        /// <summary>The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `POST /v1/email-messages/{emailMessageId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DraftEmailMessageContentRevisionId { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string DraftEmailMessageContentRevisionId { get; set; }
 #endif
-        /// <summary>The draftEmailMessageId property</summary>
+        /// <summary>The ID of the draft email message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DraftEmailMessageId { get; set; }
@@ -40,7 +40,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string DraftEmailMessageId { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -48,7 +48,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>The name of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -56,7 +56,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The publishedEmailMessageId property</summary>
+        /// <summary>The ID of the published email message. `null` if there is no published version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? PublishedEmailMessageId { get; set; }
@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string TransactionalGroupId { get; set; }
 #endif
-        /// <summary>The updatedAt property</summary>
+        /// <summary>ISO 8601 timestamp for when the transactional email was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse"/> and sets the default values.

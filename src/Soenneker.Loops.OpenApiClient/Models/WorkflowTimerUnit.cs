@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum WorkflowTimerUnit
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "m")]
         #pragma warning disable CS1591
@@ -19,10 +18,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         [EnumMember(Value = "d")]
         #pragma warning disable CS1591
         D,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "s")]
-        #pragma warning disable CS1591
-        S,
         #pragma warning restore CS1591
     }
 }

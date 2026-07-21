@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Events.Send
         {
         }
         /// <summary>
-        /// Send events to trigger emails in Loops.
+        /// Send events to trigger workflows.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventSuccessResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Events.Send
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EventSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EventSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Send events to trigger emails in Loops.
+        /// Send events to trigger workflows.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

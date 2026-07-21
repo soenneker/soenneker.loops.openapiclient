@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>The contact&apos;s email address. **Required if `userId` is not provided.**</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The eventName property</summary>
+        /// <summary>The name of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? EventName { get; set; }
@@ -38,15 +38,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty EventProperties { get; set; }
 #endif
-        /// <summary>An object of mailing list IDs and boolean subscription statuses.</summary>
+        /// <summary>Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists MailingLists { get; set; }
 #endif
-        /// <summary>The userId property</summary>
+        /// <summary>The contact&apos;s unique user ID. **Required if `email` is not provided.**</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
@@ -82,7 +82,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "eventName", n => { EventName = n.GetStringValue(); } },
                 { "eventProperties", n => { EventProperties = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty>(global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty.CreateFromDiscriminatorValue); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists.CreateFromDiscriminatorValue); } },
                 { "userId", n => { UserId = n.GetStringValue(); } },
             };
         }
@@ -96,7 +96,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("eventName", EventName);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty>("eventProperties", EventProperties);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingListsProperty>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists>("mailingLists", MailingLists);
             writer.WriteStringValue("userId", UserId);
             writer.WriteAdditionalData(AdditionalData);
         }

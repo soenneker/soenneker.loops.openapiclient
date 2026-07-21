@@ -14,9 +14,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The limit property</summary>
+        /// <summary>The number of suppression removals allowed in a rolling 30 day period.</summary>
         public double? Limit { get; set; }
-        /// <summary>The remaining property</summary>
+        /// <summary>The remaining number of suppression removals left in the current 30 day period.</summary>
         public double? Remaining { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota"/> and sets the default values.

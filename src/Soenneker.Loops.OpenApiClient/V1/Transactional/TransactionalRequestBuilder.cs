@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
         {
         }
         /// <summary>
-        /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.
+        /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.To set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -61,7 +61,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.
+        /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.To set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

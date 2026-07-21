@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>The contact&apos;s email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The firstName property</summary>
+        /// <summary>The contact&apos;s first name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FirstName { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string FirstName { get; set; }
 #endif
-        /// <summary>The id property</summary>
+        /// <summary>The contact&apos;s Loops ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -38,7 +38,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The lastName property</summary>
+        /// <summary>The contact&apos;s last name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LastName { get; set; }
@@ -46,7 +46,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>An object of mailing list IDs and boolean subscription statuses.</summary>
+        /// <summary>Mailing lists the contact is subscribed to, represented by key-value pairs of mailing list IDs and `true`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty? MailingLists { get; set; }
@@ -54,9 +54,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty MailingLists { get; set; }
 #endif
-        /// <summary>Double opt-in status.</summary>
+        /// <summary>Double opt-in status. This will be `null` for contacts unless they are created via a form while double opt-in is enabled.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus? OptInStatus { get; set; }
-        /// <summary>The source property</summary>
+        /// <summary>The source the contact was created from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Source { get; set; }
@@ -64,9 +64,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>The subscribed property</summary>
+        /// <summary>Whether the contact will receive campaign and workflow emails.</summary>
         public bool? Subscribed { get; set; }
-        /// <summary>The userGroup property</summary>
+        /// <summary>The contact&apos;s user group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserGroup { get; set; }
@@ -74,7 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string UserGroup { get; set; }
 #endif
-        /// <summary>The userId property</summary>
+        /// <summary>The contact&apos;s unique user ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }

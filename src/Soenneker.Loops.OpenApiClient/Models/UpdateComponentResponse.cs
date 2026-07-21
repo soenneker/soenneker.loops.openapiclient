@@ -16,7 +16,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The number of emails using this component that were updated by the body change. `0` when only the name changed.</summary>
         public double? AffectedEmailCount { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>The ID of the component.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -32,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Lmx { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>The name of the component.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }

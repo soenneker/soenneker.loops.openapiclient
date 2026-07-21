@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>The comparison operator. It must be valid for the selected contact property&apos;s type and for the `is` or `was` side of the comparison. Number and boolean properties allow `empty` on `was`, but not on `is`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum WorkflowContactPropertyComparisonOperator
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "any")]
         #pragma warning disable CS1591
@@ -60,14 +59,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         #pragma warning disable CS1591
         NumericNotEqual,
         #pragma warning restore CS1591
-        [EnumMember(Value = "date_empty")]
-        #pragma warning disable CS1591
-        DateEmpty,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "date_not_empty")]
-        #pragma warning disable CS1591
-        DateNotEmpty,
-        #pragma warning restore CS1591
         [EnumMember(Value = "after")]
         #pragma warning disable CS1591
         After,
@@ -79,34 +70,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         [EnumMember(Value = "between")]
         #pragma warning disable CS1591
         Between,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "campaign")]
-        #pragma warning disable CS1591
-        Campaign,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "any_loop_email")]
-        #pragma warning disable CS1591
-        AnyLoopEmail,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "specific_loop_email")]
-        #pragma warning disable CS1591
-        SpecificLoopEmail,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "accepted_opt_in")]
-        #pragma warning disable CS1591
-        AcceptedOptIn,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "rejected_opt_in")]
-        #pragma warning disable CS1591
-        RejectedOptIn,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "pending_opt_in")]
-        #pragma warning disable CS1591
-        PendingOptIn,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "not_opt_in")]
-        #pragma warning disable CS1591
-        NotOptIn,
         #pragma warning restore CS1591
     }
 }
