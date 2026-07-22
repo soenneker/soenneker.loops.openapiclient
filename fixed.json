@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.20.0"
+    "version": "1.21.1"
   },
   "servers": [
     {
@@ -111,7 +111,7 @@
           "Contacts"
         ],
         "summary": "Update a contact",
-        "description": "Update a contact by \u0060email\u0060 or \u0060userId\u0060. You must provide one of these parameters.\n\nIf you want to update a contact\u0027s email address, the contact will first need a \u0060userId\u0060 value. You can then make a request containing the \u0060userId\u0060 field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either \u0060email\u0060 or \u0060userId\u0060 to identify the contact you want to update. If both are provided, the system will look for a contact with either a   matching \u0060email\u0060 or \u0060userId\u0060 value. If a contact is found for one of the values (e.g. \u0060email\u0060), the other value (e.g. \u0060userId\u0060) will be updated. If a contact is not found, a new contact will be created using both \u0060email\u0060 and \u0060userId\u0060 values.",
+        "description": "Update a contact by \u0060email\u0060 or \u0060userId\u0060. You must provide one of these parameters.\n\nIf you want to update a contact\u0027s email address, the contact will first need a \u0060userId\u0060 value. You can then make a request containing the \u0060userId\u0060 field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either \u0060email\u0060 or \u0060userId\u0060 to identify the contact you want to update. If both are provided, the system will look for a contact with either a matching \u0060email\u0060 or \u0060userId\u0060 value. If a contact is found for one of the values (e.g. \u0060email\u0060), the other value (e.g. \u0060userId\u0060) will be updated. If a contact is not found, a new contact will be created using both \u0060email\u0060 and \u0060userId\u0060 values.",
         "operationId": "PutV1ContactsUpdate",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060. [See available date formats](https://loops.so/docs/contacts/properties#dates)). Make sure to create the properties in Loops before using them in API calls.",
@@ -485,11 +485,7 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/GetV1DedicatedSendingIps200ResponseResponseJson"
-                },
-                "example": [
-                  "1.2.3.4",
-                  "5,6,7,8"
-                ]
+                }
               }
             }
           }
@@ -890,7 +886,7 @@
           "Transactional emails"
         ],
         "summary": "Ensure a draft email message",
-        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use \u0060/v1/email-messages/{emailMessageId}\u0060 to edit the draft\u0027s content.",
+        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use \u0060POST /v1/email-messages/{emailMessageId}\u0060 to edit the draft\u0027s content.",
         "operationId": "PostV1TransactionalEmailsByTransactionalIdDraft",
         "responses": {
           "200": {
@@ -1579,6 +1575,60 @@
           },
           "400": {
             "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Audience segments"
+        ],
+        "summary": "Create an audience segment",
+        "description": "Create a new audience segment.",
+        "operationId": "PostV1AudienceSegments",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAudienceSegmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Audience segment created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, a name already used by another segment, or a filter with too many conditions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The filter references a campaign, workflow or workflow email that does not exist.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2283,7 +2333,7 @@
           "Workflows"
         ],
         "summary": "Update a workflow",
-        "description": "Update a workflow\u0027s display properties. At least one property must be provided. To change the workflow\u0027s mailing list, use the \u0060/v1/workflows/{workflowId}/mailing-list\u0060 endpoint instead.",
+        "description": "Update a workflow\u0027s display properties. At least one property must be provided. To change the workflow\u0027s mailing list, use the \u0060POST /v1/workflows/{workflowId}/mailing-list\u0060 endpoint instead.",
         "operationId": "UpdateWorkflowProperties",
         "requestBody": {
           "content": {
@@ -2437,7 +2487,7 @@
           "Workflow nodes"
         ],
         "summary": "Create a workflow node",
-        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, and \u0060before\u0060 places it before \u0060beforeNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a new branch or experiment branch, use the \u0060/v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint instead.\u0022",
+        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, and \u0060before\u0060 places it before \u0060beforeNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a new branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint instead.\u0022",
         "operationId": "CreateWorkflowNode",
         "requestBody": {
           "content": {
@@ -3676,7 +3726,7 @@
           },
           "userGroup": {
             "type": "string",
-            "description": "You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)"
+            "description": "The contact\u0027s user group."
           },
           "userId": {
             "type": "string",
@@ -3718,7 +3768,7 @@
           },
           "userGroup": {
             "type": "string",
-            "description": "You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)"
+            "description": "The contact\u0027s user group."
           },
           "userId": {
             "type": "string",
@@ -3759,7 +3809,7 @@
           },
           "userGroup": {
             "type": "string",
-            "description": "You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)"
+            "description": "The contact\u0027s user group."
           },
           "userId": {
             "type": "string",
@@ -4200,7 +4250,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListTransactionalsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4333,7 +4383,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListTransactionalsResourceResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4415,7 +4465,7 @@
           },
           "description": {
             "type": "string",
-            "description": "The description of the mailing list.",
+            "description": "The description of the mailing list. \u0060null\u0060 if no description is set.",
             "nullable": true
           },
           "isPublic": {
@@ -4595,7 +4645,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListThemesResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4748,7 +4798,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListComponentsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4892,11 +4942,11 @@
           },
           "createdAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp."
+            "description": "ISO 8601 timestamp for when the audience segment was created."
           },
           "updatedAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp."
+            "description": "ISO 8601 timestamp for when the audience segment was last updated."
           },
           "filter": {
             "$ref": "#/components/schemas/AudienceFilter"
@@ -4911,7 +4961,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListAudienceSegmentsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4923,6 +4973,29 @@
       },
       "AudienceSegmentResponse": {
         "$ref": "#/components/schemas/AudienceSegment"
+      },
+      "CreateAudienceSegmentRequest": {
+        "required": [
+          "name",
+          "filter"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 255,
+            "type": "string",
+            "description": "The name of the audience segment. Must be unique within the team."
+          },
+          "description": {
+            "maxLength": 1000,
+            "type": "string",
+            "description": "An optional description of the audience segment."
+          },
+          "filter": {
+            "$ref": "#/components/schemas/CreateAudienceSegmentRequestFilter"
+          }
+        },
+        "additionalProperties": false
       },
       "AudienceSegmentFailureResponse": {
         "required": [
@@ -4990,7 +5063,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "A tree of audience conditions combined with \u0060match\u0060. Null when the campaign targets a mailing list or segment without an explicit filter.",
+        "description": "A tree of audience conditions combined with \u0060match\u0060.",
         "nullable": true
       },
       "AudienceFilterInRequest": {
@@ -5127,7 +5200,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListCampaignsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5196,8 +5269,7 @@
             "description": "The name of the campaign."
           },
           "status": {
-            "type": "string",
-            "description": "The status of the campaign."
+            "$ref": "#/components/schemas/CreateCampaignResponseStatus"
           },
           "createdAt": {
             "type": "string",
@@ -5317,7 +5389,7 @@
           },
           "campaignGroupId": {
             "type": "string",
-            "description": "The ID of the campaign group this campaign belongs to..",
+            "description": "The ID of the campaign group this campaign belongs to.",
             "nullable": true
           },
           "mailingListId": {
@@ -5386,7 +5458,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListWorkflowsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5635,6 +5707,18 @@
         "discriminator": {
           "propertyName": "typeName",
           "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNode",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNode",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNode",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNode",
+            "BlankTrigger": "#/components/schemas/BlankTriggerWorkflowMutationNode",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNode",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNode",
+            "SendEmailAction": "#/components/schemas/SendEmailActionWorkflowMutationNode",
+            "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNode",
+            "BranchNode": "#/components/schemas/BranchWorkflowMutationNode",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNode",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNode",
             "SignupTriggerWorkflowMutationNode": "#/components/schemas/SignupTriggerWorkflowMutationNode",
             "EventTriggerWorkflowMutationNode": "#/components/schemas/EventTriggerWorkflowMutationNode",
             "ContactPropertyTriggerWorkflowMutationNode": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNode",
@@ -6289,6 +6373,8 @@
         "discriminator": {
           "propertyName": "insertMode",
           "mapping": {
+            "between": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
+            "before": "#/components/schemas/CreateWorkflowNodeBeforeRequest",
             "CreateWorkflowNodeBetweenRequest": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
             "CreateWorkflowNodeBeforeRequest": "#/components/schemas/CreateWorkflowNodeBeforeRequest"
           }
@@ -6348,6 +6434,18 @@
         "discriminator": {
           "propertyName": "typeName",
           "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
+            "BlankTrigger": "#/components/schemas/BlankTriggerWorkflowMutationNodeWithRevision",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
+            "SendEmailAction": "#/components/schemas/SendEmailActionWorkflowMutationNodeWithRevision",
+            "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNodeWithRevision",
+            "BranchNode": "#/components/schemas/BranchWorkflowMutationNodeWithRevision",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision",
             "SignupTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
             "EventTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
             "ContactPropertyTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
@@ -6893,6 +6991,14 @@
         "discriminator": {
           "propertyName": "typeName",
           "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision",
             "SignupTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
             "EventTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
             "ContactPropertyTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
@@ -7791,6 +7897,7 @@
           },
           "mailingListId": {
             "type": "string",
+            "description": "The ID of the mailing list that triggers the workflow.",
             "nullable": true
           },
           "reEligible": {
@@ -8209,7 +8316,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "$ref": "#/components/schemas/ListGroupsResponsePagination"
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -8280,7 +8387,7 @@
           },
           "fromEmail": {
             "type": "string",
-            "description": "The sender username (without \u0060@\u0060 or domain). The team\u0027s sending domain is appended automatically."
+            "description": "The email sender email address, without the team\u0027s sending domain."
           },
           "replyToEmail": {
             "type": "string",
@@ -8358,7 +8465,7 @@
           },
           "fromEmail": {
             "type": "string",
-            "description": "The email sender email address."
+            "description": "The email sender email address, without the team\u0027s sending domain."
           },
           "replyToEmail": {
             "type": "string",
@@ -8563,7 +8670,7 @@
         "properties": {
           "emailAssetId": {
             "type": "string",
-            "description": "The ID of the created asset. Pass this as \u0060emailAssetId\u0060 to \u0060/v1/uploads/{emailAssetId}/complete\u0060 once the file has been uploaded."
+            "description": "The ID of the created asset. Pass this as \u0060emailAssetId\u0060 to \u0060POST /v1/uploads/{emailAssetId}/complete\u0060 once the file has been uploaded."
           },
           "presignedUrl": {
             "type": "string",
@@ -8623,6 +8730,39 @@
           "maxBytes": {
             "type": "integer",
             "description": "Present when the upload exceeds the size limit. The maximum allowed size in bytes."
+          }
+        }
+      },
+      "Pagination": {
+        "required": [
+          "totalResults",
+          "returnedResults",
+          "perPage",
+          "totalPages",
+          "nextCursor",
+          "nextPage"
+        ],
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number"
+          },
+          "returnedResults": {
+            "type": "number"
+          },
+          "perPage": {
+            "type": "number"
+          },
+          "totalPages": {
+            "type": "number"
+          },
+          "nextCursor": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextPage": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -8924,180 +9064,26 @@
           }
         }
       },
-      "ListTransactionalsResponsePagination": {
+      "CreateAudienceSegmentRequestFilter": {
+        "required": [
+          "match",
+          "conditions"
+        ],
         "type": "object",
         "properties": {
-          "totalResults": {
-            "type": "number"
+          "match": {
+            "$ref": "#/components/schemas/CreateAudienceSegmentRequestFilterMatch"
           },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
+          "conditions": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AudienceFilterCondition"
+            }
           }
-        }
-      },
-      "ListTransactionalsResourceResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListThemesResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListComponentsResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListAudienceSegmentsResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListCampaignsResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListWorkflowsResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
+        },
+        "additionalProperties": false,
+        "description": "A tree of audience conditions combined with \u0060match\u0060."
       },
       "SimplifiedWorkflowNodes": {
         "type": "object",
@@ -9116,31 +9102,6 @@
         }
       },
       "ListEventPatternsResponsePagination": {
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "type": "number"
-          },
-          "returnedResults": {
-            "type": "number"
-          },
-          "perPage": {
-            "type": "number"
-          },
-          "totalPages": {
-            "type": "number"
-          },
-          "nextCursor": {
-            "type": "string",
-            "nullable": true
-          },
-          "nextPage": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "ListGroupsResponsePagination": {
         "type": "object",
         "properties": {
           "totalResults": {
@@ -9237,18 +9198,30 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Contact property values to render. Accepted for campaign and workflow previews."
+        "description": "Contact property values to render. Accepted for campaign and workflow previews.",
+        "example": {
+          "firstName": "Alex"
+        }
       },
       "EmailMessagePreviewRequestEventProperties": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Event property values to render. Accepted for workflow previews only."
+        "description": "Event property values to render. Accepted for workflow previews only.",
+        "example": {
+          "planName": "Pro"
+        }
       },
       "EmailMessagePreviewRequestDataVariables": {
         "type": "object",
-        "description": "Transactional data variables to render. Accepted for transactional previews only."
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Transactional data variables to render. Accepted for transactional previews only.",
+        "example": {
+          "loginUrl": "https://app.company.com/login"
+        }
       },
       "GuardianRuleItemsItem": {
         "required": [
@@ -9258,7 +9231,7 @@
         "properties": {
           "label": {
             "type": "string",
-            "description": "A human-readable label for the item  (for example, link text or a property name)."
+            "description": "A human-readable label for the item (for example, link text or a property name)."
           },
           "codeName": {
             "type": "string",
@@ -9313,7 +9286,8 @@
       "GetV1DedicatedSendingIps200Response": {
         "type": "array",
         "items": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address"
         },
         "description": "Returns an array of IP address strings."
       },
@@ -9403,7 +9377,8 @@
       "GetV1DedicatedSendingIps200ResponseResponseJson": {
         "type": "array",
         "items": {
-          "type": "string"
+          "type": "string",
+          "description": "IP address"
         },
         "description": "Returns an array of IP address strings."
       },
@@ -9509,6 +9484,9 @@
       },
       "EmailMessagePreviewRequestDataVariablesProperty": {
         "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
         "description": "Transactional data variables to render. Accepted for transactional previews only."
       },
       "ContactOptInStatus": {
@@ -9918,6 +9896,14 @@
             }
           ]
         }
+      },
+      "CreateCampaignResponseStatus": {
+        "enum": [
+          "Draft"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The status of the campaign (always \u0060Draft\u0060 for new campaigns)."
       },
       "CampaignResponseStatus": {
         "enum": [
@@ -10685,6 +10671,28 @@
             {
               "value": "missingSocialIconHrefs",
               "name": "MissingSocialIconHrefs"
+            }
+          ]
+        }
+      },
+      "CreateAudienceSegmentRequestFilterMatch": {
+        "enum": [
+          "all",
+          "any"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CreateAudienceSegmentRequestFilterMatch",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "any",
+              "name": "Any"
             }
           ]
         }

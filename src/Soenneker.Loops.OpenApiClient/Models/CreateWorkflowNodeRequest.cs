@@ -39,11 +39,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("insertMode")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeRequest();
-            if("CreateWorkflowNodeBeforeRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("before".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateWorkflowNodeBeforeRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest();
             }
-            else if("CreateWorkflowNodeBetweenRequest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("between".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.CreateWorkflowNodeBetweenRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest();
             }

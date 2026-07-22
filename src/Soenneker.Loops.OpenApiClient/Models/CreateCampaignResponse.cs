@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
@@ -88,14 +88,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling Scheduling { get; set; }
 #endif
-        /// <summary>The status of the campaign.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
-#endif
+        /// <summary>The status of the campaign (always `Draft` for new campaigns).</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus? Status { get; set; }
         /// <summary>ISO 8601 timestamp for when the campaign was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -133,7 +127,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "scheduling", n => { Scheduling = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>(global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus>(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -154,7 +148,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>("scheduling", Scheduling);
-            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

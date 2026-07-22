@@ -16,7 +16,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If `true`, the audience filter will apply to all downstream nodes. If `false`, the audience filter will only apply to the current node. Matches the &quot;Filter scope&quot; option in the UI.</summary>
         public bool? AppliesDownstream { get; set; }
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }

@@ -9,12 +9,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MailingList : IAdditionalDataHolder, IParsable
+    public partial class CreateAudienceSegmentRequest : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The description of the mailing list. `null` if no description is set.</summary>
+        /// <summary>An optional description of the audience segment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Description { get; set; }
@@ -22,17 +20,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>The ID of the mailing list.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter? Filter { get; set; }
 #nullable restore
 #else
-        public string Id { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter Filter { get; set; }
 #endif
-        /// <summary>Whether the mailing list is public (`true`) or private (`false`).</summary>
-        public bool? IsPublic { get; set; }
-        /// <summary>The name of the mailing list.</summary>
+        /// <summary>The name of the audience segment. Must be unique within the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -41,21 +37,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.MailingList"/> and sets the default values.
-        /// </summary>
-        public MailingList()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.MailingList"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.MailingList CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.MailingList();
+            return new global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,8 +55,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "isPublic", n => { IsPublic = n.GetBoolValue(); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter>(global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -79,10 +67,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("id", Id);
-            writer.WriteBoolValue("isPublic", IsPublic);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter>("filter", Filter);
             writer.WriteStringValue("name", Name);
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

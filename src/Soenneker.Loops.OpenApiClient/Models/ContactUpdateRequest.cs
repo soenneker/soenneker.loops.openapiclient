@@ -44,7 +44,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
-        /// <summary>You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)</summary>
+        /// <summary>The contact&apos;s user group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserGroup { get; set; }

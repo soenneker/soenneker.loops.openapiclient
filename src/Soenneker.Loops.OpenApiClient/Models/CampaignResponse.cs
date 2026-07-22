@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string AudienceSegmentId { get; set; }
 #endif
-        /// <summary>The ID of the campaign group this campaign belongs to..</summary>
+        /// <summary>The ID of the campaign group this campaign belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CampaignGroupId { get; set; }

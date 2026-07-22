@@ -25,10 +25,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponsePagination? Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.Pagination? Pagination { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponsePagination Pagination { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.Pagination Pagination { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponse"/> and sets the default values.
@@ -56,7 +56,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowSummary>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowSummary.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponsePagination>(global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponsePagination.CreateFromDiscriminatorValue); } },
+                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Pagination>(global::Soenneker.Loops.OpenApiClient.Models.Pagination.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowSummary>("data", Data);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ListWorkflowsResponsePagination>("pagination", Pagination);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Pagination>("pagination", Pagination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

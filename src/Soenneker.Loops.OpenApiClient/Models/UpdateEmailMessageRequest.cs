@@ -62,7 +62,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ExpectedRevisionId { get; set; }
 #endif
-        /// <summary>The sender username (without `@` or domain). The team&apos;s sending domain is appended automatically.</summary>
+        /// <summary>The email sender email address, without the team&apos;s sending domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FromEmail { get; set; }

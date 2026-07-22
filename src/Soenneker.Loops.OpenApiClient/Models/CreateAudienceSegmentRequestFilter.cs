@@ -11,7 +11,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// A tree of audience conditions combined with `match`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AudienceFilter : IParsable
+    public partial class CreateAudienceSegmentRequestFilter : IParsable
     {
         /// <summary>The conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -22,16 +22,16 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition> Conditions { get; set; }
 #endif
         /// <summary>The match property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch? Match { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilterMatch? Match { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter();
+            return new global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilter();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +42,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "match", n => { Match = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch>(); } },
+                { "match", n => { Match = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilterMatch>(); } },
             };
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition>("conditions", Conditions);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch>("match", Match);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequestFilterMatch>("match", Match);
         }
     }
 }

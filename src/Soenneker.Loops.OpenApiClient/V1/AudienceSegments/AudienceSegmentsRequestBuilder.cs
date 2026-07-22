@@ -70,6 +70,33 @@ namespace Soenneker.Loops.OpenApiClient.V1.AudienceSegments
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListAudienceSegmentsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListAudienceSegmentsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Create a new audience segment.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse">When receiving a 404 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse?> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse> PostAsync(global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Retrieve a paginated list of audience segments, most recently created first.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -86,6 +113,28 @@ namespace Soenneker.Loops.OpenApiClient.V1.AudienceSegments
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Create a new audience segment.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.CreateAudienceSegmentRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

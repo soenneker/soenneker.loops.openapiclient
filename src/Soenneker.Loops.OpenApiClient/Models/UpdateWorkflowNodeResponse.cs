@@ -87,35 +87,35 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse();
-            if("AddToListTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AddToListTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AddToListTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision();
             }
-            else if("AudienceFilterWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AudienceFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.AudienceFilterWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision();
             }
-            else if("ContactPropertyTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ContactPropertyTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ContactPropertyTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision();
             }
-            else if("EventTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EventTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.EventTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision();
             }
-            else if("ExperimentBranchWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ExperimentBranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.ExperimentBranchWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision();
             }
-            else if("SignupTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SignupTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.SignupTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision();
             }
-            else if("TimerActionWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TimerAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TimerActionWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision();
             }
-            else if("VariantWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("VariantNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.VariantWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision();
             }

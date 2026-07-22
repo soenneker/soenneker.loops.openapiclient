@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft
         {
         }
         /// <summary>
-        /// Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft&apos;s content.
+        /// Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `POST /v1/email-messages/{emailMessageId}` to edit the draft&apos;s content.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft&apos;s content.
+        /// Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `POST /v1/email-messages/{emailMessageId}` to edit the draft&apos;s content.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

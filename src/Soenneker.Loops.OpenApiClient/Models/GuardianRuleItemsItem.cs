@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string CodeName { get; set; }
 #endif
-        /// <summary>A human-readable label for the item  (for example, link text or a property name).</summary>
+        /// <summary>A human-readable label for the item (for example, link text or a property name).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get; set; }

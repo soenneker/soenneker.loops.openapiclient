@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>ISO 8601 timestamp.</summary>
+        /// <summary>ISO 8601 timestamp for when the audience segment was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CreatedAt { get; set; }
@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Description { get; set; }
 #endif
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? Filter { get; set; }
@@ -54,7 +54,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>ISO 8601 timestamp.</summary>
+        /// <summary>ISO 8601 timestamp for when the audience segment was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UpdatedAt { get; set; }

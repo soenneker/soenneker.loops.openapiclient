@@ -18,7 +18,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public double? Amount { get; set; }
         /// <summary>If `true`, the audience filter will apply to all downstream nodes. If `false`, the audience filter will only apply to the current node. Matches the &quot;Filter scope&quot; option in the UI.</summary>
         public bool? AppliesDownstream { get; set; }
-        /// <summary>A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.</summary>
+        /// <summary>A tree of audience conditions combined with `match`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
@@ -76,7 +76,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>Whether this is the control variant of an experiment.</summary>
         public bool? IsControl { get; set; }
-        /// <summary>The mailingListId property</summary>
+        /// <summary>The ID of the mailing list that triggers the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MailingListId { get; set; }

@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.20.0"
+    "version": "1.21.1"
   },
   "servers": [
     {
@@ -214,10 +214,10 @@
       "put": {
         "tags": ["Contacts"],
         "summary": "Update a contact",
-        "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.\n\nIf you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the `userId` field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either `email` or `userId` to identify the contact you want to update. If both are provided, the system will look for a contact with either a   matching `email` or `userId` value. If a contact is found for one of the values (e.g. `email`), the other value (e.g. `userId`) will be updated. If a contact is not found, a new contact will be created using both `email` and `userId` values.",
+        "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.\n\nIf you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the `userId` field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either `email` or `userId` to identify the contact you want to update. If both are provided, the system will look for a contact with either a matching `email` or `userId` value. If a contact is found for one of the values (e.g. `email`), the other value (e.g. `userId`) will be updated. If a contact is not found, a new contact will be created using both `email` and `userId` values.",
         "x-mint": {
           "href": "/api-reference/update-contact",
-          "content": "Update a contact by `email` or `userId`. You must provide one of these parameters.\n\nIf you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the `userId` field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\n<Note>Provide either `email` or `userId` to identify the contact you want to update. If both are provided, the system will look for a contact with either a   matching `email` or `userId` value. If a contact is found for one of the values (e.g. `email`), the other value (e.g. `userId`) will be updated. If a contact is not found, a new contact will be created using both `email` and `userId` values.</Note>",
+          "content": "Update a contact by `email` or `userId`. You must provide one of these parameters.\n\nIf you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the `userId` field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\n<Note>Provide either `email` or `userId` to identify the contact you want to update. If both are provided, the system will look for a contact with either a matching `email` or `userId` value. If a contact is found for one of the values (e.g. `email`), the other value (e.g. `userId`) will be updated. If a contact is not found, a new contact will be created using both `email` and `userId` values.</Note>",
           "metadata": {
             "sidebarTitle": "Update a contact",
             "description": "Update or create a contact."
@@ -666,10 +666,11 @@
                   "description": "Returns an array of IP address strings.",
                   "items": {
                     "type": "string",
-                    "examples": ["1.2.3.4"]
-                  }
-                },
-                "example": ["1.2.3.4", "5,6,7,8"]
+                    "description": "IP address",
+                    "examples": ["52.21.45.123"]
+                  },
+                  "example": ["52.21.45.123", "52.21.45.124", "52.21.45.125"]
+                }
               }
             }
           },
@@ -1001,7 +1002,11 @@
             "description": "Wrong HTTP request method."
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       },
       "post": {
         "tags": ["Transactional emails"],
@@ -1053,7 +1058,11 @@
             "description": "Wrong HTTP request method."
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       }
     },
     "/v1/transactional-emails/{transactionalId}": {
@@ -1063,7 +1072,10 @@
           "in": "path",
           "required": true,
           "description": "The ID of the transactional email.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
+          }
         }
       ],
       "get": {
@@ -1114,7 +1126,11 @@
             "description": "Wrong HTTP request method."
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       },
       "post": {
         "tags": ["Transactional emails"],
@@ -1171,7 +1187,11 @@
             "description": "Wrong HTTP request method."
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       }
     },
     "/v1/transactional-emails/{transactionalId}/draft": {
@@ -1181,13 +1201,16 @@
           "in": "path",
           "required": true,
           "description": "The ID of the transactional email.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
+          }
         }
       ],
       "post": {
         "tags": ["Transactional emails"],
         "summary": "Ensure a draft email message",
-        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `/v1/email-messages/{emailMessageId}` to edit the draft's content.",
+        "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `POST /v1/email-messages/{emailMessageId}` to edit the draft's content.",
         "x-mint": {
           "href": "/api-reference/ensure-transactional-draft",
           "content": "If a draft email message already exists, it is returned unchanged. Otherwise a new empty draft is created (seeded from the most recent published version when present).\n\nUse the returned `draftEmailMessageId` and `draftEmailMessageContentRevisionId` when calling [Update an email message](/api-reference/update-email-message) to edit the draft's content.",
@@ -1235,7 +1258,11 @@
             "description": "Wrong HTTP request method."
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       }
     },
     "/v1/transactional-emails/{transactionalId}/publish": {
@@ -1245,7 +1272,10 @@
           "in": "path",
           "required": true,
           "description": "The ID of the transactional email.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
+          }
         }
       ],
       "post": {
@@ -1318,7 +1348,11 @@
             }
           }
         },
-        "security": [{ "apiKey": [] }]
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
       }
     },
     "/v1/themes/{themeId}": {
@@ -1329,7 +1363,8 @@
           "required": true,
           "description": "The ID of the theme.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clt3u5v7w9x1y3z5a7b9c1d3"]
           }
         }
       ],
@@ -1572,7 +1607,8 @@
           "required": true,
           "description": "The ID of the component.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clp2o4i6u8y0t5r3e1w7q9s1"]
           }
         }
       ],
@@ -1682,6 +1718,9 @@
               }
             }
           },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
           "413": {
             "description": "LMX body exceeds the size limit.",
             "content": {
@@ -1701,9 +1740,6 @@
                 }
               }
             }
-          },
-          "405": {
-            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1816,6 +1852,9 @@
           "401": {
             "description": "Invalid API key or content API not enabled for this team."
           },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
           "413": {
             "description": "LMX body exceeds the size limit.",
             "content": {
@@ -1835,9 +1874,6 @@
                 }
               }
             }
-          },
-          "405": {
-            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1855,7 +1891,8 @@
           "required": true,
           "description": "The ID of the audience segment.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           }
         }
       ],
@@ -1968,6 +2005,70 @@
           },
           "401": {
             "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Audience segments"],
+        "summary": "Create an audience segment",
+        "description": "Create a new audience segment.",
+        "x-mint": {
+          "href": "/api-reference/create-audience-segment",
+          "metadata": {
+            "sidebarTitle": "Create a segment"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAudienceSegmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Audience segment created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, a name already used by another segment, or a filter with too many conditions.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "The filter references a campaign, workflow or workflow email that does not exist.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AudienceSegmentFailureResponse"
+                }
+              }
+            }
           },
           "405": {
             "description": "Wrong HTTP request method."
@@ -2116,7 +2217,8 @@
           "required": true,
           "description": "The ID of the campaign.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clc4m6n8p0q2r4s6t8u0v2x4"]
           }
         }
       ],
@@ -2226,6 +2328,9 @@
               }
             }
           },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
           "409": {
             "description": "Campaign is not in draft status.",
             "content": {
@@ -2235,9 +2340,6 @@
                 }
               }
             }
-          },
-          "405": {
-            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2255,7 +2357,8 @@
           "required": true,
           "description": "The ID of the email message.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           }
         }
       ],
@@ -2379,6 +2482,9 @@
               }
             }
           },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
           "409": {
             "description": "Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
             "content": {
@@ -2408,9 +2514,6 @@
                 }
               }
             }
-          },
-          "405": {
-            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2428,7 +2531,8 @@
           "required": true,
           "description": "The ID of the email message.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           }
         }
       ],
@@ -2517,7 +2621,8 @@
           "required": true,
           "description": "The ID of the email message.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           }
         }
       ],
@@ -2713,7 +2818,10 @@
           "in": "path",
           "required": true,
           "description": "The ID of the workflow.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
+          }
         }
       ],
       "get": {
@@ -2769,10 +2877,13 @@
         "tags": ["Workflows"],
         "summary": "Update a workflow",
         "operationId": "updateWorkflowProperties",
-        "description": "Update a workflow's display properties. At least one property must be provided. To change the workflow's mailing list, use the `/v1/workflows/{workflowId}/mailing-list` endpoint instead.",
+        "description": "Update a workflow's display properties. At least one property must be provided. To change the workflow's mailing list, use the `POST /v1/workflows/{workflowId}/mailing-list` endpoint instead.",
         "x-mint": {
           "href": "/api-reference/update-workflow",
-          "content": "<Info>To change a workflow's mailing list, use the [Change workflow mailing list](/api-reference/change-workflow-mailing-list) endpoint instead. This is because changing mailing lists may remove queued contacts from the workflow.</Info>"
+          "content": "<Info>To change a workflow's mailing list, use the [Change workflow mailing list](/api-reference/change-workflow-mailing-list) endpoint instead. This is because changing mailing lists may remove queued contacts from the workflow.</Info>",
+          "metadata": {
+            "description": "Update a workflow's display properties."
+          }
         },
         "requestBody": {
           "required": true,
@@ -2933,10 +3044,10 @@
         "tags": ["Workflow nodes"],
         "summary": "Create a workflow node",
         "operationId": "createWorkflowNode",
-        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with `insertMode`: `between` places it between an existing `fromNodeId` -> `toNodeId` connection, and `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `/v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
+        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with `insertMode`: `between` places it between an existing `fromNodeId` -> `toNodeId` connection, and `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
         "x-mint": {
           "href": "/api-reference/create-workflow-node",
-          "content": "Choose where the node goes with `insertMode`:\n- `between` places it between an existing `fromNodeId` -> `toNodeId` connection\n- `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`.\n\nPublic workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `/v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
+          "content": "Choose where the node goes with `insertMode`:\n- `between` places it between an existing `fromNodeId` -> `toNodeId` connection\n- `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`.\n\nPublic workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
           "metadata": {
             "sidebarTitle": "Create a node",
             "description": "Create a new default workflow node and return it with the latest workflow"
@@ -3101,14 +3212,20 @@
           "in": "path",
           "required": true,
           "description": "The ID of the workflow.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
+          }
         },
         {
           "name": "nodeId",
           "in": "path",
           "required": true,
           "description": "The ID of the workflow node.",
-          "schema": { "type": "string" }
+          "schema": {
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
+          }
         }
       ],
       "get": {
@@ -3722,7 +3839,8 @@
           "required": true,
           "description": "The ID of the campaign group.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         }
       ],
@@ -3975,7 +4093,8 @@
           "required": true,
           "description": "The ID of the transactional group.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         }
       ],
@@ -4175,7 +4294,8 @@
           "required": true,
           "description": "The `emailAssetId` returned when the upload was created via `POST /v1/uploads`.",
           "schema": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cla3s5s7e9t1i3d5f7g9h1j3"]
           }
         }
       ],
@@ -4252,35 +4372,43 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The contact's Loops ID."
+            "description": "The contact's Loops ID.",
+            "examples": ["clh3k9m2p4q6r8s0t2v4x6z8"]
           },
           "email": {
             "type": "string",
-            "description": "The contact's email address."
+            "description": "The contact's email address.",
+            "examples": ["alex@company.com"]
           },
           "firstName": {
             "type": ["string", "null"],
-            "description": "The contact's first name."
+            "description": "The contact's first name.",
+            "examples": ["Alex"]
           },
           "lastName": {
             "type": ["string", "null"],
-            "description": "The contact's last name."
+            "description": "The contact's last name.",
+            "examples": ["Rivera"]
           },
           "source": {
             "type": "string",
-            "description": "The source the contact was created from."
+            "description": "The source the contact was created from.",
+            "examples": ["API"]
           },
           "subscribed": {
             "type": "boolean",
-            "description": "Whether the contact will receive campaign and workflow emails."
+            "description": "Whether the contact will receive campaign and workflow emails.",
+            "examples": [true]
           },
           "userGroup": {
             "type": "string",
-            "description": "The contact's user group."
+            "description": "The contact's user group.",
+            "examples": ["customers"]
           },
           "userId": {
             "type": ["string", "null"],
-            "description": "The contact's unique user ID."
+            "description": "The contact's unique user ID.",
+            "examples": ["usr_7f8e9d0c1b2a"]
           },
           "mailingLists": {
             "type": "object",
@@ -4294,28 +4422,49 @@
           "optInStatus": {
             "type": ["string", "null"],
             "description": "Double opt-in status. This will be `null` for contacts unless they are created via a form while double opt-in is enabled.",
-            "enum": ["accepted", "pending", "rejected", null]
+            "enum": ["accepted", "pending", "rejected", null],
+            "examples": ["accepted"]
           }
-        }
+        },
+        "examples": [
+          {
+            "id": "clh3k9m2p4q6r8s0t2v4x6z8",
+            "email": "alex@company.com",
+            "firstName": "Alex",
+            "lastName": "Rivera",
+            "source": "API",
+            "subscribed": true,
+            "userGroup": "customers",
+            "userId": "usr_7f8e9d0c1b2a",
+            "mailingLists": {
+              "clm2k8j4h6g0f8d6s4a2b0z8": true
+            },
+            "optInStatus": "accepted"
+          }
+        ]
       },
       "ContactFields": {
         "type": "object",
         "properties": {
           "email": {
             "type": "string",
+            "examples": ["alex@company.com"],
             "description": "The contact's email address."
           },
           "firstName": {
             "type": "string",
-            "description": "The contact's first name."
+            "description": "The contact's first name.",
+            "examples": ["Alex"]
           },
           "lastName": {
             "type": "string",
-            "description": "The contact's last name."
+            "description": "The contact's last name.",
+            "examples": ["Rivera"]
           },
           "source": {
             "type": "string",
-            "description": "A custom source value to replace the default “API”."
+            "description": "A custom source value to replace the default “API”.",
+            "examples": ["API"]
           },
           "subscribed": {
             "type": "boolean",
@@ -4323,11 +4472,13 @@
           },
           "userGroup": {
             "type": "string",
-            "description": "You can use groups to segment users when sending emails. Currently, a contact can only be in one user group. [Read more](/contacts/properties#user-group)"
+            "description": "The contact's user group.",
+            "examples": ["customers"]
           },
           "userId": {
             "type": "string",
-            "description": "A unique user ID (for example, from an external application)."
+            "description": "A unique user ID (for example, from an external application).",
+            "examples": ["usr_7f8e9d0c1b2a"]
           },
           "mailingLists": {
             "$ref": "#/components/schemas/MailingListSubscriptions"
@@ -4339,7 +4490,21 @@
             { "type": "number" },
             { "type": "boolean" }
           ]
-        }
+        },
+        "examples": [
+          {
+            "email": "alex@company.com",
+            "firstName": "Alex",
+            "lastName": "Rivera",
+            "subscribed": true,
+            "userGroup": "customers",
+            "userId": "usr_7f8e9d0c1b2a",
+            "mailingLists": {
+              "clm2k8j4h6g0f8d6s4a2b0z8": true
+            },
+            "favoriteColor": "blue"
+          }
+        ]
       },
       "ContactRequest": {
         "allOf": [
@@ -4381,7 +4546,21 @@
               "type": "boolean"
             }
           ]
-        }
+        },
+        "examples": [
+          {
+            "email": "alex@company.com",
+            "firstName": "Alex",
+            "lastName": "Rivera",
+            "subscribed": true,
+            "userGroup": "customers",
+            "userId": "usr_7f8e9d0c1b2a",
+            "mailingLists": {
+              "clm2k8j4h6g0f8d6s4a2b0z8": true
+            },
+            "favoriteColor": "blue"
+          }
+        ]
       },
       "ContactSuccessResponse": {
         "type": "object",
@@ -4391,10 +4570,17 @@
             "examples": [true]
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clh3k9m2p4q6r8s0t2v4x6z8"]
           }
         },
-        "required": ["success", "id"]
+        "required": ["success", "id"],
+        "examples": [
+          {
+            "success": true,
+            "id": "clh3k9m2p4q6r8s0t2v4x6z8"
+          }
+        ]
       },
       "ContactFailureResponse": {
         "type": "object",
@@ -4404,22 +4590,37 @@
             "examples": [false]
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Invalid email address."]
           }
         },
-        "required": ["success", "message"]
+        "required": ["success", "message"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Invalid email address."
+          }
+        ]
       },
       "ContactDeleteRequest": {
         "type": "object",
         "properties": {
           "email": {
-            "type": "string"
+            "type": "string",
+            "examples": ["alex@company.com"]
           },
           "userId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["usr_7f8e9d0c1b2a"]
           }
         },
-        "required": ["email", "userId"]
+        "required": ["email", "userId"],
+        "examples": [
+          {
+            "email": "alex@company.com",
+            "userId": "usr_7f8e9d0c1b2a"
+          }
+        ]
       },
       "ContactDeleteResponse": {
         "type": "object",
@@ -4465,7 +4666,21 @@
             "description": "The removal quota for the contact."
           }
         },
-        "required": ["contact", "isSuppressed", "removalQuota"]
+        "required": ["contact", "isSuppressed", "removalQuota"],
+        "examples": [
+          {
+            "contact": {
+              "id": "clh3k9m2p4q6r8s0t2v4x6z8",
+              "email": "alex@company.com",
+              "userId": "usr_7f8e9d0c1b2a"
+            },
+            "isSuppressed": false,
+            "removalQuota": {
+              "limit": 5,
+              "remaining": 5
+            }
+          }
+        ]
       },
       "ContactSuppressionRemoveResponse": {
         "type": "object",
@@ -4508,14 +4723,22 @@
         "properties": {
           "name": {
             "type": "string",
+            "examples": ["favoriteColor"],
             "description": "The name of the property. This should be in camelCase, like `planName` or `importDate`."
           },
           "type": {
             "type": "string",
+            "examples": ["string"],
             "description": "The type of property.",
             "enum": ["string", "number", "boolean", "date"]
           }
-        }
+        },
+        "examples": [
+          {
+            "name": "favoriteColor",
+            "type": "string"
+          }
+        ]
       },
       "ContactPropertySuccessResponse": {
         "type": "object",
@@ -4535,10 +4758,17 @@
             "examples": [false]
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Property already exists."]
           }
         },
-        "required": ["success", "message"]
+        "required": ["success", "message"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Property already exists."
+          }
+        ]
       },
       "EventRequest": {
         "type": "object",
@@ -4547,15 +4777,18 @@
         "properties": {
           "email": {
             "type": "string",
-            "description": "The contact's email address. **Required if `userId` is not provided.**"
+            "description": "The contact's email address. **Required if `userId` is not provided.**",
+            "examples": ["alex@company.com"]
           },
           "userId": {
             "type": "string",
-            "description": "The contact's unique user ID. **Required if `email` is not provided.**"
+            "description": "The contact's unique user ID. **Required if `email` is not provided.**",
+            "examples": ["usr_7f8e9d0c1b2a"]
           },
           "eventName": {
             "type": "string",
-            "description": "The name of the event."
+            "description": "The name of the event.",
+            "examples": ["signup"]
           },
           "eventProperties": {
             "type": "object",
@@ -4583,7 +4816,20 @@
               "type": "boolean"
             }
           ]
-        }
+        },
+        "examples": [
+          {
+            "email": "alex@company.com",
+            "userId": "usr_7f8e9d0c1b2a",
+            "eventName": "signup",
+            "eventProperties": {
+              "plan": "pro"
+            },
+            "mailingLists": {
+              "clm2k8j4h6g0f8d6s4a2b0z8": true
+            }
+          }
+        ]
       },
       "EventSuccessResponse": {
         "type": "object",
@@ -4603,10 +4849,17 @@
             "examples": [false]
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Contact not found."]
           }
         },
-        "required": ["success", "message"]
+        "required": ["success", "message"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Contact not found."
+          }
+        ]
       },
       "TransactionalRequest": {
         "type": "object",
@@ -4614,15 +4867,18 @@
         "properties": {
           "email": {
             "type": "string",
+            "examples": ["alex@company.com"],
             "description": "The recipient's email address."
           },
           "transactionalId": {
             "type": "string",
-            "description": "The ID of the transactional email to send."
+            "description": "The ID of the transactional email to send.",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
           },
           "addToAudience": {
             "type": "boolean",
-            "description": "If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist)."
+            "description": "If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn't already exist).",
+            "examples": [true]
           },
           "dataVariables": {
             "type": "object",
@@ -4656,7 +4912,18 @@
               }
             }
           }
-        }
+        },
+        "examples": [
+          {
+            "email": "alex@company.com",
+            "transactionalId": "cll42l54f20i1la0lfooe3z12",
+            "addToAudience": true,
+            "dataVariables": {
+              "name": "Alex",
+              "passwordResetLink": "https://app.company.com/reset/abc123"
+            }
+          }
+        ]
       },
       "TransactionalSuccessResponse": {
         "type": "object",
@@ -4672,10 +4939,16 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Transactional email not found."]
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Transactional email not found."
+          }
+        ]
       },
       "TransactionalSendFailureResponse": {
         "type": "object",
@@ -4685,10 +4958,17 @@
             "examples": [false]
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Missing required data variable(s): confirmationUrl"]
           }
         },
-        "required": ["success", "message"]
+        "required": ["success", "message"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Missing required data variable(s): confirmationUrl"
+          }
+        ]
       },
       "TransactionalFailure2Response": {
         "type": "object",
@@ -4776,10 +5056,22 @@
             }
           },
           "transactionalId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
           }
         },
-        "required": ["success", "message", "error", "transactionalId"]
+        "required": ["success", "message", "error", "transactionalId"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Missing required data variable(s): confirmationUrl",
+            "error": {
+              "path": "dataVariables",
+              "message": "Missing required data variable(s): confirmationUrl"
+            },
+            "transactionalId": "cll42l54f20i1la0lfooe3z12"
+          }
+        ]
       },
       "IdempotencyKeyFailureResponse": {
         "type": "object",
@@ -4792,7 +5084,13 @@
             "type": "string"
           }
         },
-        "required": ["success", "message"]
+        "required": ["success", "message"],
+        "examples": [
+          {
+            "success": false,
+            "message": "Idempotency key already used with a different request body."
+          }
+        ]
       },
       "TransactionalEmail": {
         "type": "object",
@@ -4828,27 +5126,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": {
-                "type": "number"
-              },
-              "returnedResults": {
-                "type": "number"
-              },
-              "perPage": {
-                "type": "number"
-              },
-              "totalPages": {
-                "type": "number"
-              },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4856,45 +5134,74 @@
               "$ref": "#/components/schemas/TransactionalEmail"
             }
           }
-        }
+        },
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "cll42l54f20i1la0lfooe3z12",
+                "name": "Sign up confirmation",
+                "lastUpdated": "2025-06-29T07:47:39.370Z",
+                "dataVariables": ["confirmationUrl"]
+              }
+            ]
+          }
+        ]
       },
       "TransactionalResource": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the transactional email."
+            "description": "The ID of the transactional email.",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the transactional email."
+            "description": "The name of the transactional email.",
+            "examples": ["Sign up confirmation"]
           },
           "draftEmailMessageId": {
             "type": ["string", "null"],
-            "description": "The ID of the draft email message. `null` if there is no draft version."
+            "description": "The ID of the draft email message. `null` if there is no draft version.",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           },
           "publishedEmailMessageId": {
             "type": ["string", "null"],
-            "description": "The ID of the published email message. `null` if there is no published version."
+            "description": "The ID of the published email message. `null` if there is no published version.",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           },
           "transactionalGroupId": {
             "type": ["string", "null"],
-            "description": "The ID of the group this transactional email belongs to."
+            "description": "The ID of the group this transactional email belongs to.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
-            "description": "ISO 8601 timestamp for when the transactional email was created."
+            "description": "ISO 8601 timestamp for when the transactional email was created.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
-            "description": "ISO 8601 timestamp for when the transactional email was last updated."
+            "description": "ISO 8601 timestamp for when the transactional email was last updated.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "dataVariables": {
             "type": "array",
             "description": "Data variable names used by the published email. Empty for unpublished transactional emails.",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -4906,6 +5213,18 @@
           "createdAt",
           "updatedAt",
           "dataVariables"
+        ],
+        "examples": [
+          {
+            "id": "cll42l54f20i1la0lfooe3z12",
+            "name": "Sign up confirmation",
+            "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "transactionalGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "dataVariables": ["confirmationUrl"]
+          }
         ]
       },
       "TransactionalDraftResponse": {
@@ -4925,7 +5244,8 @@
           },
           "draftEmailMessageContentRevisionId": {
             "type": ["string", "null"],
-            "description": "The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `POST /v1/email-messages/{emailMessageId}`."
+            "description": "The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `POST /v1/email-messages/{emailMessageId}`.",
+            "examples": ["clrev1s10n2i3d4e5f6g7h8"]
           },
           "publishedEmailMessageId": {
             "type": ["string", "null"],
@@ -4948,7 +5268,9 @@
           "dataVariables": {
             "type": "array",
             "description": "Data variable names used by the published email. Empty for unpublished transactional emails.",
-            "items": { "type": "string" }
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -4960,21 +5282,26 @@
           "createdAt",
           "updatedAt",
           "dataVariables"
+        ],
+        "examples": [
+          {
+            "id": "cll42l54f20i1la0lfooe3z12",
+            "name": "Sign up confirmation",
+            "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "transactionalGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "dataVariables": ["confirmationUrl"],
+            "draftEmailMessageContentRevisionId": "clrev1s10n2i3d4e5f6g7h8"
+          }
         ]
       },
       "ListTransactionalsResourceResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": { "type": "number" },
-              "returnedResults": { "type": "number" },
-              "perPage": { "type": "number" },
-              "totalPages": { "type": "number" },
-              "nextCursor": { "type": ["string", "null"] },
-              "nextPage": { "type": ["string", "null"] }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -4983,7 +5310,31 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "cll42l54f20i1la0lfooe3z12",
+                "name": "Sign up confirmation",
+                "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+                "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+                "transactionalGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z",
+                "dataVariables": ["confirmationUrl"]
+              }
+            ]
+          }
+        ]
       },
       "CreateTransactionalRequest": {
         "type": "object",
@@ -4995,7 +5346,8 @@
           },
           "transactionalGroupId": {
             "type": "string",
-            "description": "The ID of the group to add this transactional email to. Defaults to the team's default group when omitted."
+            "description": "The ID of the group to add this transactional email to. Defaults to the team's default group when omitted.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         },
         "required": ["name"],
@@ -5006,10 +5358,14 @@
         "minProperties": 1,
         "description": "At least one field must be provided.",
         "properties": {
-          "name": { "type": "string" },
+          "name": {
+            "type": "string",
+            "examples": ["Password reset email"]
+          },
           "transactionalGroupId": {
             "type": "string",
-            "description": "The ID of the group to move this transactional email to."
+            "description": "The ID of the group to move this transactional email to.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         },
         "additionalProperties": false
@@ -5045,26 +5401,36 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the mailing list."
+            "description": "The ID of the mailing list.",
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the mailing list."
+            "description": "The name of the mailing list.",
+            "examples": ["Product updates"]
           },
           "description": {
             "type": ["string", "null"],
-            "description": "The description of the mailing list."
+            "description": "The description of the mailing list. `null` if no description is set.",
+            "examples": ["Monthly product news and release notes"]
           },
           "isPublic": {
             "type": "boolean",
-            "description": "Whether the mailing list is public (`true`) or private (`false`)."
+            "description": "Whether the mailing list is public (`true`) or private (`false`).",
+            "examples": [true]
           }
         },
         "examples": [
           {
-            "id": "list_123",
-            "name": "Main mailing list",
-            "description": "Mailing list description",
+            "id": "clm2k8j4h6g0f8d6s4a2b0z8",
+            "name": "Product updates",
+            "description": "Monthly product news and release notes",
+            "isPublic": true
+          },
+          {
+            "id": "clm2k8j4h6g0f8d6s4a2b0z8",
+            "name": "Product updates",
+            "description": null,
             "isPublic": true
           }
         ],
@@ -5085,26 +5451,31 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the theme."
+            "description": "The ID of the theme.",
+            "examples": ["clt3u5v7w9x1y3z5a7b9c1d3"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the theme."
+            "description": "The name of the theme.",
+            "examples": ["Default"]
           },
           "styles": {
             "$ref": "#/components/schemas/ThemeStyles"
           },
           "isDefault": {
             "type": "boolean",
-            "description": "Whether this theme is the team's default."
+            "description": "Whether this theme is the team's default.",
+            "examples": [true]
           },
           "createdAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp for when the theme was created."
+            "description": "ISO 8601 timestamp for when the theme was created.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "updatedAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp for when the theme was last updated."
+            "description": "ISO 8601 timestamp for when the theme was last updated.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           }
         },
         "required": [
@@ -5114,78 +5485,186 @@
           "isDefault",
           "createdAt",
           "updatedAt"
+        ],
+        "examples": [
+          {
+            "id": "clt3u5v7w9x1y3z5a7b9c1d3",
+            "name": "Default",
+            "styles": {
+              "backgroundColor": "#f5f5f5",
+              "backgroundXPadding": 24,
+              "backgroundYPadding": 24,
+              "bodyColor": "#ffffff",
+              "bodyXPadding": 24,
+              "bodyYPadding": 24,
+              "bodyFontFamily": "Helvetica",
+              "bodyFontCategory": "sans-serif",
+              "borderColor": "#e5e5e5",
+              "borderWidth": 1,
+              "borderRadius": 8,
+              "buttonBodyColor": "#111827",
+              "buttonBodyXPadding": 16,
+              "buttonBodyYPadding": 12,
+              "buttonBorderColor": "#111827",
+              "buttonBorderWidth": 0,
+              "buttonBorderRadius": 6,
+              "buttonTextColor": "#ffffff",
+              "buttonTextFormat": 0,
+              "buttonTextFontSize": 16,
+              "dividerColor": "#e5e5e5",
+              "dividerBorderWidth": 1,
+              "textBaseColor": "#374151",
+              "textBaseFontSize": 16,
+              "textBaseLineHeight": 24,
+              "textBaseLetterSpacing": 0,
+              "textLinkColor": "#2563eb",
+              "heading1Color": "#111827",
+              "heading1FontSize": 28,
+              "heading1LineHeight": 36,
+              "heading1LetterSpacing": -0.5,
+              "heading2Color": "#111827",
+              "heading2FontSize": 22,
+              "heading2LineHeight": 30,
+              "heading2LetterSpacing": -0.25,
+              "heading3Color": "#111827",
+              "heading3FontSize": 18,
+              "heading3LineHeight": 26,
+              "heading3LetterSpacing": 0
+            },
+            "isDefault": true,
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z"
+          }
         ]
       },
       "ThemeStyles": {
         "type": "object",
         "description": "Flat map of style attributes, matching the attribute names accepted by the LMX `<Style />` tag.",
         "properties": {
-          "backgroundColor": { "type": "string" },
-          "backgroundXPadding": { "type": "number" },
-          "backgroundYPadding": { "type": "number" },
-          "bodyColor": { "type": "string" },
-          "bodyXPadding": { "type": "number" },
-          "bodyYPadding": { "type": "number" },
-          "bodyFontFamily": { "type": "string" },
-          "bodyFontCategory": { "type": "string" },
-          "borderColor": { "type": "string" },
-          "borderWidth": { "type": "number" },
-          "borderRadius": { "type": "number" },
-          "buttonBodyColor": { "type": "string" },
-          "buttonBodyXPadding": { "type": "number" },
-          "buttonBodyYPadding": { "type": "number" },
-          "buttonBorderColor": { "type": "string" },
-          "buttonBorderWidth": { "type": "number" },
-          "buttonBorderRadius": { "type": "number" },
-          "buttonTextColor": { "type": "string" },
-          "buttonTextFormat": { "type": "number" },
-          "buttonTextFontSize": { "type": "number" },
-          "dividerColor": { "type": "string" },
-          "dividerBorderWidth": { "type": "number" },
-          "textBaseColor": { "type": "string" },
-          "textBaseFontSize": { "type": "number" },
-          "textBaseLineHeight": { "type": "number" },
-          "textBaseLetterSpacing": { "type": "number" },
-          "textLinkColor": { "type": "string" },
-          "heading1Color": { "type": "string" },
-          "heading1FontSize": { "type": "number" },
-          "heading1LineHeight": { "type": "number" },
-          "heading1LetterSpacing": { "type": "number" },
-          "heading2Color": { "type": "string" },
-          "heading2FontSize": { "type": "number" },
-          "heading2LineHeight": { "type": "number" },
-          "heading2LetterSpacing": { "type": "number" },
-          "heading3Color": { "type": "string" },
-          "heading3FontSize": { "type": "number" },
-          "heading3LineHeight": { "type": "number" },
-          "heading3LetterSpacing": { "type": "number" }
+          "backgroundColor": {
+            "type": "string"
+          },
+          "backgroundXPadding": {
+            "type": "number"
+          },
+          "backgroundYPadding": {
+            "type": "number"
+          },
+          "bodyColor": {
+            "type": "string"
+          },
+          "bodyXPadding": {
+            "type": "number"
+          },
+          "bodyYPadding": {
+            "type": "number"
+          },
+          "bodyFontFamily": {
+            "type": "string"
+          },
+          "bodyFontCategory": {
+            "type": "string"
+          },
+          "borderColor": {
+            "type": "string"
+          },
+          "borderWidth": {
+            "type": "number"
+          },
+          "borderRadius": {
+            "type": "number"
+          },
+          "buttonBodyColor": {
+            "type": "string"
+          },
+          "buttonBodyXPadding": {
+            "type": "number"
+          },
+          "buttonBodyYPadding": {
+            "type": "number"
+          },
+          "buttonBorderColor": {
+            "type": "string"
+          },
+          "buttonBorderWidth": {
+            "type": "number"
+          },
+          "buttonBorderRadius": {
+            "type": "number"
+          },
+          "buttonTextColor": {
+            "type": "string"
+          },
+          "buttonTextFormat": {
+            "type": "number"
+          },
+          "buttonTextFontSize": {
+            "type": "number"
+          },
+          "dividerColor": {
+            "type": "string"
+          },
+          "dividerBorderWidth": {
+            "type": "number"
+          },
+          "textBaseColor": {
+            "type": "string"
+          },
+          "textBaseFontSize": {
+            "type": "number"
+          },
+          "textBaseLineHeight": {
+            "type": "number"
+          },
+          "textBaseLetterSpacing": {
+            "type": "number"
+          },
+          "textLinkColor": {
+            "type": "string"
+          },
+          "heading1Color": {
+            "type": "string"
+          },
+          "heading1FontSize": {
+            "type": "number"
+          },
+          "heading1LineHeight": {
+            "type": "number"
+          },
+          "heading1LetterSpacing": {
+            "type": "number"
+          },
+          "heading2Color": {
+            "type": "string"
+          },
+          "heading2FontSize": {
+            "type": "number"
+          },
+          "heading2LineHeight": {
+            "type": "number"
+          },
+          "heading2LetterSpacing": {
+            "type": "number"
+          },
+          "heading3Color": {
+            "type": "string"
+          },
+          "heading3FontSize": {
+            "type": "number"
+          },
+          "heading3LineHeight": {
+            "type": "number"
+          },
+          "heading3LetterSpacing": {
+            "type": "number"
+          }
         }
       },
       "ListThemesResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": {
-                "type": "number"
-              },
-              "returnedResults": {
-                "type": "number"
-              },
-              "perPage": {
-                "type": "number"
-              },
-              "totalPages": {
-                "type": "number"
-              },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5194,17 +5673,81 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "clt3u5v7w9x1y3z5a7b9c1d3",
+                "name": "Default",
+                "styles": {
+                  "backgroundColor": "#f5f5f5",
+                  "backgroundXPadding": 24,
+                  "backgroundYPadding": 24,
+                  "bodyColor": "#ffffff",
+                  "bodyXPadding": 24,
+                  "bodyYPadding": 24,
+                  "bodyFontFamily": "Helvetica",
+                  "bodyFontCategory": "sans-serif",
+                  "borderColor": "#e5e5e5",
+                  "borderWidth": 1,
+                  "borderRadius": 8,
+                  "buttonBodyColor": "#111827",
+                  "buttonBodyXPadding": 16,
+                  "buttonBodyYPadding": 12,
+                  "buttonBorderColor": "#111827",
+                  "buttonBorderWidth": 0,
+                  "buttonBorderRadius": 6,
+                  "buttonTextColor": "#ffffff",
+                  "buttonTextFormat": 0,
+                  "buttonTextFontSize": 16,
+                  "dividerColor": "#e5e5e5",
+                  "dividerBorderWidth": 1,
+                  "textBaseColor": "#374151",
+                  "textBaseFontSize": 16,
+                  "textBaseLineHeight": 24,
+                  "textBaseLetterSpacing": 0,
+                  "textLinkColor": "#2563eb",
+                  "heading1Color": "#111827",
+                  "heading1FontSize": 28,
+                  "heading1LineHeight": 36,
+                  "heading1LetterSpacing": -0.5,
+                  "heading2Color": "#111827",
+                  "heading2FontSize": 22,
+                  "heading2LineHeight": 30,
+                  "heading2LetterSpacing": -0.25,
+                  "heading3Color": "#111827",
+                  "heading3FontSize": 18,
+                  "heading3LineHeight": 26,
+                  "heading3LetterSpacing": 0
+                },
+                "isDefault": true,
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z"
+              }
+            ]
+          }
+        ]
       },
       "ThemeResponse": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
+            "examples": ["clt3u5v7w9x1y3z5a7b9c1d3"],
             "description": "The ID of the theme."
           },
           "name": {
             "type": "string",
+            "examples": ["Default"],
             "description": "The name of the theme."
           },
           "styles": {
@@ -5212,15 +5755,18 @@
           },
           "isDefault": {
             "type": "boolean",
-            "description": "Whether this theme is the team's default."
+            "description": "Whether this theme is the team's default.",
+            "examples": [true]
           },
           "createdAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp for when the theme was created."
+            "description": "ISO 8601 timestamp for when the theme was created.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "updatedAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp for when the theme was last updated."
+            "description": "ISO 8601 timestamp for when the theme was last updated.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           }
         },
         "required": [
@@ -5230,6 +5776,56 @@
           "isDefault",
           "createdAt",
           "updatedAt"
+        ],
+        "examples": [
+          {
+            "id": "clt3u5v7w9x1y3z5a7b9c1d3",
+            "name": "Default",
+            "styles": {
+              "backgroundColor": "#f5f5f5",
+              "backgroundXPadding": 24,
+              "backgroundYPadding": 24,
+              "bodyColor": "#ffffff",
+              "bodyXPadding": 24,
+              "bodyYPadding": 24,
+              "bodyFontFamily": "Helvetica",
+              "bodyFontCategory": "sans-serif",
+              "borderColor": "#e5e5e5",
+              "borderWidth": 1,
+              "borderRadius": 8,
+              "buttonBodyColor": "#111827",
+              "buttonBodyXPadding": 16,
+              "buttonBodyYPadding": 12,
+              "buttonBorderColor": "#111827",
+              "buttonBorderWidth": 0,
+              "buttonBorderRadius": 6,
+              "buttonTextColor": "#ffffff",
+              "buttonTextFormat": 0,
+              "buttonTextFontSize": 16,
+              "dividerColor": "#e5e5e5",
+              "dividerBorderWidth": 1,
+              "textBaseColor": "#374151",
+              "textBaseFontSize": 16,
+              "textBaseLineHeight": 24,
+              "textBaseLetterSpacing": 0,
+              "textLinkColor": "#2563eb",
+              "heading1Color": "#111827",
+              "heading1FontSize": 28,
+              "heading1LineHeight": 36,
+              "heading1LetterSpacing": -0.5,
+              "heading2Color": "#111827",
+              "heading2FontSize": 22,
+              "heading2LineHeight": 30,
+              "heading2LetterSpacing": -0.25,
+              "heading3Color": "#111827",
+              "heading3FontSize": 18,
+              "heading3LineHeight": 26,
+              "heading3LetterSpacing": 0
+            },
+            "isDefault": true,
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z"
+          }
         ]
       },
       "ThemeFailureResponse": {
@@ -5239,21 +5835,36 @@
             "type": "string"
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Theme not found."
+          }
+        ]
       },
       "CreateThemeBody": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "description": "The theme name."
+            "description": "The theme name.",
+            "examples": ["Dark mode"]
           },
           "styles": {
             "description": "Style attributes for the theme. Attributes use the same names as the LMX [`<Style />`](/creating-emails/lmx#document-styles) tag attributes.",
             "$ref": "#/components/schemas/ThemeStyles"
           }
         },
-        "required": ["name"]
+        "required": ["name"],
+        "examples": [
+          {
+            "name": "Dark mode",
+            "styles": {
+              "backgroundColor": "#111827",
+              "bodyColor": "#1f2937"
+            }
+          }
+        ]
       },
       "UpdateThemeBody": {
         "type": "object",
@@ -5282,49 +5893,90 @@
             },
             "required": ["affectedEmailCount"]
           }
+        ],
+        "examples": [
+          {
+            "id": "clt3u5v7w9x1y3z5a7b9c1d3",
+            "name": "Default",
+            "styles": {
+              "backgroundColor": "#f5f5f5",
+              "backgroundXPadding": 24,
+              "backgroundYPadding": 24,
+              "bodyColor": "#ffffff",
+              "bodyXPadding": 24,
+              "bodyYPadding": 24,
+              "bodyFontFamily": "Helvetica",
+              "bodyFontCategory": "sans-serif",
+              "borderColor": "#e5e5e5",
+              "borderWidth": 1,
+              "borderRadius": 8,
+              "buttonBodyColor": "#111827",
+              "buttonBodyXPadding": 16,
+              "buttonBodyYPadding": 12,
+              "buttonBorderColor": "#111827",
+              "buttonBorderWidth": 0,
+              "buttonBorderRadius": 6,
+              "buttonTextColor": "#ffffff",
+              "buttonTextFormat": 0,
+              "buttonTextFontSize": 16,
+              "dividerColor": "#e5e5e5",
+              "dividerBorderWidth": 1,
+              "textBaseColor": "#374151",
+              "textBaseFontSize": 16,
+              "textBaseLineHeight": 24,
+              "textBaseLetterSpacing": 0,
+              "textLinkColor": "#2563eb",
+              "heading1Color": "#111827",
+              "heading1FontSize": 28,
+              "heading1LineHeight": 36,
+              "heading1LetterSpacing": -0.5,
+              "heading2Color": "#111827",
+              "heading2FontSize": 22,
+              "heading2LineHeight": 30,
+              "heading2LetterSpacing": -0.25,
+              "heading3Color": "#111827",
+              "heading3FontSize": 18,
+              "heading3LineHeight": 26,
+              "heading3LetterSpacing": 0
+            },
+            "isDefault": true,
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "affectedEmailCount": 12
+          }
         ]
       },
       "Component": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clp2o4i6u8y0t5r3e1w7q9s1"]
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Header"]
           },
           "lmx": {
             "type": "string",
-            "description": "The component body serialized as LMX."
+            "description": "The component body serialized as LMX.",
+            "examples": ["<Paragraph>Welcome to Acme</Paragraph>"]
           }
         },
-        "required": ["id", "name", "lmx"]
+        "required": ["id", "name", "lmx"],
+        "examples": [
+          {
+            "id": "clp2o4i6u8y0t5r3e1w7q9s1",
+            "name": "Header",
+            "lmx": "<Paragraph>Welcome to Acme</Paragraph>"
+          }
+        ]
       },
       "ListComponentsResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": {
-                "type": "number"
-              },
-              "returnedResults": {
-                "type": "number"
-              },
-              "perPage": {
-                "type": "number"
-              },
-              "totalPages": {
-                "type": "number"
-              },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5333,7 +5985,26 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "clp2o4i6u8y0t5r3e1w7q9s1",
+                "name": "Header",
+                "lmx": "<Paragraph>Welcome to Acme</Paragraph>"
+              }
+            ]
+          }
+        ]
       },
       "ComponentResponse": {
         "type": "object",
@@ -5351,7 +6022,14 @@
             "description": "The component body serialized as LMX."
           }
         },
-        "required": ["id", "name", "lmx"]
+        "required": ["id", "name", "lmx"],
+        "examples": [
+          {
+            "id": "clp2o4i6u8y0t5r3e1w7q9s1",
+            "name": "Header",
+            "lmx": "<Paragraph>Welcome to Acme</Paragraph>"
+          }
+        ]
       },
       "ComponentFailureResponse": {
         "type": "object",
@@ -5360,7 +6038,12 @@
             "type": "string"
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Component not found."
+          }
+        ]
       },
       "ComponentValidationFailureResponse": {
         "type": "object",
@@ -5376,7 +6059,13 @@
             }
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Component uses unsupported contact properties.",
+            "invalidTags": ["companyName"]
+          }
+        ]
       },
       "CreateComponentBody": {
         "type": "object",
@@ -5390,7 +6079,13 @@
             "description": "The component body as an LMX string."
           }
         },
-        "required": ["name", "lmx"]
+        "required": ["name", "lmx"],
+        "examples": [
+          {
+            "name": "Header",
+            "lmx": "<Paragraph>Welcome to Acme</Paragraph>"
+          }
+        ]
       },
       "UpdateComponentBody": {
         "type": "object",
@@ -5420,6 +6115,14 @@
             },
             "required": ["affectedEmailCount"]
           }
+        ],
+        "examples": [
+          {
+            "id": "clp2o4i6u8y0t5r3e1w7q9s1",
+            "name": "Header",
+            "lmx": "<Paragraph>Welcome to Acme</Paragraph>",
+            "affectedEmailCount": 3
+          }
         ]
       },
       "AudienceSegment": {
@@ -5427,23 +6130,28 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the audience segment."
+            "description": "The ID of the audience segment.",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the audience segment."
+            "description": "The name of the audience segment.",
+            "examples": ["Power users"]
           },
           "description": {
             "type": ["string", "null"],
-            "description": "An optional description of the audience segment."
+            "description": "An optional description of the audience segment.",
+            "examples": ["Contacts on the pro plan"]
           },
           "createdAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp."
+            "description": "ISO 8601 timestamp for when the audience segment was created.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "updatedAt": {
             "type": "string",
-            "description": "ISO 8601 timestamp."
+            "description": "ISO 8601 timestamp for when the audience segment was last updated.",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "filter": {
             "$ref": "#/components/schemas/AudienceFilter"
@@ -5456,33 +6164,33 @@
           "createdAt",
           "updatedAt",
           "filter"
+        ],
+        "examples": [
+          {
+            "id": "cls6e8g0i2k4m6o8q0s2u4w6",
+            "name": "Power users",
+            "description": "Contacts on the pro plan",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "filter": {
+              "match": "all",
+              "conditions": [
+                {
+                  "type": "property",
+                  "key": "plan",
+                  "operator": "equals",
+                  "value": "pro"
+                }
+              ]
+            }
+          }
         ]
       },
       "ListAudienceSegmentsResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": {
-                "type": "number"
-              },
-              "returnedResults": {
-                "type": "number"
-              },
-              "perPage": {
-                "type": "number"
-              },
-              "totalPages": {
-                "type": "number"
-              },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5491,10 +6199,99 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "cls6e8g0i2k4m6o8q0s2u4w6",
+                "name": "Power users",
+                "description": "Contacts on the pro plan",
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z",
+                "filter": {
+                  "match": "all",
+                  "conditions": [
+                    {
+                      "type": "property",
+                      "key": "plan",
+                      "operator": "equals",
+                      "value": "pro"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
       },
       "AudienceSegmentResponse": {
-        "$ref": "#/components/schemas/AudienceSegment"
+        "$ref": "#/components/schemas/AudienceSegment",
+        "examples": [
+          {
+            "id": "cls6e8g0i2k4m6o8q0s2u4w6",
+            "name": "Power users",
+            "description": "Contacts on the pro plan",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "filter": {
+              "match": "all",
+              "conditions": [
+                {
+                  "type": "property",
+                  "key": "plan",
+                  "operator": "equals",
+                  "value": "pro"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "CreateAudienceSegmentRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "The name of the audience segment. Must be unique within the team.",
+            "examples": ["Active users"]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "An optional description of the audience segment."
+          },
+          "filter": {
+            "type": "object",
+            "description": "A tree of audience conditions combined with `match`.",
+            "properties": {
+              "match": {
+                "type": "string",
+                "enum": ["all", "any"]
+              },
+              "conditions": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/components/schemas/AudienceFilterCondition"
+                }
+              }
+            },
+            "required": ["match", "conditions"],
+            "additionalProperties": false
+          }
+        },
+        "required": ["name", "filter"],
+        "additionalProperties": false
       },
       "AudienceSegmentFailureResponse": {
         "type": "object",
@@ -5503,34 +6300,60 @@
             "type": "string"
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Audience segment not found."
+          }
+        ]
       },
       "CampaignScheduling": {
         "type": "object",
         "description": "When the campaign is scheduled to send.",
         "properties": {
-          "method": { "type": "string", "enum": ["now", "schedule"] },
+          "method": {
+            "type": "string",
+            "enum": ["now", "schedule"]
+          },
           "timestamp": {
             "type": ["string", "null"],
             "format": "date-time",
             "description": "ISO 8601 send time. Null when the method is `now`."
           }
         },
-        "required": ["method", "timestamp"]
+        "required": ["method", "timestamp"],
+        "examples": [
+          {
+            "method": "schedule",
+            "timestamp": "2025-07-15T14:00:00.000Z"
+          }
+        ]
       },
       "CampaignSchedulingRequest": {
         "type": "object",
         "description": "When the campaign should send. `timestamp` is required and must be in the future when `method` is `schedule`, and must be omitted when `method` is `now`.",
         "properties": {
-          "method": { "type": "string", "enum": ["now", "schedule"] },
-          "timestamp": { "type": "string", "format": "date-time" }
+          "method": {
+            "type": "string",
+            "enum": ["now", "schedule"]
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
         },
         "required": ["method"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "method": "schedule",
+            "timestamp": "2025-07-15T14:00:00.000Z"
+          }
+        ]
       },
       "AudienceFilter": {
         "type": ["object", "null"],
-        "description": "A tree of audience conditions combined with `match`. Null when the campaign targets a mailing list or segment without an explicit filter.",
+        "description": "A tree of audience conditions combined with `match`.",
         "properties": {
           "match": { "type": "string", "enum": ["all", "any"] },
           "conditions": {
@@ -5546,11 +6369,16 @@
         "type": ["object", "null"],
         "description": "A tree of audience conditions combined with `match`. Setting this without also providing `audienceSegmentId` clears any existing `audienceSegmentId`. When both are provided, this filter is applied on top of the segment's filter.",
         "properties": {
-          "match": { "type": "string", "enum": ["all", "any"] },
+          "match": {
+            "type": "string",
+            "enum": ["all", "any"]
+          },
           "conditions": {
             "type": "array",
             "minItems": 1,
-            "items": { "$ref": "#/components/schemas/AudienceFilterCondition" }
+            "items": {
+              "$ref": "#/components/schemas/AudienceFilterCondition"
+            }
           }
         },
         "required": ["match", "conditions"],
@@ -5558,17 +6386,28 @@
       },
       "AudienceFilterCondition": {
         "oneOf": [
-          { "$ref": "#/components/schemas/PropertyCondition" },
-          { "$ref": "#/components/schemas/OptInCondition" },
-          { "$ref": "#/components/schemas/ActivityCondition" }
+          {
+            "$ref": "#/components/schemas/PropertyCondition"
+          },
+          {
+            "$ref": "#/components/schemas/OptInCondition"
+          },
+          {
+            "$ref": "#/components/schemas/ActivityCondition"
+          }
         ],
-        "discriminator": { "propertyName": "type" }
+        "discriminator": {
+          "propertyName": "type"
+        }
       },
       "PropertyCondition": {
         "type": "object",
         "description": "Matches contacts by a property value.",
         "properties": {
-          "type": { "type": "string", "enum": ["property"] },
+          "type": {
+            "type": "string",
+            "enum": ["property"]
+          },
           "key": {
             "type": "string",
             "description": "The contact property name."
@@ -5597,40 +6436,75 @@
           "value": {
             "description": "The comparison value. Omitted for value-less operators (e.g. `isTrue`, `empty`). A `{ from, to }` object for `between`.",
             "oneOf": [
-              { "type": "string" },
-              { "type": "number" },
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
               {
                 "type": "object",
                 "properties": {
-                  "from": { "type": "string", "format": "date-time" },
-                  "to": { "type": "string", "format": "date-time" }
+                  "from": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "to": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
                 },
                 "required": ["from", "to"]
               }
             ]
           }
         },
-        "required": ["type", "key", "operator"]
+        "required": ["type", "key", "operator"],
+        "examples": [
+          {
+            "type": "property",
+            "key": "plan",
+            "operator": "equals",
+            "value": "pro"
+          }
+        ]
       },
       "OptInCondition": {
         "type": "object",
         "description": "Matches contacts by mailing-list opt-in status.",
         "properties": {
-          "type": { "type": "string", "enum": ["optIn"] },
+          "type": {
+            "type": "string",
+            "enum": ["optIn"]
+          },
           "status": {
             "type": ["string", "null"],
             "enum": ["accepted", "pending", "rejected", null]
           }
         },
-        "required": ["type", "status"]
+        "required": ["type", "status"],
+        "examples": [
+          {
+            "type": "optIn",
+            "status": "accepted"
+          }
+        ]
       },
       "ActivityCondition": {
         "type": "object",
         "description": "Matches contacts by their activity on a campaign or workflow.",
         "properties": {
-          "type": { "type": "string", "enum": ["activity"] },
-          "action": { "type": "string", "enum": ["sent", "opened", "clicked"] },
-          "negate": { "type": "boolean" },
+          "type": {
+            "type": "string",
+            "enum": ["activity"]
+          },
+          "action": {
+            "type": "string",
+            "enum": ["sent", "opened", "clicked"]
+          },
+          "negate": {
+            "type": "boolean"
+          },
           "target": {
             "type": "string",
             "enum": ["campaign", "workflow", "workflowEmail"]
@@ -5640,7 +6514,16 @@
             "description": "The ID of the campaign, workflow, or workflow email."
           }
         },
-        "required": ["type", "action", "negate", "target", "id"]
+        "required": ["type", "action", "negate", "target", "id"],
+        "examples": [
+          {
+            "type": "activity",
+            "action": "opened",
+            "negate": false,
+            "target": "campaign",
+            "id": "clc4m6n8p0q2r4s6t8u0v2x4"
+          }
+        ]
       },
       "CampaignListItem": {
         "$ref": "#/components/schemas/CampaignResponse"
@@ -5649,19 +6532,7 @@
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": { "type": "number" },
-              "returnedResults": { "type": "number" },
-              "perPage": { "type": "number" },
-              "totalPages": { "type": "number" },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5670,7 +6541,37 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 45,
+              "returnedResults": 20,
+              "perPage": 20,
+              "totalPages": 3,
+              "nextCursor": "clp9k2m4n6p8q0r2s4t6u8v0",
+              "nextPage": "https://app.loops.so/api/v1/campaign-groups?cursor=clp9k2m4n6p8q0r2s4t6u8v0&perPage=20"
+            },
+            "data": [
+              {
+                "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+                "name": "Spring announcement",
+                "status": "Draft",
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z",
+                "emailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+                "campaignGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+                "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
+                "audienceSegmentId": null,
+                "audienceFilter": null,
+                "scheduling": {
+                  "method": "now",
+                  "timestamp": null
+                }
+              }
+            ]
+          }
+        ]
       },
       "CreateCampaignRequest": {
         "type": "object",
@@ -5682,15 +6583,18 @@
           },
           "campaignGroupId": {
             "type": "string",
-            "description": "The ID of the group to add this campaign to. Defaults to the team's default group when omitted."
+            "description": "The ID of the group to add this campaign to. Defaults to the team's default group when omitted.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "mailingListId": {
             "type": ["string", "null"],
-            "description": "The ID of the mailing list to send to."
+            "description": "The ID of the mailing list to send to.",
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8"]
           },
           "audienceSegmentId": {
             "type": ["string", "null"],
-            "description": "The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment's filter."
+            "description": "The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment's filter.",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           },
           "audienceFilter": {
             "$ref": "#/components/schemas/AudienceFilterInRequest"
@@ -5707,46 +6611,56 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the campaign."
+            "description": "The ID of the campaign.",
+            "examples": ["clc4m6n8p0q2r4s6t8u0v2x4"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the campaign."
+            "description": "The name of the campaign.",
+            "examples": ["Spring announcement"]
           },
           "status": {
             "type": "string",
             "examples": ["Draft"],
-            "description": "The status of the campaign."
+            "enum": ["Draft"],
+            "description": "The status of the campaign (always `Draft` for new campaigns)."
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the campaign was created."
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the campaign was last updated."
           },
           "emailMessageId": {
             "type": ["string", "null"],
-            "description": "The ID of the empty email message created for this campaign. Use `POST /v1/email-messages/{emailMessageId}` to set its fields and LMX content."
+            "description": "The ID of the empty email message created for this campaign. Use `POST /v1/email-messages/{emailMessageId}` to set its fields and LMX content.",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           },
           "emailMessageContentRevisionId": {
             "type": ["string", "null"],
-            "description": "The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update."
+            "description": "The `contentRevisionId` of the newly created email message. Pass this as `expectedRevisionId` on your first update.",
+            "examples": ["clrev1s10n2i3d4e5f6g7h8"]
           },
           "campaignGroupId": {
             "type": ["string", "null"],
-            "description": "The ID of the campaign group this campaign belongs to, if set."
+            "description": "The ID of the campaign group this campaign belongs to, if set.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "mailingListId": {
             "type": ["string", "null"],
-            "description": "The ID of the mailing list this campaign sends to, if set."
+            "description": "The ID of the mailing list this campaign sends to, if set.",
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8"]
           },
           "audienceSegmentId": {
             "type": ["string", "null"],
-            "description": "The ID of the audience segment this campaign targets, if set."
+            "description": "The ID of the audience segment this campaign targets, if set.",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           },
           "audienceFilter": {
             "$ref": "#/components/schemas/AudienceFilter",
@@ -5770,6 +6684,25 @@
           "audienceSegmentId",
           "audienceFilter",
           "scheduling"
+        ],
+        "examples": [
+          {
+            "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+            "name": "Spring announcement",
+            "status": "Draft",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "emailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "campaignGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+            "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
+            "audienceSegmentId": null,
+            "audienceFilter": null,
+            "scheduling": {
+              "method": "now",
+              "timestamp": null
+            },
+            "emailMessageContentRevisionId": "clrev1s10n2i3d4e5f6g7h8"
+          }
         ]
       },
       "UpdateCampaignRequest": {
@@ -5778,19 +6711,23 @@
         "properties": {
           "name": {
             "type": "string",
-            "description": "The updated campaign name."
+            "description": "The updated campaign name.",
+            "examples": ["Spring announcement"]
           },
           "campaignGroupId": {
             "type": "string",
-            "description": "The ID of the group to move this campaign to."
+            "description": "The ID of the group to move this campaign to.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "mailingListId": {
             "type": ["string", "null"],
-            "description": "The ID of the mailing list to send to."
+            "description": "The ID of the mailing list to send to.",
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8"]
           },
           "audienceSegmentId": {
             "type": ["string", "null"],
-            "description": "The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment's filter."
+            "description": "The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment's filter.",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           },
           "audienceFilter": {
             "$ref": "#/components/schemas/AudienceFilterInRequest"
@@ -5806,42 +6743,51 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the campaign."
+            "description": "The ID of the campaign.",
+            "examples": ["clc4m6n8p0q2r4s6t8u0v2x4"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the campaign."
+            "description": "The name of the campaign.",
+            "examples": ["Spring announcement"]
           },
           "status": {
             "type": "string",
             "description": "The status of the campaign.",
-            "enum": ["Draft", "Scheduled", "Sending", "Sent"]
+            "enum": ["Draft", "Scheduled", "Sending", "Sent"],
+            "examples": ["Draft"]
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the campaign was created."
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the campaign was last updated."
           },
           "emailMessageId": {
             "type": ["string", "null"],
-            "description": "The associated email message ID."
+            "description": "The associated email message ID.",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           },
           "campaignGroupId": {
             "type": ["string", "null"],
-            "description": "The ID of the campaign group this campaign belongs to.."
+            "description": "The ID of the campaign group this campaign belongs to.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "mailingListId": {
             "type": ["string", "null"],
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8"],
             "description": "The ID of the mailing list this campaign sends to, if set."
           },
           "audienceSegmentId": {
             "type": ["string", "null"],
-            "description": "The ID of the audience segment this campaign targets, if set."
+            "description": "The ID of the audience segment this campaign targets, if set.",
+            "examples": ["cls6e8g0i2k4m6o8q0s2u4w6"]
           },
           "audienceFilter": {
             "$ref": "#/components/schemas/AudienceFilter",
@@ -5863,6 +6809,24 @@
           "audienceSegmentId",
           "audienceFilter",
           "scheduling"
+        ],
+        "examples": [
+          {
+            "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+            "name": "Spring announcement",
+            "status": "Draft",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z",
+            "emailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "campaignGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
+            "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
+            "audienceSegmentId": null,
+            "audienceFilter": null,
+            "scheduling": {
+              "method": "now",
+              "timestamp": null
+            }
+          }
         ]
       },
       "CampaignFailureResponse": {
@@ -5872,46 +6836,54 @@
             "type": "string"
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Campaign not found."
+          }
+        ]
       },
       "WorkflowSummary": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "description": "The ID of the workflow." },
+          "id": {
+            "type": "string",
+            "description": "The ID of the workflow.",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
+          },
           "name": {
             "type": "string",
-            "description": "The name of the workflow."
+            "description": "The name of the workflow.",
+            "examples": ["Welcome series"]
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the workflow was created."
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the workflow was last updated."
           }
         },
-        "required": ["id", "name", "createdAt", "updatedAt"]
+        "required": ["id", "name", "createdAt", "updatedAt"],
+        "examples": [
+          {
+            "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+            "name": "Welcome series",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z"
+          }
+        ]
       },
       "ListWorkflowsResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": { "type": "number" },
-              "returnedResults": { "type": "number" },
-              "perPage": { "type": "number" },
-              "totalPages": { "type": "number" },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -5920,7 +6892,27 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 45,
+              "returnedResults": 20,
+              "perPage": 20,
+              "totalPages": 3,
+              "nextCursor": "clp9k2m4n6p8q0r2s4t6u8v0",
+              "nextPage": "https://app.loops.so/api/v1/campaign-groups?cursor=clp9k2m4n6p8q0r2s4t6u8v0&perPage=20"
+            },
+            "data": [
+              {
+                "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+                "name": "Welcome series",
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z"
+              }
+            ]
+          }
+        ]
       },
       "WorkflowRevisionId": {
         "type": ["string"],
@@ -6000,6 +6992,28 @@
           "mailingListId",
           "rootNodeId",
           "nodes"
+        ],
+        "examples": [
+          {
+            "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+            "status": "Draft",
+            "name": "Welcome series",
+            "description": "Onboarding emails for new signups",
+            "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
+            "rootNodeId": "cln8p0q2r4s6t8u0v2w4x6z8",
+            "nodes": {
+              "cln8p0q2r4s6t8u0v2w4x6z8": {
+                "typeName": "SignupTrigger",
+                "nextNodeIds": ["cln1a3b5c7d9e1f3g5h7i9j1"]
+              },
+              "cln1a3b5c7d9e1f3g5h7i9j1": {
+                "typeName": "SendEmailAction",
+                "nextNodeIds": [],
+                "emailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+                "subject": "Welcome to Acme!"
+              }
+            }
+          }
         ]
       },
       "CreateWorkflowRequest": {
@@ -6082,7 +7096,21 @@
           }
         ],
         "discriminator": {
-          "propertyName": "typeName"
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNode",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNode",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNode",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNode",
+            "BlankTrigger": "#/components/schemas/BlankTriggerWorkflowMutationNode",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNode",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNode",
+            "SendEmailAction": "#/components/schemas/SendEmailActionWorkflowMutationNode",
+            "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNode",
+            "BranchNode": "#/components/schemas/BranchWorkflowMutationNode",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNode",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNode"
+          }
         }
       },
       "WorkflowMutationNodeRevision": {
@@ -6582,7 +7610,11 @@
         ],
         "description": "Create a new workflow node with an explicit `insertMode`. To configure the node after creation, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}` endpoint.",
         "discriminator": {
-          "propertyName": "insertMode"
+          "propertyName": "insertMode",
+          "mapping": {
+            "between": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
+            "before": "#/components/schemas/CreateWorkflowNodeBeforeRequest"
+          }
         }
       },
       "WorkflowMutationNodeWithRevision": {
@@ -6626,7 +7658,21 @@
           }
         ],
         "discriminator": {
-          "propertyName": "typeName"
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
+            "BlankTrigger": "#/components/schemas/BlankTriggerWorkflowMutationNodeWithRevision",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
+            "SendEmailAction": "#/components/schemas/SendEmailActionWorkflowMutationNodeWithRevision",
+            "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNodeWithRevision",
+            "BranchNode": "#/components/schemas/BranchWorkflowMutationNodeWithRevision",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
+          }
         }
       },
       "SignupTriggerWorkflowMutationNodeWithRevision": {
@@ -6846,7 +7892,17 @@
           }
         ],
         "discriminator": {
-          "propertyName": "typeName"
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
+            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
+            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
+            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
+            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
+            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
+            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
+          }
         }
       },
       "DeleteWorkflowNodeRequest": {
@@ -7181,7 +8237,15 @@
           }
         },
         "required": ["typeName", "nextNodeIds", "eventName", "reEligible"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "typeName": "EventTrigger",
+            "nextNodeIds": ["cln1a3b5c7d9e1f3g5h7i9j1"],
+            "eventName": "signup",
+            "reEligible": false
+          }
+        ]
       },
       "SimplifiedContactPropertyTriggerWorkflowNode": {
         "type": "object",
@@ -7282,7 +8346,15 @@
           }
         },
         "required": ["typeName", "nextNodeIds", "amount", "unit"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "typeName": "TimerAction",
+            "nextNodeIds": ["cln1a3b5c7d9e1f3g5h7i9j1"],
+            "amount": 2,
+            "unit": "d"
+          }
+        ]
       },
       "SimplifiedSendEmailActionWorkflowNode": {
         "type": "object",
@@ -7304,7 +8376,15 @@
           }
         },
         "required": ["typeName", "nextNodeIds", "emailMessageId", "subject"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "typeName": "SendEmailAction",
+            "nextNodeIds": [],
+            "emailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "subject": "Welcome to Acme!"
+          }
+        ]
       },
       "SimplifiedExitActionWorkflowNode": {
         "type": "object",
@@ -7434,10 +8514,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7454,10 +8536,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7468,6 +8552,7 @@
           },
           "eventName": {
             "type": "string",
+            "examples": ["signup"],
             "description": "The name of the event pattern that triggers this node."
           },
           "eventProperties": {
@@ -7494,10 +8579,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7534,10 +8621,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7547,7 +8636,9 @@
             "$ref": "#/components/schemas/WorkflowNextNodeIds"
           },
           "mailingListId": {
-            "type": ["string", "null"]
+            "type": ["string", "null"],
+            "examples": ["clm2k8j4h6g0f8d6s4a2b0z8", null],
+            "description": "The ID of the mailing list that triggers the workflow."
           },
           "reEligible": {
             "$ref": "#/components/schemas/WorkflowReEligible"
@@ -7567,10 +8658,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7587,10 +8680,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7623,10 +8718,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7656,10 +8753,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7670,10 +8769,12 @@
           },
           "emailMessageId": {
             "type": "string",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"],
             "description": "The ID of the email message to send. To edit this email, use the `POST /v1/email-messages/{emailMessageId}` endpoint."
           },
           "subject": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Welcome to Acme!"]
           }
         },
         "required": [
@@ -7690,10 +8791,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7710,10 +8813,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7730,10 +8835,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7760,10 +8867,12 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "examples": ["cln8p0q2r4s6t8u0v2w4x6z8"]
           },
           "workflowId": {
-            "type": "string"
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
           },
           "typeName": {
             "type": "string",
@@ -7783,7 +8892,9 @@
       "WorkflowEventProperty": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
+          "name": {
+            "type": "string"
+          },
           "type": {
             "type": "string",
             "enum": ["string", "number", "boolean", "date"]
@@ -7817,9 +8928,15 @@
         "properties": {
           "value": {
             "oneOf": [
-              { "type": "string" },
-              { "type": "number" },
-              { "type": "boolean" }
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              }
             ]
           },
           "operator": {
@@ -7859,63 +8976,64 @@
       "WorkflowFailureResponse": {
         "type": "object",
         "properties": {
-          "message": { "type": "string" }
+          "message": {
+            "type": "string"
+          }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Workflow not found."
+          }
+        ]
       },
       "GroupResponse": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the group."
+            "description": "The ID of the group.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           },
           "name": {
             "type": "string",
-            "description": "The name of the group."
+            "description": "The name of the group.",
+            "examples": ["Onboarding"]
           },
           "description": {
             "type": "string",
-            "description": "The description of the group."
+            "description": "The description of the group.",
+            "examples": ["Top of funnel campaigns"]
           },
           "createdAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the group was created."
           },
           "updatedAt": {
             "type": "string",
             "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"],
             "description": "ISO 8601 timestamp for when the group was last updated."
           }
         },
-        "required": ["id", "name", "description", "createdAt", "updatedAt"]
+        "required": ["id", "name", "description", "createdAt", "updatedAt"],
+        "examples": [
+          {
+            "id": "clg7n5p3q1r9s7t5u3v1w9y7",
+            "name": "Onboarding",
+            "description": "Top of funnel campaigns",
+            "createdAt": "2025-06-29T07:47:39.370Z",
+            "updatedAt": "2025-06-29T07:47:39.370Z"
+          }
+        ]
       },
       "ListGroupsResponse": {
         "type": "object",
         "properties": {
           "pagination": {
-            "type": "object",
-            "properties": {
-              "totalResults": {
-                "type": "number"
-              },
-              "returnedResults": {
-                "type": "number"
-              },
-              "perPage": {
-                "type": "number"
-              },
-              "totalPages": {
-                "type": "number"
-              },
-              "nextCursor": {
-                "type": ["string", "null"]
-              },
-              "nextPage": {
-                "type": ["string", "null"]
-              }
-            }
+            "$ref": "#/components/schemas/Pagination"
           },
           "data": {
             "type": "array",
@@ -7924,7 +9042,35 @@
             }
           }
         },
-        "required": ["pagination", "data"]
+        "required": ["pagination", "data"],
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 2,
+              "returnedResults": 2,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "clg7n5p3q1r9s7t5u3v1w9y7",
+                "name": "Onboarding",
+                "description": "Top of funnel campaigns",
+                "createdAt": "2025-06-29T07:47:39.370Z",
+                "updatedAt": "2025-06-29T07:47:39.370Z"
+              },
+              {
+                "id": "clg8m4n6p8q0r2s4t6u8v0w2",
+                "name": "Retention",
+                "description": "",
+                "createdAt": "2025-06-30T12:00:00.000Z",
+                "updatedAt": "2025-06-30T12:00:00.000Z"
+              }
+            ]
+          }
+        ]
       },
       "CreateGroupRequest": {
         "type": "object",
@@ -7936,11 +9082,18 @@
           },
           "description": {
             "type": "string",
-            "description": "An optional description for the group."
+            "description": "An optional description for the group.",
+            "examples": ["Monthly newsletter campaigns"]
           }
         },
         "required": ["name"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "name": "Newsletters",
+            "description": "Monthly newsletter campaigns"
+          }
+        ]
       },
       "UpdateGroupRequest": {
         "type": "object",
@@ -7961,10 +9114,16 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Group not found."]
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Group not found."
+          }
+        ]
       },
       "UpdateEmailMessageRequest": {
         "type": "object",
@@ -7984,7 +9143,8 @@
           },
           "fromEmail": {
             "type": "string",
-            "description": "The sender username (without `@` or domain). The team's sending domain is appended automatically."
+            "description": "The email sender email address, without the team's sending domain.",
+            "examples": ["hello"]
           },
           "replyToEmail": {
             "type": "string",
@@ -8014,31 +9174,54 @@
           "contactPropertiesFallbacks": {
             "type": "object",
             "description": "Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.",
-            "additionalProperties": { "type": ["string", "null"] }
+            "additionalProperties": {
+              "type": ["string", "null"]
+            }
           },
           "eventPropertiesFallbacks": {
             "type": "object",
             "description": "Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.",
-            "additionalProperties": { "type": ["string", "null"] }
+            "additionalProperties": {
+              "type": ["string", "null"]
+            }
           },
           "dataVariablesFallbacks": {
             "type": "object",
             "description": "Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.",
-            "additionalProperties": { "type": ["string", "null"] }
+            "additionalProperties": {
+              "type": ["string", "null"]
+            }
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "expectedRevisionId": "clrev1s10n2i3d4e5f6g7h8",
+            "subject": "Spring product updates",
+            "previewText": "See what's new this season",
+            "fromName": "Acme Team",
+            "fromEmail": "hello",
+            "replyToEmail": "support@company.com",
+            "emailFormat": "styled",
+            "lmx": "<Paragraph>Hello, {firstName}!</Paragraph>",
+            "contactPropertiesFallbacks": {
+              "firstName": "there"
+            }
+          }
+        ]
       },
       "EmailMessageResponse": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"],
             "description": "The ID of the email message."
           },
           "campaignId": {
             "type": "string",
-            "description": "The campaign this email message belongs to. Present only when the message belongs to a campaign (mutually exclusive with `transactionalId`)."
+            "description": "The campaign this email message belongs to. Present only when the message belongs to a campaign (mutually exclusive with `transactionalId`).",
+            "examples": ["clc4m6n8p0q2r4s6t8u0v2x4"]
           },
           "transactionalId": {
             "type": "string",
@@ -8046,23 +9229,28 @@
           },
           "subject": {
             "type": "string",
-            "description": "The email subject."
+            "description": "The email subject.",
+            "examples": ["Spring product updates"]
           },
           "previewText": {
             "type": "string",
-            "description": "The email preview text."
+            "description": "The email preview text.",
+            "examples": ["See what's new this season"]
           },
           "fromName": {
             "type": "string",
-            "description": "The email sender name."
+            "description": "The email sender name.",
+            "examples": ["Acme Team"]
           },
           "fromEmail": {
             "type": "string",
-            "description": "The email sender email address."
+            "description": "The email sender email address, without the team's sending domain.",
+            "examples": ["hello"]
           },
           "replyToEmail": {
             "type": "string",
-            "description": "The email reply-to address."
+            "description": "The email reply-to address.",
+            "examples": ["support@company.com"]
           },
           "ccEmail": {
             "type": "string",
@@ -8079,34 +9267,44 @@
           "emailFormat": {
             "type": "string",
             "enum": ["styled", "plain"],
-            "description": "The rendering format of the email."
+            "description": "The rendering format of the email.",
+            "examples": ["styled"]
           },
           "lmx": {
             "type": "string",
-            "description": "The email body serialized as LMX."
+            "description": "The email body serialized as LMX.",
+            "examples": ["<Paragraph>Hello, {firstName}!</Paragraph>"]
           },
           "contentRevisionId": {
             "type": ["string", "null"],
-            "description": "The current content revision. Pass this as `expectedRevisionId` on your next update."
+            "description": "The current content revision. Pass this as `expectedRevisionId` on your next update.",
+            "examples": ["clrev1s10n2i3d4e5f6g7h8"]
           },
           "updatedAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "examples": ["2025-06-29T07:47:39.370Z"]
           },
           "contactPropertiesFallbacks": {
             "type": "object",
             "description": "Fallback values for contact properties. Only present when set.",
-            "additionalProperties": { "type": "string" }
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "eventPropertiesFallbacks": {
             "type": "object",
             "description": "Fallback values for event properties. Only present when set.",
-            "additionalProperties": { "type": "string" }
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "dataVariablesFallbacks": {
             "type": "object",
             "description": "Fallback values for data variables. Only present when set.",
-            "additionalProperties": { "type": "string" }
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "warnings": {
             "type": "array",
@@ -8143,6 +9341,21 @@
           "lmx",
           "contentRevisionId",
           "updatedAt"
+        ],
+        "examples": [
+          {
+            "id": "cle5f7g9h1i3j5k7l9m1n3p5",
+            "campaignId": "clc4m6n8p0q2r4s6t8u0v2x4",
+            "subject": "Spring product updates",
+            "previewText": "See what's new this season",
+            "fromName": "Acme Team",
+            "fromEmail": "hello",
+            "replyToEmail": "support@company.com",
+            "emailFormat": "styled",
+            "lmx": "<Paragraph>Hello, {firstName}!</Paragraph>",
+            "contentRevisionId": "clrev1s10n2i3d4e5f6g7h8",
+            "updatedAt": "2025-06-29T07:47:39.370Z"
+          }
         ]
       },
       "EmailMessageFailureResponse": {
@@ -8152,7 +9365,12 @@
             "type": "string"
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Email message not found."
+          }
+        ]
       },
       "EmailMessagePreviewRequest": {
         "type": "object",
@@ -8170,32 +9388,64 @@
             "additionalProperties": {
               "type": "string"
             },
-            "description": "Contact property values to render. Accepted for campaign and workflow previews."
+            "description": "Contact property values to render. Accepted for campaign and workflow previews.",
+            "example": {
+              "firstName": "Alex"
+            }
           },
           "eventProperties": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
             },
-            "description": "Event property values to render. Accepted for workflow previews only."
+            "description": "Event property values to render. Accepted for workflow previews only.",
+            "example": {
+              "planName": "Pro"
+            }
           },
           "dataVariables": {
             "type": "object",
-            "description": "Transactional data variables to render. Accepted for transactional previews only."
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Transactional data variables to render. Accepted for transactional previews only.",
+            "example": {
+              "loginUrl": "https://app.company.com/login"
+            }
           }
         },
         "required": ["emails"],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "examples": [
+          {
+            "emails": ["alex@company.com"],
+            "contactProperties": {
+              "firstName": "Alex"
+            },
+            "eventProperties": {
+              "planName": "Pro"
+            },
+            "dataVariables": {
+              "loginUrl": "https://app.company.com/login"
+            }
+          }
+        ]
       },
       "EmailMessagePreviewResponse": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "description": "The ID of the email message the preview was sent for."
+            "description": "The ID of the email message the preview was sent for.",
+            "examples": ["cle5f7g9h1i3j5k7l9m1n3p5"]
           }
         },
-        "required": ["id"]
+        "required": ["id"],
+        "examples": [
+          {
+            "id": "cle5f7g9h1i3j5k7l9m1n3p5"
+          }
+        ]
       },
       "EmailMessageGuardianResponse": {
         "type": "object",
@@ -8222,13 +9472,21 @@
               "rule": "missingButtonHrefs",
               "title": "Missing button link",
               "description": "Buttons won't work without href value",
-              "items": [{ "label": "Click here" }]
+              "items": [
+                {
+                  "label": "Click here"
+                }
+              ]
             },
             {
               "rule": "missingLinkHrefs",
               "title": "Missing text link",
               "description": "Links won't work without href value",
-              "items": [{ "label": "See more" }]
+              "items": [
+                {
+                  "label": "See more"
+                }
+              ]
             }
           ],
           "warnings": []
@@ -8278,7 +9536,7 @@
               "properties": {
                 "label": {
                   "type": "string",
-                  "description": "A human-readable label for the item  (for example, link text or a property name)."
+                  "description": "A human-readable label for the item (for example, link text or a property name)."
                 },
                 "codeName": {
                   "type": "string",
@@ -8314,28 +9572,48 @@
         "properties": {
           "emailAssetId": {
             "type": "string",
-            "description": "The ID of the created asset. Pass this as `emailAssetId` to `/v1/uploads/{emailAssetId}/complete` once the file has been uploaded."
+            "examples": ["cla3s5s7e9t1i3d5f7g9h1j3"],
+            "description": "The ID of the created asset. Pass this as `emailAssetId` to `POST /v1/uploads/{emailAssetId}/complete` once the file has been uploaded."
           },
           "presignedUrl": {
             "type": "string",
-            "description": "The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request."
+            "description": "The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request.",
+            "examples": [
+              "https://loops-assets.s3.amazonaws.com/uploads/cla3s5s7e9t1i3d5f7g9h1j3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=..."
+            ]
           }
         },
-        "required": ["emailAssetId", "presignedUrl"]
+        "required": ["emailAssetId", "presignedUrl"],
+        "examples": [
+          {
+            "emailAssetId": "cla3s5s7e9t1i3d5f7g9h1j3",
+            "presignedUrl": "https://loops-assets.s3.amazonaws.com/uploads/cla3s5s7e9t1i3d5f7g9h1j3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=..."
+          }
+        ]
       },
       "CompleteUploadResponse": {
         "type": "object",
         "properties": {
           "emailAssetId": {
             "type": "string",
+            "examples": ["cla3s5s7e9t1i3d5f7g9h1j3"],
             "description": "The ID of the created asset."
           },
           "finalUrl": {
             "type": "string",
-            "description": "The public URL of the uploaded asset."
+            "description": "The public URL of the uploaded asset.",
+            "examples": [
+              "https://assets.loops.so/cla3s5s7e9t1i3d5f7g9h1j3/logo.png"
+            ]
           }
         },
-        "required": ["emailAssetId", "finalUrl"]
+        "required": ["emailAssetId", "finalUrl"],
+        "examples": [
+          {
+            "emailAssetId": "cla3s5s7e9t1i3d5f7g9h1j3",
+            "finalUrl": "https://assets.loops.so/cla3s5s7e9t1i3d5f7g9h1j3/logo.png"
+          }
+        ]
       },
       "UploadLimitExceededFailureResponse": {
         "type": "object",
@@ -8362,7 +9640,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "examples": ["Unsupported content type."]
           },
           "supportedContentTypes": {
             "type": "array",
@@ -8376,7 +9655,66 @@
             "description": "Present when the upload exceeds the size limit. The maximum allowed size in bytes."
           }
         },
-        "required": ["message"]
+        "required": ["message"],
+        "examples": [
+          {
+            "message": "Unsupported content type.",
+            "supportedContentTypes": [
+              "image/jpeg",
+              "image/png",
+              "image/gif",
+              "image/webp"
+            ],
+            "maxBytes": 4000000
+          }
+        ]
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "number",
+            "examples": [2]
+          },
+          "returnedResults": {
+            "type": "number",
+            "examples": [2]
+          },
+          "perPage": {
+            "type": "number",
+            "examples": [20]
+          },
+          "totalPages": {
+            "type": "number",
+            "examples": [1]
+          },
+          "nextCursor": {
+            "type": ["string", "null"],
+            "examples": [null]
+          },
+          "nextPage": {
+            "type": ["string", "null"],
+            "examples": [null]
+          }
+        },
+        "required": [
+          "totalResults",
+          "returnedResults",
+          "perPage",
+          "totalPages",
+          "nextCursor",
+          "nextPage"
+        ],
+        "examples": [
+          {
+            "totalResults": 2,
+            "returnedResults": 2,
+            "perPage": 20,
+            "totalPages": 1,
+            "nextCursor": null,
+            "nextPage": null
+          }
+        ]
       }
     },
     "securitySchemes": {

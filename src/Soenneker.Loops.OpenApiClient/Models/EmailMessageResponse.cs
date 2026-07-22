@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty EventPropertiesFallbacks { get; set; }
 #endif
-        /// <summary>The email sender email address.</summary>
+        /// <summary>The email sender email address, without the team&apos;s sending domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FromEmail { get; set; }

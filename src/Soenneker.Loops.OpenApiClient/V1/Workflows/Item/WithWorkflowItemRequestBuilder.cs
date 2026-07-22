@@ -71,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a workflow&apos;s display properties. At least one property must be provided. To change the workflow&apos;s mailing list, use the `/v1/workflows/{workflowId}/mailing-list` endpoint instead.
+        /// Update a workflow&apos;s display properties. At least one property must be provided. To change the workflow&apos;s mailing list, use the `POST /v1/workflows/{workflowId}/mailing-list` endpoint instead.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow"/></returns>
         /// <param name="body">At least one property must be provided.</param>
@@ -119,7 +119,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a workflow&apos;s display properties. At least one property must be provided. To change the workflow&apos;s mailing list, use the `/v1/workflows/{workflowId}/mailing-list` endpoint instead.
+        /// Update a workflow&apos;s display properties. At least one property must be provided. To change the workflow&apos;s mailing list, use the `POST /v1/workflows/{workflowId}/mailing-list` endpoint instead.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">At least one property must be provided.</param>
