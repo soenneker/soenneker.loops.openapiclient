@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.1"
+    "version": "1.21.2"
   },
   "servers": [
     {
@@ -1014,7 +1014,7 @@
         "description": "Create a new transactional email. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `POST /v1/email-messages/{emailMessageId}` endpoint along with the returned `draftEmailMessageContentRevisionId` to set subject, sender, preview text, and LMX content, then call `POST /v1/transactional-emails/{transactionalId}/publish` to publish the draft.",
         "x-mint": {
           "href": "/api-reference/create-transactional-email",
-          "content": "This endpoint creates a transactional email and an empty draft email message in one step.\n\nUse the returned `draftEmailMessageId` and `draftEmailMessageContentRevisionId` when calling the [Update email message](/api-reference/update-email-message) endpoint to set subject, sender, preview text, and LMX content\n\nCall [Publish transactional email draft](/api-reference/publish-transactional-email) to publish.",
+          "content": "This endpoint creates a transactional email and an empty draft email message in one step.\n\nUse the returned `draftEmailMessageId` and `draftEmailMessageContentRevisionId` when calling the [Update email message](/api-reference/update-email-message) endpoint to set subject, sender, preview text, and LMX content.\n\nCall [Publish transactional email draft](/api-reference/publish-transactional-email) to publish.",
           "metadata": {
             "sidebarTitle": "Create transactional",
             "description": "Create a new transactional email and its draft email message, ready for editing, previewing, and publishing through the Loops API."
@@ -2152,7 +2152,7 @@
           "metadata": {
             "description": "Create a draft marketing campaign and its associated email message."
           },
-          "content": "This endpoint creates a draft campaign and an empty email message in one step. Use the returned `emailMessageId` with [Update an email message](/api-reference/update-email-message) to set subject, sender, preview text, and LMX content.\n\n The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via [Update a campaign](/api-reference/update-campaign).\n\n<Tip>To send a test preview of a campaign, use the [Preview email message](/api-reference/preview-email-message) endpoint.</Tip>"
+          "content": "This endpoint creates a draft campaign and an empty email message in one step. Use the returned `emailMessageId` with [Update an email message](/api-reference/update-email-message) to set subject, sender, preview text, and LMX content.\n\nThe audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via [Update a campaign](/api-reference/update-campaign).\n\n<Tip>To send a test preview of a campaign, use the [Preview email message](/api-reference/preview-email-message) endpoint.</Tip>"
         },
         "requestBody": {
           "required": true,
@@ -2436,7 +2436,7 @@
             "description": "Update an email message's subject, preview text, sender, or LMX content.",
             "sidebarTitle": "Update an email"
           },
-          "content": "Supply `expectedRevisionId` matching the current `contentRevisionId`.\n\n<Info>The campaign or transactional email that owns this email message must be in `Draft` status..</Info>"
+          "content": "Supply `expectedRevisionId` matching the current `contentRevisionId`.\n\n<Info>The campaign or transactional email that owns this email message must be in `Draft` status.</Info>"
         },
         "requestBody": {
           "required": true,
@@ -5379,7 +5379,7 @@
           },
           "label": {
             "type": "string",
-            "description": "The human-friendly label for this property.."
+            "description": "The human-friendly label for this property."
           },
           "type": {
             "type": "string",
@@ -7937,18 +7937,9 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that would be removed from the workflow due to the node deletion."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit would be reached if the nodes were deleted."
           }
         },
-        "required": [
-          "status",
-          "nodeIds",
-          "queuedContactCount",
-          "queuedContactLimitReached"
-        ]
+        "required": ["status", "nodeIds", "queuedContactCount"]
       },
       "WorkflowDeletedResponse": {
         "type": "object",
@@ -7967,18 +7958,13 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the node deletion."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit was reached due to the node deletion."
           }
         },
         "required": [
           "status",
           "nodeIds",
           "workflowRevisionId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ]
       },
       "DeleteWorkflowNodeResponse": {
@@ -8025,18 +8011,9 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that would be removed from the workflow due to the mailing list changing."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit would be reached if the mailing list was changed."
           }
         },
-        "required": [
-          "status",
-          "mailingListId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
-        ]
+        "required": ["status", "mailingListId", "queuedContactCount"]
       },
       "WorkflowMailingListUpdatedResponse": {
         "type": "object",
@@ -8054,18 +8031,13 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the mailing list changing."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit was reached due to the mailing list changing."
           }
         },
         "required": [
           "status",
           "mailingListId",
           "workflowRevisionId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ]
       },
       "ChangeWorkflowMailingListResponse": {

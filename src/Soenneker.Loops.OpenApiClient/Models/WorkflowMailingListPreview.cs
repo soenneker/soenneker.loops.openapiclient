@@ -24,8 +24,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The number of queued contacts that would be removed from the workflow due to the mailing list changing.</summary>
         public double? QueuedContactCount { get; set; }
-        /// <summary>Whether the queued contact limit would be reached if the mailing list was changed.</summary>
-        public bool? QueuedContactLimitReached { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus? Status { get; set; }
         /// <summary>
@@ -55,7 +53,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "queuedContactCount", n => { QueuedContactCount = n.GetDoubleValue(); } },
-                { "queuedContactLimitReached", n => { QueuedContactLimitReached = n.GetBoolValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus>(); } },
             };
         }
@@ -68,7 +65,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteDoubleValue("queuedContactCount", QueuedContactCount);
-            writer.WriteBoolValue("queuedContactLimitReached", QueuedContactLimitReached);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }

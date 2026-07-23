@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>The human-friendly label for this property..</summary>
+        /// <summary>The human-friendly label for this property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Label { get; set; }

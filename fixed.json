@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.1"
+    "version": "1.21.2"
   },
   "servers": [
     {
@@ -4439,7 +4439,7 @@
           },
           "label": {
             "type": "string",
-            "description": "The human-friendly label for this property.."
+            "description": "The human-friendly label for this property."
           },
           "type": {
             "$ref": "#/components/schemas/ContactPropertyType"
@@ -7033,8 +7033,7 @@
         "required": [
           "status",
           "nodeIds",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ],
         "type": "object",
         "properties": {
@@ -7051,10 +7050,6 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that would be removed from the workflow due to the node deletion."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit would be reached if the nodes were deleted."
           }
         }
       },
@@ -7063,8 +7058,7 @@
           "status",
           "nodeIds",
           "workflowRevisionId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ],
         "type": "object",
         "properties": {
@@ -7084,10 +7078,6 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the node deletion."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit was reached due to the node deletion."
           }
         }
       },
@@ -7147,8 +7137,7 @@
         "required": [
           "status",
           "mailingListId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ],
         "type": "object",
         "properties": {
@@ -7162,10 +7151,6 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that would be removed from the workflow due to the mailing list changing."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit would be reached if the mailing list was changed."
           }
         }
       },
@@ -7174,8 +7159,7 @@
           "status",
           "mailingListId",
           "workflowRevisionId",
-          "queuedContactCount",
-          "queuedContactLimitReached"
+          "queuedContactCount"
         ],
         "type": "object",
         "properties": {
@@ -7193,10 +7177,6 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the mailing list changing."
-          },
-          "queuedContactLimitReached": {
-            "type": "boolean",
-            "description": "Whether the queued contact limit was reached due to the mailing list changing."
           }
         }
       },
