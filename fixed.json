@@ -8746,6 +8746,1140 @@
           }
         }
       },
+      "WebhookContactIdentity": {
+        "required": [
+          "id",
+          "email",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "WebhookBasePayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          }
+        }
+      },
+      "WebhookContact": {
+        "required": [
+          "id",
+          "email",
+          "firstName",
+          "lastName",
+          "source",
+          "subscribed",
+          "userGroup",
+          "userId",
+          "mailingLists",
+          "optInStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string"
+          },
+          "subscribed": {
+            "type": "boolean"
+          },
+          "userGroup": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "mailingLists": {
+            "$ref": "#/components/schemas/WebhookContactMailingListsProperty"
+          },
+          "optInStatus": {
+            "$ref": "#/components/schemas/WebhookContactOptInStatus"
+          }
+        },
+        "description": "Full contact object, including custom properties."
+      },
+      "WebhookEmail": {
+        "required": [
+          "id",
+          "emailMessageId",
+          "subject"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the email."
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the sent version of the campaign, workflow or transactional email."
+          },
+          "subject": {
+            "type": "string",
+            "description": "The subject of the email."
+          }
+        }
+      },
+      "WebhookMailingList": {
+        "required": [
+          "id",
+          "name",
+          "description",
+          "isPublic"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPublic": {
+            "type": "boolean"
+          }
+        },
+        "description": "Details of the mailing list."
+      },
+      "WebhookEmailMetricPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookMarketingEmailMetricPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookContactUnsubscribedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          }
+        }
+      },
+      "WebhookContactCreatedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "contact"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "contact": {
+            "$ref": "#/components/schemas/WebhookContact"
+          }
+        }
+      },
+      "WebhookContactDeletedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          }
+        }
+      },
+      "WebhookContactMailingListSubscribedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "mailingList"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "mailingList": {
+            "$ref": "#/components/schemas/WebhookMailingList"
+          }
+        }
+      },
+      "WebhookContactMailingListUnsubscribedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "mailingList"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "mailingList": {
+            "$ref": "#/components/schemas/WebhookMailingList"
+          }
+        }
+      },
+      "WebhookTransactionalEmailSentPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "transactionalId",
+          "email",
+          "transactionalName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "transactionalId": {
+            "type": "string"
+          },
+          "transactionalName": {
+            "type": "string"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          }
+        }
+      },
+      "WebhookCampaignEmailSentPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "campaignId",
+          "email",
+          "mailingLists",
+          "campaignName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "campaignId": {
+            "type": "string"
+          },
+          "campaignName": {
+            "type": "string"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "mailingLists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookMailingList"
+            },
+            "description": "The mailing list(s) the email was sent to, or an empty array."
+          }
+        }
+      },
+      "WebhookLoopEmailSentPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "loopId",
+          "email",
+          "mailingLists",
+          "loopName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow."
+          },
+          "loopName": {
+            "type": "string",
+            "description": "The name of the workflow."
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "mailingLists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookMailingList"
+            },
+            "description": "The mailing list(s) the email was sent to, or an empty array."
+          }
+        }
+      },
+      "WebhookEmailDeliveredPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookEmailSoftBouncedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookEmailHardBouncedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookEmailClickedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookEmailUnsubscribedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookEmailResubscribedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookEmailOpenedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookEmailSpamReportedPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "webhookSchemaVersion",
+          "contactIdentity",
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "type": "string"
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          },
+          "contactIdentity": {
+            "$ref": "#/components/schemas/WebhookContactIdentity"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookTestingTestEventPayload": {
+        "required": [
+          "eventName",
+          "eventTime",
+          "message",
+          "webhookSchemaVersion"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "testing.testEvent"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "testing.testEvent",
+                  "name": "TestingTestEvent"
+                }
+              ]
+            }
+          },
+          "eventTime": {
+            "type": "integer",
+            "description": "Unix timestamp in seconds."
+          },
+          "message": {
+            "enum": [
+              "test"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "Message",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "test",
+                  "name": "Test"
+                }
+              ]
+            }
+          },
+          "webhookSchemaVersion": {
+            "enum": [
+              "1.0.0"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "WebhookSchemaVersion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "1.0.0",
+                  "name": "Value100"
+                }
+              ]
+            }
+          }
+        }
+      },
       "EventRequestAdditionalProperties": {
         "type": "object",
         "oneOf": [
@@ -8936,6 +10070,506 @@
             "type": "boolean"
           }
         ]
+      },
+      "WebhookEmailMetricPayloadAllOf2": {
+        "required": [
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          },
+          "transactionalId": {
+            "type": "string",
+            "description": "The ID of the transactional email if \u0060sourceType\u0060 is \u0060transactional\u0060."
+          }
+        }
+      },
+      "WebhookMarketingEmailMetricPayloadAllOf2": {
+        "required": [
+          "email",
+          "sourceType"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/WebhookMarketingEmailMetricPayloadSourceType"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The ID of the campaign if \u0060sourceType\u0060 is \u0060campaign\u0060."
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow if \u0060sourceType\u0060 is \u0060loop\u0060."
+          }
+        }
+      },
+      "WebhookContactUnsubscribedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "contact.unsubscribed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "contact.unsubscribed",
+                  "name": "ContactUnsubscribed"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookContactCreatedPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "contact"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "contact.created"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "contact.created",
+                  "name": "ContactCreated"
+                }
+              ]
+            }
+          },
+          "contact": {
+            "$ref": "#/components/schemas/WebhookContact"
+          }
+        }
+      },
+      "WebhookContactDeletedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "contact.deleted"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "contact.deleted",
+                  "name": "ContactDeleted"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookContactMailingListSubscribedPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "mailingList"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "contact.mailingList.subscribed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "contact.mailingList.subscribed",
+                  "name": "ContactMailingListSubscribed"
+                }
+              ]
+            }
+          },
+          "mailingList": {
+            "$ref": "#/components/schemas/WebhookMailingList"
+          }
+        }
+      },
+      "WebhookContactMailingListUnsubscribedPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "mailingList"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "contact.mailingList.unsubscribed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "contact.mailingList.unsubscribed",
+                  "name": "ContactMailingListUnsubscribed"
+                }
+              ]
+            }
+          },
+          "mailingList": {
+            "$ref": "#/components/schemas/WebhookMailingList"
+          }
+        }
+      },
+      "WebhookTransactionalEmailSentPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "transactionalId",
+          "email",
+          "transactionalName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "transactional.email.sent"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "transactional.email.sent",
+                  "name": "TransactionalEmailSent"
+                }
+              ]
+            }
+          },
+          "transactionalId": {
+            "type": "string"
+          },
+          "transactionalName": {
+            "type": "string"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          }
+        }
+      },
+      "WebhookCampaignEmailSentPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "campaignId",
+          "email",
+          "mailingLists",
+          "campaignName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "campaign.email.sent"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "campaign.email.sent",
+                  "name": "CampaignEmailSent"
+                }
+              ]
+            }
+          },
+          "campaignId": {
+            "type": "string"
+          },
+          "campaignName": {
+            "type": "string"
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "mailingLists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookMailingList"
+            },
+            "description": "The mailing list(s) the email was sent to, or an empty array."
+          }
+        }
+      },
+      "WebhookLoopEmailSentPayloadAllOf2": {
+        "required": [
+          "eventName",
+          "loopId",
+          "email",
+          "mailingLists",
+          "loopName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "loop.email.sent"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "loop.email.sent",
+                  "name": "LoopEmailSent"
+                }
+              ]
+            }
+          },
+          "loopId": {
+            "type": "string",
+            "description": "The ID of the workflow."
+          },
+          "loopName": {
+            "type": "string",
+            "description": "The name of the workflow."
+          },
+          "email": {
+            "$ref": "#/components/schemas/WebhookEmail"
+          },
+          "mailingLists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookMailingList"
+            },
+            "description": "The mailing list(s) the email was sent to, or an empty array."
+          }
+        }
+      },
+      "WebhookEmailDeliveredPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.delivered"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.delivered",
+                  "name": "EmailDelivered"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailSoftBouncedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.softBounced"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.softBounced",
+                  "name": "EmailSoftBounced"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailHardBouncedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.hardBounced"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.hardBounced",
+                  "name": "EmailHardBounced"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailClickedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.clicked"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.clicked",
+                  "name": "EmailClicked"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailUnsubscribedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.unsubscribed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.unsubscribed",
+                  "name": "EmailUnsubscribed"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailResubscribedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.resubscribed"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.resubscribed",
+                  "name": "EmailResubscribed"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailOpenedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.opened"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.opened",
+                  "name": "EmailOpened"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "WebhookEmailSpamReportedPayloadAllOf2": {
+        "required": [
+          "eventName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventName": {
+            "enum": [
+              "email.spamReported"
+            ],
+            "type": "string",
+            "x-ms-enum": {
+              "name": "EventName",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "email.spamReported",
+                  "name": "EmailSpamReported"
+                }
+              ]
+            }
+          }
+        }
       },
       "PropertyConditionValueOneOf3": {
         "required": [
@@ -9220,6 +10854,13 @@
           }
         }
       },
+      "WebhookContactMailingLists": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "boolean"
+        },
+        "description": "An object of mailing list IDs and boolean subscription statuses."
+      },
       "GetV1ApiKey200Response": {
         "required": [
           "success",
@@ -9468,6 +11109,13 @@
           "type": "string"
         },
         "description": "Transactional data variables to render. Accepted for transactional previews only."
+      },
+      "WebhookContactMailingListsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "boolean"
+        },
+        "description": "An object of mailing list IDs and boolean subscription statuses."
       },
       "ContactOptInStatus": {
         "enum": [
@@ -10655,6 +12303,86 @@
           ]
         }
       },
+      "WebhookContactOptInStatus": {
+        "enum": [
+          "accepted",
+          "pending",
+          "rejected"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Double opt-in status.",
+        "nullable": true,
+        "x-ms-enum": {
+          "name": "WebhookContactOptInStatus",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "accepted",
+              "name": "Accepted"
+            },
+            {
+              "value": "pending",
+              "name": "Pending"
+            },
+            {
+              "value": "rejected",
+              "name": "Rejected"
+            }
+          ]
+        }
+      },
+      "WebhookEmailMetricPayloadSourceType": {
+        "enum": [
+          "loop",
+          "campaign",
+          "transactional"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of email this event relates to. Workflow emails use \u0060loop\u0060.",
+        "x-ms-enum": {
+          "name": "WebhookEmailMetricPayloadSourceType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "loop",
+              "name": "Loop"
+            },
+            {
+              "value": "campaign",
+              "name": "Campaign"
+            },
+            {
+              "value": "transactional",
+              "name": "Transactional"
+            }
+          ]
+        }
+      },
+      "WebhookMarketingEmailMetricPayloadSourceType": {
+        "enum": [
+          "loop",
+          "campaign"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of email this event relates to. Workflow emails use \u0060loop\u0060. Not available for transactional emails.",
+        "x-ms-enum": {
+          "name": "WebhookMarketingEmailMetricPayloadSourceType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "loop",
+              "name": "Loop"
+            },
+            {
+              "value": "campaign",
+              "name": "Campaign"
+            }
+          ]
+        }
+      },
       "CreateAudienceSegmentRequestFilterMatch": {
         "enum": [
           "all",
@@ -10692,6 +12420,35 @@
               "name": "Warning"
             }
           ]
+        }
+      }
+    },
+    "parameters": {
+      "WebhookId": {
+        "name": "webhook-id",
+        "in": "header",
+        "description": "Unique message ID. Use to deduplicate deliveries.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "WebhookTimestamp": {
+        "name": "webhook-timestamp",
+        "in": "header",
+        "description": "Unix timestamp of when the message was sent.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "WebhookSignature": {
+        "name": "webhook-signature",
+        "in": "header",
+        "description": "HMAC signature for verifying the request. Verify using your endpoint signing secret from the Loops dashboard.",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
       }
     },
@@ -10779,6 +12536,10 @@
     {
       "name": "Workflow nodes",
       "description": "View and mutate workflow nodes"
+    },
+    {
+      "name": "Webhooks",
+      "description": "Events Loops sends to your configured webhook endpoint when certain events happen in your account. Configure an endpoint in Settings \u2192 Webhooks. Each account supports one webhook endpoint. Events are signed with \u0060webhook-id\u0060, \u0060webhook-timestamp\u0060, and \u0060webhook-signature\u0060 headers and delivered at a maximum rate of 10 per second. See https://loops.so/docs/webhooks for setup, verification, and payload details."
     }
   ]
 }
