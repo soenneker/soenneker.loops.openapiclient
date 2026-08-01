@@ -671,7 +671,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps200ResponseSchema"
                 }
               }
             }
@@ -819,7 +819,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ContactsFind200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetV1ContactsFind200ResponseSchema"
                 }
               }
             }
@@ -1093,7 +1093,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ContactsProperties200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetV1ContactsProperties200ResponseSchema"
                 }
               }
             }
@@ -1907,7 +1907,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1Lists200ResponseResponseJson"
+                  "$ref": "#/components/schemas/GetV1Lists200ResponseSchema"
                 }
               }
             }
@@ -10983,7 +10983,7 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "GetV1DedicatedSendingIps200ResponseResponseJson": {
+      "GetV1DedicatedSendingIps200ResponseSchema": {
         "type": "array",
         "items": {
           "type": "string",
@@ -10991,19 +10991,19 @@
         },
         "description": "Returns an array of IP address strings."
       },
-      "GetV1ContactsFind200ResponseResponseJson": {
+      "GetV1ContactsFind200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
         }
       },
-      "GetV1ContactsProperties200ResponseResponseJson": {
+      "GetV1ContactsProperties200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ContactProperty"
         }
       },
-      "GetV1Lists200ResponseResponseJson": {
+      "GetV1Lists200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MailingList"
