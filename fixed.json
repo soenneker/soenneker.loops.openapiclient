@@ -8383,7 +8383,7 @@
           },
           "languageCode": {
             "type": "string",
-            "description": "Language code for the email. Requires translation to be enabled for the team."
+            "description": "ISO 639-1 language code for the email, e.g. \u0060en\u0060 or \u0060fr\u0060."
           },
           "emailFormat": {
             "$ref": "#/components/schemas/UpdateEmailMessageRequestEmailFormat"
@@ -8461,7 +8461,7 @@
           },
           "languageCode": {
             "type": "string",
-            "description": "Only present when set."
+            "description": "ISO 639-1 language code for the email, e.g. \u0060en\u0060 or \u0060fr\u0060. Only present when set."
           },
           "emailFormat": {
             "$ref": "#/components/schemas/EmailMessageResponseEmailFormat"

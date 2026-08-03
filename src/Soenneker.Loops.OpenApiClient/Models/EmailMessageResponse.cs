@@ -96,7 +96,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Only present when set.</summary>
+        /// <summary>ISO 639-1 language code for the email, e.g. `en` or `fr`. Only present when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LanguageCode { get; set; }

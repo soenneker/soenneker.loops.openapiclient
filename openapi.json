@@ -10020,7 +10020,7 @@
           },
           "languageCode": {
             "type": "string",
-            "description": "Language code for the email. Requires translation to be enabled for the team."
+            "description": "ISO 639-1 language code for the email, e.g. `en` or `fr`."
           },
           "emailFormat": {
             "type": "string",
@@ -10122,7 +10122,7 @@
           },
           "languageCode": {
             "type": "string",
-            "description": "Only present when set."
+            "description": "ISO 639-1 language code for the email, e.g. `en` or `fr`. Only present when set."
           },
           "emailFormat": {
             "type": "string",

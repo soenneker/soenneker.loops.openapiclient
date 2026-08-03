@@ -78,7 +78,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string FromName { get; set; }
 #endif
-        /// <summary>Language code for the email. Requires translation to be enabled for the team.</summary>
+        /// <summary>ISO 639-1 language code for the email, e.g. `en` or `fr`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? LanguageCode { get; set; }
