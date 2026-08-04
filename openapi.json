@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.2"
+    "version": "1.21.3"
   },
   "servers": [
     {
@@ -90,6 +90,7 @@
   "paths": {
     "/v1/api-key": {
       "get": {
+        "operationId": "testApiKey",
         "tags": ["API key"],
         "summary": "API key",
         "description": "Test your API key and get team context.",
@@ -166,6 +167,7 @@
         }
       ],
       "get": {
+        "operationId": "getAudienceSegment",
         "tags": ["Audience segments"],
         "summary": "Get an audience segment",
         "description": "Retrieve a single audience segment by ID.",
@@ -222,6 +224,7 @@
     },
     "/v1/audience-segments": {
       "get": {
+        "operationId": "listAudienceSegments",
         "tags": ["Audience segments"],
         "summary": "List audience segments",
         "description": "Retrieve a paginated list of audience segments, most recently created first.",
@@ -286,6 +289,7 @@
         ]
       },
       "post": {
+        "operationId": "createAudienceSegment",
         "tags": ["Audience segments"],
         "summary": "Create an audience segment",
         "description": "Create a new audience segment.",
@@ -352,6 +356,7 @@
     },
     "/v1/campaigns": {
       "get": {
+        "operationId": "listCampaigns",
         "tags": ["Campaigns"],
         "summary": "List campaigns",
         "description": "Retrieve a paginated list of campaigns.",
@@ -413,6 +418,7 @@
         ]
       },
       "post": {
+        "operationId": "createCampaign",
         "tags": ["Campaigns"],
         "summary": "Create a campaign",
         "description": "Create a new draft campaign. An empty email message is created automatically and its `emailMessageId` is returned. Use the `/email-messages/{emailMessageId}` endpoint to set subject, sender, preview text, and LMX content. The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via update.",
@@ -492,6 +498,7 @@
         }
       ],
       "get": {
+        "operationId": "getCampaign",
         "tags": ["Campaigns"],
         "summary": "Get a campaign",
         "description": "Retrieve a single campaign by ID.",
@@ -543,6 +550,7 @@
         ]
       },
       "post": {
+        "operationId": "updateCampaign",
         "tags": ["Campaigns"],
         "summary": "Update a campaign",
         "description": "Update a draft campaign's name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.",
@@ -620,6 +628,7 @@
     },
     "/v1/campaign-groups": {
       "get": {
+        "operationId": "listCampaignGroups",
         "tags": ["Campaign groups"],
         "summary": "List campaign groups",
         "description": "Retrieve a paginated list of campaign groups, most recently created first.",
@@ -684,6 +693,7 @@
         ]
       },
       "post": {
+        "operationId": "createCampaignGroup",
         "tags": ["Campaign groups"],
         "summary": "Create a campaign group",
         "description": "Create a new campaign group.",
@@ -752,6 +762,7 @@
         }
       ],
       "get": {
+        "operationId": "getCampaignGroup",
         "tags": ["Campaign groups"],
         "summary": "Get a campaign group",
         "description": "Retrieve a single campaign group by ID.",
@@ -806,6 +817,7 @@
         ]
       },
       "post": {
+        "operationId": "updateCampaignGroup",
         "tags": ["Campaign groups"],
         "summary": "Update a campaign group",
         "description": "Update a campaign group's name or description. At least one field must be provided. The reserved \"Unsorted\" group cannot be edited.",
@@ -874,6 +886,7 @@
     },
     "/v1/dedicated-sending-ips": {
       "get": {
+        "operationId": "listDedicatedSendingIps",
         "tags": ["Configuration"],
         "summary": "List dedicated sending IP addresses",
         "description": "Retrieve a list of Loops' dedicated sending IP addresses.\n\nThis endpoint is provided for the rare instances where you may need to whitelist our sending IPs. Please note that this list is subject to change and will not include shared IPs used for sending mail.\n\nUnless you are sure you need this and are comfortable watching for changes, we strongly recommend you _do not_ whitelist these IPs.",
@@ -916,6 +929,7 @@
     },
     "/v1/contacts/create": {
       "post": {
+        "operationId": "createContact",
         "tags": ["Contacts"],
         "summary": "Create a contact",
         "description": "Add a contact to your audience.",
@@ -978,6 +992,7 @@
     },
     "/v1/contacts/update": {
       "put": {
+        "operationId": "updateContact",
         "tags": ["Contacts"],
         "summary": "Update a contact",
         "description": "Update a contact by `email` or `userId`. You must provide one of these parameters.\n\nIf you want to update a contact's email address, the contact will first need a `userId` value. You can then make a request containing the `userId` field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either `email` or `userId` to identify the contact you want to update. If both are provided, the system will look for a contact with either a matching `email` or `userId` value. If a contact is found for one of the values (e.g. `email`), the other value (e.g. `userId`) will be updated. If a contact is not found, a new contact will be created using both `email` and `userId` values.",
@@ -1034,6 +1049,7 @@
     },
     "/v1/contacts/find": {
       "get": {
+        "operationId": "findContact",
         "tags": ["Contacts"],
         "summary": "Find a contact",
         "description": "Search for a contact by `email` or `userId`. Only one parameter is allowed.",
@@ -1100,6 +1116,7 @@
     },
     "/v1/contacts/delete": {
       "post": {
+        "operationId": "deleteContact",
         "tags": ["Contacts"],
         "summary": "Delete a contact",
         "description": "Delete a contact by `email` or `userId`.",
@@ -1166,6 +1183,7 @@
     },
     "/v1/contacts/suppression": {
       "get": {
+        "operationId": "getContactSuppression",
         "tags": ["Contacts"],
         "summary": "Get suppression status for a contact",
         "description": "Retrieve suppression status and removal quota for a contact by `email` or `userId`. Include only one query parameter.",
@@ -1238,6 +1256,7 @@
         ]
       },
       "delete": {
+        "operationId": "removeContactSuppression",
         "tags": ["Contacts"],
         "summary": "Remove a contact from suppression list",
         "description": "Remove a suppressed contact from the suppression list by `email` or `userId`. Include only one query parameter.",
@@ -1312,6 +1331,7 @@
     },
     "/v1/contacts/properties": {
       "post": {
+        "operationId": "createContactProperty",
         "tags": ["Contact properties"],
         "summary": "Create a contact property",
         "description": "Create a custom contact property.",
@@ -1363,6 +1383,7 @@
         ]
       },
       "get": {
+        "operationId": "listContactProperties",
         "tags": ["Contact properties"],
         "summary": "List contact properties",
         "description": "Retrieve a list of your account's contact properties.<br>Use the `list` parameter to query \"all\" or \"custom\" properties.",
@@ -1423,6 +1444,7 @@
         }
       ],
       "get": {
+        "operationId": "getComponent",
         "tags": ["Components"],
         "summary": "Get a component",
         "description": "Retrieve a single component by ID.",
@@ -1474,6 +1496,7 @@
         ]
       },
       "post": {
+        "operationId": "updateComponent",
         "tags": ["Components"],
         "summary": "Update a component",
         "description": "Update a component's name and/or body. When the `lmx` body changes, the update cascades to every email using this component, and `affectedEmailCount` reports how many were affected. A change that would introduce a dynamic variable an email using the component cannot use is rejected.",
@@ -1561,6 +1584,7 @@
     },
     "/v1/components": {
       "get": {
+        "operationId": "listComponents",
         "tags": ["Components"],
         "summary": "List components",
         "description": "Retrieve a paginated list of email components.",
@@ -1622,6 +1646,7 @@
         ]
       },
       "post": {
+        "operationId": "createComponent",
         "tags": ["Components"],
         "summary": "Create a component",
         "description": "Create a new email component from an LMX body.",
@@ -1707,6 +1732,7 @@
         }
       ],
       "get": {
+        "operationId": "getEmailMessage",
         "tags": ["Email messages"],
         "summary": "Get an email message",
         "description": "Retrieve an email message, including its compiled LMX content.",
@@ -1771,6 +1797,7 @@
         ]
       },
       "post": {
+        "operationId": "updateEmailMessage",
         "tags": ["Email messages"],
         "summary": "Update an email message",
         "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
@@ -1881,6 +1908,7 @@
         }
       ],
       "post": {
+        "operationId": "previewEmailMessage",
         "tags": ["Email messages"],
         "summary": "Send a preview of an email message",
         "description": "Send a test preview of an email message to one or more addresses. The accepted variable fields depend on the parent's type - campaign previews accept `contactProperties`, workflow previews accept `contactProperties` and `eventProperties`, and transactional previews accept `dataVariables`. Supplying a field the parent cannot reference is rejected with 400.",
@@ -1971,6 +1999,7 @@
         }
       ],
       "get": {
+        "operationId": "getEmailMessageGuardian",
         "tags": ["Email messages"],
         "summary": "Run Guardian checks on an email message",
         "description": "Validate an email message's content against Guardian rules and return any errors and warnings. Errors must be resolved before the email can be published, warnings are advisory.",
@@ -2039,6 +2068,7 @@
     },
     "/v1/events/send": {
       "post": {
+        "operationId": "sendEvent",
         "tags": ["Events"],
         "summary": "Send an event",
         "description": "Send events to trigger workflows.",
@@ -2161,7 +2191,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API beta access not enabled for this team."
+            "description": "Invalid API key."
           },
           "405": {
             "description": "Wrong HTTP request method."
@@ -2213,7 +2243,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API beta access not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Event pattern not found.",
@@ -2275,7 +2305,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API beta access not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Event pattern not found.",
@@ -2296,6 +2326,7 @@
     },
     "/v1/lists": {
       "get": {
+        "operationId": "listMailingLists",
         "tags": ["Mailing lists"],
         "summary": "List mailing lists",
         "description": "Retrieve a list of your account's mailing lists.",
@@ -2341,6 +2372,7 @@
         }
       ],
       "get": {
+        "operationId": "getTheme",
         "tags": ["Themes"],
         "summary": "Get a theme",
         "description": "Retrieve a single theme by ID.",
@@ -2392,6 +2424,7 @@
         ]
       },
       "post": {
+        "operationId": "updateTheme",
         "tags": ["Themes"],
         "summary": "Update a theme",
         "description": "Update a theme's name and/or styles. When `styles` change, the update cascades to every email using this theme, and `affectedEmailCount` in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme's new value, after which that email follows the theme for that property.",
@@ -2459,6 +2492,7 @@
     },
     "/v1/themes": {
       "get": {
+        "operationId": "listThemes",
         "tags": ["Themes"],
         "summary": "List themes",
         "description": "Retrieve a paginated list of email themes, most recently created first.",
@@ -2520,6 +2554,7 @@
         ]
       },
       "post": {
+        "operationId": "createTheme",
         "tags": ["Themes"],
         "summary": "Create a theme",
         "description": "Create a new email theme for use across Loops emails.",
@@ -2573,6 +2608,7 @@
     },
     "/v1/transactional": {
       "post": {
+        "operationId": "sendTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Send a transactional email",
         "description": "Send a transactional email to a contact.<br>Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.\n\nTo set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.",
@@ -2673,6 +2709,7 @@
         ]
       },
       "get": {
+        "operationId": "listPublishedTransactionalEmails",
         "deprecated": true,
         "tags": ["Transactional emails"],
         "summary": "List transactional emails",
@@ -2725,6 +2762,7 @@
     },
     "/v1/transactional-emails": {
       "get": {
+        "operationId": "listTransactionalEmails",
         "tags": ["Transactional emails"],
         "summary": "List transactional emails",
         "description": "Retrieve a paginated list of transactional emails, most recently created first.",
@@ -2789,6 +2827,7 @@
         ]
       },
       "post": {
+        "operationId": "createTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Create a transactional email",
         "description": "Create a new transactional email. An empty draft email message is created automatically and its `draftEmailMessageId` is returned. Use the `POST /v1/email-messages/{emailMessageId}` endpoint along with the returned `draftEmailMessageContentRevisionId` to set subject, sender, preview text, and LMX content, then call `POST /v1/transactional-emails/{transactionalId}/publish` to publish the draft.",
@@ -2859,6 +2898,7 @@
         }
       ],
       "get": {
+        "operationId": "getTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Get a transactional email",
         "description": "Retrieve a single transactional email by ID.",
@@ -2913,6 +2953,7 @@
         ]
       },
       "post": {
+        "operationId": "updateTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Update a transactional email",
         "description": "Update a transactional email by ID.",
@@ -2988,6 +3029,7 @@
         }
       ],
       "post": {
+        "operationId": "ensureTransactionalDraft",
         "tags": ["Transactional emails"],
         "summary": "Ensure a draft email message",
         "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use `POST /v1/email-messages/{emailMessageId}` to edit the draft's content.",
@@ -3059,6 +3101,7 @@
         }
       ],
       "post": {
+        "operationId": "publishTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Publish a transactional email draft",
         "description": "Publish the transactional email's current draft email message. The draft becomes the published version and the draft is cleared.",
@@ -3137,6 +3180,7 @@
     },
     "/v1/transactional-groups": {
       "get": {
+        "operationId": "listTransactionalGroups",
         "tags": ["Transactional groups"],
         "summary": "List transactional groups",
         "description": "Retrieve a paginated list of transactional groups, most recently created first.",
@@ -3201,6 +3245,7 @@
         ]
       },
       "post": {
+        "operationId": "createTransactionalGroup",
         "tags": ["Transactional groups"],
         "summary": "Create a transactional group",
         "description": "Create a new transactional group.",
@@ -3269,6 +3314,7 @@
         }
       ],
       "get": {
+        "operationId": "getTransactionalGroup",
         "tags": ["Transactional groups"],
         "summary": "Get a transactional group",
         "description": "Retrieve a single transactional group by ID.",
@@ -3323,6 +3369,7 @@
         ]
       },
       "post": {
+        "operationId": "updateTransactionalGroup",
         "tags": ["Transactional groups"],
         "summary": "Update a transactional group",
         "description": "Update a transactional group's name or description. At least one field must be provided. The reserved \"Unsorted\" group cannot be edited.",
@@ -3390,6 +3437,7 @@
     },
     "/v1/uploads": {
       "post": {
+        "operationId": "createUpload",
         "tags": ["Uploads"],
         "summary": "Create an upload",
         "description": "Request a pre-signed URL to upload an image asset. Upload the file with an HTTP `PUT` to the returned `presignedUrl` (sending the same `Content-Type` and `Content-Length`), then call `/uploads/{emailAssetId}/complete` to finalize the asset.",
@@ -3470,6 +3518,7 @@
         }
       ],
       "post": {
+        "operationId": "completeUpload",
         "tags": ["Uploads"],
         "summary": "Complete an upload",
         "description": "Finalize an image upload after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded image asset.",
@@ -3585,7 +3634,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "405": {
             "description": "Wrong HTTP request method."
@@ -3633,7 +3682,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "405": {
             "description": "Wrong HTTP request method."
@@ -3696,7 +3745,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow not found.",
@@ -3758,7 +3807,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow not found.",
@@ -3842,7 +3891,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow not found.",
@@ -3885,10 +3934,10 @@
         "tags": ["Workflow nodes"],
         "summary": "Create a workflow node",
         "operationId": "createWorkflowNode",
-        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with `insertMode`: `between` places it between an existing `fromNodeId` -> `toNodeId` connection, and `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
+        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with `insertMode`: `between` places it between an existing `fromNodeId` -> `toNodeId` connection, and `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a sibling child path to a branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct `BranchNode` child is an `AudienceFilter`. For experiments, use create-node only to insert a missing `VariantNode` before non-variant content; use add-branch for another variant path.",
         "x-mint": {
           "href": "/api-reference/create-workflow-node",
-          "content": "Choose where the node goes with `insertMode`:\n- `between` places it between an existing `fromNodeId` -> `toNodeId` connection\n- `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`.\n\nPublic workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a new branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint instead.",
+          "content": "Choose where the node goes with `insertMode`:\n- `between` places it between an existing `fromNodeId` -> `toNodeId` connection\n- `before` places it before `beforeNodeId`.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: `BranchNode` creates two `AudienceFilter` children, and `ExperimentBranchNode` creates two regular `VariantNode` children plus one control `VariantNode`.\n\nPublic workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, `BranchNode` adds 3, and `ExperimentBranchNode` adds 4. To add a sibling child path to a branch or experiment branch, use the `POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch` endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct `BranchNode` child is an `AudienceFilter`. For experiments, use create-node only to insert a missing `VariantNode` before non-variant content; use add-branch for another variant path.",
           "metadata": {
             "sidebarTitle": "Create a node",
             "description": "Create a new default workflow node and return it with the latest workflow"
@@ -3926,7 +3975,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -4017,7 +4066,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -4102,7 +4151,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -4165,7 +4214,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -4248,7 +4297,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -4339,7 +4388,7 @@
             }
           },
           "401": {
-            "description": "Invalid API key or workflow API not enabled for this team."
+            "description": "Invalid API key."
           },
           "404": {
             "description": "Workflow or workflow node not found.",
@@ -8430,7 +8479,7 @@
       },
       "CreateWorkflowNodeBetweenRequest": {
         "type": "object",
-        "description": "Insert a new node between two existing nodes, `fromNodeId` and `toNodeId`.",
+        "description": "Insert a new node between two existing nodes, `fromNodeId` and `toNodeId`. When `fromNodeId` is an `ExperimentBranchNode`, `nodeTypeName` must be `VariantNode`, and `toNodeId` cannot already be a `VariantNode`; use add-branch to add sibling variants. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct `BranchNode` child is an `AudienceFilter`.",
         "properties": {
           "expectedRevisionId": {
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
@@ -8444,7 +8493,7 @@
           },
           "fromNodeId": {
             "type": "string",
-            "description": "The node to insert after. This node must currently point to `toNodeId`."
+            "description": "The node to insert after. This node must currently point to `toNodeId`. If this is an `ExperimentBranchNode`, `nodeTypeName` must be `VariantNode` and `toNodeId` cannot already be a `VariantNode`."
           },
           "toNodeId": {
             "type": "string",
@@ -8462,7 +8511,7 @@
       },
       "CreateWorkflowNodeBeforeRequest": {
         "type": "object",
-        "description": "Insert a new node before `beforeNodeId`.",
+        "description": "Insert a new node before `beforeNodeId`. `VariantNode` cannot use `insertMode: \"before\"`; to restore a missing variant path, use `insertMode: \"between\"` with the experiment branch as `fromNodeId`.",
         "properties": {
           "expectedRevisionId": {
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"

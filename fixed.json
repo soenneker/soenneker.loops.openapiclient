@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.2"
+    "version": "1.21.3"
   },
   "servers": [
     {
@@ -18,14 +18,14 @@
         ],
         "summary": "API key",
         "description": "Test your API key and get team context.",
-        "operationId": "GetV1ApiKey",
+        "operationId": "TestApiKey",
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ApiKey200Response"
+                  "$ref": "#/components/schemas/TestApiKey200Response"
                 }
               }
             }
@@ -35,7 +35,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ApiKey401Response"
+                  "$ref": "#/components/schemas/TestApiKey401Response"
                 }
               }
             }
@@ -55,7 +55,7 @@
         ],
         "summary": "Get an audience segment",
         "description": "Retrieve a single audience segment by ID.",
-        "operationId": "GetV1AudienceSegmentsByAudienceSegmentId",
+        "operationId": "GetAudienceSegment",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -113,7 +113,7 @@
         ],
         "summary": "List audience segments",
         "description": "Retrieve a paginated list of audience segments, most recently created first.",
-        "operationId": "GetV1AudienceSegments",
+        "operationId": "ListAudienceSegments",
         "parameters": [
           {
             "name": "perPage",
@@ -166,7 +166,7 @@
         ],
         "summary": "Create an audience segment",
         "description": "Create a new audience segment.",
-        "operationId": "PostV1AudienceSegments",
+        "operationId": "CreateAudienceSegment",
         "requestBody": {
           "content": {
             "application/json": {
@@ -222,7 +222,7 @@
         ],
         "summary": "List campaigns",
         "description": "Retrieve a paginated list of campaigns.",
-        "operationId": "GetV1Campaigns",
+        "operationId": "ListCampaigns",
         "parameters": [
           {
             "name": "perPage",
@@ -275,7 +275,7 @@
         ],
         "summary": "Create a campaign",
         "description": "Create a new draft campaign. An empty email message is created automatically and its \u0060emailMessageId\u0060 is returned. Use the \u0060/email-messages/{emailMessageId}\u0060 endpoint to set subject, sender, preview text, and LMX content. The audience (mailing list, segment, or filter), group, and scheduling can be set on create or later via update.",
-        "operationId": "PostV1Campaigns",
+        "operationId": "CreateCampaign",
         "requestBody": {
           "content": {
             "application/json": {
@@ -331,7 +331,7 @@
         ],
         "summary": "Get a campaign",
         "description": "Retrieve a single campaign by ID.",
-        "operationId": "GetV1CampaignsByCampaignId",
+        "operationId": "GetCampaign",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -376,7 +376,7 @@
         ],
         "summary": "Update a campaign",
         "description": "Update a draft campaign\u0027s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.",
-        "operationId": "PostV1CampaignsByCampaignId",
+        "operationId": "UpdateCampaign",
         "requestBody": {
           "content": {
             "application/json": {
@@ -453,7 +453,7 @@
         ],
         "summary": "List campaign groups",
         "description": "Retrieve a paginated list of campaign groups, most recently created first.",
-        "operationId": "GetV1CampaignGroups",
+        "operationId": "ListCampaignGroups",
         "parameters": [
           {
             "name": "perPage",
@@ -506,7 +506,7 @@
         ],
         "summary": "Create a campaign group",
         "description": "Create a new campaign group.",
-        "operationId": "PostV1CampaignGroups",
+        "operationId": "CreateCampaignGroup",
         "requestBody": {
           "content": {
             "application/json": {
@@ -552,7 +552,7 @@
         ],
         "summary": "Get a campaign group",
         "description": "Retrieve a single campaign group by ID.",
-        "operationId": "GetV1CampaignGroupsByCampaignGroupId",
+        "operationId": "GetCampaignGroup",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -597,7 +597,7 @@
         ],
         "summary": "Update a campaign group",
         "description": "Update a campaign group\u0027s name or description. At least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.",
-        "operationId": "PostV1CampaignGroupsByCampaignGroupId",
+        "operationId": "UpdateCampaignGroup",
         "requestBody": {
           "content": {
             "application/json": {
@@ -664,14 +664,14 @@
         ],
         "summary": "List dedicated sending IP addresses",
         "description": "Retrieve a list of Loops\u0027 dedicated sending IP addresses.\n\nThis endpoint is provided for the rare instances where you may need to whitelist our sending IPs. Please note that this list is subject to change and will not include shared IPs used for sending mail.\n\nUnless you are sure you need this and are comfortable watching for changes, we strongly recommend you _do not_ whitelist these IPs.",
-        "operationId": "GetV1DedicatedSendingIps",
+        "operationId": "ListDedicatedSendingIps",
         "responses": {
           "200": {
             "description": "Successful.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1DedicatedSendingIps200ResponseSchema"
+                  "$ref": "#/components/schemas/ListDedicatedSendingIps200ResponseSchema"
                 }
               }
             }
@@ -691,7 +691,7 @@
         ],
         "summary": "Create a contact",
         "description": "Add a contact to your audience.",
-        "operationId": "PostV1ContactsCreate",
+        "operationId": "CreateContact",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060. [See available date formats](https://loops.so/docs/contacts/properties#dates)). Make sure to create the properties in Loops before using them in API calls.",
           "content": {
@@ -748,7 +748,7 @@
         ],
         "summary": "Update a contact",
         "description": "Update a contact by \u0060email\u0060 or \u0060userId\u0060. You must provide one of these parameters.\n\nIf you want to update a contact\u0027s email address, the contact will first need a \u0060userId\u0060 value. You can then make a request containing the \u0060userId\u0060 field along with an updated email address.\n\nThis endpoint will create a contact if a matching contact does not already exist in your audience.\n\nProvide either \u0060email\u0060 or \u0060userId\u0060 to identify the contact you want to update. If both are provided, the system will look for a contact with either a matching \u0060email\u0060 or \u0060userId\u0060 value. If a contact is found for one of the values (e.g. \u0060email\u0060), the other value (e.g. \u0060userId\u0060) will be updated. If a contact is not found, a new contact will be created using both \u0060email\u0060 and \u0060userId\u0060 values.",
-        "operationId": "PutV1ContactsUpdate",
+        "operationId": "UpdateContact",
         "requestBody": {
           "description": "You can add custom contact properties as keys in this request (of type \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060 or \u0060date\u0060. [See available date formats](https://loops.so/docs/contacts/properties#dates)). Make sure to create the properties in Loops before using them in API calls.",
           "content": {
@@ -795,7 +795,7 @@
         ],
         "summary": "Find a contact",
         "description": "Search for a contact by \u0060email\u0060 or \u0060userId\u0060. Only one parameter is allowed.",
-        "operationId": "GetV1ContactsFind",
+        "operationId": "FindContact",
         "parameters": [
           {
             "name": "email",
@@ -819,7 +819,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ContactsFind200ResponseSchema"
+                  "$ref": "#/components/schemas/FindContact200ResponseSchema"
                 }
               }
             }
@@ -849,7 +849,7 @@
         ],
         "summary": "Delete a contact",
         "description": "Delete a contact by \u0060email\u0060 or \u0060userId\u0060.",
-        "operationId": "PostV1ContactsDelete",
+        "operationId": "DeleteContact",
         "requestBody": {
           "description": "Include only one of \u0060email\u0060 or \u0060userId\u0060.",
           "content": {
@@ -906,7 +906,7 @@
         ],
         "summary": "Get suppression status for a contact",
         "description": "Retrieve suppression status and removal quota for a contact by \u0060email\u0060 or \u0060userId\u0060. Include only one query parameter.",
-        "operationId": "GetV1ContactsSuppression",
+        "operationId": "GetContactSuppression",
         "parameters": [
           {
             "name": "email",
@@ -968,7 +968,7 @@
         ],
         "summary": "Remove a contact from suppression list",
         "description": "Remove a suppressed contact from the suppression list by \u0060email\u0060 or \u0060userId\u0060. Include only one query parameter.",
-        "operationId": "DeleteV1ContactsSuppression",
+        "operationId": "RemoveContactSuppression",
         "parameters": [
           {
             "name": "email",
@@ -1032,7 +1032,7 @@
         ],
         "summary": "Create a contact property",
         "description": "Create a custom contact property.",
-        "operationId": "PostV1ContactsProperties",
+        "operationId": "CreateContactProperty",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1076,7 +1076,7 @@
         ],
         "summary": "List contact properties",
         "description": "Retrieve a list of your account\u0027s contact properties.\u003Cbr\u003EUse the \u0060list\u0060 parameter to query \u0022all\u0022 or \u0022custom\u0022 properties.",
-        "operationId": "GetV1ContactsProperties",
+        "operationId": "ListContactProperties",
         "parameters": [
           {
             "name": "list",
@@ -1093,7 +1093,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1ContactsProperties200ResponseSchema"
+                  "$ref": "#/components/schemas/ListContactProperties200ResponseSchema"
                 }
               }
             }
@@ -1113,7 +1113,7 @@
         ],
         "summary": "Get a component",
         "description": "Retrieve a single component by ID.",
-        "operationId": "GetV1ComponentsByComponentId",
+        "operationId": "GetComponent",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1158,7 +1158,7 @@
         ],
         "summary": "Update a component",
         "description": "Update a component\u0027s name and/or body. When the \u0060lmx\u0060 body changes, the update cascades to every email using this component, and \u0060affectedEmailCount\u0060 reports how many were affected. A change that would introduce a dynamic variable an email using the component cannot use is rejected.",
-        "operationId": "PostV1ComponentsByComponentId",
+        "operationId": "UpdateComponent",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1245,7 +1245,7 @@
         ],
         "summary": "List components",
         "description": "Retrieve a paginated list of email components.",
-        "operationId": "GetV1Components",
+        "operationId": "ListComponents",
         "parameters": [
           {
             "name": "perPage",
@@ -1298,7 +1298,7 @@
         ],
         "summary": "Create a component",
         "description": "Create a new email component from an LMX body.",
-        "operationId": "PostV1Components",
+        "operationId": "CreateComponent",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1364,7 +1364,7 @@
         ],
         "summary": "Get an email message",
         "description": "Retrieve an email message, including its compiled LMX content.",
-        "operationId": "GetV1EmailMessagesByEmailMessageId",
+        "operationId": "GetEmailMessage",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1419,7 +1419,7 @@
         ],
         "summary": "Update an email message",
         "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply \u0060expectedRevisionId\u0060 matching the current \u0060contentRevisionId\u0060 \u2014 the server rejects mismatched revisions with 409.",
-        "operationId": "PostV1EmailMessagesByEmailMessageId",
+        "operationId": "UpdateEmailMessage",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1516,7 +1516,7 @@
         ],
         "summary": "Send a preview of an email message",
         "description": "Send a test preview of an email message to one or more addresses. The accepted variable fields depend on the parent\u0027s type - campaign previews accept \u0060contactProperties\u0060, workflow previews accept \u0060contactProperties\u0060 and \u0060eventProperties\u0060, and transactional previews accept \u0060dataVariables\u0060. Supplying a field the parent cannot reference is rejected with 400.",
-        "operationId": "PostV1EmailMessagesByEmailMessageIdPreview",
+        "operationId": "PreviewEmailMessage",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1593,7 +1593,7 @@
         ],
         "summary": "Run Guardian checks on an email message",
         "description": "Validate an email message\u0027s content against Guardian rules and return any errors and warnings. Errors must be resolved before the email can be published, warnings are advisory.",
-        "operationId": "GetV1EmailMessagesByEmailMessageIdGuardian",
+        "operationId": "GetEmailMessageGuardian",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1661,7 +1661,7 @@
         ],
         "summary": "Send an event",
         "description": "Send events to trigger workflows.",
-        "operationId": "PostV1EventsSend",
+        "operationId": "SendEvent",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1900,14 +1900,14 @@
         ],
         "summary": "List mailing lists",
         "description": "Retrieve a list of your account\u0027s mailing lists.",
-        "operationId": "GetV1Lists",
+        "operationId": "ListMailingLists",
         "responses": {
           "200": {
             "description": "Successful.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetV1Lists200ResponseSchema"
+                  "$ref": "#/components/schemas/ListMailingLists200ResponseSchema"
                 }
               }
             }
@@ -1927,7 +1927,7 @@
         ],
         "summary": "Get a theme",
         "description": "Retrieve a single theme by ID.",
-        "operationId": "GetV1ThemesByThemeId",
+        "operationId": "GetTheme",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -1972,7 +1972,7 @@
         ],
         "summary": "Update a theme",
         "description": "\u0022Update a theme\u0027s name and/or styles. When \u0060styles\u0060 change, the update cascades to every email using this theme, and \u0060affectedEmailCount\u0060 in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme\u0027s new value, after which that email follows the theme for that property.\u0022",
-        "operationId": "PostV1ThemesByThemeId",
+        "operationId": "UpdateTheme",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2039,7 +2039,7 @@
         ],
         "summary": "List themes",
         "description": "Retrieve a paginated list of email themes, most recently created first.",
-        "operationId": "GetV1Themes",
+        "operationId": "ListThemes",
         "parameters": [
           {
             "name": "perPage",
@@ -2092,7 +2092,7 @@
         ],
         "summary": "Create a theme",
         "description": "Create a new email theme for use across Loops emails.",
-        "operationId": "PostV1Themes",
+        "operationId": "CreateTheme",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2138,7 +2138,7 @@
         ],
         "summary": "Send a transactional email",
         "description": "Send a transactional email to a contact.\u003Cbr\u003EPlease [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.\n\nTo set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.",
-        "operationId": "PostV1Transactional",
+        "operationId": "SendTransactionalEmail",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2175,7 +2175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostV1Transactional400Response"
+                  "$ref": "#/components/schemas/SendTransactionalEmail400Response"
                 }
               }
             }
@@ -2215,7 +2215,7 @@
         ],
         "summary": "List transactional emails",
         "description": "Retrieve a paginated list of transactional emails, most recently created first.",
-        "operationId": "GetV1TransactionalEmails",
+        "operationId": "ListTransactionalEmails",
         "parameters": [
           {
             "name": "perPage",
@@ -2268,7 +2268,7 @@
         ],
         "summary": "Create a transactional email",
         "description": "Create a new transactional email. An empty draft email message is created automatically and its \u0060draftEmailMessageId\u0060 is returned. Use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint along with the returned \u0060draftEmailMessageContentRevisionId\u0060 to set subject, sender, preview text, and LMX content, then call \u0060POST /v1/transactional-emails/{transactionalId}/publish\u0060 to publish the draft.",
-        "operationId": "PostV1TransactionalEmails",
+        "operationId": "CreateTransactionalEmail",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2314,7 +2314,7 @@
         ],
         "summary": "Get a transactional email",
         "description": "Retrieve a single transactional email by ID.",
-        "operationId": "GetV1TransactionalEmailsByTransactionalId",
+        "operationId": "GetTransactionalEmail",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -2359,7 +2359,7 @@
         ],
         "summary": "Update a transactional email",
         "description": "Update a transactional email by ID.",
-        "operationId": "PostV1TransactionalEmailsByTransactionalId",
+        "operationId": "UpdateTransactionalEmail",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2426,7 +2426,7 @@
         ],
         "summary": "Ensure a draft email message",
         "description": "Ensure the transactional email has a draft email message. If a draft already exists it is returned unchanged; otherwise a new empty draft is created (seeded from the most recent published version when present). Use \u0060POST /v1/email-messages/{emailMessageId}\u0060 to edit the draft\u0027s content.",
-        "operationId": "PostV1TransactionalEmailsByTransactionalIdDraft",
+        "operationId": "EnsureTransactionalDraft",
         "responses": {
           "200": {
             "description": "Draft ready.",
@@ -2484,7 +2484,7 @@
         ],
         "summary": "Publish a transactional email draft",
         "description": "Publish the transactional email\u0027s current draft email message. The draft becomes the published version and the draft is cleared.",
-        "operationId": "PostV1TransactionalEmailsByTransactionalIdPublish",
+        "operationId": "PublishTransactionalEmail",
         "responses": {
           "200": {
             "description": "Transactional email published.",
@@ -2562,7 +2562,7 @@
         ],
         "summary": "List transactional groups",
         "description": "Retrieve a paginated list of transactional groups, most recently created first.",
-        "operationId": "GetV1TransactionalGroups",
+        "operationId": "ListTransactionalGroups",
         "parameters": [
           {
             "name": "perPage",
@@ -2615,7 +2615,7 @@
         ],
         "summary": "Create a transactional group",
         "description": "Create a new transactional group.",
-        "operationId": "PostV1TransactionalGroups",
+        "operationId": "CreateTransactionalGroup",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2661,7 +2661,7 @@
         ],
         "summary": "Get a transactional group",
         "description": "Retrieve a single transactional group by ID.",
-        "operationId": "GetV1TransactionalGroupsByTransactionalGroupId",
+        "operationId": "GetTransactionalGroup",
         "responses": {
           "200": {
             "description": "Successful.",
@@ -2706,7 +2706,7 @@
         ],
         "summary": "Update a transactional group",
         "description": "Update a transactional group\u0027s name or description. At least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.",
-        "operationId": "PostV1TransactionalGroupsByTransactionalGroupId",
+        "operationId": "UpdateTransactionalGroup",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2773,7 +2773,7 @@
         ],
         "summary": "Create an upload",
         "description": "Request a pre-signed URL to upload an image asset. Upload the file with an HTTP \u0060PUT\u0060 to the returned \u0060presignedUrl\u0060 (sending the same \u0060Content-Type\u0060 and \u0060Content-Length\u0060), then call \u0060/uploads/{emailAssetId}/complete\u0060 to finalize the asset.",
-        "operationId": "PostV1Uploads",
+        "operationId": "CreateUpload",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2829,7 +2829,7 @@
         ],
         "summary": "Complete an upload",
         "description": "Finalize an image upload after the file has been uploaded to the pre-signed URL. Returns the public URL of the uploaded image asset.",
-        "operationId": "PostV1UploadsByEmailAssetIdComplete",
+        "operationId": "CompleteUpload",
         "responses": {
           "200": {
             "description": "Upload completed.",
@@ -3204,7 +3204,7 @@
           "Workflow nodes"
         ],
         "summary": "Create a workflow node",
-        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, and \u0060before\u0060 places it before \u0060beforeNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a new branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint instead.\u0022",
+        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, and \u0060before\u0060 places it before \u0060beforeNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.\u0022",
         "operationId": "CreateWorkflowNode",
         "requestBody": {
           "content": {
@@ -6313,7 +6313,7 @@
           },
           "fromNodeId": {
             "type": "string",
-            "description": "The node to insert after. This node must currently point to \u0060toNodeId\u0060."
+            "description": "The node to insert after. This node must currently point to \u0060toNodeId\u0060. If this is an \u0060ExperimentBranchNode\u0060, \u0060nodeTypeName\u0060 must be \u0060VariantNode\u0060 and \u0060toNodeId\u0060 cannot already be a \u0060VariantNode\u0060."
           },
           "toNodeId": {
             "type": "string",
@@ -6321,7 +6321,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Insert a new node between two existing nodes, \u0060fromNodeId\u0060 and \u0060toNodeId\u0060."
+        "description": "Insert a new node between two existing nodes, \u0060fromNodeId\u0060 and \u0060toNodeId\u0060. When \u0060fromNodeId\u0060 is an \u0060ExperimentBranchNode\u0060, \u0060nodeTypeName\u0060 must be \u0060VariantNode\u0060, and \u0060toNodeId\u0060 cannot already be a \u0060VariantNode\u0060; use add-branch to add sibling variants. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060."
       },
       "CreateWorkflowNodeBeforeRequest": {
         "required": [
@@ -6347,7 +6347,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Insert a new node before \u0060beforeNodeId\u0060."
+        "description": "\u0022Insert a new node before \u0060beforeNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \\\u0022before\\\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \\\u0022between\\\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060.\u0022"
       },
       "CreateWorkflowNodeRequest": {
         "required": [
@@ -10861,7 +10861,7 @@
         },
         "description": "An object of mailing list IDs and boolean subscription statuses."
       },
-      "GetV1ApiKey200Response": {
+      "TestApiKey200Response": {
         "required": [
           "success",
           "teamName"
@@ -10877,7 +10877,7 @@
           }
         }
       },
-      "GetV1ApiKey401Response": {
+      "TestApiKey401Response": {
         "type": "object",
         "properties": {
           "success": {
@@ -10892,7 +10892,7 @@
           }
         }
       },
-      "GetV1DedicatedSendingIps200Response": {
+      "ListDedicatedSendingIps200Response": {
         "type": "array",
         "items": {
           "type": "string",
@@ -10900,25 +10900,25 @@
         },
         "description": "Returns an array of IP address strings."
       },
-      "GetV1ContactsFind200Response": {
+      "FindContact200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
         }
       },
-      "GetV1ContactsProperties200Response": {
+      "ListContactProperties200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ContactProperty"
         }
       },
-      "GetV1Lists200Response": {
+      "ListMailingLists200Response": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MailingList"
         }
       },
-      "PostV1Transactional400Response": {
+      "SendTransactionalEmail400Response": {
         "required": [
           "type"
         ],
@@ -10983,7 +10983,7 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "GetV1DedicatedSendingIps200ResponseSchema": {
+      "ListDedicatedSendingIps200ResponseSchema": {
         "type": "array",
         "items": {
           "type": "string",
@@ -10991,19 +10991,19 @@
         },
         "description": "Returns an array of IP address strings."
       },
-      "GetV1ContactsFind200ResponseSchema": {
+      "FindContact200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Contact"
         }
       },
-      "GetV1ContactsProperties200ResponseSchema": {
+      "ListContactProperties200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/ContactProperty"
         }
       },
-      "GetV1Lists200ResponseSchema": {
+      "ListMailingLists200ResponseSchema": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/MailingList"

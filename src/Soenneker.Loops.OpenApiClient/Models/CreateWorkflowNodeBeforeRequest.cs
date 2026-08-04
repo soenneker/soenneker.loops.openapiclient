@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Insert a new node before `beforeNodeId`.
+    /// &quot;Insert a new node before `beforeNodeId`. `VariantNode` cannot use `insertMode: \&quot;before\&quot;`; to restore a missing variant path, use `insertMode: \&quot;between\&quot;` with the experiment branch as `fromNodeId`.&quot;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWorkflowNodeBeforeRequest : IParsable
