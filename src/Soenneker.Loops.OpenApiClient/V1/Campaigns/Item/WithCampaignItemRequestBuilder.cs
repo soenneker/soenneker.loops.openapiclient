@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.
+        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Once a campaign has been sent, only its `name` and `campaignGroupId` can be updated.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CampaignResponse"/></returns>
         /// <param name="body">At least one field must be provided.</param>
@@ -107,7 +107,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.
+        /// Update a draft campaign&apos;s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Once a campaign has been sent, only its `name` and `campaignGroupId` can be updated.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">At least one field must be provided.</param>

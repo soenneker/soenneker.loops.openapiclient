@@ -375,7 +375,7 @@
           "Campaigns"
         ],
         "summary": "Update a campaign",
-        "description": "Update a draft campaign\u0027s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Campaigns can only be updated while in draft status.",
+        "description": "Update a draft campaign\u0027s name, group, audience (mailing list, segment, or filter), or scheduling. At least one field must be provided. Once a campaign has been sent, only its \u0060name\u0060 and \u0060campaignGroupId\u0060 can be updated.",
         "operationId": "UpdateCampaign",
         "requestBody": {
           "content": {
@@ -418,7 +418,7 @@
             }
           },
           "409": {
-            "description": "Campaign is not in draft status.",
+            "description": "Campaign has been sent and the request updates a field other than \u0060name\u0060 or \u0060campaignGroupId\u0060.",
             "content": {
               "application/json": {
                 "schema": {
