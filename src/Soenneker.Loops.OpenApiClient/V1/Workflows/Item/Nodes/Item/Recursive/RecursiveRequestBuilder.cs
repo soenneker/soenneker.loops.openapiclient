@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive
         {
         }
         /// <summary>
-        /// &quot;Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the nodes and discard those queued contacts.&quot;
+        /// &quot;Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the nodes and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the nodes are removed.&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the nodes and discard those queued contacts.&quot;
+        /// &quot;Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the nodes and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the nodes are removed.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

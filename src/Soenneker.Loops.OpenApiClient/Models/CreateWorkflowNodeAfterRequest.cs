@@ -8,20 +8,11 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Insert a new node before `toNodeId`. `VariantNode` cannot use `insertMode: \&quot;before\&quot;`; to restore a missing variant path, use `insertMode: \&quot;between\&quot;` with the experiment branch as `fromNodeId`.&quot;
+    /// Insert a new node after `fromNodeId`. This is valid only when `fromNodeId` has exactly one outgoing node. It is invalid when `fromNodeId` has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use `between` with the exact `toNodeId` instead.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateWorkflowNodeBeforeRequest : IParsable
+    public partial class CreateWorkflowNodeAfterRequest : IParsable
     {
-        /// <summary>Deprecated. Use `toNodeId` instead.</summary>
-        [Obsolete("")]
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? BeforeNodeId { get; set; }
-#nullable restore
-#else
-        public string BeforeNodeId { get; set; }
-#endif
         /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,35 +21,27 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ExpectedRevisionId { get; set; }
 #endif
+        /// <summary>The node to insert after. This node must currently have exactly one outgoing node.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FromNodeId { get; set; }
+#nullable restore
+#else
+        public string FromNodeId { get; set; }
+#endif
         /// <summary>The insertMode property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode? InsertMode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode? InsertMode { get; set; }
         /// <summary>Node types that can be created with the API. `*Trigger` nodes and `ExitAction` nodes cannot be created.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get; set; }
-        /// <summary>The node to insert before. The target must have at least one incoming parent and cannot be a trigger node.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ToNodeId { get; set; }
-#nullable restore
-#else
-        public string ToNodeId { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest();
+            return new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,12 +51,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "beforeNodeId", n => { BeforeNodeId = n.GetStringValue(); } },
                 { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
-                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode>(); } },
+                { "fromNodeId", n => { FromNodeId = n.GetStringValue(); } },
+                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode>(); } },
                 { "nodeTypeName", n => { NodeTypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>(); } },
-                { "toNodeId", n => { ToNodeId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -83,12 +64,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("beforeNodeId", BeforeNodeId);
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode>("insertMode", InsertMode);
+            writer.WriteStringValue("fromNodeId", FromNodeId);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode>("insertMode", InsertMode);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>("nodeTypeName", NodeTypeName);
-            writer.WriteStringValue("toNodeId", ToNodeId);
-            writer.WriteStringValue("type", Type);
         }
     }
 }

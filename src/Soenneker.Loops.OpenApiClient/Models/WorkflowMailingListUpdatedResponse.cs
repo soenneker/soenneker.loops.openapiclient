@@ -26,6 +26,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public double? QueuedContactCount { get; set; }
         /// <summary>The status property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListUpdatedResponseStatus? Status { get; set; }
+        /// <summary>The workflow property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get; set; }
+#endif
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,6 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "queuedContactCount", n => { QueuedContactCount = n.GetDoubleValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListUpdatedResponseStatus>(); } },
+                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -75,6 +84,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteDoubleValue("queuedContactCount", QueuedContactCount);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListUpdatedResponseStatus>("status", Status);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }

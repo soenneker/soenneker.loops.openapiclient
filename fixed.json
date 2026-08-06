@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.3"
+    "version": "1.21.6"
   },
   "servers": [
     {
@@ -3127,7 +3127,7 @@
           "Workflows"
         ],
         "summary": "Change workflow mailing list",
-        "description": "\u0022Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of applying the change. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to apply the change and discard those contacts.\u0022",
+        "description": "\u0022Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of applying the change. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.\u0022",
         "operationId": "ChangeWorkflowMailingList",
         "requestBody": {
           "content": {
@@ -3140,7 +3140,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mailing-list dry run, queued-contact warning, or update result.",
+            "description": "Mailing-list dry run, queued-contact warning, or update result. Confirmed update responses include the simplified workflow after the mailing list changes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3204,7 +3204,7 @@
           "Workflow nodes"
         ],
         "summary": "Create a workflow node",
-        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, and \u0060before\u0060 places it before \u0060beforeNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.\u0022",
+        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, \u0060before\u0060 places it before \u0060toNodeId\u0060, and \u0060after\u0060 places it after \u0060fromNodeId\u0060 when that node has exactly one outgoing connection. \u0060after\u0060 is a convenience for simple linear paths, so callers do not need to fetch and pass the current child node ID. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead. For \u0060before\u0060, deprecated \u0060beforeNodeId\u0060 requests are still accepted for compatibility, but new callers should use \u0060toNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.\u0022",
         "operationId": "CreateWorkflowNode",
         "requestBody": {
           "content": {
@@ -3486,7 +3486,7 @@
           "Workflow nodes"
         ],
         "summary": "Delete a workflow node",
-        "description": "\u0022Delete a single workflow node. If contacts are queued at the node, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the node and discard those queued contacts.\u0022",
+        "description": "\u0022Delete a single workflow node. If contacts are queued at the node, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the node and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the node is removed.\u0022",
         "operationId": "DeleteWorkflowNode",
         "requestBody": {
           "content": {
@@ -3499,7 +3499,7 @@
         },
         "responses": {
           "200": {
-            "description": "Delete dry run, queued-contact warning, or deletion result.",
+            "description": "Delete dry run, queued-contact warning, or deletion result. Confirmed deletion responses include the simplified workflow after the node is removed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -3566,13 +3566,99 @@
         }
       ]
     },
+    "/v1/workflows/{workflowId}/nodes/{nodeId}/reroute": {
+      "post": {
+        "tags": [
+          "Workflow nodes"
+        ],
+        "summary": "Reroute a node connection",
+        "description": "Reroute the source node\u0027s existing connection to another valid target node. Returns the updated source node and the latest workflow.",
+        "operationId": "RerouteNodeConnection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RerouteNodeConnectionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Node connection rerouted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RerouteNodeConnectionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060workflowId\u0060, \u0060nodeId\u0060, request body, node connection selection, reroute target, or workflow state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Workflow or workflow node not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "\u0060expectedRevisionId\u0060 is stale.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "workflowId",
+          "in": "path",
+          "description": "The ID of the workflow.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "nodeId",
+          "in": "path",
+          "description": "The ID of the source workflow node whose outgoing connection should be moved.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
     "/v1/workflows/{workflowId}/nodes/{nodeId}/recursive": {
       "delete": {
         "tags": [
           "Workflow nodes"
         ],
         "summary": "Delete workflow nodes recursively",
-        "description": "\u0022Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the nodes and discard those queued contacts.\u0022",
+        "description": "\u0022Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the nodes and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the nodes are removed.\u0022",
         "operationId": "DeleteWorkflowNodeRecursively",
         "requestBody": {
           "content": {
@@ -3585,7 +3671,7 @@
         },
         "responses": {
           "200": {
-            "description": "Delete dry run, queued-contact warning, or deletion result.",
+            "description": "Delete dry run, queued-contact warning, or deletion result. Confirmed deletion responses include the simplified workflow after the nodes are removed.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6328,9 +6414,17 @@
           "expectedRevisionId",
           "insertMode",
           "nodeTypeName",
-          "beforeNodeId"
+          "type"
         ],
         "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
+          }
+        ],
         "properties": {
           "expectedRevisionId": {
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
@@ -6341,13 +6435,55 @@
           "nodeTypeName": {
             "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
           },
-          "beforeNodeId": {
+          "toNodeId": {
             "type": "string",
             "description": "The node to insert before. The target must have at least one incoming parent and cannot be a trigger node."
+          },
+          "beforeNodeId": {
+            "type": "string",
+            "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
+            "deprecated": true
+          },
+          "type": {
+            "type": "string",
+            "description": "Union discriminator"
           }
         },
         "additionalProperties": false,
-        "description": "\u0022Insert a new node before \u0060beforeNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \\\u0022before\\\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \\\u0022between\\\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060.\u0022"
+        "description": "\u0022Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \\\u0022before\\\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \\\u0022between\\\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060.\u0022",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "CreateWorkflowNodeBeforeRequestOneOf1": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1",
+            "CreateWorkflowNodeBeforeRequestOneOf2": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
+          }
+        }
+      },
+      "CreateWorkflowNodeAfterRequest": {
+        "required": [
+          "expectedRevisionId",
+          "insertMode",
+          "nodeTypeName",
+          "fromNodeId"
+        ],
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "insertMode": {
+            "$ref": "#/components/schemas/CreateWorkflowNodeAfterRequestInsertMode"
+          },
+          "nodeTypeName": {
+            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
+          },
+          "fromNodeId": {
+            "type": "string",
+            "description": "The node to insert after. This node must currently have exactly one outgoing node."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Insert a new node after \u0060fromNodeId\u0060. This is valid only when \u0060fromNodeId\u0060 has exactly one outgoing node. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead."
       },
       "CreateWorkflowNodeRequest": {
         "required": [
@@ -6360,6 +6496,9 @@
           },
           {
             "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequest"
+          },
+          {
+            "$ref": "#/components/schemas/CreateWorkflowNodeAfterRequest"
           }
         ],
         "properties": {
@@ -6375,8 +6514,10 @@
           "mapping": {
             "between": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
             "before": "#/components/schemas/CreateWorkflowNodeBeforeRequest",
+            "after": "#/components/schemas/CreateWorkflowNodeAfterRequest",
             "CreateWorkflowNodeBetweenRequest": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
-            "CreateWorkflowNodeBeforeRequest": "#/components/schemas/CreateWorkflowNodeBeforeRequest"
+            "CreateWorkflowNodeBeforeRequest": "#/components/schemas/CreateWorkflowNodeBeforeRequest",
+            "CreateWorkflowNodeAfterRequest": "#/components/schemas/CreateWorkflowNodeAfterRequest"
           }
         }
       },
@@ -6933,6 +7074,41 @@
         },
         "additionalProperties": false
       },
+      "RerouteNodeConnectionRequest": {
+        "required": [
+          "expectedRevisionId",
+          "newTargetNodeId"
+        ],
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "newTargetNodeId": {
+            "type": "string",
+            "description": "The valid workflow node that should receive the connection from the source node."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Reroute the source node\u0027s only outgoing connection to \u0060newTargetNodeId\u0060."
+      },
+      "RerouteNodeConnectionResponse": {
+        "required": [
+          "workflow"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/WorkflowMutationNodeWithRevision"
+          }
+        ],
+        "properties": {
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "description": "The updated source node, plus the latest workflow."
+      },
       "UpdateWorkflowNodeRequest": {
         "required": [
           "expectedRevisionId",
@@ -6951,64 +7127,20 @@
       },
       "UpdateWorkflowNodeResponse": {
         "required": [
-          "typeName"
+          "workflow"
         ],
         "type": "object",
-        "oneOf": [
+        "allOf": [
           {
-            "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision"
-          },
-          {
-            "$ref": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
+            "$ref": "#/components/schemas/WorkflowMutationNodeWithRevision"
           }
         ],
         "properties": {
-          "typeName": {
-            "title": "typeName",
-            "type": "string",
-            "description": "Union discriminator"
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         },
-        "description": "The updated workflow node. The exact fields depend on \u0060typeName\u0060.",
-        "discriminator": {
-          "propertyName": "typeName",
-          "mapping": {
-            "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
-            "EventTrigger": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
-            "ContactPropertyTrigger": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
-            "AddToListTrigger": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
-            "AudienceFilter": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
-            "TimerAction": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
-            "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
-            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision",
-            "SignupTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
-            "EventTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
-            "ContactPropertyTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
-            "AddToListTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
-            "AudienceFilterWorkflowMutationNodeWithRevision": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
-            "TimerActionWorkflowMutationNodeWithRevision": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
-            "ExperimentBranchWorkflowMutationNodeWithRevision": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
-            "VariantWorkflowMutationNodeWithRevision": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
-          }
-        }
+        "description": "The updated workflow node, plus the latest simplified workflow."
       },
       "DeleteWorkflowNodeRequest": {
         "required": [
@@ -7058,7 +7190,8 @@
           "status",
           "nodeIds",
           "workflowRevisionId",
-          "queuedContactCount"
+          "queuedContactCount",
+          "workflow"
         ],
         "type": "object",
         "properties": {
@@ -7078,6 +7211,9 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the node deletion."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         }
       },
@@ -7159,7 +7295,8 @@
           "status",
           "mailingListId",
           "workflowRevisionId",
-          "queuedContactCount"
+          "queuedContactCount",
+          "workflow"
         ],
         "type": "object",
         "properties": {
@@ -7177,6 +7314,9 @@
           "queuedContactCount": {
             "type": "number",
             "description": "The number of queued contacts that were removed from the workflow due to the mailing list changing."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         }
       },
@@ -9978,6 +10118,29 @@
           }
         }
       },
+      "CreateWorkflowNodeBeforeRequestOneOf1": {
+        "required": [
+          "toNodeId"
+        ],
+        "type": "object",
+        "properties": {
+          "toNodeId": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateWorkflowNodeBeforeRequestOneOf2": {
+        "required": [
+          "beforeNodeId"
+        ],
+        "type": "object",
+        "properties": {
+          "beforeNodeId": {
+            "type": "string",
+            "deprecated": true
+          }
+        }
+      },
       "CreatedWorkflowNodeAllOf2": {
         "type": "object",
         "properties": {
@@ -9987,6 +10150,28 @@
               "$ref": "#/components/schemas/WorkflowMutationNode"
             },
             "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        }
+      },
+      "RerouteNodeConnectionResponseAllOf2": {
+        "required": [
+          "workflow"
+        ],
+        "type": "object",
+        "properties": {
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        }
+      },
+      "UpdateWorkflowNodeResponseAllOf2": {
+        "required": [
+          "workflow"
+        ],
+        "type": "object",
+        "properties": {
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         }
       },
@@ -11696,6 +11881,23 @@
             {
               "value": "before",
               "name": "Before"
+            }
+          ]
+        }
+      },
+      "CreateWorkflowNodeAfterRequestInsertMode": {
+        "enum": [
+          "after"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "CreateWorkflowNodeAfterRequestInsertMode",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "after",
+              "name": "After"
             }
           ]
         }

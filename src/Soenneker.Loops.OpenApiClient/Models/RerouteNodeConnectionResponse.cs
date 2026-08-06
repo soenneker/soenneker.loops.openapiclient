@@ -8,10 +8,10 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// The updated workflow node, plus the latest simplified workflow.
+    /// The updated source node, plus the latest workflow.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateWorkflowNodeResponse : global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision, IParsable
+    public partial class RerouteNodeConnectionResponse : global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision, IParsable
     {
         /// <summary>The workflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -24,12 +24,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse();
+            return new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse();
         }
         /// <summary>
         /// The deserialization information for the current model

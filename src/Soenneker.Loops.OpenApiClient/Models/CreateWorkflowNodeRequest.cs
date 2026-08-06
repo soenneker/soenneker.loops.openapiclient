@@ -8,11 +8,19 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWorkflowNodeRequest : IComposedTypeWrapper, IParsable
     {
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest? CreateWorkflowNodeAfterRequest { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest CreateWorkflowNodeAfterRequest { get; set; }
+#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,9 +47,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("insertMode")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeRequest();
-            if("before".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("after".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateWorkflowNodeBeforeRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest();
+                result.CreateWorkflowNodeAfterRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest();
             }
             else if("between".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
@@ -55,7 +63,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CreateWorkflowNodeBeforeRequest != null)
+            if(CreateWorkflowNodeAfterRequest != null)
+            {
+                return CreateWorkflowNodeAfterRequest.GetFieldDeserializers();
+            }
+            else if(CreateWorkflowNodeBeforeRequest != null)
             {
                 return CreateWorkflowNodeBeforeRequest.GetFieldDeserializers();
             }
@@ -72,7 +84,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CreateWorkflowNodeBeforeRequest != null)
+            if(CreateWorkflowNodeAfterRequest != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest>(null, CreateWorkflowNodeAfterRequest);
+            }
+            else if(CreateWorkflowNodeBeforeRequest != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest>(null, CreateWorkflowNodeBeforeRequest);
             }

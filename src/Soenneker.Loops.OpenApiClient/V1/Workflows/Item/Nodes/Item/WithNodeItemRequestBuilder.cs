@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
 using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch;
 using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive;
+using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Reroute;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive.RecursiveRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The reroute property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Reroute.RerouteRequestBuilder Reroute
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Reroute.RerouteRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.WithNodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
@@ -46,7 +52,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
         {
         }
         /// <summary>
-        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts.&quot;
+        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the node is removed.&quot;
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -131,7 +137,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts.&quot;
+        /// &quot;Delete a single workflow node. If contacts are queued at the node, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of deleting. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to delete the node and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the node is removed.&quot;
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
