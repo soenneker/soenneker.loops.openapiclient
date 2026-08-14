@@ -7,34 +7,29 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>
-    /// The removal quota for the contact.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ContactSuppressionRemovalQuota : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The number of suppression removals allowed in a rolling 30 day period.</summary>
-        public double? Limit { get; set; }
-        /// <summary>The remaining number of suppression removals left in the current 30 day period.</summary>
-        public double? Remaining { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1"/> and sets the default values.
         /// </summary>
-        public ContactSuppressionRemovalQuota()
+        public ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota();
+            return new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -44,8 +39,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "limit", n => { Limit = n.GetDoubleValue(); } },
-                { "remaining", n => { Remaining = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -55,8 +48,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("limit", Limit);
-            writer.WriteDoubleValue("remaining", Remaining);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

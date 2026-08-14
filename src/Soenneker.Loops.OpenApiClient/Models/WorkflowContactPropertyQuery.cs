@@ -15,7 +15,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.</summary>
+        /// <summary>Comparison for the new contact property value after the update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Is { get; set; }
@@ -31,7 +31,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Key { get; set; }
 #endif
-        /// <summary>For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.</summary>
+        /// <summary>Comparison for the previous contact property value before the update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Was { get; set; }

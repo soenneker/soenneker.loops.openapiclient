@@ -7,52 +7,28 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery"/>
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class ContactPropertyTriggerWorkflowNodeContactPropertyQuery : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class ContactPropertyTriggerWorkflowNodeContactPropertyQuery : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Is { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1? ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Is { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 { get; set; }
 #endif
-        /// <summary>The camel-cased `key` of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery? WorkflowContactPropertyQuery { get; set; }
 #nullable restore
 #else
-        public string Key { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery WorkflowContactPropertyQuery { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Was { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Was { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery"/> and sets the default values.
-        /// </summary>
-        public ContactPropertyTriggerWorkflowNodeContactPropertyQuery()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -61,7 +37,13 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery();
+            if("WorkflowContactPropertyQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                result.WorkflowContactPropertyQuery = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery();
+            }
+            return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,13 +51,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 != null)
             {
-                { "is", n => { Is = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison.CreateFromDiscriminatorValue); } },
-                { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "was", n => { Was = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison.CreateFromDiscriminatorValue); } },
-            };
+                return ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1.GetFieldDeserializers();
+            }
+            else if(WorkflowContactPropertyQuery != null)
+            {
+                return WorkflowContactPropertyQuery.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -84,11 +68,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>("is", Is);
-            writer.WriteStringValue("key", Key);
-            writer.WriteStringValue("type", Type);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>("was", Was);
-            writer.WriteAdditionalData(AdditionalData);
+            if(ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1>(null, ContactPropertyTriggerWorkflowNodeContactPropertyQueryMember1);
+            }
+            else if(WorkflowContactPropertyQuery != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>(null, WorkflowContactPropertyQuery);
+            }
         }
     }
 }

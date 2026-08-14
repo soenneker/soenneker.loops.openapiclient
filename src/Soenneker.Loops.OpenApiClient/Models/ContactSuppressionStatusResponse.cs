@@ -24,7 +24,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>Whether the contact is suppressed.</summary>
         public bool? IsSuppressed { get; set; }
-        /// <summary>The removalQuota property</summary>
+        /// <summary>The removal quota for the contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota? RemovalQuota { get; set; }

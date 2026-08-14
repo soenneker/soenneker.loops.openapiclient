@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// For Contact Updated triggers, the API validates `operator` against the selected contact property&apos;s type and the side of the comparison. The `was` comparison can use any operator supported by the selected property type. The `is` comparison uses the same operators, except number and boolean properties cannot use `empty`. String properties support `any`, `equal`, `not_equal`, `contains`, `not_contains`, `empty`, and `not_empty`. Number properties support `any`, `greater_than`, `less_than`, `numeric_equal`, `numeric_not_equal`, `empty`, and `not_empty`. Boolean properties support `any`, `true`, `false`, `empty`, and `not_empty`. Date properties support `any`, `empty`, `not_empty`, `after`, `before`, and `between`.
+    /// Comparison for the new contact property value after the update.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowContactPropertyComparison : IAdditionalDataHolder, IParsable
