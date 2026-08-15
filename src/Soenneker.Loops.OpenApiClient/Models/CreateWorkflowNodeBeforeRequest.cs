@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// &quot;Insert a new node before `toNodeId`. `VariantNode` cannot use `insertMode: \&quot;before\&quot;`; to restore a missing variant path, use `insertMode: \&quot;between\&quot;` with the experiment branch as `fromNodeId`.&quot;
+    /// Insert a new node before `toNodeId`. `VariantNode` cannot use `insertMode: &quot;before&quot;`; to restore a missing variant path, use `insertMode: &quot;between&quot;` with the experiment branch as `fromNodeId`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWorkflowNodeBeforeRequest : IParsable
@@ -31,7 +31,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string ExpectedRevisionId { get; set; }
 #endif
         /// <summary>The insertMode property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode? InsertMode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.BeforeInsertMode? InsertMode { get; set; }
         /// <summary>Node types that can be created with the API. `*Trigger` nodes and `ExitAction` nodes cannot be created.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get; set; }
         /// <summary>The node to insert before. The target must have at least one incoming parent and cannot be a trigger node.</summary>
@@ -41,14 +41,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public string ToNodeId { get; set; }
-#endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -70,10 +62,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "beforeNodeId", n => { BeforeNodeId = n.GetStringValue(); } },
                 { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
-                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode>(); } },
+                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.BeforeInsertMode>(); } },
                 { "nodeTypeName", n => { NodeTypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>(); } },
                 { "toNodeId", n => { ToNodeId = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -85,10 +76,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("beforeNodeId", BeforeNodeId);
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequestInsertMode>("insertMode", InsertMode);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.BeforeInsertMode>("insertMode", InsertMode);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>("nodeTypeName", NodeTypeName);
             writer.WriteStringValue("toNodeId", ToNodeId);
-            writer.WriteStringValue("type", Type);
         }
     }
 }

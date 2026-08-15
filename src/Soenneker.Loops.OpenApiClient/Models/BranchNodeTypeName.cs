@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum WorkflowMailingListUpdatedResponseStatus
+    public enum BranchNodeTypeName
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "updated")]
+        [EnumMember(Value = "BranchNode")]
         #pragma warning disable CS1591
-        Updated,
+        BranchNode,
         #pragma warning restore CS1591
     }
 }

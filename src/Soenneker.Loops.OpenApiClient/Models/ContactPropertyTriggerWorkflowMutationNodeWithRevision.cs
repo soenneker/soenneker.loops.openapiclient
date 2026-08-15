@@ -41,7 +41,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
         public bool? ReEligible { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName? TypeName { get; set; }
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -79,7 +79,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName>(); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -94,7 +94,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteBoolValue("reEligible", ReEligible);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName>("typeName", TypeName);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }

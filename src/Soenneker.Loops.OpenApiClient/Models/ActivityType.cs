@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum CreateWorkflowNodeBeforeRequestInsertMode
+    public enum ActivityType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "before")]
+        [EnumMember(Value = "activity")]
         #pragma warning disable CS1591
-        Before,
+        Activity,
         #pragma warning restore CS1591
     }
 }

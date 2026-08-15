@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.MailingList
         {
         }
         /// <summary>
-        /// &quot;Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of applying the change. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.&quot;
+        /// Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with `&quot;status&quot;: &quot;queuedContactsFound&quot;` instead of applying the change. Retry with `queuedContactPolicy: &quot;discard&quot;` to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.MailingList
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with `\&quot;status\&quot;: \&quot;queuedContactsFound\&quot;` instead of applying the change. Retry with `queuedContactPolicy: \&quot;discard\&quot;` to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.&quot;
+        /// Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with `&quot;status&quot;: &quot;queuedContactsFound&quot;` instead of applying the change. Retry with `queuedContactPolicy: &quot;discard&quot;` to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

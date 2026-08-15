@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional", pathParameters)
+        public TransactionalRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional{?cursor*,perPage*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,8 +30,27 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional", rawUrl)
+        public TransactionalRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional{?cursor*,perPage*}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Get a list of published transactional emails.
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.To set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.
@@ -59,6 +78,26 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.IdempotencyKeyFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Get a list of published transactional emails.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder.TransactionalRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.To set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.
@@ -90,6 +129,33 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
         public global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Loops.OpenApiClient.V1.Transactional.TransactionalRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Get a list of published transactional emails.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class TransactionalRequestBuilderGetQueryParameters 
+        {
+            /// <summary>A cursor, to return a specific page of results. Cursors can be found from the `pagination.nextCursor` value in each response.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("cursor")]
+            public string? Cursor { get; set; }
+#nullable restore
+#else
+            [QueryParameter("cursor")]
+            public string Cursor { get; set; }
+#endif
+            /// <summary>How many results to return in each request. Must be between 10 and 50. Default is 20.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("perPage")]
+            public string? PerPage { get; set; }
+#nullable restore
+#else
+            [QueryParameter("perPage")]
+            public string PerPage { get; set; }
+#endif
         }
     }
 }

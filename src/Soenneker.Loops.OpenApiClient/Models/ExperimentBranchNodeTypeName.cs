@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum OptInConditionType
+    public enum ExperimentBranchNodeTypeName
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "optIn")]
+        [EnumMember(Value = "ExperimentBranchNode")]
         #pragma warning disable CS1591
-        OptIn,
+        ExperimentBranchNode,
         #pragma warning restore CS1591
     }
 }

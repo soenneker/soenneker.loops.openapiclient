@@ -26,7 +26,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The operator property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionOperator? Operator { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionType? Type { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.PropertyType? Type { get; set; }
         /// <summary>The comparison value. Omitted for value-less operators (e.g. `isTrue`, `empty`). A `{ from, to }` object for `between`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,7 +62,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionOperator>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyType>(); } },
                 { "value", n => { Value = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue>(global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue.CreateFromDiscriminatorValue); } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionOperator>("operator", Operator);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyType>("type", Type);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

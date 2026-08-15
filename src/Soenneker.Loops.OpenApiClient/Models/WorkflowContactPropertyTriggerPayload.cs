@@ -24,7 +24,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
         public bool? ReEligible { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyTriggerPayloadTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName? TypeName { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -45,7 +45,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery.CreateFromDiscriminatorValue); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyTriggerPayloadTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName>(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
             writer.WriteBoolValue("reEligible", ReEligible);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyTriggerPayloadTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerTypeName>("typeName", TypeName);
         }
     }
 }

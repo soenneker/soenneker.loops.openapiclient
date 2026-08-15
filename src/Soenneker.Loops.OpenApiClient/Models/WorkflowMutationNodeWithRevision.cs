@@ -193,14 +193,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision TimerActionWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TypeName { get; set; }
-#nullable restore
-#else
-        public string TypeName { get; set; }
-#endif
+        /// <summary>The typeName property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName? TypeName { get; set; }
         /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision"/></summary>
@@ -280,6 +274,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 result.TimerActionWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision();
             }
+            else if(parseNode.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>() is global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName typeNameValue)
+            {
+                result.TypeName = typeNameValue;
+            }
             else if(parseNode.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>() is global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit unitValue)
             {
                 result.Unit = unitValue;
@@ -331,10 +329,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             else if(parseNode.GetStringValue() is string subjectValue)
             {
                 result.Subject = subjectValue;
-            }
-            else if(parseNode.GetStringValue() is string typeNameValue)
-            {
-                result.TypeName = typeNameValue;
             }
             else if(parseNode.GetStringValue() is string workflowRevisionIdValue)
             {
@@ -473,6 +467,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision>(null, TimerActionWorkflowMutationNodeWithRevision);
             }
+            else if(TypeName != null)
+            {
+                writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>(null, TypeName);
+            }
             else if(Unit != null)
             {
                 writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(null, Unit);
@@ -524,10 +522,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             else if(Subject != null)
             {
                 writer.WriteStringValue(null, Subject);
-            }
-            else if(TypeName != null)
-            {
-                writer.WriteStringValue(null, TypeName);
             }
             else if(WorkflowRevisionId != null)
             {

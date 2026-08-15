@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ThemeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ThemeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// &quot;Update a theme&apos;s name and/or styles. When `styles` change, the update cascades to every email using this theme, and `affectedEmailCount` in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme&apos;s new value, after which that email follows the theme for that property.&quot;
+        /// Update a theme&apos;s name and/or styles. When `styles` change, the update cascades to every email using this theme, and `affectedEmailCount` in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme&apos;s new value, after which that email follows the theme for that property.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateThemeResponse"/></returns>
         /// <param name="body">At least one of `name` or `styles` must be provided.</param>
@@ -105,7 +105,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes.Item
             return requestInfo;
         }
         /// <summary>
-        /// &quot;Update a theme&apos;s name and/or styles. When `styles` change, the update cascades to every email using this theme, and `affectedEmailCount` in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme&apos;s new value, after which that email follows the theme for that property.&quot;
+        /// Update a theme&apos;s name and/or styles. When `styles` change, the update cascades to every email using this theme, and `affectedEmailCount` in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme&apos;s new value, after which that email follows the theme for that property.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">At least one of `name` or `styles` must be provided.</param>

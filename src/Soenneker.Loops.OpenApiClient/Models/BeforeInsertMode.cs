@@ -3,13 +3,14 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>The status of the campaign (always `Draft` for new campaigns).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateCampaignResponseStatus
+    #pragma warning disable CS1591
+    public enum BeforeInsertMode
+    #pragma warning restore CS1591
     {
-        [EnumMember(Value = "Draft")]
+        [EnumMember(Value = "before")]
         #pragma warning disable CS1591
-        Draft,
+        Before,
         #pragma warning restore CS1591
     }
 }

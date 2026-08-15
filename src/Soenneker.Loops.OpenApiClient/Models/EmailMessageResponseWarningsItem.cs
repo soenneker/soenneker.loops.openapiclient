@@ -39,7 +39,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string Rule { get; set; }
 #endif
         /// <summary>The severity property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity? Severity { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WarningSeverity? Severity { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItem"/> and sets the default values.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "message", n => { Message = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
                 { "rule", n => { Rule = n.GetStringValue(); } },
-                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity>(); } },
+                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WarningSeverity>(); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("path", Path);
             writer.WriteStringValue("rule", Rule);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseWarningsItemSeverity>("severity", Severity);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WarningSeverity>("severity", Severity);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

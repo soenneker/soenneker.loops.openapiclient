@@ -3,14 +3,13 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>The status of the campaign (always `Draft` for new campaigns).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum AddToListTriggerWorkflowMutationNodeTypeName
-    #pragma warning restore CS1591
+    public enum DraftStatus
     {
-        [EnumMember(Value = "AddToListTrigger")]
+        [EnumMember(Value = "Draft")]
         #pragma warning disable CS1591
-        AddToListTrigger,
+        Draft,
         #pragma warning restore CS1591
     }
 }

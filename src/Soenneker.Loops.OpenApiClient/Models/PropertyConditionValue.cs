@@ -45,13 +45,13 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue();
-            if("PropertyConditionValue_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("PropertyConditionValueBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.PropertyConditionValueBranch1 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1();
             }
-            else if("PropertyConditionValue_2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PropertyConditionValueBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.PropertyConditionValueBranch2 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2();
             }

@@ -47,7 +47,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string Subject { get; set; }
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionTypeName? TypeName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionTypeName>(); } },
             };
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteStringValue("subject", Subject);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionTypeName>("typeName", TypeName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

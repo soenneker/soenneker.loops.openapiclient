@@ -49,7 +49,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
         public bool? ReEligible { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventTriggerTypeName? TypeName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerTypeName>(); } },
             };
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteBoolValue("reEligible", ReEligible);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerTypeName>("typeName", TypeName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

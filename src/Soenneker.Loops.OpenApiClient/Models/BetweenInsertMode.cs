@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum EmailMessageResponseWarningsItemSeverity
+    public enum BetweenInsertMode
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "warning")]
+        [EnumMember(Value = "between")]
         #pragma warning disable CS1591
-        Warning,
+        Between,
         #pragma warning restore CS1591
     }
 }

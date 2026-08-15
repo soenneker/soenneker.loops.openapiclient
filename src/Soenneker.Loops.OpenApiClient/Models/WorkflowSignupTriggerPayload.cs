@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class WorkflowSignupTriggerPayload : IParsable
     {
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowSignupTriggerPayloadTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName? TypeName { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -33,7 +33,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowSignupTriggerPayloadTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>(); } },
             };
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowSignupTriggerPayloadTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>("typeName", TypeName);
         }
     }
 }

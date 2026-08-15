@@ -25,7 +25,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The number of queued contacts that were removed from the workflow due to the node deletion.</summary>
         public double? QueuedContactCount { get; set; }
         /// <summary>The status property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponseStatus? Status { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus? Status { get; set; }
         /// <summary>The workflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,7 +69,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "nodeIds", n => { NodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "queuedContactCount", n => { QueuedContactCount = n.GetDoubleValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponseStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus>(); } },
                 { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
@@ -83,7 +83,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("nodeIds", NodeIds);
             writer.WriteDoubleValue("queuedContactCount", QueuedContactCount);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);

@@ -9,45 +9,43 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ExitActionWorkflowMutationNode : IAdditionalDataHolder, IParsable
+    public partial class ListTransactionalsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>? Data { get; set; }
 #nullable restore
 #else
-        public string Id { get; set; }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail> Data { get; set; }
 #endif
-        /// <summary>The IDs of the nodes that are downstream of this node.</summary>
+        /// <summary>The pagination property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NextNodeIds { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.Pagination? Pagination { get; set; }
 #nullable restore
 #else
-        public List<string> NextNodeIds { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.Pagination Pagination { get; set; }
 #endif
-        /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.ExitActionTypeName? TypeName { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNode"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse"/> and sets the default values.
         /// </summary>
-        public ExitActionWorkflowMutationNode()
+        public ListTransactionalsResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNode"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNode CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNode();
+            return new global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +55,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExitActionTypeName>(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "pagination", n => { Pagination = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Pagination>(global::Soenneker.Loops.OpenApiClient.Models.Pagination.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -69,9 +66,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("id", Id);
-            writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExitActionTypeName>("typeName", TypeName);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.Pagination>("pagination", Pagination);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

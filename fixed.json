@@ -77,6 +77,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Audience segment not found.",
             "content": {
@@ -86,6 +89,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -155,6 +161,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -177,7 +189,8 @@
                 "$ref": "#/components/schemas/CreateAudienceSegmentRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -200,6 +213,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "The filter references a campaign, workflow or workflow email that does not exist.",
             "content": {
@@ -209,6 +225,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -264,6 +283,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -286,7 +311,8 @@
                 "$ref": "#/components/schemas/CreateCampaignRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -309,6 +335,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Referenced mailing list or audience segment not found.",
             "content": {
@@ -318,6 +347,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -356,6 +388,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Campaign not found.",
             "content": {
@@ -365,6 +400,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -387,7 +425,8 @@
                 "$ref": "#/components/schemas/UpdateCampaignRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -410,6 +449,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Campaign, mailing list, or audience segment not found.",
             "content": {
@@ -419,6 +461,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Campaign has been sent and the request updates a field other than \u0060name\u0060 or \u0060campaignGroupId\u0060.",
@@ -498,6 +543,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -520,7 +571,8 @@
                 "$ref": "#/components/schemas/CreateGroupRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -542,6 +594,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -580,6 +638,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Campaign group not found.",
             "content": {
@@ -589,6 +650,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -611,7 +675,8 @@
                 "$ref": "#/components/schemas/UpdateGroupRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -634,6 +699,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Campaign group not found.",
             "content": {
@@ -643,6 +711,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -684,6 +755,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -709,7 +783,8 @@
                 "$ref": "#/components/schemas/ContactRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -731,6 +806,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Email or \u0060userId\u0060 already exists.",
@@ -766,7 +844,8 @@
                 "$ref": "#/components/schemas/ContactUpdateRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -788,6 +867,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -842,6 +924,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -867,7 +952,8 @@
                 "$ref": "#/components/schemas/ContactDeleteRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -899,6 +985,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -963,6 +1052,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1025,6 +1117,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1049,7 +1144,8 @@
                 "$ref": "#/components/schemas/ContactPropertyCreateRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1071,6 +1167,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1106,6 +1205,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1144,6 +1246,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Component not found.",
             "content": {
@@ -1153,6 +1258,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1175,7 +1283,8 @@
                 "$ref": "#/components/schemas/UpdateComponentBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1198,6 +1307,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Component not found.",
             "content": {
@@ -1207,6 +1319,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "413": {
             "description": "LMX body exceeds the size limit.",
@@ -1296,6 +1411,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1318,7 +1439,8 @@
                 "$ref": "#/components/schemas/CreateComponentBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -1340,6 +1462,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "413": {
             "description": "LMX body exceeds the size limit.",
@@ -1398,6 +1526,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Email message not found.",
             "content": {
@@ -1407,6 +1538,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Email message uses MJML format or content cannot be parsed.",
@@ -1439,7 +1573,8 @@
                 "$ref": "#/components/schemas/UpdateEmailMessageRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1462,6 +1597,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Email message not found.",
             "content": {
@@ -1471,6 +1609,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Campaign is not in draft status, \u0060contentRevisionId\u0060 is stale, content cannot be parsed, or email message uses MJML format.",
@@ -1539,7 +1680,8 @@
                 "$ref": "#/components/schemas/EmailMessagePreviewRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1562,6 +1704,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Email message not found.",
             "content": {
@@ -1571,6 +1716,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "429": {
             "description": "The daily preview limit was reached.",
@@ -1633,6 +1781,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Email message not found.",
             "content": {
@@ -1642,6 +1793,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Email message uses MJML format.",
@@ -1702,7 +1856,8 @@
                 "$ref": "#/components/schemas/EventRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -1724,6 +1879,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "Idempotency key has been used.",
@@ -1789,6 +1947,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1827,6 +1991,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Event pattern not found.",
             "content": {
@@ -1836,6 +2003,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1885,6 +2055,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Event pattern not found.",
             "content": {
@@ -1894,6 +2067,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1932,6 +2108,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1970,6 +2149,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Theme not found.",
             "content": {
@@ -1979,6 +2161,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -1992,7 +2177,7 @@
           "Themes"
         ],
         "summary": "Update a theme",
-        "description": "\u0022Update a theme\u0027s name and/or styles. When \u0060styles\u0060 change, the update cascades to every email using this theme, and \u0060affectedEmailCount\u0060 in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme\u0027s new value, after which that email follows the theme for that property.\u0022",
+        "description": "Update a theme\u0027s name and/or styles. When \u0060styles\u0060 change, the update cascades to every email using this theme, and \u0060affectedEmailCount\u0060 in the response reports how many emails were affected. Manual style edits made on individual emails are preserved: the cascade only changes properties an email has not overridden. A per-email override is removed only when it becomes identical to the theme\u0027s new value, after which that email follows the theme for that property.",
         "operationId": "UpdateTheme",
         "requestBody": {
           "content": {
@@ -2001,7 +2186,8 @@
                 "$ref": "#/components/schemas/UpdateThemeBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2024,6 +2210,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Theme not found.",
             "content": {
@@ -2033,6 +2222,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2102,6 +2294,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2124,7 +2322,8 @@
                 "$ref": "#/components/schemas/CreateThemeBody"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -2146,6 +2345,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2181,7 +2386,8 @@
                 "$ref": "#/components/schemas/TransactionalRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2214,6 +2420,9 @@
               }
             }
           },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
           "409": {
             "description": "Idempotency key has been used.",
             "content": {
@@ -2225,6 +2434,53 @@
             }
           }
         },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Transactional emails"
+        ],
+        "summary": "List transactional emails",
+        "description": "Get a list of published transactional emails.",
+        "operationId": "ListPublishedTransactionalEmails",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor, to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListTransactionalsResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "deprecated": true,
         "security": [
           {
             "apiKey": []
@@ -2278,6 +2534,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2300,7 +2562,8 @@
                 "$ref": "#/components/schemas/CreateTransactionalRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -2322,6 +2585,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2360,6 +2629,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional email not found.",
             "content": {
@@ -2369,6 +2641,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2391,7 +2666,8 @@
                 "$ref": "#/components/schemas/UpdateTransactionalRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2414,6 +2690,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional email not found.",
             "content": {
@@ -2423,6 +2702,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2475,6 +2757,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional email not found.",
             "content": {
@@ -2484,6 +2769,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2536,6 +2824,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional email not found.",
             "content": {
@@ -2545,6 +2836,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "409": {
             "description": "No draft to publish.",
@@ -2634,6 +2928,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2656,7 +2956,8 @@
                 "$ref": "#/components/schemas/CreateGroupRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2678,6 +2979,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2716,6 +3023,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional group not found.",
             "content": {
@@ -2725,6 +3035,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2747,7 +3060,8 @@
                 "$ref": "#/components/schemas/UpdateGroupRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2770,6 +3084,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Transactional group not found.",
             "content": {
@@ -2779,6 +3096,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2817,7 +3137,8 @@
                 "$ref": "#/components/schemas/CreateUploadRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -2839,6 +3160,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "413": {
             "description": "Upload exceeds the maximum allowed size.",
@@ -2887,6 +3214,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
           "404": {
             "description": "Upload not found.",
             "content": {
@@ -2896,6 +3226,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "429": {
             "description": "Upload limit exceeded.",
@@ -2975,6 +3308,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -2997,7 +3336,8 @@
                 "$ref": "#/components/schemas/CreateWorkflowRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3019,6 +3359,12 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "500": {
             "description": "Workflow creation is unavailable for this team.",
@@ -3067,6 +3413,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow not found.",
             "content": {
@@ -3076,6 +3425,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3098,7 +3450,8 @@
                 "$ref": "#/components/schemas/UpdateWorkflowPropertiesRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3121,6 +3474,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow not found.",
             "content": {
@@ -3140,6 +3496,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3169,7 +3528,7 @@
           "Workflows"
         ],
         "summary": "Change workflow mailing list",
-        "description": "\u0022Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of applying the change. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.\u0022",
+        "description": "Dry run or apply a workflow mailing list change. If queued contacts would be removed from the workflow due to the change of mailing list, Loops returns with \u0060\u0022status\u0022: \u0022queuedContactsFound\u0022\u0060 instead of applying the change. Retry with \u0060queuedContactPolicy: \u0022discard\u0022\u0060 to apply the change and discard those contacts. Confirmed update responses include the simplified workflow after the mailing list changes.",
         "operationId": "ChangeWorkflowMailingList",
         "requestBody": {
           "content": {
@@ -3178,7 +3537,8 @@
                 "$ref": "#/components/schemas/ChangeWorkflowMailingListRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3201,6 +3561,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow not found.",
             "content": {
@@ -3220,6 +3583,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3246,7 +3612,7 @@
           "Workflow nodes"
         ],
         "summary": "Create a workflow node",
-        "description": "\u0022Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, \u0060before\u0060 places it before \u0060toNodeId\u0060, and \u0060after\u0060 places it after \u0060fromNodeId\u0060 when that node has exactly one outgoing connection. \u0060after\u0060 is a convenience for simple linear paths, so callers do not need to fetch and pass the current child node ID. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead. For \u0060before\u0060, deprecated \u0060beforeNodeId\u0060 requests are still accepted for compatibility, but new callers should use \u0060toNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.\u0022",
+        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, \u0060before\u0060 places it before \u0060toNodeId\u0060, and \u0060after\u0060 places it after \u0060fromNodeId\u0060 when that node has exactly one outgoing connection. \u0060after\u0060 is a convenience for simple linear paths, so callers do not need to fetch and pass the current child node ID. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead. For \u0060before\u0060, deprecated \u0060beforeNodeId\u0060 requests are still accepted for compatibility, but new callers should use \u0060toNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.",
         "operationId": "CreateWorkflowNode",
         "requestBody": {
           "content": {
@@ -3255,7 +3621,8 @@
                 "$ref": "#/components/schemas/CreateWorkflowNodeRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3278,6 +3645,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3297,6 +3667,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3332,7 +3705,8 @@
                 "$ref": "#/components/schemas/AddWorkflowBranchRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3355,6 +3729,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3374,6 +3751,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3432,6 +3812,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3441,6 +3824,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3463,7 +3849,8 @@
                 "$ref": "#/components/schemas/UpdateWorkflowNodeRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3486,6 +3873,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3505,6 +3895,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           },
           "501": {
             "description": "This node update is not implemented.",
@@ -3528,7 +3921,7 @@
           "Workflow nodes"
         ],
         "summary": "Delete a workflow node",
-        "description": "\u0022Delete a single workflow node. If contacts are queued at the node, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the node and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the node is removed.\u0022",
+        "description": "Delete a single workflow node. If contacts are queued at the node, Loops returns with \u0060\u0022status\u0022: \u0022queuedContactsFound\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \u0022discard\u0022\u0060 to delete the node and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the node is removed.",
         "operationId": "DeleteWorkflowNode",
         "requestBody": {
           "content": {
@@ -3537,7 +3930,8 @@
                 "$ref": "#/components/schemas/DeleteWorkflowNodeRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3560,6 +3954,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3579,6 +3976,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3629,7 +4029,8 @@
                 "$ref": "#/components/schemas/RerouteNodeConnectionRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3652,6 +4053,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3671,6 +4075,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3712,7 +4119,7 @@
           "Workflow nodes"
         ],
         "summary": "Delete workflow nodes recursively",
-        "description": "\u0022Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with \u0060\\\u0022status\\\u0022: \\\u0022queuedContactsFound\\\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to delete the nodes and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the nodes are removed.\u0022",
+        "description": "Delete a node and its downstream subtree. If contacts are queued at any node that would be deleted, Loops returns with \u0060\u0022status\u0022: \u0022queuedContactsFound\u0022\u0060 instead of deleting. Retry with \u0060queuedContactPolicy: \u0022discard\u0022\u0060 to delete the nodes and discard those queued contacts. Confirmed deletion responses include the simplified workflow after the nodes are removed.",
         "operationId": "DeleteWorkflowNodeRecursively",
         "requestBody": {
           "content": {
@@ -3721,7 +4128,8 @@
                 "$ref": "#/components/schemas/DeleteWorkflowNodeRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3744,6 +4152,9 @@
               }
             }
           },
+          "401": {
+            "description": "Invalid API key."
+          },
           "404": {
             "description": "Workflow or workflow node not found.",
             "content": {
@@ -3763,6 +4174,9 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -6208,9 +6622,6 @@
         "description": "A tree of audience conditions combined with \u0060match\u0060. Setting this without also providing \u0060audienceSegmentId\u0060 clears any existing \u0060audienceSegmentId\u0060. When both are provided, this filter is applied on top of the segment\u0027s filter."
       },
       "AudienceFilterCondition": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -6224,10 +6635,31 @@
           }
         ],
         "properties": {
-          "type": {
-            "title": "type",
+          "key": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The contact property name."
+          },
+          "operator": {
+            "$ref": "#/components/schemas/PropertyConditionOperator"
+          },
+          "value": {
+            "$ref": "#/components/schemas/PropertyConditionValue"
+          },
+          "status": {
+            "$ref": "#/components/schemas/OptInConditionStatus"
+          },
+          "action": {
+            "$ref": "#/components/schemas/ActivityConditionAction"
+          },
+          "negate": {
+            "type": "boolean"
+          },
+          "target": {
+            "$ref": "#/components/schemas/ActivityConditionTarget"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the campaign, workflow, or workflow email."
           }
         },
         "discriminator": {
@@ -6256,7 +6688,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/PropertyConditionType"
+            "$ref": "#/components/schemas/PropertyType"
           },
           "key": {
             "type": "string",
@@ -6285,7 +6717,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/OptInConditionType"
+            "$ref": "#/components/schemas/OptInType"
           },
           "status": {
             "$ref": "#/components/schemas/OptInConditionStatus"
@@ -6313,7 +6745,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/ActivityConditionType"
+            "$ref": "#/components/schemas/ActivityType"
           },
           "action": {
             "$ref": "#/components/schemas/ActivityConditionAction"
@@ -6484,7 +6916,7 @@
             "description": "The name of the campaign."
           },
           "status": {
-            "$ref": "#/components/schemas/CreateCampaignResponseStatus"
+            "$ref": "#/components/schemas/DraftStatus"
           },
           "createdAt": {
             "examples": [
@@ -7051,9 +7483,6 @@
         "description": "At least one property must be provided."
       },
       "WorkflowMutationNode": {
-        "required": [
-          "typeName"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -7094,10 +7523,75 @@
           }
         ],
         "properties": {
-          "typeName": {
-            "title": "typeName",
+          "id": {
+            "type": "string"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list this trigger sends to, if set."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of the audience segment this trigger targets."
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
           }
         },
         "description": "Detailed workflow node returned from create and update mutations. The exact fields depend on \u0060typeName\u0060.",
@@ -7155,7 +7649,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7179,7 +7673,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/EventTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/EventTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7219,7 +7713,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7251,7 +7745,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AddToListTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7285,7 +7779,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BlankTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7309,7 +7803,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AudienceFilterWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7346,7 +7840,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/TimerActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/TimerActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7379,7 +7873,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SendEmailActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7409,7 +7903,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExitActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ExitActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7432,7 +7926,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BranchWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/BranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7456,7 +7950,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExperimentBranchWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7483,7 +7977,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/VariantWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/VariantNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7499,9 +7993,6 @@
         }
       },
       "UpdateWorkflowNodePayload": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "anyOf": [
           {
@@ -7530,25 +8021,61 @@
           }
         ],
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
+          "eventPatternId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the event pattern to trigger on. Use either \u0060eventPatternId\u0060 or \u0060eventName\u0060, not both. Set to \u0060null\u0060 to clear the event-pattern relationship."
+          },
+          "eventName": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The name of the event pattern to trigger on. Use this when you know the event name but not the internal event pattern ID. Use either \u0060eventName\u0060 or \u0060eventPatternId\u0060, not both. Set to \u0060null\u0060 to clear the event-pattern relationship."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "contactPropertyQuery": {
+            "description": "Define the contact property change that triggers the workflow. In update requests, \u0060key\u0060 must resolve to an existing contact property that is available for Contact Updated triggers. Hidden or unsupported fields, such as \u0060createdAt\u0060, \u0060notes\u0060, and computed contact properties, are rejected.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
+          },
+          "audienceSegmentId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of an audience segment. Setting this without also providing \u0060audienceFilter\u0060 clears any existing \u0060audienceFilter\u0060. If both are provided, the filter is applied on top of the segment\u0027s filter."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060. Setting this without also providing \u0060audienceSegmentId\u0060 clears any existing \u0060audienceSegmentId\u0060. When both are provided, this filter is applied on top of the segment\u0027s filter.",
+            "$ref": "#/components/schemas/AudienceFilterInRequest"
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Use \u0060true\u0060 to set this variant as the control of the experiment. This will set \u0060false\u0060 on the existing control, if one exists. Experiments do not require a control variant."
           }
         },
-        "description": "Node-type-specific fields to update. The allowed fields depend on the existing node type. Trigger node updates may include \u0060typeName\u0060 when changing one trigger node type to another trigger node type.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowSignupTriggerPayload": "#/components/schemas/WorkflowSignupTriggerPayload",
-            "WorkflowEventTriggerPayload": "#/components/schemas/WorkflowEventTriggerPayload",
-            "WorkflowContactPropertyTriggerPayload": "#/components/schemas/WorkflowContactPropertyTriggerPayload",
-            "WorkflowAddToListTriggerPayload": "#/components/schemas/WorkflowAddToListTriggerPayload",
-            "WorkflowAudienceFilterPayload": "#/components/schemas/WorkflowAudienceFilterPayload",
-            "WorkflowTimerActionPayload": "#/components/schemas/WorkflowTimerActionPayload",
-            "WorkflowExperimentBranchPayload": "#/components/schemas/WorkflowExperimentBranchPayload",
-            "WorkflowVariantPayload": "#/components/schemas/WorkflowVariantPayload"
-          }
-        }
+        "description": "Node-type-specific fields to update. The allowed fields depend on the existing node type. Trigger node updates may include \u0060typeName\u0060 when changing one trigger node type to another trigger node type."
       },
       "WorkflowSignupTriggerPayload": {
         "required": [
@@ -7557,7 +8084,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/WorkflowSignupTriggerPayloadTypeName"
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
           }
         },
         "additionalProperties": false,
@@ -7568,7 +8095,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/WorkflowEventTriggerPayloadTypeName"
+            "$ref": "#/components/schemas/EventTriggerTypeName"
           },
           "eventPatternId": {
             "type": [
@@ -7597,7 +8124,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/WorkflowContactPropertyTriggerPayloadTypeName"
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
           },
           "contactPropertyQuery": {
             "description": "Define the contact property change that triggers the workflow. In update requests, \u0060key\u0060 must resolve to an existing contact property that is available for Contact Updated triggers. Hidden or unsupported fields, such as \u0060createdAt\u0060, \u0060notes\u0060, and computed contact properties, are rejected.",
@@ -7616,7 +8143,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/WorkflowAddToListTriggerPayloadTypeName"
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
           },
           "reEligible": {
             "type": "boolean",
@@ -7717,7 +8244,7 @@
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
           },
           "insertMode": {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBetweenRequestInsertMode"
+            "$ref": "#/components/schemas/BetweenInsertMode"
           },
           "nodeTypeName": {
             "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
@@ -7739,8 +8266,7 @@
         "required": [
           "expectedRevisionId",
           "insertMode",
-          "nodeTypeName",
-          "type"
+          "nodeTypeName"
         ],
         "type": "object",
         "oneOf": [
@@ -7757,7 +8283,7 @@
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
           },
           "insertMode": {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestInsertMode"
+            "$ref": "#/components/schemas/BeforeInsertMode"
           },
           "nodeTypeName": {
             "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
@@ -7771,21 +8297,10 @@
             "type": "string",
             "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
             "deprecated": true
-          },
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
           }
         },
         "additionalProperties": false,
-        "description": "\u0022Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \\\u0022before\\\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \\\u0022between\\\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060.\u0022",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "CreateWorkflowNodeBeforeRequestOneOf1": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1",
-            "CreateWorkflowNodeBeforeRequestOneOf2": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
-          }
-        }
+        "description": "Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \u0022before\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \u0022between\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060."
       },
       "CreateWorkflowNodeAfterRequest": {
         "required": [
@@ -7801,7 +8316,7 @@
             "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
           },
           "insertMode": {
-            "$ref": "#/components/schemas/CreateWorkflowNodeAfterRequestInsertMode"
+            "$ref": "#/components/schemas/AfterInsertMode"
           },
           "nodeTypeName": {
             "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
@@ -7816,9 +8331,6 @@
         "description": "Insert a new node after \u0060fromNodeId\u0060. This is valid only when \u0060fromNodeId\u0060 has exactly one outgoing node. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead."
       },
       "CreateWorkflowNodeRequest": {
-        "required": [
-          "insertMode"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -7832,10 +8344,26 @@
           }
         ],
         "properties": {
-          "insertMode": {
-            "title": "insertMode",
+          "expectedRevisionId": {
+            "description": "The workflow revision token returned by the latest workflow read or mutation. Older workflows may return \u0060null\u0060 before their first revision-aware mutation; pass \u0060null\u0060 back as \u0060expectedRevisionId\u0060 in that case. If the token is stale, the API returns a \u0060409 Conflict\u0060 error.",
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "nodeTypeName": {
+            "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
+            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
+          },
+          "fromNodeId": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The node to insert after. This node must currently point to \u0060toNodeId\u0060. If this is an \u0060ExperimentBranchNode\u0060, \u0060nodeTypeName\u0060 must be \u0060VariantNode\u0060 and \u0060toNodeId\u0060 cannot already be a \u0060VariantNode\u0060."
+          },
+          "toNodeId": {
+            "type": "string",
+            "description": "The node to insert before."
+          },
+          "beforeNodeId": {
+            "type": "string",
+            "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
+            "deprecated": true
           }
         },
         "description": "Create a new workflow node with an explicit \u0060insertMode\u0060. To configure the node after creation, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 endpoint.",
@@ -7852,9 +8380,6 @@
         }
       },
       "WorkflowMutationNodeWithRevision": {
-        "required": [
-          "typeName"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -7895,10 +8420,79 @@
           }
         ],
         "properties": {
-          "typeName": {
-            "title": "typeName",
+          "id": {
+            "type": "string"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "eventName": {
+            "type": "string",
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list this trigger sends to, if set."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of the audience segment this trigger targets."
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
           }
         },
         "description": "Detailed workflow node returned from a mutation, plus the latest workflow revision token.",
@@ -7945,7 +8539,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -7974,7 +8568,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/EventTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/EventTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8019,7 +8613,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8056,7 +8650,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AddToListTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8095,7 +8689,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BlankTriggerWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8124,7 +8718,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AudienceFilterWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8166,7 +8760,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/TimerActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/TimerActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8204,7 +8798,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SendEmailActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8239,7 +8833,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExitActionWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ExitActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8267,7 +8861,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BranchWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/BranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8296,7 +8890,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExperimentBranchWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8328,7 +8922,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/VariantWorkflowMutationNodeTypeName"
+            "$ref": "#/components/schemas/VariantNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8585,7 +9179,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/WorkflowDeletedResponseStatus"
+            "$ref": "#/components/schemas/DeletedStatus"
           },
           "nodeIds": {
             "type": "array",
@@ -8607,9 +9201,6 @@
         }
       },
       "DeleteWorkflowNodeResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -8620,16 +9211,23 @@
           }
         ],
         "properties": {
-          "type": {
+          "nodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that would be deleted."
+          },
+          "queuedContactCount": {
+            "type": "number",
+            "description": "The number of queued contacts that would be removed from the workflow due to the node deletion."
+          },
+          "workflowRevisionId": {
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowQueuedContactDeletePreview": "#/components/schemas/WorkflowQueuedContactDeletePreview",
-            "WorkflowDeletedResponse": "#/components/schemas/WorkflowDeletedResponse"
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         }
       },
@@ -8649,7 +9247,7 @@
               "null",
               "string"
             ],
-            "description": "\u0022The mailing list to use for the workflow. When assigning a mailing list, queued contacts excluded by the new list can return \u0060queuedContactsFound\u0060; retry with \u0060queuedContactPolicy: \\\u0022discard\\\u0022\u0060 to apply the change and discard those contacts. Use \u0060null\u0060 to clear the workflow mailing list; clearing does not discard queued contacts.\u0022"
+            "description": "The mailing list to use for the workflow. When assigning a mailing list, queued contacts excluded by the new list can return \u0060queuedContactsFound\u0060; retry with \u0060queuedContactPolicy: \u0022discard\u0022\u0060 to apply the change and discard those contacts. Use \u0060null\u0060 to clear the workflow mailing list; clearing does not discard queued contacts."
           },
           "dryRun": {
             "type": "boolean",
@@ -8696,7 +9294,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "$ref": "#/components/schemas/WorkflowMailingListUpdatedResponseStatus"
+            "$ref": "#/components/schemas/UpdatedStatus"
           },
           "mailingListId": {
             "type": [
@@ -8718,9 +9316,6 @@
         }
       },
       "ChangeWorkflowMailingListResponse": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -8731,16 +9326,22 @@
           }
         ],
         "properties": {
-          "type": {
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "queuedContactCount": {
+            "type": "number",
+            "description": "The number of queued contacts that would be removed from the workflow due to the mailing list changing."
+          },
+          "workflowRevisionId": {
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowMailingListPreview": "#/components/schemas/WorkflowMailingListPreview",
-            "WorkflowMailingListUpdatedResponse": "#/components/schemas/WorkflowMailingListUpdatedResponse"
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
           }
         }
       },
@@ -8823,9 +9424,6 @@
         }
       },
       "SimplifiedWorkflowNode": {
-        "required": [
-          "typeName"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -8866,10 +9464,60 @@
           }
         ],
         "properties": {
-          "typeName": {
-            "title": "typeName",
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The name of the event that triggers the workflow."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery"
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list that triggers the workflow."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "emailMessageId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The subject of the email message (reference only)."
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
           }
         },
         "discriminator": {
@@ -8898,7 +9546,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedSignupTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8930,7 +9578,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedEventTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/EventTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8963,7 +9611,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -8992,7 +9640,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedAddToListTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9023,7 +9671,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedBlankTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9043,7 +9691,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedAudienceFilterWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9075,7 +9723,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedTimerActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/TimerActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9113,7 +9761,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedSendEmailActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9144,7 +9792,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedExitActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ExitActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9164,7 +9812,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedBranchWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/BranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9185,7 +9833,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedExperimentBranchWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9210,7 +9858,7 @@
         "type": "object",
         "properties": {
           "typeName": {
-            "$ref": "#/components/schemas/SimplifiedVariantWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/VariantNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9227,9 +9875,6 @@
         "additionalProperties": false
       },
       "WorkflowNode": {
-        "required": [
-          "typeName"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -9270,10 +9915,96 @@
           }
         ],
         "properties": {
-          "typeName": {
-            "title": "typeName",
+          "id": {
+            "examples": [
+              "cln8p0q2r4s6t8u0v2w4x6z8"
+            ],
+            "type": "string"
+          },
+          "workflowId": {
+            "examples": [
+              "clw1a3b5c7d9e1f3g5h7i9j1"
+            ],
+            "type": "string"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
+            "examples": [
+              "signup"
+            ],
             "type": "string",
-            "description": "Union discriminator"
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeContactPropertyQuery"
+          },
+          "mailingListId": {
+            "examples": [
+              "clm2k8j4h6g0f8d6s4a2b0z8",
+              null
+            ],
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list that triggers the workflow."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string"
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "emailMessageId": {
+            "examples": [
+              "cle5f7g9h1i3j5k7l9m1n3p5"
+            ],
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "examples": [
+              "Welcome to Acme!"
+            ],
+            "type": "string"
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
           }
         },
         "discriminator": {
@@ -9334,7 +10065,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SignupTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9369,7 +10100,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/EventTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/EventTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9423,7 +10154,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9466,7 +10197,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AddToListTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9515,7 +10246,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BlankTriggerWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9550,7 +10281,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/AudienceFilterWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9597,7 +10328,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/TimerActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/TimerActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9641,7 +10372,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/SendEmailActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9688,7 +10419,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExitActionWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ExitActionTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9722,7 +10453,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/BranchWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/BranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9757,7 +10488,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/ExperimentBranchWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -9795,7 +10526,7 @@
             "type": "string"
           },
           "typeName": {
-            "$ref": "#/components/schemas/VariantWorkflowNodeTypeName"
+            "$ref": "#/components/schemas/VariantNodeTypeName"
           },
           "nextNodeIds": {
             "type": "array",
@@ -10711,8 +11442,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -10850,8 +11580,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -10895,8 +11624,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -10934,8 +11662,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -10960,8 +11687,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -10989,8 +11715,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11015,8 +11740,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11045,8 +11769,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11077,8 +11800,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11115,8 +11837,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11160,8 +11881,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11205,8 +11925,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11250,8 +11969,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11295,8 +12013,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11340,8 +12057,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11381,8 +12097,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11422,8 +12137,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11463,8 +12177,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11504,8 +12217,7 @@
             "description": "Unix timestamp in seconds."
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           },
           "contactIdentity": {
             "$ref": "#/components/schemas/WebhookContactIdentity"
@@ -11540,20 +12252,17 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "testing.testEvent",
-            "type": "string"
+            "$ref": "#/components/schemas/TestingTestEventEventName"
           },
           "eventTime": {
             "type": "integer",
             "description": "Unix timestamp in seconds."
           },
           "message": {
-            "const": "test",
-            "type": "string"
+            "$ref": "#/components/schemas/TestMessage"
           },
           "webhookSchemaVersion": {
-            "const": "1.0.0",
-            "type": "string"
+            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
           }
         }
       },
@@ -11596,9 +12305,6 @@
         }
       },
       "PropertyConditionValue": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -11612,25 +12318,18 @@
           }
         ],
         "properties": {
-          "type": {
+          "from": {
             "type": "string",
-            "description": "Union discriminator"
+            "format": "date-time"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time"
           }
         },
-        "description": "The comparison value. Omitted for value-less operators (e.g. \u0060isTrue\u0060, \u0060empty\u0060). A \u0060{ from, to }\u0060 object for \u0060between\u0060.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "PropertyConditionValue_1": "#/components/schemas/PropertyConditionValueBranch1",
-            "PropertyConditionValue_2": "#/components/schemas/PropertyConditionValueBranch2",
-            "PropertyConditionValueOneOf3": "#/components/schemas/PropertyConditionValueOneOf3"
-          }
-        }
+        "description": "The comparison value. Omitted for value-less operators (e.g. \u0060isTrue\u0060, \u0060empty\u0060). A \u0060{ from, to }\u0060 object for \u0060between\u0060."
       },
       "ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -11641,15 +12340,22 @@
           }
         ],
         "properties": {
-          "type": {
+          "key": {
+            "examples": [
+              "firstName",
+              "email",
+              "planName"
+            ],
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowContactPropertyQuery": "#/components/schemas/WorkflowContactPropertyQuery"
+            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
+          },
+          "is": {
+            "description": "Comparison for the new contact property value after the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
+          },
+          "was": {
+            "description": "Comparison for the previous contact property value before the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
           }
         }
       },
@@ -11711,9 +12417,6 @@
         }
       },
       "SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -11724,15 +12427,22 @@
           }
         ],
         "properties": {
-          "type": {
+          "key": {
+            "examples": [
+              "firstName",
+              "email",
+              "planName"
+            ],
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowContactPropertyQuery": "#/components/schemas/WorkflowContactPropertyQuery"
+            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
+          },
+          "is": {
+            "description": "Comparison for the new contact property value after the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
+          },
+          "was": {
+            "description": "Comparison for the previous contact property value before the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
           }
         }
       },
@@ -11749,9 +12459,6 @@
         }
       },
       "ContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -11762,15 +12469,22 @@
           }
         ],
         "properties": {
-          "type": {
+          "key": {
+            "examples": [
+              "firstName",
+              "email",
+              "planName"
+            ],
             "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "WorkflowContactPropertyQuery": "#/components/schemas/WorkflowContactPropertyQuery"
+            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
+          },
+          "is": {
+            "description": "Comparison for the new contact property value after the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
+          },
+          "was": {
+            "description": "Comparison for the previous contact property value before the update.",
+            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
           }
         }
       },
@@ -11845,8 +12559,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "contact.unsubscribed",
-            "type": "string"
+            "$ref": "#/components/schemas/ContactUnsubscribedEventName"
           }
         }
       },
@@ -11858,8 +12571,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "contact.created",
-            "type": "string"
+            "$ref": "#/components/schemas/ContactCreatedEventName"
           },
           "contact": {
             "description": "Full contact object, including custom properties.",
@@ -11874,8 +12586,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "contact.deleted",
-            "type": "string"
+            "$ref": "#/components/schemas/ContactDeletedEventName"
           }
         }
       },
@@ -11887,8 +12598,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "contact.mailingList.subscribed",
-            "type": "string"
+            "$ref": "#/components/schemas/ContactMailingListSubscribedEventName"
           },
           "mailingList": {
             "description": "Details of the mailing list.",
@@ -11904,8 +12614,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "contact.mailingList.unsubscribed",
-            "type": "string"
+            "$ref": "#/components/schemas/ContactMailingListUnsubscribedEventName"
           },
           "mailingList": {
             "description": "Details of the mailing list.",
@@ -11923,8 +12632,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "transactional.email.sent",
-            "type": "string"
+            "$ref": "#/components/schemas/TransactionalEmailSentEventName"
           },
           "transactionalId": {
             "type": "string"
@@ -11948,8 +12656,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "campaign.email.sent",
-            "type": "string"
+            "$ref": "#/components/schemas/CampaignEmailSentEventName"
           },
           "campaignId": {
             "type": "string"
@@ -11980,8 +12687,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "loop.email.sent",
-            "type": "string"
+            "$ref": "#/components/schemas/LoopEmailSentEventName"
           },
           "loopId": {
             "type": "string",
@@ -12010,8 +12716,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.delivered",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailDeliveredEventName"
           }
         }
       },
@@ -12022,8 +12727,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.softBounced",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailSoftBouncedEventName"
           }
         }
       },
@@ -12034,8 +12738,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.hardBounced",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailHardBouncedEventName"
           }
         }
       },
@@ -12046,8 +12749,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.clicked",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailClickedEventName"
           }
         }
       },
@@ -12058,8 +12760,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.unsubscribed",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailUnsubscribedEventName"
           }
         }
       },
@@ -12070,8 +12771,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.resubscribed",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailResubscribedEventName"
           }
         }
       },
@@ -12082,8 +12782,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.opened",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailOpenedEventName"
           }
         }
       },
@@ -12094,8 +12793,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "const": "email.spamReported",
-            "type": "string"
+            "$ref": "#/components/schemas/EmailSpamReportedEventName"
           }
         }
       },
@@ -12299,7 +12997,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "UpdateEmailMessageRequestEventPropertiesFallbacks": {
         "type": "object",
@@ -12309,7 +13007,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "UpdateEmailMessageRequestDataVariablesFallbacks": {
         "type": "object",
@@ -12319,7 +13017,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "EmailMessageResponseContactPropertiesFallbacks": {
         "type": "object",
@@ -12354,7 +13052,7 @@
             "type": "string"
           },
           "severity": {
-            "$ref": "#/components/schemas/EmailMessageResponseWarningsItemSeverity"
+            "$ref": "#/components/schemas/WarningSeverity"
           },
           "message": {
             "type": "string"
@@ -12494,9 +13192,6 @@
         }
       },
       "SendTransactionalEmail400Response": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -12516,21 +13211,32 @@
           }
         ],
         "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "TransactionalSendFailureResponse": "#/components/schemas/TransactionalSendFailureResponse",
-            "TransactionalFailure2Response": "#/components/schemas/TransactionalFailure2Response",
-            "TransactionalFailure3Response": "#/components/schemas/TransactionalFailure3Response",
-            "TransactionalFailure4Response": "#/components/schemas/TransactionalFailure4Response",
-            "TransactionalFailure5Response": "#/components/schemas/TransactionalFailure5Response"
+          "success": {
+            "examples": [
+              false
+            ],
+            "type": "boolean"
+          },
+          "message": {
+            "examples": [
+              "Missing required data variable(s): confirmationUrl"
+            ],
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "transactionalId": {
+            "examples": [
+              "cll42l54f20i1la0lfooe3z12"
+            ],
+            "type": "string"
           }
         }
+      },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
       },
       "PropertyConditionValueBranch1": {
         "required": [
@@ -12553,10 +13259,6 @@
             "type": "number"
           }
         }
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
       },
       "ListDedicatedSendingIps200ResponseSchema": {
         "type": "array",
@@ -12586,91 +13288,6 @@
         "items": {
           "$ref": "#/components/schemas/MailingList"
         }
-      },
-      "WebhookContactUnsubscribed201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookContactCreated201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookContactDeleted201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookContactMailingListSubscribed201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookContactMailingListUnsubscribed201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookTransactionalEmailSent201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookCampaignEmailSent201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookLoopEmailSent201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailDelivered201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailSoftBounced201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailHardBounced201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailClicked201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailUnsubscribed201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailResubscribed201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailOpened201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookEmailSpamReported201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "WebhookTestingTestEvent201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
       },
       "ContactMailingListsProperty": {
         "type": "object",
@@ -12715,7 +13332,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "UpdateEmailMessageRequestEventPropertiesFallbacksProperty": {
         "type": "object",
@@ -12725,7 +13342,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "UpdateEmailMessageRequestDataVariablesFallbacksProperty": {
         "type": "object",
@@ -12735,7 +13352,7 @@
             "string"
           ]
         },
-        "description": "\u0022Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.\u0022"
+        "description": "Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged."
       },
       "EmailMessageResponseContactPropertiesFallbacksProperty": {
         "type": "object",
@@ -12978,14 +13595,14 @@
           ]
         }
       },
-      "PropertyConditionType": {
+      "PropertyType": {
         "enum": [
           "property"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "PropertyConditionType",
+          "name": "PropertyType",
           "modelAsString": false,
           "values": [
             {
@@ -13087,14 +13704,14 @@
           ]
         }
       },
-      "OptInConditionType": {
+      "OptInType": {
         "enum": [
           "optIn"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "OptInConditionType",
+          "name": "OptInType",
           "modelAsString": false,
           "values": [
             {
@@ -13135,14 +13752,14 @@
           ]
         }
       },
-      "ActivityConditionType": {
+      "ActivityType": {
         "enum": [
           "activity"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "ActivityConditionType",
+          "name": "ActivityType",
           "modelAsString": false,
           "values": [
             {
@@ -13206,7 +13823,7 @@
           ]
         }
       },
-      "CreateCampaignResponseStatus": {
+      "DraftStatus": {
         "examples": [
           "Draft"
         ],
@@ -13241,126 +13858,98 @@
         "type": "string",
         "additionalProperties": false
       },
-      "SignupTriggerWorkflowMutationNodeTypeName": {
+      "SignupTriggerTypeName": {
         "enum": [
           "SignupTrigger"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "EventTriggerWorkflowMutationNodeTypeName": {
+      "EventTriggerTypeName": {
         "enum": [
           "EventTrigger"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "ContactPropertyTriggerWorkflowMutationNodeTypeName": {
+      "ContactPropertyTriggerTypeName": {
         "enum": [
           "ContactPropertyTrigger"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "AddToListTriggerWorkflowMutationNodeTypeName": {
+      "AddToListTriggerTypeName": {
         "enum": [
           "AddToListTrigger"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "BlankTriggerWorkflowMutationNodeTypeName": {
+      "BlankTriggerTypeName": {
         "enum": [
           "BlankTrigger"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "AudienceFilterWorkflowMutationNodeTypeName": {
+      "AudienceFilterTypeName": {
         "enum": [
           "AudienceFilter"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "TimerActionWorkflowMutationNodeTypeName": {
+      "TimerActionTypeName": {
         "enum": [
           "TimerAction"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "SendEmailActionWorkflowMutationNodeTypeName": {
+      "SendEmailActionTypeName": {
         "enum": [
           "SendEmailAction"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "ExitActionWorkflowMutationNodeTypeName": {
+      "ExitActionTypeName": {
         "enum": [
           "ExitAction"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "BranchWorkflowMutationNodeTypeName": {
+      "BranchNodeTypeName": {
         "enum": [
           "BranchNode"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "ExperimentBranchWorkflowMutationNodeTypeName": {
+      "ExperimentBranchNodeTypeName": {
         "enum": [
           "ExperimentBranchNode"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "VariantWorkflowMutationNodeTypeName": {
+      "VariantNodeTypeName": {
         "enum": [
           "VariantNode"
         ],
         "type": "string",
         "additionalProperties": false
       },
-      "WorkflowSignupTriggerPayloadTypeName": {
-        "enum": [
-          "SignupTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "WorkflowEventTriggerPayloadTypeName": {
-        "enum": [
-          "EventTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "WorkflowContactPropertyTriggerPayloadTypeName": {
-        "enum": [
-          "ContactPropertyTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "WorkflowAddToListTriggerPayloadTypeName": {
-        "enum": [
-          "AddToListTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "CreateWorkflowNodeBetweenRequestInsertMode": {
+      "BetweenInsertMode": {
         "enum": [
           "between"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "CreateWorkflowNodeBetweenRequestInsertMode",
+          "name": "BetweenInsertMode",
           "modelAsString": false,
           "values": [
             {
@@ -13370,14 +13959,14 @@
           ]
         }
       },
-      "CreateWorkflowNodeBeforeRequestInsertMode": {
+      "BeforeInsertMode": {
         "enum": [
           "before"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "CreateWorkflowNodeBeforeRequestInsertMode",
+          "name": "BeforeInsertMode",
           "modelAsString": false,
           "values": [
             {
@@ -13387,14 +13976,14 @@
           ]
         }
       },
-      "CreateWorkflowNodeAfterRequestInsertMode": {
+      "AfterInsertMode": {
         "enum": [
           "after"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "CreateWorkflowNodeAfterRequestInsertMode",
+          "name": "AfterInsertMode",
           "modelAsString": false,
           "values": [
             {
@@ -13426,14 +14015,14 @@
           ]
         }
       },
-      "WorkflowDeletedResponseStatus": {
+      "DeletedStatus": {
         "enum": [
           "deleted"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "WorkflowDeletedResponseStatus",
+          "name": "DeletedStatus",
           "modelAsString": false,
           "values": [
             {
@@ -13465,14 +14054,14 @@
           ]
         }
       },
-      "WorkflowMailingListUpdatedResponseStatus": {
+      "UpdatedStatus": {
         "enum": [
           "updated"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "WorkflowMailingListUpdatedResponseStatus",
+          "name": "UpdatedStatus",
           "modelAsString": false,
           "values": [
             {
@@ -13563,174 +14152,6 @@
             }
           ]
         }
-      },
-      "SimplifiedSignupTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "SignupTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedEventTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "EventTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedContactPropertyTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "ContactPropertyTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedAddToListTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "AddToListTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedBlankTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "BlankTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedAudienceFilterWorkflowNodeTypeName": {
-        "enum": [
-          "AudienceFilter"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedTimerActionWorkflowNodeTypeName": {
-        "enum": [
-          "TimerAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedSendEmailActionWorkflowNodeTypeName": {
-        "enum": [
-          "SendEmailAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedExitActionWorkflowNodeTypeName": {
-        "enum": [
-          "ExitAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedBranchWorkflowNodeTypeName": {
-        "enum": [
-          "BranchNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedExperimentBranchWorkflowNodeTypeName": {
-        "enum": [
-          "ExperimentBranchNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SimplifiedVariantWorkflowNodeTypeName": {
-        "enum": [
-          "VariantNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SignupTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "SignupTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "EventTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "EventTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "ContactPropertyTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "ContactPropertyTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "AddToListTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "AddToListTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "BlankTriggerWorkflowNodeTypeName": {
-        "enum": [
-          "BlankTrigger"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "AudienceFilterWorkflowNodeTypeName": {
-        "enum": [
-          "AudienceFilter"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "TimerActionWorkflowNodeTypeName": {
-        "enum": [
-          "TimerAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "SendEmailActionWorkflowNodeTypeName": {
-        "enum": [
-          "SendEmailAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "ExitActionWorkflowNodeTypeName": {
-        "enum": [
-          "ExitAction"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "BranchWorkflowNodeTypeName": {
-        "enum": [
-          "BranchNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "ExperimentBranchWorkflowNodeTypeName": {
-        "enum": [
-          "ExperimentBranchNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
-      },
-      "VariantWorkflowNodeTypeName": {
-        "enum": [
-          "VariantNode"
-        ],
-        "type": "string",
-        "additionalProperties": false
       },
       "WorkflowEventPropertyType": {
         "enum": [
@@ -14014,6 +14435,23 @@
           ]
         }
       },
+      "Value100WebhookSchemaVersion": {
+        "const": null,
+        "enum": [
+          "1.0.0"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "Value100WebhookSchemaVersion",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "1.0.0",
+              "name": "Value100"
+            }
+          ]
+        }
+      },
       "WebhookContactOptInStatus": {
         "enum": [
           "accepted",
@@ -14097,6 +14535,312 @@
           ]
         }
       },
+      "TestingTestEventEventName": {
+        "const": null,
+        "enum": [
+          "testing.testEvent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TestingTestEventEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "testing.testEvent",
+              "name": "TestingTestEvent"
+            }
+          ]
+        }
+      },
+      "TestMessage": {
+        "const": null,
+        "enum": [
+          "test"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TestMessage",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "test",
+              "name": "Test"
+            }
+          ]
+        }
+      },
+      "ContactUnsubscribedEventName": {
+        "const": null,
+        "enum": [
+          "contact.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ContactUnsubscribedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.unsubscribed",
+              "name": "ContactUnsubscribed"
+            }
+          ]
+        }
+      },
+      "ContactCreatedEventName": {
+        "const": null,
+        "enum": [
+          "contact.created"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ContactCreatedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.created",
+              "name": "ContactCreated"
+            }
+          ]
+        }
+      },
+      "ContactDeletedEventName": {
+        "const": null,
+        "enum": [
+          "contact.deleted"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ContactDeletedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.deleted",
+              "name": "ContactDeleted"
+            }
+          ]
+        }
+      },
+      "ContactMailingListSubscribedEventName": {
+        "const": null,
+        "enum": [
+          "contact.mailingList.subscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ContactMailingListSubscribedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.mailingList.subscribed",
+              "name": "ContactMailingListSubscribed"
+            }
+          ]
+        }
+      },
+      "ContactMailingListUnsubscribedEventName": {
+        "const": null,
+        "enum": [
+          "contact.mailingList.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "ContactMailingListUnsubscribedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.mailingList.unsubscribed",
+              "name": "ContactMailingListUnsubscribed"
+            }
+          ]
+        }
+      },
+      "TransactionalEmailSentEventName": {
+        "const": null,
+        "enum": [
+          "transactional.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "TransactionalEmailSentEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "transactional.email.sent",
+              "name": "TransactionalEmailSent"
+            }
+          ]
+        }
+      },
+      "CampaignEmailSentEventName": {
+        "const": null,
+        "enum": [
+          "campaign.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "CampaignEmailSentEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "campaign.email.sent",
+              "name": "CampaignEmailSent"
+            }
+          ]
+        }
+      },
+      "LoopEmailSentEventName": {
+        "const": null,
+        "enum": [
+          "loop.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "LoopEmailSentEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "loop.email.sent",
+              "name": "LoopEmailSent"
+            }
+          ]
+        }
+      },
+      "EmailDeliveredEventName": {
+        "const": null,
+        "enum": [
+          "email.delivered"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailDeliveredEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.delivered",
+              "name": "EmailDelivered"
+            }
+          ]
+        }
+      },
+      "EmailSoftBouncedEventName": {
+        "const": null,
+        "enum": [
+          "email.softBounced"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailSoftBouncedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.softBounced",
+              "name": "EmailSoftBounced"
+            }
+          ]
+        }
+      },
+      "EmailHardBouncedEventName": {
+        "const": null,
+        "enum": [
+          "email.hardBounced"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailHardBouncedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.hardBounced",
+              "name": "EmailHardBounced"
+            }
+          ]
+        }
+      },
+      "EmailClickedEventName": {
+        "const": null,
+        "enum": [
+          "email.clicked"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailClickedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.clicked",
+              "name": "EmailClicked"
+            }
+          ]
+        }
+      },
+      "EmailUnsubscribedEventName": {
+        "const": null,
+        "enum": [
+          "email.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailUnsubscribedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.unsubscribed",
+              "name": "EmailUnsubscribed"
+            }
+          ]
+        }
+      },
+      "EmailResubscribedEventName": {
+        "const": null,
+        "enum": [
+          "email.resubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailResubscribedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.resubscribed",
+              "name": "EmailResubscribed"
+            }
+          ]
+        }
+      },
+      "EmailOpenedEventName": {
+        "const": null,
+        "enum": [
+          "email.opened"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailOpenedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.opened",
+              "name": "EmailOpened"
+            }
+          ]
+        }
+      },
+      "EmailSpamReportedEventName": {
+        "const": null,
+        "enum": [
+          "email.spamReported"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "EmailSpamReportedEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.spamReported",
+              "name": "EmailSpamReported"
+            }
+          ]
+        }
+      },
       "CreateAudienceSegmentRequestFilterMatch": {
         "enum": [
           "all",
@@ -14119,14 +14863,14 @@
           ]
         }
       },
-      "EmailMessageResponseWarningsItemSeverity": {
+      "WarningSeverity": {
         "enum": [
           "warning"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "EmailMessageResponseWarningsItemSeverity",
+          "name": "WarningSeverity",
           "modelAsString": false,
           "values": [
             {
@@ -14170,12 +14914,6 @@
       "apiKey": {
         "type": "http",
         "scheme": "bearer"
-      },
-      "assets_jwt": {
-        "type": "http",
-        "description": "JWT used for assets upload",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   },
@@ -14296,18 +15034,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookContactUnsubscribed201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14368,18 +15100,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookContactCreated201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14424,18 +15150,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookContactDeleted201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14486,18 +15206,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookContactMailingListSubscribed201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14548,18 +15262,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookContactMailingListUnsubscribed201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14611,18 +15319,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookTransactionalEmailSent201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14682,18 +15384,12 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookCampaignEmailSent201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14753,18 +15449,12 @@
                 ]
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookLoopEmailSent201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14816,18 +15506,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailDelivered201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14879,18 +15563,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailSoftBounced201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -14942,18 +15620,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailHardBounced201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15005,18 +15677,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailClicked201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15068,18 +15734,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailUnsubscribed201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15131,18 +15791,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailResubscribed201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15194,18 +15848,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailOpened201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15257,18 +15905,12 @@
                 }
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookEmailSpamReported201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []
@@ -15309,18 +15951,12 @@
                 "webhookSchemaVersion": "1.0.0"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WebhookTestingTestEvent201Response"
-                }
-              }
-            }
+          "200": {
+            "description": "Webhook received successfully. Return any 2xx status code to acknowledge delivery."
           }
         },
         "security": []

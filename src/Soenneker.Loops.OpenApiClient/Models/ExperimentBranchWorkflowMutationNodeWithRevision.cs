@@ -33,7 +33,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The percentage of contacts that will be sent to variant branches, between `0` and `100`. The remaining percentage will be sent to the control branch. `100` sends all contacts to variant branches.</summary>
         public double? SamplingRate { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName? TypeName { get; set; }
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "samplingRate", n => { SamplingRate = n.GetDoubleValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName>(); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -84,7 +84,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteDoubleValue("samplingRate", SamplingRate);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName>("typeName", TypeName);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }

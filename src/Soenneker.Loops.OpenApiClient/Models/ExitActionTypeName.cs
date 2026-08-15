@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum ExperimentBranchWorkflowMutationNodeTypeName
+    public enum ExitActionTypeName
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ExperimentBranchNode")]
+        [EnumMember(Value = "ExitAction")]
         #pragma warning disable CS1591
-        ExperimentBranchNode,
+        ExitAction,
         #pragma warning restore CS1591
     }
 }

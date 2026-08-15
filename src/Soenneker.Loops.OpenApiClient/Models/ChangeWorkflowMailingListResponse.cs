@@ -37,7 +37,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse();
             if("WorkflowMailingListPreview".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {

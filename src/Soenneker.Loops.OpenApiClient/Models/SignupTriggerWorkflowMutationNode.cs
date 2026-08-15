@@ -31,7 +31,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<string> NextNodeIds { get; set; }
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName? TypeName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>("typeName", TypeName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

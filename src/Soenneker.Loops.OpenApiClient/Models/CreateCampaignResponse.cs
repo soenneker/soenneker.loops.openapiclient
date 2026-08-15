@@ -89,7 +89,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling Scheduling { get; set; }
 #endif
         /// <summary>The status of the campaign (always `Draft` for new campaigns).</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus? Status { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.DraftStatus? Status { get; set; }
         /// <summary>ISO 8601 timestamp for when the campaign was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -127,7 +127,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "scheduling", n => { Scheduling = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>(global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DraftStatus>(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -148,7 +148,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>("scheduling", Scheduling);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponseStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DraftStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

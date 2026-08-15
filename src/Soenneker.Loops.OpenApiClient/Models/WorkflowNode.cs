@@ -104,14 +104,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Subject { get; set; }
 #endif
-        /// <summary>Union discriminator</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TypeName { get; set; }
-#nullable restore
-#else
-        public string TypeName { get; set; }
-#endif
+        /// <summary>The typeName property</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName? TypeName { get; set; }
         /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
         /// <summary>The workflowId property</summary>
@@ -162,7 +156,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
                 { "samplingRate", n => { SamplingRate = n.GetDoubleValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
-                { "typeName", n => { TypeName = n.GetStringValue(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>(); } },
                 { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(); } },
                 { "workflowId", n => { WorkflowId = n.GetStringValue(); } },
             };
@@ -189,7 +183,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteBoolValue("reEligible", ReEligible);
             writer.WriteDoubleValue("samplingRate", SamplingRate);
             writer.WriteStringValue("subject", Subject);
-            writer.WriteStringValue("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>("typeName", TypeName);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
             writer.WriteStringValue("workflowId", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);

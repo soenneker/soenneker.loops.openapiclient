@@ -33,7 +33,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<string> NextNodeIds { get; set; }
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.TimerActionTypeName? TypeName { get; set; }
         /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionTypeName>(); } },
                 { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
@@ -87,7 +87,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionTypeName>("typeName", TypeName);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);

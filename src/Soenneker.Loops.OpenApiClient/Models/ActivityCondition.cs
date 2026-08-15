@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The target property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionTarget? Target { get; set; }
         /// <summary>The type property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionType? Type { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ActivityType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ActivityCondition"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "negate", n => { Negate = n.GetBoolValue(); } },
                 { "target", n => { Target = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionTarget>(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionType>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityType>(); } },
             };
         }
         /// <summary>
@@ -74,7 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("negate", Negate);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionTarget>("target", Target);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityConditionType>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ActivityType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -33,7 +33,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The percentage of contacts that will be sent to variant branches, between `0` and `100`. The remaining percentage will be sent to the control branch. `100` sends all contacts to variant branches.</summary>
         public double? SamplingRate { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName? TypeName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "samplingRate", n => { SamplingRate = n.GetDoubleValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName>(); } },
             };
         }
         /// <summary>
@@ -75,7 +75,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteDoubleValue("samplingRate", SamplingRate);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchNodeTypeName>("typeName", TypeName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

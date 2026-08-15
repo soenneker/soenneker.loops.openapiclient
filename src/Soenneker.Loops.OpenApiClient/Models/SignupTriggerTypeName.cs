@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum SendEmailActionWorkflowMutationNodeTypeName
+    public enum SignupTriggerTypeName
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "SendEmailAction")]
+        [EnumMember(Value = "SignupTrigger")]
         #pragma warning disable CS1591
-        SendEmailAction,
+        SignupTrigger,
         #pragma warning restore CS1591
     }
 }

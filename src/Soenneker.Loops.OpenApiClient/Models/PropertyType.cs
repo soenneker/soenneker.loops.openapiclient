@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum WorkflowAddToListTriggerPayloadTypeName
+    public enum PropertyType
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "AddToListTrigger")]
+        [EnumMember(Value = "property")]
         #pragma warning disable CS1591
-        AddToListTrigger,
+        Property,
         #pragma warning restore CS1591
     }
 }

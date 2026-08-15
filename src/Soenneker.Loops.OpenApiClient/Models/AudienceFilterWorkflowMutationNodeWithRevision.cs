@@ -49,7 +49,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<string> NextNodeIds { get; set; }
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterTypeName? TypeName { get; set; }
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,7 +88,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterTypeName>(); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -104,7 +104,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterTypeName>("typeName", TypeName);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }

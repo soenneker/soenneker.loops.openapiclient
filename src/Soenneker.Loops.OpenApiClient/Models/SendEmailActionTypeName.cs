@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum CreateWorkflowNodeAfterRequestInsertMode
+    public enum SendEmailActionTypeName
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "after")]
+        [EnumMember(Value = "SendEmailAction")]
         #pragma warning disable CS1591
-        After,
+        SendEmailAction,
         #pragma warning restore CS1591
     }
 }

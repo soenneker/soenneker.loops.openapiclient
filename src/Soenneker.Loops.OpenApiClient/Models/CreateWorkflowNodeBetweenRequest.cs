@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string FromNodeId { get; set; }
 #endif
         /// <summary>The insertMode property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequestInsertMode? InsertMode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode? InsertMode { get; set; }
         /// <summary>Node types that can be created with the API. `*Trigger` nodes and `ExitAction` nodes cannot be created.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get; set; }
         /// <summary>The node to insert before.</summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
                 { "fromNodeId", n => { FromNodeId = n.GetStringValue(); } },
-                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequestInsertMode>(); } },
+                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode>(); } },
                 { "nodeTypeName", n => { NodeTypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>(); } },
                 { "toNodeId", n => { ToNodeId = n.GetStringValue(); } },
             };
@@ -75,7 +75,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
             writer.WriteStringValue("fromNodeId", FromNodeId);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequestInsertMode>("insertMode", InsertMode);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode>("insertMode", InsertMode);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>("nodeTypeName", NodeTypeName);
             writer.WriteStringValue("toNodeId", ToNodeId);
         }

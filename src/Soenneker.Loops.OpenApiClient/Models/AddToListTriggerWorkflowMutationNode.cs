@@ -41,7 +41,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
         public bool? ReEligible { get; set; }
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName? TypeName { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName>(); } },
             };
         }
         /// <summary>
@@ -85,7 +85,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteBoolValue("reEligible", ReEligible);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName>("typeName", TypeName);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

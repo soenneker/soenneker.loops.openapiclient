@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum ContactPropertyTriggerWorkflowMutationNodeTypeName
+    public enum UpdatedStatus
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "ContactPropertyTrigger")]
+        [EnumMember(Value = "updated")]
         #pragma warning disable CS1591
-        ContactPropertyTrigger,
+        Updated,
         #pragma warning restore CS1591
     }
 }

@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ExpectedRevisionId { get; set; }
 #endif
-        /// <summary>&quot;The mailing list to use for the workflow. When assigning a mailing list, queued contacts excluded by the new list can return `queuedContactsFound`; retry with `queuedContactPolicy: \&quot;discard\&quot;` to apply the change and discard those contacts. Use `null` to clear the workflow mailing list; clearing does not discard queued contacts.&quot;</summary>
+        /// <summary>The mailing list to use for the workflow. When assigning a mailing list, queued contacts excluded by the new list can return `queuedContactsFound`; retry with `queuedContactPolicy: &quot;discard&quot;` to apply the change and discard those contacts. Use `null` to clear the workflow mailing list; clearing does not discard queued contacts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MailingListId { get; set; }

@@ -9,12 +9,20 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class VariantWorkflowMutationNodeWithRevision : IAdditionalDataHolder, IParsable
+    public partial class TransactionalEmail : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>The data variables used by the transactional email.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>? DataVariables { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables> DataVariables { get; set; }
+#endif
+        /// <summary>The ID of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -22,42 +30,38 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Whether this is the control variant of an experiment.</summary>
-        public bool? IsControl { get; set; }
-        /// <summary>The IDs of the nodes that are downstream of this node.</summary>
+        /// <summary>The date and time the transactional email was last updated in ISO 8601 format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NextNodeIds { get; set; }
+        public string? LastUpdated { get; set; }
 #nullable restore
 #else
-        public List<string> NextNodeIds { get; set; }
+        public string LastUpdated { get; set; }
 #endif
-        /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName? TypeName { get; set; }
-        /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
+        /// <summary>The name of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowRevisionId { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string WorkflowRevisionId { get; set; }
+        public string Name { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail"/> and sets the default values.
         /// </summary>
-        public VariantWorkflowMutationNodeWithRevision()
+        public TransactionalEmail()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision();
+            return new global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,11 +71,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "dataVariables", n => { DataVariables = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "isControl", n => { IsControl = n.GetBoolValue(); } },
-                { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName>(); } },
-                { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
+                { "lastUpdated", n => { LastUpdated = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -81,11 +84,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>("dataVariables", DataVariables);
             writer.WriteStringValue("id", Id);
-            writer.WriteBoolValue("isControl", IsControl);
-            writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName>("typeName", TypeName);
-            writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
+            writer.WriteStringValue("lastUpdated", LastUpdated);
+            writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

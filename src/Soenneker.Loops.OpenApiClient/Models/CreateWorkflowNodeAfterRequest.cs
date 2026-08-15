@@ -30,7 +30,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string FromNodeId { get; set; }
 #endif
         /// <summary>The insertMode property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode? InsertMode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AfterInsertMode? InsertMode { get; set; }
         /// <summary>Node types that can be created with the API. `*Trigger` nodes and `ExitAction` nodes cannot be created.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get; set; }
         /// <summary>
@@ -53,7 +53,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
                 { "fromNodeId", n => { FromNodeId = n.GetStringValue(); } },
-                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode>(); } },
+                { "insertMode", n => { InsertMode = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AfterInsertMode>(); } },
                 { "nodeTypeName", n => { NodeTypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
             writer.WriteStringValue("fromNodeId", FromNodeId);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequestInsertMode>("insertMode", InsertMode);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AfterInsertMode>("insertMode", InsertMode);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>("nodeTypeName", NodeTypeName);
         }
     }

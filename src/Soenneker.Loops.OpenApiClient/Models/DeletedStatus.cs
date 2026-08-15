@@ -5,12 +5,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum CreateWorkflowNodeBetweenRequestInsertMode
+    public enum DeletedStatus
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "between")]
+        [EnumMember(Value = "deleted")]
         #pragma warning disable CS1591
-        Between,
+        Deleted,
         #pragma warning restore CS1591
     }
 }
