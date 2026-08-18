@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.6"
+    "version": "1.21.7"
   },
   "servers": [
     {
@@ -3612,7 +3612,7 @@
           "Workflow nodes"
         ],
         "summary": "Create a workflow node",
-        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, \u0060before\u0060 places it before \u0060toNodeId\u0060, and \u0060after\u0060 places it after \u0060fromNodeId\u0060 when that node has exactly one outgoing connection. \u0060after\u0060 is a convenience for simple linear paths, so callers do not need to fetch and pass the current child node ID. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead. For \u0060before\u0060, deprecated \u0060beforeNodeId\u0060 requests are still accepted for compatibility, but new callers should use \u0060toNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 300 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.",
+        "description": "Create a new default workflow node and return it with the latest workflow.\n\nChoose where the node goes with \u0060insertMode\u0060: \u0060between\u0060 places it between an existing \u0060fromNodeId\u0060 -\u003E \u0060toNodeId\u0060 connection, \u0060before\u0060 places it before \u0060toNodeId\u0060, and \u0060after\u0060 places it after \u0060fromNodeId\u0060 when that node has exactly one outgoing connection. \u0060after\u0060 is a convenience for simple linear paths, so callers do not need to fetch and pass the current child node ID. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead. For \u0060before\u0060, deprecated \u0060beforeNodeId\u0060 requests are still accepted for compatibility, but new callers should use \u0060toNodeId\u0060.\n\nNew nodes start with default settings; update the node after creation to configure it. Branch nodes create their default paths too: \u0060BranchNode\u0060 creates two \u0060AudienceFilter\u0060 children, and \u0060ExperimentBranchNode\u0060 creates two regular \u0060VariantNode\u0060 children plus one control \u0060VariantNode\u0060. Public workflows can have up to 400 nodes. Generated children count toward that limit, so a normal create adds 1 node, \u0060BranchNode\u0060 adds 3, and \u0060ExperimentBranchNode\u0060 adds 4. To add a sibling child path to a branch or experiment branch, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}/add-branch\u0060 endpoint. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060. For experiments, use create-node only to insert a missing \u0060VariantNode\u0060 before non-variant content; use add-branch for another variant path.",
         "operationId": "CreateWorkflowNode",
         "requestBody": {
           "content": {
@@ -3696,7 +3696,7 @@
           "Workflow nodes"
         ],
         "summary": "Add a branch",
-        "description": "Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.\n\n- Adding a branch to a \u0060BranchNode\u0060 creates one \u0060AudienceFilter\u0060 child node.\n- Adding a branch to an \u0060ExperimentBranchNode\u0060 creates one \u0060VariantNode\u0060 child node.\n\nThis endpoint does not accept node configuration fields; update the child node with \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 after creation. Public workflows are limited to 300 nodes, and this endpoint adds 1 node.",
+        "description": "Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.\n\n- Adding a branch to a \u0060BranchNode\u0060 creates one \u0060AudienceFilter\u0060 child node.\n- Adding a branch to an \u0060ExperimentBranchNode\u0060 creates one \u0060VariantNode\u0060 child node.\n\nThis endpoint does not accept node configuration fields; update the child node with \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 after creation. Public workflows are limited to 400 nodes, and this endpoint adds 1 node.",
         "operationId": "AddWorkflowBranch",
         "requestBody": {
           "content": {
@@ -6775,7 +6775,7 @@
               "perPage": 20,
               "totalPages": 3,
               "nextCursor": "clp9k2m4n6p8q0r2s4t6u8v0",
-              "nextPage": "https://app.loops.so/api/v1/campaign-groups?cursor=clp9k2m4n6p8q0r2s4t6u8v0\u0026perPage=20"
+              "nextPage": "https://app.loops.so/api/v1/campaigns?cursor=clp9k2m4n6p8q0r2s4t6u8v0\u0026perPage=20"
             },
             "data": [
               {
@@ -7234,7 +7234,7 @@
               "perPage": 20,
               "totalPages": 3,
               "nextCursor": "clp9k2m4n6p8q0r2s4t6u8v0",
-              "nextPage": "https://app.loops.so/api/v1/campaign-groups?cursor=clp9k2m4n6p8q0r2s4t6u8v0\u0026perPage=20"
+              "nextPage": "https://app.loops.so/api/v1/workflows?cursor=clp9k2m4n6p8q0r2s4t6u8v0\u0026perPage=20"
             },
             "data": [
               {

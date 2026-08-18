@@ -34,7 +34,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch
         {
         }
         /// <summary>
-        /// Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.- Adding a branch to a `BranchNode` creates one `AudienceFilter` child node.- Adding a branch to an `ExperimentBranchNode` creates one `VariantNode` child node.This endpoint does not accept node configuration fields; update the child node with `POST /v1/workflows/{workflowId}/nodes/{nodeId}` after creation. Public workflows are limited to 300 nodes, and this endpoint adds 1 node.
+        /// Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.- Adding a branch to a `BranchNode` creates one `AudienceFilter` child node.- Adding a branch to an `ExperimentBranchNode` creates one `VariantNode` child node.This endpoint does not accept node configuration fields; update the child node with `POST /v1/workflows/{workflowId}/nodes/{nodeId}` after creation. Public workflows are limited to 400 nodes, and this endpoint adds 1 node.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddWorkflowBranchResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -63,7 +63,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.AddWorkflowBranchResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.AddWorkflowBranchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.- Adding a branch to a `BranchNode` creates one `AudienceFilter` child node.- Adding a branch to an `ExperimentBranchNode` creates one `VariantNode` child node.This endpoint does not accept node configuration fields; update the child node with `POST /v1/workflows/{workflowId}/nodes/{nodeId}` after creation. Public workflows are limited to 300 nodes, and this endpoint adds 1 node.
+        /// Add a branch and a child node under an existing Branch or Experiment node. Returns the created child node plus the latest workflow.- Adding a branch to a `BranchNode` creates one `AudienceFilter` child node.- Adding a branch to an `ExperimentBranchNode` creates one `VariantNode` child node.This endpoint does not accept node configuration fields; update the child node with `POST /v1/workflows/{workflowId}/nodes/{nodeId}` after creation. Public workflows are limited to 400 nodes, and this endpoint adds 1 node.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
