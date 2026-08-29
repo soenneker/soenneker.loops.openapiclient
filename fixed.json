@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.7"
+    "version": "1.21.8"
   },
   "servers": [
     {
@@ -5186,6 +5186,7 @@
         "examples": [
           {
             "id": "cll42l54f20i1la0lfooe3z12",
+            "url": "https://app.loops.so/transactional/cll42l54f20i1la0lfooe3z12",
             "name": "Sign up confirmation",
             "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
             "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
@@ -5199,6 +5200,7 @@
         ],
         "required": [
           "id",
+          "url",
           "name",
           "draftEmailMessageId",
           "publishedEmailMessageId",
@@ -5215,6 +5217,14 @@
             ],
             "type": "string",
             "description": "The ID of the transactional email."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/transactional/cll42l54f20i1la0lfooe3z12"
+            ],
+            "type": "string",
+            "description": "The URL of the transactional email in the Loops app.",
+            "format": "uri"
           },
           "name": {
             "examples": [
@@ -5282,6 +5292,7 @@
         "examples": [
           {
             "id": "cll42l54f20i1la0lfooe3z12",
+            "url": "https://app.loops.so/transactional/cll42l54f20i1la0lfooe3z12",
             "name": "Sign up confirmation",
             "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
             "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
@@ -5296,6 +5307,7 @@
         ],
         "required": [
           "id",
+          "url",
           "name",
           "draftEmailMessageId",
           "draftEmailMessageContentRevisionId",
@@ -5309,6 +5321,14 @@
           "id": {
             "type": "string",
             "description": "The ID of the transactional email."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/transactional/cll42l54f20i1la0lfooe3z12"
+            ],
+            "type": "string",
+            "description": "The URL of the transactional email in the Loops app.",
+            "format": "uri"
           },
           "name": {
             "type": "string",
@@ -5378,6 +5398,7 @@
             "data": [
               {
                 "id": "cll42l54f20i1la0lfooe3z12",
+                "url": "https://app.loops.so/transactional/cll42l54f20i1la0lfooe3z12",
                 "name": "Sign up confirmation",
                 "draftEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
                 "publishedEmailMessageId": "cle5f7g9h1i3j5k7l9m1n3p5",
@@ -6780,6 +6801,7 @@
             "data": [
               {
                 "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+                "url": "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4",
                 "name": "Spring announcement",
                 "status": "Draft",
                 "createdAt": "2025-06-29T07:47:39.370Z",
@@ -6869,6 +6891,7 @@
         "examples": [
           {
             "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+            "url": "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4",
             "name": "Spring announcement",
             "status": "Draft",
             "createdAt": "2025-06-29T07:47:39.370Z",
@@ -6887,6 +6910,7 @@
         ],
         "required": [
           "id",
+          "url",
           "name",
           "status",
           "createdAt",
@@ -6907,6 +6931,14 @@
             ],
             "type": "string",
             "description": "The ID of the campaign."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"
+            ],
+            "type": "string",
+            "description": "The URL of the campaign in the Loops app.",
+            "format": "uri"
           },
           "name": {
             "examples": [
@@ -7047,6 +7079,7 @@
         "examples": [
           {
             "id": "clc4m6n8p0q2r4s6t8u0v2x4",
+            "url": "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4",
             "name": "Spring announcement",
             "status": "Draft",
             "createdAt": "2025-06-29T07:47:39.370Z",
@@ -7064,6 +7097,7 @@
         ],
         "required": [
           "id",
+          "url",
           "name",
           "status",
           "createdAt",
@@ -7083,6 +7117,14 @@
             ],
             "type": "string",
             "description": "The ID of the campaign."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"
+            ],
+            "type": "string",
+            "description": "The URL of the campaign in the Loops app.",
+            "format": "uri"
           },
           "name": {
             "examples": [
@@ -7180,6 +7222,7 @@
         "examples": [
           {
             "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+            "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
             "name": "Welcome series",
             "createdAt": "2025-06-29T07:47:39.370Z",
             "updatedAt": "2025-06-29T07:47:39.370Z"
@@ -7187,6 +7230,7 @@
         ],
         "required": [
           "id",
+          "url",
           "name",
           "createdAt",
           "updatedAt"
@@ -7199,6 +7243,14 @@
             ],
             "type": "string",
             "description": "The ID of the workflow."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"
+            ],
+            "type": "string",
+            "description": "The URL of the workflow in the Loops app.",
+            "format": "uri"
           },
           "name": {
             "examples": [
@@ -7239,6 +7291,7 @@
             "data": [
               {
                 "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+                "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
                 "name": "Welcome series",
                 "createdAt": "2025-06-29T07:47:39.370Z",
                 "updatedAt": "2025-06-29T07:47:39.370Z"
@@ -7356,6 +7409,7 @@
         "examples": [
           {
             "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+            "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
             "status": "Draft",
             "name": "Welcome series",
             "description": "Onboarding emails for new signups",
@@ -7379,6 +7433,7 @@
         ],
         "required": [
           "id",
+          "url",
           "workflowRevisionId",
           "status",
           "mailingListId",
@@ -7390,6 +7445,14 @@
           "id": {
             "type": "string",
             "description": "The ID of the workflow."
+          },
+          "url": {
+            "examples": [
+              "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"
+            ],
+            "type": "string",
+            "description": "The URL of the workflow in the Loops app.",
+            "format": "uri"
           },
           "workflowRevisionId": {
             "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",

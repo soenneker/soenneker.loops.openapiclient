@@ -92,6 +92,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.DraftStatus? Status { get; set; }
         /// <summary>ISO 8601 timestamp for when the campaign was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>The URL of the campaign in the Loops app.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateCampaignResponse"/> and sets the default values.
         /// </summary>
@@ -129,6 +137,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "scheduling", n => { Scheduling = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>(global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DraftStatus>(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -150,6 +159,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignScheduling>("scheduling", Scheduling);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DraftStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

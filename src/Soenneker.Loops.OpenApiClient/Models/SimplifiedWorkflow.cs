@@ -64,6 +64,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>The status property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus? Status { get; set; }
+        /// <summary>The URL of the workflow in the Loops app.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation. Will be `null` for workflows without a revision token yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,6 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "nodes", n => { Nodes = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty.CreateFromDiscriminatorValue); } },
                 { "rootNodeId", n => { RootNodeId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -121,6 +130,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowNodesProperty>("nodes", Nodes);
             writer.WriteStringValue("rootNodeId", RootNodeId);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflowStatus>("status", Status);
+            writer.WriteStringValue("url", Url);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
             writer.WriteAdditionalData(AdditionalData);
         }

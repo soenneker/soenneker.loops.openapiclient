@@ -66,6 +66,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #endif
         /// <summary>ISO 8601 timestamp for when the transactional email was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
+        /// <summary>The URL of the transactional email in the Loops app.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Url { get; set; }
+#nullable restore
+#else
+        public string Url { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource"/> and sets the default values.
         /// </summary>
@@ -99,6 +107,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "publishedEmailMessageId", n => { PublishedEmailMessageId = n.GetStringValue(); } },
                 { "transactionalGroupId", n => { TransactionalGroupId = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "url", n => { Url = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -116,6 +125,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("publishedEmailMessageId", PublishedEmailMessageId);
             writer.WriteStringValue("transactionalGroupId", TransactionalGroupId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
+            writer.WriteStringValue("url", Url);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
