@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.8"
+    "version": "1.21.9"
   },
   "servers": [
     {
@@ -3821,6 +3821,72 @@
           },
           "409": {
             "description": "`expectedRevisionId` is stale.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [{ "apiKey": [] }]
+      },
+      "delete": {
+        "tags": ["Workflows"],
+        "summary": "Delete a workflow",
+        "operationId": "deleteWorkflow",
+        "description": "Delete a workflow. Successful deletion returns `204 No Content`. If the workflow is currently sending or has queued contacts, Loops returns `409 Conflict` with a message instead of deleting. Retry with `confirmDelete: true` to delete the workflow, stop sending, and cancel queued contacts.",
+        "x-mint": {
+          "href": "/api-reference/delete-workflow",
+          "content": "Deleting a sending workflow stops sending it. Additionally, if the workflow has queued contacts, they are removed.\n\nSuccessful deletion returns `204 No Content`. If the workflow is currently sending or has queued contacts, Loops returns `409 Conflict` with a `message` instead of deleting. Retry the request with the same `expectedRevisionId` and `confirmDelete: true` to delete the workflow.\n\nOnce deleted, workflows are not returned in other API endpoints.",
+          "metadata": {
+            "sidebarTitle": "Delete a workflow",
+            "description": "Delete a workflow with revision and confirmation handling."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteWorkflowRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Workflow deleted. No response body."
+          },
+          "400": {
+            "description": "Invalid `workflowId`, request body, or delete target.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Workflow not found. Deleted workflows are returned as not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "`expectedRevisionId` is stale, or workflow deletion requires confirmation because the workflow is currently sending or has queued contacts.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8159,6 +8225,20 @@
         },
         "required": ["expectedRevisionId"],
         "anyOf": [{ "required": ["name"] }, { "required": ["description"] }],
+        "additionalProperties": false
+      },
+      "DeleteWorkflowRequest": {
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "confirmDelete": {
+            "type": "boolean",
+            "description": "Set to `true` after a confirmation-required `409 Conflict` response to confirm deleting a sending workflow or a workflow with queued contacts."
+          }
+        },
+        "required": ["expectedRevisionId"],
         "additionalProperties": false
       },
       "WorkflowMutationNode": {

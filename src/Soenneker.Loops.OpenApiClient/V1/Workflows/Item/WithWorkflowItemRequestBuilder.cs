@@ -46,6 +46,34 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item
         {
         }
         /// <summary>
+        /// Delete a workflow. Successful deletion returns `204 No Content`. If the workflow is currently sending or has queued contacts, Loops returns `409 Conflict` with a message instead of deleting. Retry with `confirmDelete: true` to delete the workflow, stop sending, and cancel queued contacts.
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 404 status code</exception>
+        /// <exception cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse">When receiving a 409 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task DeleteAsync(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task DeleteAsync(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToDeleteRequestInformation(body, requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Retrieve a workflow graph with node type names, connections, and selected display fields.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow"/></returns>
@@ -98,6 +126,28 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Delete a workflow. Successful deletion returns `204 No Content`. If the workflow is currently sending or has queued contacts, Loops returns `409 Conflict` with a message instead of deleting. Retry with `confirmDelete: true` to delete the workflow, stop sending, and cancel queued contacts.
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToDeleteRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToDeleteRequestInformation(global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
+            return requestInfo;
         }
         /// <summary>
         /// Retrieve a workflow graph with node type names, connections, and selected display fields.

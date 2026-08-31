@@ -7,31 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
-    /// <summary>
-    /// A tree of audience conditions combined with `match`.
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AudienceFilter : IParsable
+    #pragma warning disable CS1591
+    public partial class DeleteWorkflowRequest : IParsable
+    #pragma warning restore CS1591
     {
-        /// <summary>The conditions property</summary>
+        /// <summary>Set to `true` after a confirmation-required `409 Conflict` response to confirm deleting a sending workflow or a workflow with queued contacts.</summary>
+        public bool? ConfirmDelete { get; set; }
+        /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition>? Conditions { get; set; }
+        public string? ExpectedRevisionId { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition> Conditions { get; set; }
+        public string ExpectedRevisionId { get; set; }
 #endif
-        /// <summary>The match property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch? Match { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter();
+            return new global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,8 +40,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "match", n => { Match = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch>(); } },
+                { "confirmDelete", n => { ConfirmDelete = n.GetBoolValue(); } },
+                { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -52,8 +51,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition>("conditions", Conditions);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterMatch>("match", Match);
+            writer.WriteBoolValue("confirmDelete", ConfirmDelete);
+            writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
         }
     }
 }
