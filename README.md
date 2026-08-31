@@ -4,149 +4,62 @@
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.loops.openapiclient/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.loops.openapiclient/actions/workflows/codeql.yml)
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Loops.OpenApiClient
-### A Loops (loops.so) .NET client generated from their OpenAPI schema, updated daily
 
-## Installation
+Call Loops endpoints through a Kiota-generated client with typed request builders and models.
+
+## Install
 
 ```bash
 dotnet add package Soenneker.Loops.OpenApiClient
 ```
 
-## Authentication
-
-To use the Loops API, you'll need an API key. You can generate one in the Loops dashboard under Settings -> API. The API key should never be exposed client-side or to end users.
+## Create a client
 
 ```csharp
+using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using Soenneker.Loops.OpenApiClient;
 
-// Create an HTTP client with the API key
-var httpClient = new HttpClient();
-httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer YOUR_API_KEY");
+var httpClient = new HttpClient
+{
+    BaseAddress = new Uri("https://app.loops.so/api/")
+};
+httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
 
-// Create the request adapter
-var requestAdapter = new HttpClientRequestAdapter(httpClient);
+var adapter = new HttpClientRequestAdapter(
+    new AnonymousAuthenticationProvider(),
+    httpClient: httpClient);
 
-// Instantiate the main client
-var client = new LoopsOpenApiClient(requestAdapter);
+var client = new LoopsOpenApiClient(adapter);
 ```
 
-## Rate Limiting
+Reuse the transport rather than constructing one per request, and dispose it with its owning application component. For application registration, lazy reuse, and coordinated ownership, use `Soenneker.Loops.ClientUtil`.
 
-The Loops API has a baseline rate limit of 10 requests per second per team. The API provides rate limit information in response headers:
-
-- `x-ratelimit-limit`: Maximum requests per second
-- `x-ratelimit-remaining`: Remaining requests in the current window
-
-If you exceed the rate limit, you'll receive a 429 Too Many Requests response. Implement retry logic with exponential backoff to handle these cases.
-
-## Usage Examples
-
-### Managing Contacts
+## Create a contact
 
 ```csharp
-// Create a new contact
-var contactRequest = new ContactRequest
+using Soenneker.Loops.OpenApiClient.Models;
+
+var request = new ContactRequest
 {
-    Email = "user@example.com",
-    FirstName = "John",
-    LastName = "Doe",
-    UserProperties = new Dictionary<string, string>
-    {
-        { "company", "Acme Inc" }
-    }
+    Email = "person@example.com",
+    FirstName = "Morgan",
+    Subscribed = true
 };
 
-var contact = await client.Contacts.PostAsync(contactRequest);
-
-// Find a contact
-var contact = await client.Contacts.GetAsync(requestConfiguration => 
-{
-    requestConfiguration.QueryParameters.Email = "user@example.com";
-});
-
-// Delete a contact
-await client.Contacts.DeleteAsync(new ContactDeleteRequest 
-{ 
-    Email = "user@example.com" 
-});
+ContactSuccessResponse? created = await client.V1.Contacts.Create.PostAsync(
+    request,
+    cancellationToken: cancellationToken);
 ```
 
-### Sending Events
+## Find a contact
 
 ```csharp
-// Send an event to trigger emails in loops
-var eventRequest = new EventRequest
-{
-    Email = "user@example.com",
-    EventName = "purchase_completed",
-    EventProperties = new Dictionary<string, string>
-    {
-        { "product_id", "123" },
-        { "amount", "99.99" }
-    }
-};
-
-var response = await client.Events.PostAsync(eventRequest);
+List<Contact>? matches = await client.V1.Contacts.Find.GetAsync(
+    config => config.QueryParameters.Email = "person@example.com",
+    cancellationToken);
 ```
 
-### Transactional Emails
+The generated surface begins at `client.V1`. Follow its request builders for contacts, events, transactional email, lists, campaigns, workflows, and other resources. HTTP failures are surfaced through Kiota exceptions; nullable results indicate no response body.
 
-```csharp
-// Send a transactional email
-var transactionalRequest = new TransactionalRequest
-{
-    TransactionalId = "your-transactional-id",
-    Email = "user@example.com",
-    DataVariables = new Dictionary<string, string>
-    {
-        { "name", "John Doe" },
-        { "order_id", "12345" }
-    }
-};
-
-var response = await client.Transactional.PostAsync(transactionalRequest);
-
-// List published transactional emails
-var transactionalEmails = await client.Transactional.GetAsync();
-```
-
-### Managing Mailing Lists
-
-```csharp
-// List all mailing lists
-var mailingLists = await client.Lists.GetAsync();
-```
-
-## Error Handling
-
-The client throws appropriate exceptions for different error scenarios:
-
-- `401 Unauthorized`: Invalid or missing API key
-- `429 Too Many Requests`: Rate limit exceeded
-- `400 Bad Request`: Invalid request parameters
-- `404 Not Found`: Resource not found
-
-Example error handling:
-
-```csharp
-try
-{
-    var response = await client.Contacts.PostAsync(contactRequest);
-}
-catch (ApiException ex) when (ex.StatusCode == 429)
-{
-    // Handle rate limiting
-    await Task.Delay(1000); // Implement exponential backoff
-    // Retry the request
-}
-catch (ApiException ex) when (ex.StatusCode == 401)
-{
-    // Handle invalid API key
-    Console.WriteLine("Please check your API key");
-}
-```
-
-## Additional Resources
-
-- [Loops API Documentation](https://loops.so/docs/api-reference/intro)
+This repository contains generated code. Put reusable helpers and behavior changes in a separate package so regeneration does not overwrite them.
