@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.9"
+    "version": "1.21.10"
   },
   "servers": [
     {
@@ -3891,6 +3891,32 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/WorkflowFailureResponse"
+                },
+                "examples": {
+                  "staleRevision": {
+                    "summary": "`expectedRevisionId` is stale",
+                    "value": {
+                      "message": "workflowRevisionId mismatch. Latest workflowRevisionId is clx7a3b5c7d9e1f3g5h7i9j1. Refetch and retry."
+                    }
+                  },
+                  "confirmationRequiredSending": {
+                    "summary": "Workflow is currently sending",
+                    "value": {
+                      "message": "This workflow is currently sending. Deleting it will stop sending it. Confirm deletion by sending a second request with confirmDelete: true."
+                    }
+                  },
+                  "confirmationRequiredQueuedContacts": {
+                    "summary": "Workflow has queued contacts",
+                    "value": {
+                      "message": "This workflow has 3 queued contacts. Deleting it will cancel those queued contacts. Confirm deletion by sending a second request with confirmDelete: true."
+                    }
+                  },
+                  "confirmationRequiredSendingAndQueuedContacts": {
+                    "summary": "Workflow is sending and has queued contacts",
+                    "value": {
+                      "message": "This workflow is currently sending and has 3 queued contacts. Deleting it will stop sending it and cancel those queued contacts. Confirm deletion by sending a second request with confirmDelete: true."
+                    }
+                  }
                 }
               }
             }
@@ -7758,7 +7784,9 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the campaign in the Loops app.",
-            "examples": ["https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"]
+            "examples": [
+              "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"
+            ]
           },
           "name": {
             "type": "string",
@@ -7898,7 +7926,9 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the campaign in the Loops app.",
-            "examples": ["https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"]
+            "examples": [
+              "https://app.loops.so/campaigns/clc4m6n8p0q2r4s6t8u0v2x4"
+            ]
           },
           "name": {
             "type": "string",
@@ -8011,7 +8041,9 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the workflow in the Loops app.",
-            "examples": ["https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"]
+            "examples": [
+              "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"
+            ]
           },
           "name": {
             "type": "string",
@@ -8113,7 +8145,9 @@
             "type": "string",
             "format": "uri",
             "description": "The URL of the workflow in the Loops app.",
-            "examples": ["https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"]
+            "examples": [
+              "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1"
+            ]
           },
           "workflowRevisionId": {
             "$ref": "#/components/schemas/NullableWorkflowRevisionId"
