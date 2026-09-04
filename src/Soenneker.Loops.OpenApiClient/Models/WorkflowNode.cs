@@ -37,10 +37,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The contactPropertyQuery property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery? ContactPropertyQuery { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery? ContactPropertyQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery ContactPropertyQuery { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery ContactPropertyQuery { get; set; }
 #endif
         /// <summary>The ID of the email message to send. To edit this email, use the `POST /v1/email-messages/{emailMessageId}` endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -105,7 +105,13 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public string Subject { get; set; }
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName? TypeName { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TypeName { get; set; }
+#nullable restore
+#else
+        public string TypeName { get; set; }
+#endif
         /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
         /// <summary>The workflowId property</summary>
@@ -145,7 +151,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "appliesDownstream", n => { AppliesDownstream = n.GetBoolValue(); } },
                 { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter.CreateFromDiscriminatorValue); } },
                 { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },
-                { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery.CreateFromDiscriminatorValue); } },
+                { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery.CreateFromDiscriminatorValue); } },
                 { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
                 { "eventName", n => { EventName = n.GetStringValue(); } },
                 { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -156,7 +162,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
                 { "samplingRate", n => { SamplingRate = n.GetDoubleValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
-                { "typeName", n => { TypeName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>(); } },
+                { "typeName", n => { TypeName = n.GetStringValue(); } },
                 { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(); } },
                 { "workflowId", n => { WorkflowId = n.GetStringValue(); } },
             };
@@ -172,7 +178,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteBoolValue("appliesDownstream", AppliesDownstream);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>("audienceFilter", AudienceFilter);
             writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowNodeContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
             writer.WriteStringValue("emailMessageId", EmailMessageId);
             writer.WriteStringValue("eventName", EventName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>("eventProperties", EventProperties);
@@ -183,7 +189,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteBoolValue("reEligible", ReEligible);
             writer.WriteDoubleValue("samplingRate", SamplingRate);
             writer.WriteStringValue("subject", Subject);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerTypeName>("typeName", TypeName);
+            writer.WriteStringValue("typeName", TypeName);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
             writer.WriteStringValue("workflowId", WorkflowId);
             writer.WriteAdditionalData(AdditionalData);

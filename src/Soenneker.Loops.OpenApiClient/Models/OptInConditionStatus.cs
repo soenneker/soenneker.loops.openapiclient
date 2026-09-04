@@ -20,5 +20,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
         #pragma warning disable CS1591
         Rejected,
         #pragma warning restore CS1591
+        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        #pragma warning disable CS1591
+        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
+        #pragma warning restore CS1591
     }
 }

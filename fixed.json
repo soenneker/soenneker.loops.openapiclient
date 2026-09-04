@@ -6733,6 +6733,9 @@
         "description": "A tree of audience conditions combined with \u0060match\u0060. Setting this without also providing \u0060audienceSegmentId\u0060 clears any existing \u0060audienceSegmentId\u0060. When both are provided, this filter is applied on top of the segment\u0027s filter."
       },
       "AudienceFilterCondition": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -6771,6 +6774,9 @@
           "id": {
             "type": "string",
             "description": "The ID of the campaign, workflow, or workflow email."
+          },
+          "type": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -7653,6 +7659,9 @@
         "additionalProperties": false
       },
       "WorkflowMutationNode": {
+        "required": [
+          "typeName"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -7762,6 +7771,9 @@
           "isControl": {
             "type": "boolean",
             "description": "Whether this is the control variant of an experiment."
+          },
+          "typeName": {
+            "type": "string"
           }
         },
         "description": "Detailed workflow node returned from create and update mutations. The exact fields depend on \u0060typeName\u0060.",
@@ -8501,6 +8513,9 @@
         "description": "Insert a new node after \u0060fromNodeId\u0060. This is valid only when \u0060fromNodeId\u0060 has exactly one outgoing node. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead."
       },
       "CreateWorkflowNodeRequest": {
+        "required": [
+          "insertMode"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8534,6 +8549,9 @@
             "type": "string",
             "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
             "deprecated": true
+          },
+          "insertMode": {
+            "type": "string"
           }
         },
         "description": "Create a new workflow node with an explicit \u0060insertMode\u0060. To configure the node after creation, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 endpoint.",
@@ -8550,6 +8568,9 @@
         }
       },
       "WorkflowMutationNodeWithRevision": {
+        "required": [
+          "typeName"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -8663,6 +8684,9 @@
           "isControl": {
             "type": "boolean",
             "description": "Whether this is the control variant of an experiment."
+          },
+          "typeName": {
+            "type": "string"
           }
         },
         "description": "Detailed workflow node returned from a mutation, plus the latest workflow revision token.",
@@ -9594,6 +9618,9 @@
         }
       },
       "SimplifiedWorkflowNode": {
+        "required": [
+          "typeName"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -9688,6 +9715,9 @@
           "isControl": {
             "type": "boolean",
             "description": "Whether this is the control variant of an experiment."
+          },
+          "typeName": {
+            "type": "string"
           }
         },
         "discriminator": {
@@ -10045,6 +10075,9 @@
         "additionalProperties": false
       },
       "WorkflowNode": {
+        "required": [
+          "typeName"
+        ],
         "type": "object",
         "oneOf": [
           {
@@ -10175,6 +10208,9 @@
           "isControl": {
             "type": "boolean",
             "description": "Whether this is the control variant of an experiment."
+          },
+          "typeName": {
+            "type": "string"
           }
         },
         "discriminator": {

@@ -17,10 +17,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The contactPropertyQuery property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery? ContactPropertyQuery { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery? ContactPropertyQuery { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery ContactPropertyQuery { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery ContactPropertyQuery { get; set; }
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -75,7 +75,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery.CreateFromDiscriminatorValue); } },
+                { "contactPropertyQuery", n => { ContactPropertyQuery = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reEligible", n => { ReEligible = n.GetBoolValue(); } },
@@ -90,7 +90,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>("contactPropertyQuery", ContactPropertyQuery);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteBoolValue("reEligible", ReEligible);
