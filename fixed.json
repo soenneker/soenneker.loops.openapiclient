@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.10"
+    "version": "1.21.12"
   },
   "servers": [
     {
@@ -2444,7 +2444,7 @@
         "tags": [
           "Transactional emails"
         ],
-        "summary": "List transactional emails",
+        "summary": "List transactional emails (legacy)",
         "description": "Get a list of published transactional emails.",
         "operationId": "ListPublishedTransactionalEmails",
         "parameters": [
@@ -4652,27 +4652,41 @@
       "ContactDeleteRequest": {
         "examples": [
           {
-            "email": "alex@company.com",
+            "email": "alex@company.com"
+          },
+          {
             "userId": "usr_7f8e9d0c1b2a"
           }
         ],
-        "required": [
-          "email",
-          "userId"
-        ],
         "type": "object",
+        "oneOf": [
+          {
+            "required": [
+              "email"
+            ],
+            "type": "object"
+          },
+          {
+            "required": [
+              "userId"
+            ],
+            "type": "object"
+          }
+        ],
         "properties": {
           "email": {
             "examples": [
               "alex@company.com"
             ],
-            "type": "string"
+            "type": "string",
+            "description": "The contact\u0027s email address. Provide this or \u0060userId\u0060, not both."
           },
           "userId": {
             "examples": [
               "usr_7f8e9d0c1b2a"
             ],
-            "type": "string"
+            "type": "string",
+            "description": "The contact\u0027s unique user ID. Provide this or \u0060email\u0060, not both."
           }
         }
       },

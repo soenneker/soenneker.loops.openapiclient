@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.10"
+    "version": "1.21.12"
   },
   "servers": [
     {
@@ -2712,10 +2712,13 @@
         "operationId": "listPublishedTransactionalEmails",
         "deprecated": true,
         "tags": ["Transactional emails"],
-        "summary": "List transactional emails",
+        "summary": "List transactional emails (legacy)",
         "description": "Get a list of published transactional emails.",
         "x-mint": {
           "href": "/api-reference/list-transactional-emails-v1",
+          "metadata": {
+            "sidebarTitle": "List transactionals (legacy)"
+          },
           "content": "<Warning>This endpoint is deprecated. Use [List transactional emails](/api-reference/list-transactional-emails) instead.</Warning>"
         },
         "parameters": [
@@ -5751,19 +5754,19 @@
         "properties": {
           "email": {
             "type": "string",
+            "description": "The contact's email address. Provide this or `userId`, not both.",
             "examples": ["alex@company.com"]
           },
           "userId": {
             "type": "string",
+            "description": "The contact's unique user ID. Provide this or `email`, not both.",
             "examples": ["usr_7f8e9d0c1b2a"]
           }
         },
-        "required": ["email", "userId"],
+        "oneOf": [{ "required": ["email"] }, { "required": ["userId"] }],
         "examples": [
-          {
-            "email": "alex@company.com",
-            "userId": "usr_7f8e9d0c1b2a"
-          }
+          { "email": "alex@company.com" },
+          { "userId": "usr_7f8e9d0c1b2a" }
         ]
       },
       "ContactDeleteResponse": {

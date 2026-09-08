@@ -14,7 +14,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>The contact&apos;s email address. Provide this or `userId`, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -22,7 +22,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The userId property</summary>
+        /// <summary>The contact&apos;s unique user ID. Provide this or `email`, not both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserId { get; set; }
