@@ -12,7 +12,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
     public partial class UpdateEmailMessageRequest : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>BCC email address. Requires the team to have CC/BCC enabled.</summary>
+        /// <summary>BCC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? BccEmail { get; set; }
@@ -20,7 +20,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string BccEmail { get; set; }
 #endif
-        /// <summary>CC email address. Requires the team to have CC/BCC enabled.</summary>
+        /// <summary>CC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CcEmail { get; set; }

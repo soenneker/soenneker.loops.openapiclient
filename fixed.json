@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.12"
+    "version": "1.21.13"
   },
   "servers": [
     {
@@ -11090,11 +11090,11 @@
           },
           "ccEmail": {
             "type": "string",
-            "description": "CC email address. Requires the team to have CC/BCC enabled."
+            "description": "CC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails."
           },
           "bccEmail": {
             "type": "string",
-            "description": "BCC email address. Requires the team to have CC/BCC enabled."
+            "description": "BCC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails."
           },
           "languageCode": {
             "type": "string",
