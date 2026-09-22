@@ -7824,36 +7824,9 @@
           }
         }
       },
-      "ContactUpdateRequestAllOf2": {
-        "type": "object",
-        "anyOf": [
-          {
-            "required": [
-              "email"
-            ],
-            "type": "object"
-          },
-          {
-            "required": [
-              "userId"
-            ],
-            "type": "object"
-          }
-        ],
-        "properties": {
-          "email": {
-            "type": "string",
-            "description": "The contact\u0027s email address. **Required if \u0060userId\u0060 is not provided.**"
-          },
-          "subscribed": {
-            "type": "boolean",
-            "description": "Whether the contact will receive campaign and workflow emails. We recommend leaving this field out of your update requests unless you specifically want to unsubscribe (\u0060false\u0060) or re-subscribe (\u0060true\u0060) a contact. All new contacts are subscribed by default."
-          },
-          "userId": {
-            "type": "string",
-            "description": "The contact\u0027s unique user ID. **Required if \u0060email\u0060 is not provided.**"
-          }
-        }
+      "WorkflowRevisionId": {
+        "type": "string",
+        "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
       },
       "NullableWorkflowRevisionId": {
         "type": [
@@ -7862,19 +7835,9 @@
         ],
         "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet."
       },
-      "ContactUpdateRequestAdditionalProperties": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "boolean"
-          }
-        ]
+      "WorkflowReEligible": {
+        "type": "boolean",
+        "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
       },
       "WorkflowNextNodeIds": {
         "type": "array",
@@ -11219,19 +11182,9 @@
         },
         "description": "For Contact Updated triggers, the API validates \u0060operator\u0060 against the selected contact property\u0027s type and the side of the comparison. The \u0060was\u0060 comparison can use any operator supported by the selected property type. The \u0060is\u0060 comparison uses the same operators, except number and boolean properties cannot use \u0060empty\u0060. String properties support \u0060any\u0060, \u0060equal\u0060, \u0060not_equal\u0060, \u0060contains\u0060, \u0060not_contains\u0060, \u0060empty\u0060, and \u0060not_empty\u0060. Number properties support \u0060any\u0060, \u0060greater_than\u0060, \u0060less_than\u0060, \u0060numeric_equal\u0060, \u0060numeric_not_equal\u0060, \u0060empty\u0060, and \u0060not_empty\u0060. Boolean properties support \u0060any\u0060, \u0060true\u0060, \u0060false\u0060, \u0060empty\u0060, and \u0060not_empty\u0060. Date properties support \u0060any\u0060, \u0060empty\u0060, \u0060not_empty\u0060, \u0060after\u0060, \u0060before\u0060, and \u0060between\u0060."
       },
-      "ContactFieldsAdditionalProperties": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "boolean"
-          }
-        ]
+      "WorkflowTimerAmount": {
+        "type": "number",
+        "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
       },
       "WorkflowTimerUnit": {
         "enum": [
@@ -12881,6 +12834,65 @@
           },
           "webhookSchemaVersion": {
             "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
+          }
+        }
+      },
+      "ContactFieldsAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "ContactUpdateRequestAdditionalProperties": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
+      },
+      "ContactUpdateRequestAllOf2": {
+        "type": "object",
+        "anyOf": [
+          {
+            "required": [
+              "email"
+            ],
+            "type": "object"
+          },
+          {
+            "required": [
+              "userId"
+            ],
+            "type": "object"
+          }
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The contact\u0027s email address. **Required if \u0060userId\u0060 is not provided.**"
+          },
+          "subscribed": {
+            "type": "boolean",
+            "description": "Whether the contact will receive campaign and workflow emails. We recommend leaving this field out of your update requests unless you specifically want to unsubscribe (\u0060false\u0060) or re-subscribe (\u0060true\u0060) a contact. All new contacts are subscribed by default."
+          },
+          "userId": {
+            "type": "string",
+            "description": "The contact\u0027s unique user ID. **Required if \u0060email\u0060 is not provided.**"
           }
         }
       },
