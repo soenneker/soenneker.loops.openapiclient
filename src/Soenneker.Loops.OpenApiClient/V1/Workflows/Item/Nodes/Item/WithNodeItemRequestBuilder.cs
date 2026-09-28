@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
 using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch;
+using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Metrics;
 using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive;
 using Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Reroute;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
         public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch.AddBranchRequestBuilder AddBranch
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch.AddBranchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recursive property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.Recursive.RecursiveRequestBuilder Recursive

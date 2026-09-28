@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.21.14"
+    "version": "1.22.1"
   },
   "servers": [
     {
@@ -617,6 +617,76 @@
                 }
               }
             }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
+    "/v1/campaigns/{campaignId}/metrics": {
+      "parameters": [
+        {
+          "name": "campaignId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the campaign.",
+          "schema": {
+            "type": "string",
+            "examples": ["clc4m6n8p0q2r4s6t8u0v2x4"]
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getCampaignMetrics",
+        "tags": ["Campaigns"],
+        "summary": "Get campaign metrics",
+        "description": "Retrieve all-time email engagement metrics for a campaign.",
+        "x-mint": {
+          "href": "/api-reference/get-campaign-metrics",
+          "metadata": {
+            "description": "Retrieve all-time email engagement metrics for a campaign.",
+            "sidebarTitle": "Get metrics"
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMetricsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `campaignId`, the campaign has not been sent yet, or the campaign has no email message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Campaign not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CampaignFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
           }
         },
         "security": [
@@ -3018,6 +3088,77 @@
         ]
       }
     },
+    "/v1/transactional-emails/{transactionalId}/metrics": {
+      "parameters": [
+        {
+          "name": "transactionalId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the transactional email.",
+          "schema": {
+            "type": "string",
+            "examples": ["cll42l54f20i1la0lfooe3z12"]
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getTransactionalEmailMetrics",
+        "tags": ["Transactional emails"],
+        "summary": "Get transactional email metrics",
+        "description": "Retrieve all-time delivery metrics for a transactional email, totalled across every published version.",
+        "x-mint": {
+          "href": "/api-reference/get-transactional-email-metrics",
+          "metadata": {
+            "description": "Retrieve all-time delivery metrics for a transactional email.",
+            "sidebarTitle": "Get metrics"
+          },
+          "content": "Metrics are totalled across every published version of the transactional email."
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalMetricsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `transactionalId`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Transactional email not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/v1/transactional-emails/{transactionalId}/draft": {
       "parameters": [
         {
@@ -4422,6 +4563,87 @@
         "security": [{ "apiKey": [] }]
       }
     },
+    "/v1/workflows/{workflowId}/nodes/{nodeId}/metrics": {
+      "parameters": [
+        {
+          "name": "workflowId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the workflow.",
+          "schema": {
+            "type": "string",
+            "examples": ["clw1a3b5c7d9e1f3g5h7i9j1"]
+          }
+        },
+        {
+          "name": "nodeId",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the `SendEmailAction` node.",
+          "schema": {
+            "type": "string",
+            "examples": ["cln1a3b5c7d9e1f3g5h7i9j1"]
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getWorkflowNodeMetrics",
+        "tags": ["Workflow nodes"],
+        "summary": "Get workflow node metrics",
+        "description": "Retrieve all-time email engagement metrics for a workflow `SendEmailAction` node. Nodes of any other type return a `400` response. A `SendEmailAction` node with an email that has not sent anything yet reports every counter as `0`.",
+        "x-mint": {
+          "href": "/api-reference/get-workflow-node-metrics",
+          "metadata": {
+            "description": "Retrieve all-time email engagement metrics for a workflow email node.",
+            "sidebarTitle": "Get metrics"
+          },
+          "content": "Metrics are only available for `SendEmailAction` nodes. Nodes of any other type return a `400` response. A `SendEmailAction` node whose email has not sent anything yet reports every counter as `0`."
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMetricsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid `workflowId` or `nodeId`, the node is not a `SendEmailAction` node, or the node has no email message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Workflow or workflow node not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ]
+      }
+    },
     "/v1/workflows/{workflowId}/nodes/{nodeId}/reroute": {
       "parameters": [
         {
@@ -5514,6 +5736,114 @@
   },
   "components": {
     "schemas": {
+      "EmailMetricsResponse": {
+        "type": "object",
+        "description": "All-time email engagement counters. Opens and clicks count sends, not events: a send opened five times counts once. A recipient who received the email twice is counted once per send, not once per person.",
+        "properties": {
+          "sends": {
+            "type": "integer",
+            "description": "Number of sends.",
+            "examples": [4210]
+          },
+          "opens": {
+            "type": "integer",
+            "description": "Number of sends that were opened at least once.",
+            "examples": [1922]
+          },
+          "clicks": {
+            "type": "integer",
+            "description": "Number of sends where at least one link was clicked.",
+            "examples": [301]
+          },
+          "unsubscribes": {
+            "type": "integer",
+            "description": "Number of unsubscribes.",
+            "examples": [12]
+          },
+          "spamReports": {
+            "type": "integer",
+            "description": "Number of sends reported as spam.",
+            "examples": [1]
+          },
+          "hardBounces": {
+            "type": "integer",
+            "description": "Number of sends that hard bounced.",
+            "examples": [9]
+          },
+          "softBounces": {
+            "type": "integer",
+            "description": "Number of sends that soft bounced.",
+            "examples": [13]
+          }
+        },
+        "required": [
+          "sends",
+          "opens",
+          "clicks",
+          "unsubscribes",
+          "spamReports",
+          "hardBounces",
+          "softBounces"
+        ],
+        "examples": [
+          {
+            "sends": 4210,
+            "opens": 1922,
+            "clicks": 301,
+            "unsubscribes": 12,
+            "spamReports": 1,
+            "hardBounces": 9,
+            "softBounces": 13
+          }
+        ]
+      },
+      "TransactionalMetricsResponse": {
+        "type": "object",
+        "description": "All-time delivery counters for a transactional email.",
+        "properties": {
+          "sends": {
+            "type": "integer",
+            "description": "Number of sends.",
+            "examples": [4210]
+          },
+          "deliveries": {
+            "type": "integer",
+            "description": "Number of sends delivered.",
+            "examples": [4175]
+          },
+          "spamReports": {
+            "type": "integer",
+            "description": "Number of sends reported as spam.",
+            "examples": [1]
+          },
+          "hardBounces": {
+            "type": "integer",
+            "description": "Number of sends that hard bounced.",
+            "examples": [9]
+          },
+          "softBounces": {
+            "type": "integer",
+            "description": "Number of sends that soft bounced.",
+            "examples": [13]
+          }
+        },
+        "required": [
+          "sends",
+          "deliveries",
+          "spamReports",
+          "hardBounces",
+          "softBounces"
+        ],
+        "examples": [
+          {
+            "sends": 4210,
+            "deliveries": 4175,
+            "spamReports": 1,
+            "hardBounces": 9,
+            "softBounces": 13
+          }
+        ]
+      },
       "Contact": {
         "type": "object",
         "properties": {

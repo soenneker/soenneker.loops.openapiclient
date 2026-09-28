@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
+using Soenneker.Loops.OpenApiClient.V1.Campaigns.Item.Metrics;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -17,6 +18,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithCampaignItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Campaigns.Item.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Campaigns.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.Campaigns.Item.WithCampaignItemRequestBuilder"/> and sets the default values.
         /// </summary>

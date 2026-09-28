@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
 using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft;
+using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Metrics;
 using Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
         public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft.DraftRequestBuilder Draft
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Draft.DraftRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The publish property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item.Publish.PublishRequestBuilder Publish
