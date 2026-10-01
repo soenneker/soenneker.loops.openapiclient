@@ -28,7 +28,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string AudienceSegmentId { get; set; }
 #endif
-        /// <summary>The ID of the group to add this campaign to. Defaults to the team&apos;s default group when omitted.</summary>
+        /// <summary>The ID of the group to add this campaign to. Defaults to the team&apos;s Unsorted group when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CampaignGroupId { get; set; }
