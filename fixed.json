@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.2"
+    "version": "1.22.3"
   },
   "servers": [
     {
@@ -3714,6 +3714,272 @@
           "schema": {
             "examples": [
               "cla3s5s7e9t1i3d5f7g9h1j3"
+            ],
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/workflow-groups": {
+      "get": {
+        "tags": [
+          "Workflow groups"
+        ],
+        "summary": "List workflow groups",
+        "description": "Retrieve a paginated list of workflow groups, most recently created first.",
+        "operationId": "ListWorkflowGroups",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListGroupsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/list-workflow-groups",
+          "metadata": {
+            "sidebarTitle": "List groups"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Workflow groups"
+        ],
+        "summary": "Create a workflow group",
+        "description": "Create a new workflow group.",
+        "operationId": "CreateWorkflowGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Workflow group created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body or reserved group name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/create-workflow-group",
+          "metadata": {
+            "sidebarTitle": "Create a group"
+          }
+        }
+      }
+    },
+    "/v1/workflow-groups/{workflowGroupId}": {
+      "get": {
+        "tags": [
+          "Workflow groups"
+        ],
+        "summary": "Get a workflow group",
+        "description": "Retrieve a single workflow group by ID.",
+        "operationId": "GetWorkflowGroup",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060workflowGroupId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Workflow group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/get-workflow-group",
+          "metadata": {
+            "sidebarTitle": "Get a group"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Workflow groups"
+        ],
+        "summary": "Update a workflow group",
+        "description": "Update a workflow group\u0027s name or description. At least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.",
+        "operationId": "UpdateWorkflowGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Workflow group updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, reserved group name, or the Unsorted group cannot be edited.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key."
+          },
+          "404": {
+            "description": "Workflow group not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GroupFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/update-workflow-group",
+          "content": "\u003CInfo\u003EAt least one field must be provided. The reserved \u0022Unsorted\u0022 group cannot be edited.\u003C/Info\u003E",
+          "metadata": {
+            "description": "Update a workflow group\u0027s name or description.",
+            "sidebarTitle": "Update a group"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "workflowGroupId",
+          "in": "path",
+          "description": "The ID of the workflow group.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clg7n5p3q1r9s7t5u3v1w9y7"
             ],
             "type": "string"
           }
@@ -15982,6 +16248,10 @@
     {
       "name": "Workflows",
       "description": "View and mutate workflow graphs"
+    },
+    {
+      "name": "Workflow groups",
+      "description": "Organize workflows into groups"
     },
     {
       "name": "Workflow nodes",
