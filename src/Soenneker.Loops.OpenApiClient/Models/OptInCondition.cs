@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Matches contacts by mailing-list opt-in status.
+    /// Matches contacts by mailing list opt-in status.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OptInCondition : IAdditionalDataHolder, IParsable

@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyConditionValue : IComposedTypeWrapper, IParsable
@@ -29,13 +29,13 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2 PropertyConditionValueBranch2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3? PropertyConditionValueOneOf3 { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange? PropertyConditionValueDateRange { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3 PropertyConditionValueOneOf3 { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange PropertyConditionValueDateRange { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,9 +55,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 result.PropertyConditionValueBranch2 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2();
             }
-            else if("PropertyConditionValueOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PropertyConditionValueDateRange".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PropertyConditionValueOneOf3 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3();
+                result.PropertyConditionValueDateRange = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange();
             }
             return result;
         }
@@ -75,9 +75,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 return PropertyConditionValueBranch2.GetFieldDeserializers();
             }
-            else if(PropertyConditionValueOneOf3 != null)
+            else if(PropertyConditionValueDateRange != null)
             {
-                return PropertyConditionValueOneOf3.GetFieldDeserializers();
+                return PropertyConditionValueDateRange.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -96,9 +96,9 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2>(null, PropertyConditionValueBranch2);
             }
-            else if(PropertyConditionValueOneOf3 != null)
+            else if(PropertyConditionValueDateRange != null)
             {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueOneOf3>(null, PropertyConditionValueOneOf3);
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange>(null, PropertyConditionValueDateRange);
             }
         }
     }

@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.3"
+    "version": "1.22.4"
   },
   "servers": [
     {
@@ -5691,12 +5691,14 @@
         "type": "object",
         "oneOf": [
           {
+            "title": "Identify by email",
             "required": [
               "email"
             ],
             "type": "object"
           },
           {
+            "title": "Identify by user ID",
             "required": [
               "userId"
             ],
@@ -5914,12 +5916,14 @@
         "type": "object",
         "anyOf": [
           {
+            "title": "Identify by email",
             "required": [
               "email"
             ],
             "type": "object"
           },
           {
+            "title": "Identify by user ID",
             "required": [
               "userId"
             ],
@@ -6091,6 +6095,7 @@
             "message": "Missing required data variable(s): confirmationUrl"
           }
         ],
+        "title": "General error",
         "required": [
           "success",
           "message"
@@ -6112,6 +6117,7 @@
         }
       },
       "TransactionalFailure2Response": {
+        "title": "Attachments not enabled",
         "required": [
           "success",
           "message",
@@ -6134,6 +6140,7 @@
         }
       },
       "TransactionalFailure3Response": {
+        "title": "Invalid request or email",
         "required": [
           "success",
           "message",
@@ -6156,6 +6163,7 @@
         }
       },
       "TransactionalFailure4Response": {
+        "title": "Email not sendable",
         "required": [
           "success",
           "message",
@@ -6189,6 +6197,7 @@
             "transactionalId": "cll42l54f20i1la0lfooe3z12"
           }
         ],
+        "title": "Invalid data variables",
         "required": [
           "success",
           "message",
@@ -7843,6 +7852,7 @@
             "value": "pro"
           }
         ],
+        "title": "Contact property",
         "required": [
           "type",
           "key",
@@ -7873,6 +7883,7 @@
             "status": "accepted"
           }
         ],
+        "title": "Mailing list opt-in",
         "required": [
           "type",
           "status"
@@ -7886,7 +7897,7 @@
             "$ref": "#/components/schemas/OptInConditionStatus"
           }
         },
-        "description": "Matches contacts by mailing-list opt-in status."
+        "description": "Matches contacts by mailing list opt-in status."
       },
       "ActivityCondition": {
         "examples": [
@@ -7898,6 +7909,7 @@
             "id": "clc4m6n8p0q2r4s6t8u0v2x4"
           }
         ],
+        "title": "Activity",
         "required": [
           "type",
           "action",
@@ -8621,12 +8633,14 @@
         "type": "object",
         "anyOf": [
           {
+            "title": "Name",
             "required": [
               "name"
             ],
             "type": "object"
           },
           {
+            "title": "Description",
             "required": [
               "description"
             ],
@@ -8829,6 +8843,7 @@
         }
       },
       "SignupTriggerWorkflowMutationNode": {
+        "title": "Signup trigger",
         "required": [
           "id",
           "typeName",
@@ -8852,6 +8867,7 @@
         }
       },
       "EventTriggerWorkflowMutationNode": {
+        "title": "Event trigger",
         "required": [
           "id",
           "typeName",
@@ -8891,6 +8907,7 @@
         }
       },
       "ContactPropertyTriggerWorkflowMutationNode": {
+        "title": "Contact property trigger",
         "required": [
           "id",
           "typeName",
@@ -8923,6 +8940,7 @@
         }
       },
       "AddToListTriggerWorkflowMutationNode": {
+        "title": "Add-to-list trigger",
         "required": [
           "id",
           "typeName",
@@ -8959,6 +8977,7 @@
         }
       },
       "BlankTriggerWorkflowMutationNode": {
+        "title": "Blank trigger",
         "required": [
           "id",
           "typeName",
@@ -8982,6 +9001,7 @@
         }
       },
       "AudienceFilterWorkflowMutationNode": {
+        "title": "Audience filter node",
         "required": [
           "id",
           "typeName",
@@ -9018,6 +9038,7 @@
         }
       },
       "TimerActionWorkflowMutationNode": {
+        "title": "Timer node",
         "required": [
           "id",
           "typeName",
@@ -9051,6 +9072,7 @@
         }
       },
       "SendEmailActionWorkflowMutationNode": {
+        "title": "Send email node",
         "required": [
           "id",
           "typeName",
@@ -9083,6 +9105,7 @@
         }
       },
       "ExitActionWorkflowMutationNode": {
+        "title": "Exit node",
         "required": [
           "id",
           "typeName",
@@ -9106,6 +9129,7 @@
         }
       },
       "BranchWorkflowMutationNode": {
+        "title": "Branch node",
         "required": [
           "id",
           "typeName",
@@ -9129,6 +9153,7 @@
         }
       },
       "ExperimentBranchWorkflowMutationNode": {
+        "title": "Experiment node",
         "required": [
           "id",
           "typeName",
@@ -9157,6 +9182,7 @@
         }
       },
       "VariantWorkflowMutationNode": {
+        "title": "Variant node",
         "required": [
           "id",
           "typeName",
@@ -9269,6 +9295,7 @@
         "description": "Node-type-specific fields to update. The allowed fields depend on the existing node type. Trigger node updates may include \u0060typeName\u0060 when changing one trigger node type to another trigger node type."
       },
       "WorkflowSignupTriggerPayload": {
+        "title": "Signup trigger",
         "required": [
           "typeName"
         ],
@@ -9282,6 +9309,7 @@
         "description": "Changes an existing trigger node to a signup trigger."
       },
       "WorkflowEventTriggerPayload": {
+        "title": "Event trigger",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9311,6 +9339,7 @@
         "description": "Updates an event trigger, or changes an existing trigger node to an event trigger. Assign the event pattern with either \u0060eventPatternId\u0060 or \u0060eventName\u0060, not both. Set either field to \u0060null\u0060 to clear the event-pattern relationship."
       },
       "WorkflowContactPropertyTriggerPayload": {
+        "title": "Contact property trigger",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9330,6 +9359,7 @@
         "description": "Updates a contact-property trigger, or changes an existing trigger node to a contact-property trigger."
       },
       "WorkflowAddToListTriggerPayload": {
+        "title": "Add-to-list trigger",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9345,6 +9375,7 @@
         "description": "Updates an add-to-list trigger, or changes an existing trigger node to an add-to-list trigger."
       },
       "WorkflowAudienceFilterPayload": {
+        "title": "Audience filter node",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9368,6 +9399,7 @@
         "description": "Configuration for the audience filter node."
       },
       "WorkflowTimerActionPayload": {
+        "title": "Timer node",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9384,6 +9416,7 @@
         "description": "Configuration for the timer action node."
       },
       "WorkflowExperimentBranchPayload": {
+        "title": "Experiment node",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9396,6 +9429,7 @@
         "description": "Configuration for the experiment branch node."
       },
       "WorkflowVariantPayload": {
+        "title": "Variant node",
         "minProperties": 1,
         "type": "object",
         "properties": {
@@ -9421,6 +9455,7 @@
         "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created."
       },
       "CreateWorkflowNodeBetweenRequest": {
+        "title": "Between nodes",
         "required": [
           "expectedRevisionId",
           "insertMode",
@@ -9454,6 +9489,7 @@
         "description": "Insert a new node between two existing nodes, \u0060fromNodeId\u0060 and \u0060toNodeId\u0060. When \u0060fromNodeId\u0060 is an \u0060ExperimentBranchNode\u0060, \u0060nodeTypeName\u0060 must be \u0060VariantNode\u0060, and \u0060toNodeId\u0060 cannot already be a \u0060VariantNode\u0060; use add-branch to add sibling variants. Branch paths can be edited with create-node, but a workflow cannot be started unless each direct \u0060BranchNode\u0060 child is an \u0060AudienceFilter\u0060."
       },
       "CreateWorkflowNodeBeforeRequest": {
+        "title": "Before a node",
         "required": [
           "expectedRevisionId",
           "insertMode",
@@ -9462,10 +9498,10 @@
         "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1"
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestTargetNode"
           },
           {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestTargetNodeDeprecated"
           }
         ],
         "properties": {
@@ -9494,6 +9530,7 @@
         "description": "Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \u0022before\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \u0022between\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060."
       },
       "CreateWorkflowNodeAfterRequest": {
+        "title": "After a node",
         "required": [
           "expectedRevisionId",
           "insertMode",
@@ -9730,6 +9767,7 @@
         }
       },
       "SignupTriggerWorkflowMutationNodeWithRevision": {
+        "title": "Signup trigger",
         "required": [
           "id",
           "typeName",
@@ -9758,6 +9796,7 @@
         }
       },
       "EventTriggerWorkflowMutationNodeWithRevision": {
+        "title": "Event trigger",
         "required": [
           "id",
           "typeName",
@@ -9802,6 +9841,7 @@
         }
       },
       "ContactPropertyTriggerWorkflowMutationNodeWithRevision": {
+        "title": "Contact property trigger",
         "required": [
           "id",
           "typeName",
@@ -9839,6 +9879,7 @@
         }
       },
       "AddToListTriggerWorkflowMutationNodeWithRevision": {
+        "title": "Add-to-list trigger",
         "required": [
           "id",
           "typeName",
@@ -9880,6 +9921,7 @@
         }
       },
       "BlankTriggerWorkflowMutationNodeWithRevision": {
+        "title": "Blank trigger",
         "required": [
           "id",
           "typeName",
@@ -9908,6 +9950,7 @@
         }
       },
       "AudienceFilterWorkflowMutationNodeWithRevision": {
+        "title": "Audience filter node",
         "required": [
           "id",
           "typeName",
@@ -9949,6 +9992,7 @@
         }
       },
       "TimerActionWorkflowMutationNodeWithRevision": {
+        "title": "Timer node",
         "required": [
           "id",
           "typeName",
@@ -9987,6 +10031,7 @@
         }
       },
       "SendEmailActionWorkflowMutationNodeWithRevision": {
+        "title": "Send email node",
         "required": [
           "id",
           "typeName",
@@ -10024,6 +10069,7 @@
         }
       },
       "ExitActionWorkflowMutationNodeWithRevision": {
+        "title": "Exit node",
         "required": [
           "id",
           "typeName",
@@ -10052,6 +10098,7 @@
         }
       },
       "BranchWorkflowMutationNodeWithRevision": {
+        "title": "Branch node",
         "required": [
           "id",
           "typeName",
@@ -10080,6 +10127,7 @@
         }
       },
       "ExperimentBranchWorkflowMutationNodeWithRevision": {
+        "title": "Experiment node",
         "required": [
           "id",
           "typeName",
@@ -10113,6 +10161,7 @@
         }
       },
       "VariantWorkflowMutationNodeWithRevision": {
+        "title": "Variant node",
         "required": [
           "id",
           "typeName",
@@ -10348,6 +10397,7 @@
         "additionalProperties": false
       },
       "WorkflowQueuedContactDeletePreview": {
+        "title": "Deletion preview",
         "required": [
           "status",
           "nodeIds",
@@ -10372,6 +10422,7 @@
         }
       },
       "WorkflowDeletedResponse": {
+        "title": "Nodes deleted",
         "required": [
           "status",
           "nodeIds",
@@ -10464,6 +10515,7 @@
         "additionalProperties": false
       },
       "WorkflowMailingListPreview": {
+        "title": "Mailing list change preview",
         "required": [
           "status",
           "mailingListId",
@@ -10487,6 +10539,7 @@
         }
       },
       "WorkflowMailingListUpdatedResponse": {
+        "title": "Mailing list updated",
         "required": [
           "status",
           "mailingListId",
@@ -10748,6 +10801,7 @@
         }
       },
       "SimplifiedSignupTriggerWorkflowNode": {
+        "title": "Signup trigger",
         "required": [
           "typeName",
           "nextNodeIds"
@@ -10778,6 +10832,7 @@
             "reEligible": false
           }
         ],
+        "title": "Event trigger",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -10811,6 +10866,7 @@
         "additionalProperties": false
       },
       "SimplifiedContactPropertyTriggerWorkflowNode": {
+        "title": "Contact property trigger",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -10840,6 +10896,7 @@
         "additionalProperties": false
       },
       "SimplifiedAddToListTriggerWorkflowNode": {
+        "title": "Add-to-list trigger",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -10873,6 +10930,7 @@
         "additionalProperties": false
       },
       "SimplifiedBlankTriggerWorkflowNode": {
+        "title": "Blank trigger",
         "required": [
           "typeName",
           "nextNodeIds"
@@ -10893,6 +10951,7 @@
         "additionalProperties": false
       },
       "SimplifiedAudienceFilterWorkflowNode": {
+        "title": "Audience filter node",
         "required": [
           "typeName",
           "nextNodeIds"
@@ -10923,6 +10982,7 @@
             "unit": "d"
           }
         ],
+        "title": "Timer node",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -10961,6 +11021,7 @@
             "subject": "Welcome to Acme!"
           }
         ],
+        "title": "Send email node",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -10994,6 +11055,7 @@
         "additionalProperties": false
       },
       "SimplifiedExitActionWorkflowNode": {
+        "title": "Exit node",
         "required": [
           "typeName",
           "nextNodeIds"
@@ -11014,6 +11076,7 @@
         "additionalProperties": false
       },
       "SimplifiedBranchWorkflowNode": {
+        "title": "Branch node",
         "required": [
           "typeName",
           "nextNodeIds"
@@ -11034,6 +11097,7 @@
         "additionalProperties": false
       },
       "SimplifiedExperimentBranchWorkflowNode": {
+        "title": "Experiment node",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -11059,6 +11123,7 @@
         "additionalProperties": false
       },
       "SimplifiedVariantWorkflowNode": {
+        "title": "Variant node",
         "required": [
           "typeName",
           "nextNodeIds",
@@ -11259,6 +11324,7 @@
         "description": "Detailed workflow node returned from read operations. The exact fields depend on \u0060typeName\u0060."
       },
       "SignupTriggerWorkflowNode": {
+        "title": "Signup trigger",
         "required": [
           "id",
           "workflowId",
@@ -11293,6 +11359,7 @@
         "additionalProperties": false
       },
       "EventTriggerWorkflowNode": {
+        "title": "Event trigger",
         "required": [
           "id",
           "workflowId",
@@ -11346,6 +11413,7 @@
         "additionalProperties": false
       },
       "ContactPropertyTriggerWorkflowNode": {
+        "title": "Contact property trigger",
         "required": [
           "id",
           "workflowId",
@@ -11389,6 +11457,7 @@
         "additionalProperties": false
       },
       "AddToListTriggerWorkflowNode": {
+        "title": "Add-to-list trigger",
         "required": [
           "id",
           "workflowId",
@@ -11440,6 +11509,7 @@
         "additionalProperties": false
       },
       "BlankTriggerWorkflowNode": {
+        "title": "Blank trigger",
         "required": [
           "id",
           "workflowId",
@@ -11474,6 +11544,7 @@
         "additionalProperties": false
       },
       "AudienceFilterWorkflowNode": {
+        "title": "Audience filter node",
         "required": [
           "id",
           "workflowId",
@@ -11520,6 +11591,7 @@
         "additionalProperties": false
       },
       "TimerActionWorkflowNode": {
+        "title": "Timer node",
         "required": [
           "id",
           "workflowId",
@@ -11564,6 +11636,7 @@
         "additionalProperties": false
       },
       "SendEmailActionWorkflowNode": {
+        "title": "Send email node",
         "required": [
           "id",
           "workflowId",
@@ -11613,6 +11686,7 @@
         "additionalProperties": false
       },
       "ExitActionWorkflowNode": {
+        "title": "Exit node",
         "required": [
           "id",
           "workflowId",
@@ -11647,6 +11721,7 @@
         "additionalProperties": false
       },
       "BranchWorkflowNode": {
+        "title": "Branch node",
         "required": [
           "id",
           "workflowId",
@@ -11681,6 +11756,7 @@
         "additionalProperties": false
       },
       "ExperimentBranchWorkflowNode": {
+        "title": "Experiment node",
         "required": [
           "id",
           "workflowId",
@@ -11720,6 +11796,7 @@
         "additionalProperties": false
       },
       "VariantWorkflowNode": {
+        "title": "Variant node",
         "required": [
           "id",
           "workflowId",
@@ -11773,6 +11850,7 @@
         }
       },
       "WorkflowContactPropertyQuery": {
+        "title": "Contact property query",
         "required": [
           "key",
           "is",
@@ -13475,12 +13553,15 @@
         "type": "object",
         "oneOf": [
           {
+            "title": "String",
             "type": "string"
           },
           {
+            "title": "Number",
             "type": "number"
           },
           {
+            "title": "Boolean",
             "type": "boolean"
           }
         ]
@@ -13489,12 +13570,15 @@
         "type": "object",
         "oneOf": [
           {
+            "title": "String",
             "type": "string"
           },
           {
+            "title": "Number",
             "type": "number"
           },
           {
+            "title": "Boolean",
             "type": "boolean"
           }
         ]
@@ -13503,12 +13587,14 @@
         "type": "object",
         "anyOf": [
           {
+            "title": "Identify by email",
             "required": [
               "email"
             ],
             "type": "object"
           },
           {
+            "title": "Identify by user ID",
             "required": [
               "userId"
             ],
@@ -13534,12 +13620,15 @@
         "type": "object",
         "oneOf": [
           {
+            "title": "String",
             "type": "string"
           },
           {
+            "title": "Number",
             "type": "number"
           },
           {
+            "title": "Boolean",
             "type": "boolean"
           }
         ]
@@ -13578,7 +13667,7 @@
             "$ref": "#/components/schemas/PropertyConditionValueBranch2"
           },
           {
-            "$ref": "#/components/schemas/PropertyConditionValueOneOf3"
+            "$ref": "#/components/schemas/PropertyConditionValueDateRange"
           }
         ],
         "properties": {
@@ -13600,6 +13689,7 @@
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
           },
           {
+            "title": "Null",
             "type": "null"
           }
         ],
@@ -13623,7 +13713,8 @@
           }
         }
       },
-      "CreateWorkflowNodeBeforeRequestOneOf1": {
+      "CreateWorkflowNodeBeforeRequestTargetNode": {
+        "title": "Target node",
         "required": [
           "toNodeId"
         ],
@@ -13634,7 +13725,8 @@
           }
         }
       },
-      "CreateWorkflowNodeBeforeRequestOneOf2": {
+      "CreateWorkflowNodeBeforeRequestTargetNodeDeprecated": {
+        "title": "Target node (deprecated)",
         "required": [
           "beforeNodeId"
         ],
@@ -13687,6 +13779,7 @@
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
           },
           {
+            "title": "Null",
             "type": "null"
           }
         ],
@@ -13729,6 +13822,7 @@
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
           },
           {
+            "title": "Null",
             "type": "null"
           }
         ],
@@ -13756,12 +13850,15 @@
         "type": "object",
         "oneOf": [
           {
+            "title": "String",
             "type": "string"
           },
           {
+            "title": "Number",
             "type": "number"
           },
           {
+            "title": "Boolean",
             "type": "boolean"
           }
         ]
@@ -14061,7 +14158,8 @@
           }
         }
       },
-      "PropertyConditionValueOneOf3": {
+      "PropertyConditionValueDateRange": {
+        "title": "Date range",
         "required": [
           "from",
           "to"
@@ -14509,6 +14607,7 @@
         "type": "object",
         "properties": {
           "value": {
+            "title": "String",
             "type": "string"
           }
         }
@@ -14520,6 +14619,7 @@
         "type": "object",
         "properties": {
           "value": {
+            "title": "Number",
             "type": "number"
           }
         }
