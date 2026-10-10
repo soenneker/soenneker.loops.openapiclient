@@ -2,7 +2,7 @@
   "descriptionHash": "C0A98AD8EC179D481A904F801526ECE41326963AC7D72CC0E1362B0F2593C091226E5F965E6D21A1DF0078BA4ACD442D7D69D1D31E447E505028DBBE1957EFD3",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.35.0",
+  "kiotaVersion": "1.36.0",
   "clientClassName": "LoopsOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Loops.OpenApiClient",
