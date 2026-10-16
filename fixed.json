@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.4"
+    "version": "1.22.5"
   },
   "servers": [
     {
@@ -6230,7 +6230,7 @@
         "examples": [
           {
             "success": false,
-            "message": "Idempotency key already used with a different request body."
+            "message": "Request with idempotency key \u003CidempotencyKey\u003E has already been processed."
           }
         ],
         "required": [
