@@ -42,6 +42,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Url { get; set; }
 #endif
+        /// <summary>The ID of the workflow group this workflow belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkflowGroupId { get; set; }
+#nullable restore
+#else
+        public string WorkflowGroupId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowSummary"/> and sets the default values.
         /// </summary>
@@ -72,6 +80,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
+                { "workflowGroupId", n => { WorkflowGroupId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -86,6 +95,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("url", Url);
+            writer.WriteStringValue("workflowGroupId", WorkflowGroupId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -77,7 +77,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a transactional email by ID.
+        /// Update a transactional email&apos;s name or group. At least one field must be provided.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalResource"/></returns>
         /// <param name="body">At least one field must be provided.</param>
@@ -123,7 +123,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a transactional email by ID.
+        /// Update a transactional email&apos;s name or group. At least one field must be provided.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">At least one field must be provided.</param>

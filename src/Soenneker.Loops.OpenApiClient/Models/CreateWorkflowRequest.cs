@@ -36,6 +36,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The ID of the workflow group to create this workflow in. Defaults to the team&apos;s Unsorted group when omitted.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? WorkflowGroupId { get; set; }
+#nullable restore
+#else
+        public string WorkflowGroupId { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -57,6 +65,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "mailingListId", n => { MailingListId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "workflowGroupId", n => { WorkflowGroupId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -69,6 +78,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("workflowGroupId", WorkflowGroupId);
         }
     }
 }

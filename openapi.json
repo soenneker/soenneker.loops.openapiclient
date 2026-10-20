@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.5"
+    "version": "1.22.6"
   },
   "servers": [
     {
@@ -3033,9 +3033,13 @@
         "operationId": "updateTransactionalEmail",
         "tags": ["Transactional emails"],
         "summary": "Update a transactional email",
-        "description": "Update a transactional email by ID.",
+        "description": "Update a transactional email's name or group. At least one field must be provided.",
         "x-mint": {
-          "href": "/api-reference/update-transactional-email"
+          "href": "/api-reference/update-transactional-email",
+          "metadata": {
+            "sidebarTitle": "Update transactional",
+            "description": "Update a transactional email's name or group."
+          }
         },
         "requestBody": {
           "required": true,
@@ -4052,7 +4056,7 @@
         "tags": ["Workflows"],
         "summary": "Create a workflow",
         "operationId": "createWorkflow",
-        "description": "Create a draft workflow with a blank trigger and exit node.",
+        "description": "Create a draft workflow with a blank trigger and exit node. When `workflowGroupId` is omitted, the workflow is added to the team's Unsorted group.",
         "x-mint": {
           "href": "/api-reference/create-workflow"
         },
@@ -4078,7 +4082,7 @@
             }
           },
           "400": {
-            "description": "Invalid request body.",
+            "description": "Invalid request body or workflow group not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4092,16 +4096,6 @@
           },
           "405": {
             "description": "Wrong HTTP request method."
-          },
-          "500": {
-            "description": "Workflow creation is unavailable for this team.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WorkflowFailureResponse"
-                }
-              }
-            }
           }
         },
         "security": [{ "apiKey": [] }]
@@ -4173,12 +4167,12 @@
         "tags": ["Workflows"],
         "summary": "Update a workflow",
         "operationId": "updateWorkflowProperties",
-        "description": "Update a workflow's display properties. At least one property must be provided. To change the workflow's mailing list, use the `POST /v1/workflows/{workflowId}/mailing-list` endpoint instead.",
+        "description": "Update a workflow's name, description, or group. At least one field must be provided. To change the workflow's mailing list, use the `POST /v1/workflows/{workflowId}/mailing-list` endpoint instead.",
         "x-mint": {
           "href": "/api-reference/update-workflow",
           "content": "<Info>To change a workflow's mailing list, use the [Change workflow mailing list](/api-reference/change-workflow-mailing-list) endpoint instead. This is because changing mailing lists may remove queued contacts from the workflow.</Info>",
           "metadata": {
-            "description": "Update a workflow's display properties."
+            "description": "Update a workflow's name, description, or group."
           }
         },
         "requestBody": {
@@ -4203,7 +4197,7 @@
             }
           },
           "400": {
-            "description": "Invalid `workflowId` or request body.",
+            "description": "Invalid `workflowId`, request body, or workflow group not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -8700,6 +8694,11 @@
             "description": "The name of the workflow.",
             "examples": ["Welcome series"]
           },
+          "workflowGroupId": {
+            "type": "string",
+            "description": "The ID of the workflow group this workflow belongs to.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -8713,12 +8712,20 @@
             "description": "ISO 8601 timestamp for when the workflow was last updated."
           }
         },
-        "required": ["id", "url", "name", "createdAt", "updatedAt"],
+        "required": [
+          "id",
+          "url",
+          "name",
+          "workflowGroupId",
+          "createdAt",
+          "updatedAt"
+        ],
         "examples": [
           {
             "id": "clw1a3b5c7d9e1f3g5h7i9j1",
             "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
             "name": "Welcome series",
+            "workflowGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
             "createdAt": "2025-06-29T07:47:39.370Z",
             "updatedAt": "2025-06-29T07:47:39.370Z"
           }
@@ -8753,6 +8760,7 @@
                 "id": "clw1a3b5c7d9e1f3g5h7i9j1",
                 "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
                 "name": "Welcome series",
+                "workflowGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
                 "createdAt": "2025-06-29T07:47:39.370Z",
                 "updatedAt": "2025-06-29T07:47:39.370Z"
               }
@@ -8814,6 +8822,10 @@
             "type": "string",
             "description": "The description of the workflow."
           },
+          "workflowGroupId": {
+            "type": "string",
+            "description": "The ID of the workflow group this workflow belongs to."
+          },
           "mailingListId": {
             "type": ["string", "null"],
             "description": "The ID of the mailing list the workflow sends to."
@@ -8844,6 +8856,7 @@
           "url",
           "workflowRevisionId",
           "status",
+          "workflowGroupId",
           "mailingListId",
           "rootNodeId",
           "nodes"
@@ -8852,9 +8865,11 @@
           {
             "id": "clw1a3b5c7d9e1f3g5h7i9j1",
             "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
+            "workflowRevisionId": "clx7a3b5c7d9e1f3g5h7i9j2",
             "status": "Draft",
             "name": "Welcome series",
             "description": "Onboarding emails for new signups",
+            "workflowGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
             "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
             "rootNodeId": "cln8p0q2r4s6t8u0v2w4x6z8",
             "nodes": {
@@ -8886,6 +8901,11 @@
           "mailingListId": {
             "type": ["string", "null"],
             "description": "The ID of a mailing list the workflow sends to. After creation, the mailing list can be changed with the `/v1/workflows/{workflowId}/mailing-list` endpoint."
+          },
+          "workflowGroupId": {
+            "type": "string",
+            "description": "The ID of the workflow group to create this workflow in. Defaults to the team's Unsorted group when omitted.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         },
         "required": ["name"],
@@ -8905,6 +8925,11 @@
           "description": {
             "type": "string",
             "description": "The updated workflow description."
+          },
+          "workflowGroupId": {
+            "type": "string",
+            "description": "The ID of the workflow group to move this workflow into.",
+            "examples": ["clg7n5p3q1r9s7t5u3v1w9y7"]
           }
         },
         "required": ["expectedRevisionId"],
@@ -8916,6 +8941,10 @@
           {
             "title": "Description",
             "required": ["description"]
+          },
+          {
+            "title": "Workflow group",
+            "required": ["workflowGroupId"]
           }
         ],
         "additionalProperties": false
@@ -9863,10 +9892,12 @@
             "workflowRevisionId": "clx7a3b5c7d9e1f3g5h7i9j2",
             "workflow": {
               "id": "clw1a3b5c7d9e1f3g5h7i9j1",
+              "url": "https://app.loops.so/workflows/clw1a3b5c7d9e1f3g5h7i9j1",
               "workflowRevisionId": "clx7a3b5c7d9e1f3g5h7i9j2",
               "status": "Draft",
               "name": "Welcome series",
               "description": "Onboarding emails for new signups",
+              "workflowGroupId": "clg7n5p3q1r9s7t5u3v1w9y7",
               "mailingListId": "clm2k8j4h6g0f8d6s4a2b0z8",
               "rootNodeId": "cln8p0q2r4s6t8u0v2w4x6z8",
               "nodes": {
