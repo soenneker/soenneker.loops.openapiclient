@@ -47,13 +47,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get; set; }
 #endif
         /// <summary>The eventName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EventName { get; set; }
-#nullable restore
-#else
-        public string EventName { get; set; }
-#endif
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookCampaignEmailSentPayloadEventName? EventName { get; set; }
         /// <summary>Unix timestamp in seconds.</summary>
         public int? EventTime { get; set; }
         /// <summary>The mailing list(s) the email was sent to, or an empty array.</summary>
@@ -95,7 +89,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "campaignName", n => { CampaignName = n.GetStringValue(); } },
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>(global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetStringValue(); } },
+                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookCampaignEmailSentPayloadEventName>(); } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "mailingLists", n => { MailingLists = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>(global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>(); } },
@@ -112,7 +106,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("campaignName", CampaignName);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>("contactIdentity", ContactIdentity);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>("email", Email);
-            writer.WriteStringValue("eventName", EventName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookCampaignEmailSentPayloadEventName>("eventName", EventName);
             writer.WriteIntValue("eventTime", EventTime);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>("mailingLists", MailingLists);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>("webhookSchemaVersion", WebhookSchemaVersion);

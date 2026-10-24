@@ -9,9 +9,19 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ContactUpdateRequest : global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestAllOf2, IParsable
+    public partial class ContactUpdateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The contact&apos;s email address.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Email { get; set; }
+#nullable restore
+#else
+        public string Email { get; set; }
+#endif
         /// <summary>The contact&apos;s first name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -31,10 +41,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists MailingLists { get; set; }
 #endif
         /// <summary>A custom source value to replace the default “API”.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,6 +54,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string Source { get; set; }
 #endif
+        /// <summary>Whether the contact will receive campaign and workflow emails. All new contacts are subscribed by default.</summary>
+        public bool? Subscribed { get; set; }
         /// <summary>The contact&apos;s user group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,12 +64,27 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string UserGroup { get; set; }
 #endif
+        /// <summary>A unique user ID (for example, from an external application).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UserId { get; set; }
+#nullable restore
+#else
+        public string UserId { get; set; }
+#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest"/> and sets the default values.
+        /// </summary>
+        public ContactUpdateRequest()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequest();
@@ -66,30 +93,36 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            return new Dictionary<string, Action<IParseNode>>
             {
+                { "email", n => { Email = n.GetStringValue(); } },
                 { "firstName", n => { FirstName = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
+                { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
+                { "userId", n => { UserId = n.GetStringValue(); } },
             };
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
+            writer.WriteStringValue("email", Email);
             writer.WriteStringValue("firstName", FirstName);
             writer.WriteStringValue("lastName", LastName);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists>("mailingLists", MailingLists);
             writer.WriteStringValue("source", Source);
+            writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);
+            writer.WriteStringValue("userId", UserId);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

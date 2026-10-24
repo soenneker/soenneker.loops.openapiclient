@@ -11,26 +11,26 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ContactUpdateRequestMailingLists : IAdditionalDataHolder, IParsable
+    public partial class ContactFieldsMailingLists : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists"/> and sets the default values.
         /// </summary>
-        public ContactUpdateRequestMailingLists()
+        public ContactFieldsMailingLists()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ContactUpdateRequestMailingLists();
+            return new global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -21,7 +21,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The message property</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.TestMessage? Message { get; set; }
         /// <summary>The webhookSchemaVersion property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? WebhookSchemaVersion { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion? WebhookSchemaVersion { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayload"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName>(); } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "message", n => { Message = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestMessage>(); } },
-                { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>(); } },
+                { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion>(); } },
             };
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName>("eventName", EventName);
             writer.WriteIntValue("eventTime", EventTime);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestMessage>("message", Message);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>("webhookSchemaVersion", WebhookSchemaVersion);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion>("webhookSchemaVersion", WebhookSchemaVersion);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

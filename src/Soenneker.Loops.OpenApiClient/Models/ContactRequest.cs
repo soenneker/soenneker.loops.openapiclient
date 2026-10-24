@@ -41,10 +41,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists? MailingLists { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists MailingLists { get; set; }
 #endif
         /// <summary>A custom source value to replace the default “API”.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "firstName", n => { FirstName = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
-                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists.CreateFromDiscriminatorValue); } },
+                { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists>(global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
@@ -117,7 +117,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("firstName", FirstName);
             writer.WriteStringValue("lastName", LastName);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactRequestMailingLists>("mailingLists", MailingLists);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactFieldsMailingLists>("mailingLists", MailingLists);
             writer.WriteStringValue("source", Source);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);

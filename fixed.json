@@ -5491,57 +5491,11 @@
           "email"
         ],
         "type": "object",
-        "properties": {
-          "email": {
-            "examples": [
-              "alex@company.com"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s email address."
-          },
-          "firstName": {
-            "examples": [
-              "Alex"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s first name."
-          },
-          "lastName": {
-            "examples": [
-              "Rivera"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s last name."
-          },
-          "source": {
-            "examples": [
-              "API"
-            ],
-            "type": "string",
-            "description": "A custom source value to replace the default \u201CAPI\u201D."
-          },
-          "subscribed": {
-            "type": "boolean",
-            "description": "Whether the contact will receive campaign and workflow emails. All new contacts are subscribed by default."
-          },
-          "userGroup": {
-            "examples": [
-              "customers"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s user group."
-          },
-          "userId": {
-            "examples": [
-              "usr_7f8e9d0c1b2a"
-            ],
-            "type": "string",
-            "description": "A unique user ID (for example, from an external application)."
-          },
-          "mailingLists": {
-            "$ref": "#/components/schemas/ContactRequestMailingLists"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ContactFields"
           }
-        }
+        ]
       },
       "ContactUpdateRequest": {
         "examples": [
@@ -5561,60 +5515,12 @@
         "type": "object",
         "allOf": [
           {
+            "$ref": "#/components/schemas/ContactFields"
+          },
+          {
             "$ref": "#/components/schemas/ContactUpdateRequestAllOf2"
           }
         ],
-        "properties": {
-          "email": {
-            "examples": [
-              "alex@company.com"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s email address."
-          },
-          "firstName": {
-            "examples": [
-              "Alex"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s first name."
-          },
-          "lastName": {
-            "examples": [
-              "Rivera"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s last name."
-          },
-          "source": {
-            "examples": [
-              "API"
-            ],
-            "type": "string",
-            "description": "A custom source value to replace the default \u201CAPI\u201D."
-          },
-          "subscribed": {
-            "type": "boolean",
-            "description": "Whether the contact will receive campaign and workflow emails. All new contacts are subscribed by default."
-          },
-          "userGroup": {
-            "examples": [
-              "customers"
-            ],
-            "type": "string",
-            "description": "The contact\u0027s user group."
-          },
-          "userId": {
-            "examples": [
-              "usr_7f8e9d0c1b2a"
-            ],
-            "type": "string",
-            "description": "A unique user ID (for example, from an external application)."
-          },
-          "mailingLists": {
-            "$ref": "#/components/schemas/ContactUpdateRequestMailingLists"
-          }
-        },
         "additionalProperties": {
           "$ref": "#/components/schemas/ContactUpdateRequestAdditionalProperties"
         }
@@ -5688,15 +5594,13 @@
             "title": "Identify by email",
             "required": [
               "email"
-            ],
-            "type": "object"
+            ]
           },
           {
             "title": "Identify by user ID",
             "required": [
               "userId"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -5913,15 +5817,13 @@
             "title": "Identify by email",
             "required": [
               "email"
-            ],
-            "type": "object"
+            ]
           },
           {
             "title": "Identify by user ID",
             "required": [
               "userId"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -6278,7 +6180,6 @@
           "dataVariables": {
             "type": "array",
             "items": {
-              "type": "object",
               "description": "Fallback array item schema"
             },
             "description": "The data variables used by the transactional email."
@@ -7785,7 +7686,6 @@
         "required": [
           "type"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/PropertyCondition"
@@ -7798,32 +7698,6 @@
           }
         ],
         "properties": {
-          "key": {
-            "type": "string",
-            "description": "The contact property name."
-          },
-          "operator": {
-            "$ref": "#/components/schemas/PropertyConditionOperator"
-          },
-          "value": {
-            "$ref": "#/components/schemas/PropertyConditionValue"
-          },
-          "status": {
-            "$ref": "#/components/schemas/OptInConditionStatus"
-          },
-          "action": {
-            "$ref": "#/components/schemas/ActivityConditionAction"
-          },
-          "negate": {
-            "type": "boolean"
-          },
-          "target": {
-            "$ref": "#/components/schemas/ActivityConditionTarget"
-          },
-          "id": {
-            "type": "string",
-            "description": "The ID of the campaign, workflow, or workflow email."
-          },
           "type": {
             "type": "string"
           }
@@ -8509,7 +8383,6 @@
           "discard"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060fail\u0060 returns queued-contact impact instead of mutating. \u0060discard\u0060 confirms that matching queued contacts should be discarded. Defaults to \u0060fail\u0060 when omitted.",
         "x-ms-enum": {
           "name": "WorkflowQueuedContactPolicy",
@@ -8654,22 +8527,19 @@
             "title": "Name",
             "required": [
               "name"
-            ],
-            "type": "object"
+            ]
           },
           {
             "title": "Description",
             "required": [
               "description"
-            ],
-            "type": "object"
+            ]
           },
           {
             "title": "Workflow group",
             "required": [
               "workflowGroupId"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -8717,7 +8587,6 @@
         "required": [
           "typeName"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNode"
@@ -8757,76 +8626,6 @@
           }
         ],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "nextNodeIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The IDs of the nodes that are downstream of this node."
-          },
-          "eventName": {
-            "type": "string",
-            "description": "The name of the event pattern that triggers this node."
-          },
-          "eventProperties": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkflowEventProperty"
-            },
-            "description": "The properties of the event pattern, which can be used in emails."
-          },
-          "reEligible": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
-          },
-          "contactPropertyQuery": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
-          },
-          "mailingListId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the mailing list this trigger sends to, if set."
-          },
-          "audienceFilter": {
-            "description": "A tree of audience conditions combined with \u0060match\u0060.",
-            "$ref": "#/components/schemas/AudienceFilter"
-          },
-          "audienceSegmentId": {
-            "type": "string",
-            "description": "The ID of the audience segment this trigger targets."
-          },
-          "appliesDownstream": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
-          },
-          "unit": {
-            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
-            "$ref": "#/components/schemas/WorkflowTimerUnit"
-          },
-          "emailMessageId": {
-            "type": "string",
-            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
-          },
-          "subject": {
-            "type": "string"
-          },
-          "samplingRate": {
-            "type": "number",
-            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
-          },
-          "isControl": {
-            "type": "boolean",
-            "description": "Whether this is the control variant of an experiment."
-          },
           "typeName": {
             "type": "string"
           }
@@ -8846,19 +8645,7 @@
             "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNode",
             "BranchNode": "#/components/schemas/BranchWorkflowMutationNode",
             "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNode",
-            "VariantNode": "#/components/schemas/VariantWorkflowMutationNode",
-            "SignupTriggerWorkflowMutationNode": "#/components/schemas/SignupTriggerWorkflowMutationNode",
-            "EventTriggerWorkflowMutationNode": "#/components/schemas/EventTriggerWorkflowMutationNode",
-            "ContactPropertyTriggerWorkflowMutationNode": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNode",
-            "AddToListTriggerWorkflowMutationNode": "#/components/schemas/AddToListTriggerWorkflowMutationNode",
-            "BlankTriggerWorkflowMutationNode": "#/components/schemas/BlankTriggerWorkflowMutationNode",
-            "AudienceFilterWorkflowMutationNode": "#/components/schemas/AudienceFilterWorkflowMutationNode",
-            "TimerActionWorkflowMutationNode": "#/components/schemas/TimerActionWorkflowMutationNode",
-            "SendEmailActionWorkflowMutationNode": "#/components/schemas/SendEmailActionWorkflowMutationNode",
-            "ExitActionWorkflowMutationNode": "#/components/schemas/ExitActionWorkflowMutationNode",
-            "BranchWorkflowMutationNode": "#/components/schemas/BranchWorkflowMutationNode",
-            "ExperimentBranchWorkflowMutationNode": "#/components/schemas/ExperimentBranchWorkflowMutationNode",
-            "VariantWorkflowMutationNode": "#/components/schemas/VariantWorkflowMutationNode"
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNode"
           }
         }
       },
@@ -9242,7 +9029,6 @@
         }
       },
       "UpdateWorkflowNodePayload": {
-        "type": "object",
         "anyOf": [
           {
             "$ref": "#/components/schemas/WorkflowSignupTriggerPayload"
@@ -9269,61 +9055,6 @@
             "$ref": "#/components/schemas/WorkflowVariantPayload"
           }
         ],
-        "properties": {
-          "eventPatternId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the event pattern to trigger on. Use either \u0060eventPatternId\u0060 or \u0060eventName\u0060, not both. Set to \u0060null\u0060 to clear the event-pattern relationship."
-          },
-          "eventName": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The name of the event pattern to trigger on. Use this when you know the event name but not the internal event pattern ID. Use either \u0060eventName\u0060 or \u0060eventPatternId\u0060, not both. Set to \u0060null\u0060 to clear the event-pattern relationship."
-          },
-          "reEligible": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
-          },
-          "contactPropertyQuery": {
-            "description": "Define the contact property change that triggers the workflow. In update requests, \u0060key\u0060 must resolve to an existing contact property that is available for Contact Updated triggers. Hidden or unsupported fields, such as \u0060createdAt\u0060, \u0060notes\u0060, and computed contact properties, are rejected.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
-          },
-          "audienceSegmentId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of an audience segment. Setting this without also providing \u0060audienceFilter\u0060 clears any existing \u0060audienceFilter\u0060. If both are provided, the filter is applied on top of the segment\u0027s filter."
-          },
-          "audienceFilter": {
-            "description": "A tree of audience conditions combined with \u0060match\u0060. Setting this without also providing \u0060audienceSegmentId\u0060 clears any existing \u0060audienceSegmentId\u0060. When both are provided, this filter is applied on top of the segment\u0027s filter.",
-            "$ref": "#/components/schemas/AudienceFilterInRequest"
-          },
-          "appliesDownstream": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
-          },
-          "unit": {
-            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
-            "$ref": "#/components/schemas/WorkflowTimerUnit"
-          },
-          "samplingRate": {
-            "type": "number",
-            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
-          },
-          "isControl": {
-            "type": "boolean",
-            "description": "Use \u0060true\u0060 to set this variant as the control of the experiment. This will set \u0060false\u0060 on the existing control, if one exists. Experiments do not require a control variant."
-          }
-        },
         "description": "Node-type-specific fields to update. The allowed fields depend on the existing node type. Trigger node updates may include \u0060typeName\u0060 when changing one trigger node type to another trigger node type."
       },
       "WorkflowSignupTriggerPayload": {
@@ -9483,7 +9214,6 @@
           "VariantNode"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created."
       },
       "CreateWorkflowNodeBetweenRequest": {
@@ -9594,7 +9324,6 @@
         "required": [
           "insertMode"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateWorkflowNodeBetweenRequest"
@@ -9607,27 +9336,6 @@
           }
         ],
         "properties": {
-          "expectedRevisionId": {
-            "description": "The workflow revision token returned by the latest workflow read or mutation. Older workflows may return \u0060null\u0060 before their first revision-aware mutation; pass \u0060null\u0060 back as \u0060expectedRevisionId\u0060 in that case. If the token is stale, the API returns a \u0060409 Conflict\u0060 error.",
-            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
-          },
-          "nodeTypeName": {
-            "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
-            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
-          },
-          "fromNodeId": {
-            "type": "string",
-            "description": "The node to insert after. This node must currently point to \u0060toNodeId\u0060. If this is an \u0060ExperimentBranchNode\u0060, \u0060nodeTypeName\u0060 must be \u0060VariantNode\u0060 and \u0060toNodeId\u0060 cannot already be a \u0060VariantNode\u0060."
-          },
-          "toNodeId": {
-            "type": "string",
-            "description": "The node to insert before."
-          },
-          "beforeNodeId": {
-            "type": "string",
-            "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
-            "deprecated": true
-          },
           "insertMode": {
             "type": "string"
           }
@@ -9638,10 +9346,7 @@
           "mapping": {
             "between": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
             "before": "#/components/schemas/CreateWorkflowNodeBeforeRequest",
-            "after": "#/components/schemas/CreateWorkflowNodeAfterRequest",
-            "CreateWorkflowNodeBetweenRequest": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
-            "CreateWorkflowNodeBeforeRequest": "#/components/schemas/CreateWorkflowNodeBeforeRequest",
-            "CreateWorkflowNodeAfterRequest": "#/components/schemas/CreateWorkflowNodeAfterRequest"
+            "after": "#/components/schemas/CreateWorkflowNodeAfterRequest"
           }
         }
       },
@@ -9649,7 +9354,6 @@
         "required": [
           "typeName"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision"
@@ -9689,80 +9393,6 @@
           }
         ],
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "nextNodeIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The IDs of the nodes that are downstream of this node."
-          },
-          "workflowRevisionId": {
-            "type": "string",
-            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
-          },
-          "eventName": {
-            "type": "string",
-            "description": "The name of the event pattern that triggers this node."
-          },
-          "eventProperties": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkflowEventProperty"
-            },
-            "description": "The properties of the event pattern, which can be used in emails."
-          },
-          "reEligible": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
-          },
-          "contactPropertyQuery": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
-          },
-          "mailingListId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the mailing list this trigger sends to, if set."
-          },
-          "audienceFilter": {
-            "description": "A tree of audience conditions combined with \u0060match\u0060.",
-            "$ref": "#/components/schemas/AudienceFilter"
-          },
-          "audienceSegmentId": {
-            "type": "string",
-            "description": "The ID of the audience segment this trigger targets."
-          },
-          "appliesDownstream": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
-          },
-          "unit": {
-            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
-            "$ref": "#/components/schemas/WorkflowTimerUnit"
-          },
-          "emailMessageId": {
-            "type": "string",
-            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
-          },
-          "subject": {
-            "type": "string"
-          },
-          "samplingRate": {
-            "type": "number",
-            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
-          },
-          "isControl": {
-            "type": "boolean",
-            "description": "Whether this is the control variant of an experiment."
-          },
           "typeName": {
             "type": "string"
           }
@@ -9782,19 +9412,7 @@
             "ExitAction": "#/components/schemas/ExitActionWorkflowMutationNodeWithRevision",
             "BranchNode": "#/components/schemas/BranchWorkflowMutationNodeWithRevision",
             "ExperimentBranchNode": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
-            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision",
-            "SignupTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
-            "EventTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/EventTriggerWorkflowMutationNodeWithRevision",
-            "ContactPropertyTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeWithRevision",
-            "AddToListTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/AddToListTriggerWorkflowMutationNodeWithRevision",
-            "BlankTriggerWorkflowMutationNodeWithRevision": "#/components/schemas/BlankTriggerWorkflowMutationNodeWithRevision",
-            "AudienceFilterWorkflowMutationNodeWithRevision": "#/components/schemas/AudienceFilterWorkflowMutationNodeWithRevision",
-            "TimerActionWorkflowMutationNodeWithRevision": "#/components/schemas/TimerActionWorkflowMutationNodeWithRevision",
-            "SendEmailActionWorkflowMutationNodeWithRevision": "#/components/schemas/SendEmailActionWorkflowMutationNodeWithRevision",
-            "ExitActionWorkflowMutationNodeWithRevision": "#/components/schemas/ExitActionWorkflowMutationNodeWithRevision",
-            "BranchWorkflowMutationNodeWithRevision": "#/components/schemas/BranchWorkflowMutationNodeWithRevision",
-            "ExperimentBranchWorkflowMutationNodeWithRevision": "#/components/schemas/ExperimentBranchWorkflowMutationNodeWithRevision",
-            "VariantWorkflowMutationNodeWithRevision": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
+            "VariantNode": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
           }
         }
       },
@@ -10489,7 +10107,6 @@
         }
       },
       "DeleteWorkflowNodeResponse": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowQueuedContactDeletePreview"
@@ -10497,27 +10114,7 @@
           {
             "$ref": "#/components/schemas/WorkflowDeletedResponse"
           }
-        ],
-        "properties": {
-          "nodeIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The IDs of the nodes that would be deleted."
-          },
-          "queuedContactCount": {
-            "type": "number",
-            "description": "The number of queued contacts that would be removed from the workflow due to the node deletion."
-          },
-          "workflowRevisionId": {
-            "type": "string",
-            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
-          },
-          "workflow": {
-            "$ref": "#/components/schemas/SimplifiedWorkflow"
-          }
-        }
+        ]
       },
       "ChangeWorkflowMailingListRequest": {
         "required": [
@@ -10606,7 +10203,6 @@
         }
       },
       "ChangeWorkflowMailingListResponse": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowMailingListPreview"
@@ -10614,26 +10210,7 @@
           {
             "$ref": "#/components/schemas/WorkflowMailingListUpdatedResponse"
           }
-        ],
-        "properties": {
-          "mailingListId": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "queuedContactCount": {
-            "type": "number",
-            "description": "The number of queued contacts that would be removed from the workflow due to the mailing list changing."
-          },
-          "workflowRevisionId": {
-            "type": "string",
-            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
-          },
-          "workflow": {
-            "$ref": "#/components/schemas/SimplifiedWorkflow"
-          }
-        }
+        ]
       },
       "EventPatternSummary": {
         "required": [
@@ -10717,7 +10294,6 @@
         "required": [
           "typeName"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode"
@@ -10757,61 +10333,6 @@
           }
         ],
         "properties": {
-          "nextNodeIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The IDs of the nodes that are downstream of this node."
-          },
-          "eventName": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The name of the event that triggers the workflow."
-          },
-          "reEligible": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
-          },
-          "contactPropertyQuery": {
-            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery"
-          },
-          "mailingListId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the mailing list that triggers the workflow."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
-          },
-          "unit": {
-            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
-            "$ref": "#/components/schemas/WorkflowTimerUnit"
-          },
-          "emailMessageId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
-          },
-          "subject": {
-            "type": "string",
-            "description": "The subject of the email message (reference only)."
-          },
-          "samplingRate": {
-            "type": "number",
-            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch."
-          },
-          "isControl": {
-            "type": "boolean",
-            "description": "Whether this is the control variant of an experiment."
-          },
           "typeName": {
             "type": "string"
           }
@@ -11186,7 +10707,6 @@
         "required": [
           "typeName"
         ],
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowNode"
@@ -11226,97 +10746,6 @@
           }
         ],
         "properties": {
-          "id": {
-            "examples": [
-              "cln8p0q2r4s6t8u0v2w4x6z8"
-            ],
-            "type": "string"
-          },
-          "workflowId": {
-            "examples": [
-              "clw1a3b5c7d9e1f3g5h7i9j1"
-            ],
-            "type": "string"
-          },
-          "nextNodeIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "The IDs of the nodes that are downstream of this node."
-          },
-          "eventName": {
-            "examples": [
-              "signup"
-            ],
-            "type": "string",
-            "description": "The name of the event pattern that triggers this node."
-          },
-          "eventProperties": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkflowEventProperty"
-            },
-            "description": "The properties of the event pattern, which can be used in emails."
-          },
-          "reEligible": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
-          },
-          "contactPropertyQuery": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeContactPropertyQuery"
-          },
-          "mailingListId": {
-            "examples": [
-              "clm2k8j4h6g0f8d6s4a2b0z8",
-              null
-            ],
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the mailing list that triggers the workflow."
-          },
-          "audienceFilter": {
-            "description": "A tree of audience conditions combined with \u0060match\u0060.",
-            "$ref": "#/components/schemas/AudienceFilter"
-          },
-          "audienceSegmentId": {
-            "type": "string"
-          },
-          "appliesDownstream": {
-            "type": "boolean",
-            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
-          },
-          "amount": {
-            "type": "number",
-            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
-          },
-          "unit": {
-            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
-            "$ref": "#/components/schemas/WorkflowTimerUnit"
-          },
-          "emailMessageId": {
-            "examples": [
-              "cle5f7g9h1i3j5k7l9m1n3p5"
-            ],
-            "type": "string",
-            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
-          },
-          "subject": {
-            "examples": [
-              "Welcome to Acme!"
-            ],
-            "type": "string"
-          },
-          "samplingRate": {
-            "type": "number",
-            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
-          },
-          "isControl": {
-            "type": "boolean",
-            "description": "Whether this is the control variant of an experiment."
-          },
           "typeName": {
             "type": "string"
           }
@@ -11939,7 +11368,6 @@
           "d"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
         "x-ms-enum": {
           "name": "WorkflowTimerUnit",
@@ -12972,7 +12400,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookContactUnsubscribedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -12997,7 +12425,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookContactCreatedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13025,7 +12453,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookContactDeletedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13050,7 +12478,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookContactMailingListSubscribedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13079,7 +12507,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookContactMailingListUnsubscribedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13110,7 +12538,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookTransactionalEmailSentPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13147,7 +12575,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookCampaignEmailSentPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13191,7 +12619,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookLoopEmailSentPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13235,7 +12663,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailDeliveredPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13279,7 +12707,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailSoftBouncedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13323,7 +12751,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailHardBouncedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13367,7 +12795,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailClickedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13407,7 +12835,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailUnsubscribedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13447,7 +12875,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailResubscribedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13487,7 +12915,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailOpenedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13527,7 +12955,7 @@
         "type": "object",
         "properties": {
           "eventName": {
-            "type": "string"
+            "$ref": "#/components/schemas/WebhookEmailSpamReportedPayloadEventName"
           },
           "eventTime": {
             "type": "integer",
@@ -13579,12 +13007,11 @@
             "$ref": "#/components/schemas/TestMessage"
           },
           "webhookSchemaVersion": {
-            "$ref": "#/components/schemas/Value100WebhookSchemaVersion"
+            "$ref": "#/components/schemas/WebhookTestingTestEventPayloadWebhookSchemaVersion"
           }
         }
       },
       "ContactFieldsAdditionalProperties": {
-        "type": "object",
         "oneOf": [
           {
             "title": "String",
@@ -13601,7 +13028,6 @@
         ]
       },
       "ContactUpdateRequestAdditionalProperties": {
-        "type": "object",
         "oneOf": [
           {
             "title": "String",
@@ -13624,15 +13050,13 @@
             "title": "Identify by email",
             "required": [
               "email"
-            ],
-            "type": "object"
+            ]
           },
           {
             "title": "Identify by user ID",
             "required": [
               "userId"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -13651,7 +13075,6 @@
         }
       },
       "EventRequestAdditionalProperties": {
-        "type": "object",
         "oneOf": [
           {
             "title": "String",
@@ -13692,32 +13115,22 @@
         }
       },
       "PropertyConditionValue": {
-        "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/PropertyConditionValueBranch1"
+            "title": "String",
+            "type": "string"
           },
           {
-            "$ref": "#/components/schemas/PropertyConditionValueBranch2"
+            "title": "Number",
+            "type": "number"
           },
           {
             "$ref": "#/components/schemas/PropertyConditionValueDateRange"
           }
         ],
-        "properties": {
-          "from": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "to": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
         "description": "The comparison value. Omitted for value-less operators (e.g. \u0060isTrue\u0060, \u0060empty\u0060). A \u0060{ from, to }\u0060 object for \u0060between\u0060."
       },
       "ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
@@ -13726,26 +13139,7 @@
             "title": "Null",
             "type": "null"
           }
-        ],
-        "properties": {
-          "key": {
-            "examples": [
-              "firstName",
-              "email",
-              "planName"
-            ],
-            "type": "string",
-            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
-          },
-          "is": {
-            "description": "Comparison for the new contact property value after the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          },
-          "was": {
-            "description": "Comparison for the previous contact property value before the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          }
-        }
+        ]
       },
       "CreateWorkflowNodeBeforeRequestTargetNode": {
         "title": "Target node",
@@ -13807,7 +13201,6 @@
         }
       },
       "SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
@@ -13816,26 +13209,7 @@
             "title": "Null",
             "type": "null"
           }
-        ],
-        "properties": {
-          "key": {
-            "examples": [
-              "firstName",
-              "email",
-              "planName"
-            ],
-            "type": "string",
-            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
-          },
-          "is": {
-            "description": "Comparison for the new contact property value after the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          },
-          "was": {
-            "description": "Comparison for the previous contact property value before the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          }
-        }
+        ]
       },
       "WorkflowNodeWithRevisionAllOf2": {
         "required": [
@@ -13850,7 +13224,6 @@
         }
       },
       "ContactPropertyTriggerWorkflowNodeContactPropertyQuery": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/WorkflowContactPropertyQuery"
@@ -13859,29 +13232,9 @@
             "title": "Null",
             "type": "null"
           }
-        ],
-        "properties": {
-          "key": {
-            "examples": [
-              "firstName",
-              "email",
-              "planName"
-            ],
-            "type": "string",
-            "description": "The camel-cased \u0060key\u0060 of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers."
-          },
-          "is": {
-            "description": "Comparison for the new contact property value after the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          },
-          "was": {
-            "description": "Comparison for the previous contact property value before the update.",
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparison"
-          }
-        }
+        ]
       },
       "WorkflowContactPropertyComparisonValue": {
-        "type": "object",
         "oneOf": [
           {
             "title": "String",
@@ -14567,7 +13920,12 @@
           "type": "string",
           "description": "IP address"
         },
-        "description": "Returns an array of IP address strings."
+        "description": "Returns an array of IP address strings.",
+        "example": [
+          "52.21.45.123",
+          "52.21.45.124",
+          "52.21.45.125"
+        ]
       },
       "FindContact200Response": {
         "type": "array",
@@ -14588,7 +13946,6 @@
         }
       },
       "SendTransactionalEmail400Response": {
-        "type": "object",
         "oneOf": [
           {
             "$ref": "#/components/schemas/TransactionalSendFailureResponse"
@@ -14605,58 +13962,11 @@
           {
             "$ref": "#/components/schemas/TransactionalFailure5Response"
           }
-        ],
-        "properties": {
-          "success": {
-            "examples": [
-              false
-            ],
-            "type": "boolean"
-          },
-          "message": {
-            "examples": [
-              "Missing required data variable(s): confirmationUrl"
-            ],
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "transactionalId": {
-            "examples": [
-              "cll42l54f20i1la0lfooe3z12"
-            ],
-            "type": "string"
-          }
-        }
+        ]
       },
       "ExamplePayload": {
         "type": "object",
         "description": "Placeholder schema for path example refs"
-      },
-      "PropertyConditionValueBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "title": "String",
-            "type": "string"
-          }
-        }
-      },
-      "PropertyConditionValueBranch2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "title": "Number",
-            "type": "number"
-          }
-        }
       },
       "ListDedicatedSendingIps200ResponseSchema": {
         "type": "array",
@@ -14667,7 +13977,12 @@
           "type": "string",
           "description": "IP address"
         },
-        "description": "Returns an array of IP address strings."
+        "description": "Returns an array of IP address strings.",
+        "example": [
+          "52.21.45.123",
+          "52.21.45.124",
+          "52.21.45.125"
+        ]
       },
       "FindContact200ResponseSchema": {
         "type": "array",
@@ -14687,31 +14002,324 @@
           "$ref": "#/components/schemas/MailingList"
         }
       },
+      "WebhookContactUnsubscribedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "contact.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookContactUnsubscribedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.unsubscribed",
+              "name": "ContactUnsubscribed"
+            }
+          ]
+        }
+      },
+      "WebhookContactCreatedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "contact.created"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookContactCreatedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.created",
+              "name": "ContactCreated"
+            }
+          ]
+        }
+      },
+      "WebhookContactDeletedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "contact.deleted"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookContactDeletedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.deleted",
+              "name": "ContactDeleted"
+            }
+          ]
+        }
+      },
+      "WebhookContactMailingListSubscribedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "contact.mailingList.subscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookContactMailingListSubscribedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.mailingList.subscribed",
+              "name": "ContactMailingListSubscribed"
+            }
+          ]
+        }
+      },
+      "WebhookContactMailingListUnsubscribedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "contact.mailingList.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookContactMailingListUnsubscribedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.mailingList.unsubscribed",
+              "name": "ContactMailingListUnsubscribed"
+            }
+          ]
+        }
+      },
+      "WebhookTransactionalEmailSentPayloadEventName": {
+        "const": null,
+        "enum": [
+          "transactional.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookTransactionalEmailSentPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "transactional.email.sent",
+              "name": "TransactionalEmailSent"
+            }
+          ]
+        }
+      },
+      "WebhookCampaignEmailSentPayloadEventName": {
+        "const": null,
+        "enum": [
+          "campaign.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookCampaignEmailSentPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "campaign.email.sent",
+              "name": "CampaignEmailSent"
+            }
+          ]
+        }
+      },
+      "WebhookLoopEmailSentPayloadEventName": {
+        "const": null,
+        "enum": [
+          "loop.email.sent"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookLoopEmailSentPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "loop.email.sent",
+              "name": "LoopEmailSent"
+            }
+          ]
+        }
+      },
+      "WebhookEmailDeliveredPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.delivered"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailDeliveredPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.delivered",
+              "name": "EmailDelivered"
+            }
+          ]
+        }
+      },
+      "WebhookEmailSoftBouncedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.softBounced"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailSoftBouncedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.softBounced",
+              "name": "EmailSoftBounced"
+            }
+          ]
+        }
+      },
+      "WebhookEmailHardBouncedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.hardBounced"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailHardBouncedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.hardBounced",
+              "name": "EmailHardBounced"
+            }
+          ]
+        }
+      },
+      "WebhookEmailClickedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.clicked"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailClickedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.clicked",
+              "name": "EmailClicked"
+            }
+          ]
+        }
+      },
+      "WebhookEmailUnsubscribedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.unsubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailUnsubscribedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.unsubscribed",
+              "name": "EmailUnsubscribed"
+            }
+          ]
+        }
+      },
+      "WebhookEmailResubscribedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.resubscribed"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailResubscribedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.resubscribed",
+              "name": "EmailResubscribed"
+            }
+          ]
+        }
+      },
+      "WebhookEmailOpenedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.opened"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailOpenedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.opened",
+              "name": "EmailOpened"
+            }
+          ]
+        }
+      },
+      "WebhookEmailSpamReportedPayloadEventName": {
+        "const": null,
+        "enum": [
+          "email.spamReported"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookEmailSpamReportedPayloadEventName",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.spamReported",
+              "name": "EmailSpamReported"
+            }
+          ]
+        }
+      },
       "ContactMailingListsProperty": {
+        "examples": [
+          {
+            "cm06f5v0e45nf0ml5754o9cix": true
+          }
+        ],
         "type": "object",
         "description": "Mailing lists the contact is subscribed to, represented by key-value pairs of mailing list IDs and \u0060true\u0060."
       },
       "ContactFieldsMailingLists": {
-        "type": "object",
-        "description": "Manage mailing list subscriptions.\n\nInclude key-value pairs of mailing list IDs and a \u0060boolean\u0060 denoting if the contact should be added (\u0060true\u0060) or removed (\u0060false\u0060) from the list."
-      },
-      "ContactRequestMailingLists": {
-        "type": "object",
-        "description": "Manage mailing list subscriptions.\n\nInclude key-value pairs of mailing list IDs and a \u0060boolean\u0060 denoting if the contact should be added (\u0060true\u0060) or removed (\u0060false\u0060) from the list."
-      },
-      "ContactUpdateRequestMailingLists": {
+        "examples": [
+          {
+            "cm06f5v0e45nf0ml5754o9cix": true,
+            "cm16k73gq014h0mmj5b6jdi9r": false
+          }
+        ],
         "type": "object",
         "description": "Manage mailing list subscriptions.\n\nInclude key-value pairs of mailing list IDs and a \u0060boolean\u0060 denoting if the contact should be added (\u0060true\u0060) or removed (\u0060false\u0060) from the list."
       },
       "EventRequestEventPropertiesProperty": {
+        "examples": [
+          {
+            "planName": "Pro",
+            "importDate": "2021-01-01"
+          }
+        ],
         "type": "object",
         "description": "An object containing event property data for the event, available in emails sent by the event."
       },
       "EventRequestMailingLists": {
+        "examples": [
+          {
+            "cm06f5v0e45nf0ml5754o9cix": true,
+            "cm16k73gq014h0mmj5b6jdi9r": false
+          }
+        ],
         "type": "object",
         "description": "Manage mailing list subscriptions.\n\nInclude key-value pairs of mailing list IDs and a \u0060boolean\u0060 denoting if the contact should be added (\u0060true\u0060) or removed (\u0060false\u0060) from the list."
       },
       "TransactionalRequestDataVariablesProperty": {
+        "examples": [
+          {
+            "name": "Chris",
+            "passwordResetLink": "https://example.com/reset-password"
+          }
+        ],
         "type": "object",
         "description": "An object containing data as defined by the data variables added to the transactional email template. Values can be of type string or number.\n\nIf you have added optional data variables to your email, you can exclude them from the dataVariables object or set the value to \u0022\u0022.\n\nIf you have added an array data variable to your email, make sure to include an array matching the data variables you added to your array block."
       },
@@ -14720,7 +14328,16 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/SimplifiedWorkflowNode"
         },
-        "description": "A map of node IDs to simplified node objects. Each node includes \u0060typeName\u0060 and \u0060nextNodeIds\u0060, plus type-specific fields when present. To get the full node object, use the \u0060GET /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 endpoint."
+        "description": "A map of node IDs to simplified node objects. Each node includes \u0060typeName\u0060 and \u0060nextNodeIds\u0060, plus type-specific fields when present. To get the full node object, use the \u0060GET /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 endpoint.",
+        "example": {
+          "cf16k73gq014h3mmj5b6jdi9r": {
+            "typeName": "SignupTrigger",
+            "nextNodeIds": [
+              "cf16k73gq014h3mmj5b4jdifg",
+              "cf16k73gq014h3mmj5b4jdifh"
+            ]
+          }
+        }
       },
       "UpdateEmailMessageRequestContactPropertiesFallbacksProperty": {
         "type": "object",
@@ -14778,21 +14395,30 @@
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Contact property values to render. Accepted for campaign and workflow previews."
+        "description": "Contact property values to render. Accepted for campaign and workflow previews.",
+        "example": {
+          "firstName": "Alex"
+        }
       },
       "EmailMessagePreviewRequestEventPropertiesProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Event property values to render. Accepted for workflow previews only."
+        "description": "Event property values to render. Accepted for workflow previews only.",
+        "example": {
+          "planName": "Pro"
+        }
       },
       "EmailMessagePreviewRequestDataVariablesProperty": {
         "type": "object",
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Transactional data variables to render. Accepted for transactional previews only."
+        "description": "Transactional data variables to render. Accepted for transactional previews only.",
+        "example": {
+          "loginUrl": "https://app.company.com/login"
+        }
       },
       "WebhookContactMailingListsProperty": {
         "type": "object",
@@ -14815,7 +14441,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "Double opt-in status. This will be \u0060null\u0060 for contacts unless they are created via a form while double opt-in is enabled.",
         "x-ms-enum": {
           "name": "ContactOptInStatus",
@@ -14847,7 +14472,6 @@
           "date"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of property.",
         "x-ms-enum": {
           "name": "ContactPropertyCreateRequestType",
@@ -14880,7 +14504,6 @@
           "date"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of property.",
         "x-ms-enum": {
           "name": "ContactPropertyType",
@@ -14911,7 +14534,6 @@
           "schedule"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CampaignSchedulingMethod",
           "modelAsString": false,
@@ -14933,7 +14555,6 @@
           "schedule"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CampaignSchedulingRequestMethod",
           "modelAsString": false,
@@ -14955,7 +14576,6 @@
           "any"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AudienceFilterMatch",
           "modelAsString": false,
@@ -14977,7 +14597,6 @@
           "any"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AudienceFilterInRequestMatch",
           "modelAsString": false,
@@ -14998,7 +14617,6 @@
           "property"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PropertyType",
           "modelAsString": false,
@@ -15030,7 +14648,6 @@
           "between"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "PropertyConditionOperator",
           "modelAsString": false,
@@ -15107,7 +14724,6 @@
           "optIn"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OptInType",
           "modelAsString": false,
@@ -15130,7 +14746,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "OptInConditionStatus",
           "modelAsString": false,
@@ -15155,7 +14770,6 @@
           "activity"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ActivityType",
           "modelAsString": false,
@@ -15174,7 +14788,6 @@
           "clicked"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ActivityConditionAction",
           "modelAsString": false,
@@ -15201,7 +14814,6 @@
           "workflowEmail"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ActivityConditionTarget",
           "modelAsString": false,
@@ -15229,7 +14841,6 @@
           "Draft"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the campaign (always \u0060Draft\u0060 for new campaigns)."
       },
       "CampaignResponseStatus": {
@@ -15243,7 +14854,6 @@
           "Sent"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the campaign."
       },
       "SimplifiedWorkflowStatus": {
@@ -15253,99 +14863,85 @@
           "Paused",
           "PausedAndQueueing"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "SignupTriggerTypeName": {
         "enum": [
           "SignupTrigger"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "EventTriggerTypeName": {
         "enum": [
           "EventTrigger"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "ContactPropertyTriggerTypeName": {
         "enum": [
           "ContactPropertyTrigger"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "AddToListTriggerTypeName": {
         "enum": [
           "AddToListTrigger"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "BlankTriggerTypeName": {
         "enum": [
           "BlankTrigger"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "AudienceFilterTypeName": {
         "enum": [
           "AudienceFilter"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "TimerActionTypeName": {
         "enum": [
           "TimerAction"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "SendEmailActionTypeName": {
         "enum": [
           "SendEmailAction"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "ExitActionTypeName": {
         "enum": [
           "ExitAction"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "BranchNodeTypeName": {
         "enum": [
           "BranchNode"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "ExperimentBranchNodeTypeName": {
         "enum": [
           "ExperimentBranchNode"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "VariantNodeTypeName": {
         "enum": [
           "VariantNode"
         ],
-        "type": "string",
-        "additionalProperties": false
+        "type": "string"
       },
       "BetweenInsertMode": {
         "enum": [
           "between"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BetweenInsertMode",
           "modelAsString": false,
@@ -15362,7 +14958,6 @@
           "before"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BeforeInsertMode",
           "modelAsString": false,
@@ -15379,7 +14974,6 @@
           "after"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AfterInsertMode",
           "modelAsString": false,
@@ -15397,7 +14991,6 @@
           "queuedContactsFound"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WorkflowQueuedContactDeletePreviewStatus",
           "modelAsString": false,
@@ -15418,7 +15011,6 @@
           "deleted"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "DeletedStatus",
           "modelAsString": false,
@@ -15436,7 +15028,6 @@
           "queuedContactsFound"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WorkflowMailingListPreviewStatus",
           "modelAsString": false,
@@ -15457,7 +15048,6 @@
           "updated"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdatedStatus",
           "modelAsString": false,
@@ -15481,7 +15071,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "The platform that sent this event pattern, if the event pattern is from an incoming webhook. Will be \u0060null\u0060 for custom events.",
         "x-ms-enum": {
           "name": "EventPatternSummaryIncomingWebhookPlatform",
@@ -15522,7 +15111,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "The platform that sent this event pattern, if the event pattern is from an incoming webhook. Will be \u0060null\u0060 for custom events.",
         "x-ms-enum": {
           "name": "EventPatternIncomingWebhookPlatform",
@@ -15559,7 +15147,6 @@
           "date"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WorkflowEventPropertyType",
           "modelAsString": false,
@@ -15603,7 +15190,6 @@
           "between"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The comparison operator. It must be valid for the selected contact property\u0027s type and for the \u0060is\u0060 or \u0060was\u0060 side of the comparison. Number and boolean properties allow \u0060empty\u0060 on \u0060was\u0060, but not on \u0060is\u0060.",
         "x-ms-enum": {
           "name": "WorkflowContactPropertyComparisonOperator",
@@ -15682,7 +15268,6 @@
           "plain"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The rendering format of the email.",
         "x-ms-enum": {
           "name": "UpdateEmailMessageRequestEmailFormat",
@@ -15708,7 +15293,6 @@
           "plain"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The rendering format of the email.",
         "x-ms-enum": {
           "name": "EmailMessageResponseEmailFormat",
@@ -15748,7 +15332,6 @@
           "missingSocialIconHrefs"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The identifier of the Guardian rule that fired.",
         "x-ms-enum": {
           "name": "GuardianRuleRule",
@@ -15861,7 +15444,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "Double opt-in status.",
         "x-ms-enum": {
           "name": "WebhookContactOptInStatus",
@@ -15889,7 +15471,6 @@
           "transactional"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of email this event relates to. Workflow emails use \u0060loop\u0060.",
         "x-ms-enum": {
           "name": "WebhookEmailMetricPayloadSourceType",
@@ -15916,7 +15497,6 @@
           "campaign"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of email this event relates to. Workflow emails use \u0060loop\u0060. Not available for transactional emails.",
         "x-ms-enum": {
           "name": "WebhookMarketingEmailMetricPayloadSourceType",
@@ -15963,6 +15543,23 @@
             {
               "value": "test",
               "name": "Test"
+            }
+          ]
+        }
+      },
+      "WebhookTestingTestEventPayloadWebhookSchemaVersion": {
+        "const": null,
+        "enum": [
+          "1.0.0"
+        ],
+        "type": "string",
+        "x-ms-enum": {
+          "name": "WebhookTestingTestEventPayloadWebhookSchemaVersion",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "1.0.0",
+              "name": "Value100"
             }
           ]
         }
@@ -16245,7 +15842,6 @@
           "any"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "CreateAudienceSegmentRequestFilterMatch",
           "modelAsString": false,
@@ -16266,7 +15862,6 @@
           "warning"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "WarningSeverity",
           "modelAsString": false,

@@ -31,13 +31,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get; set; }
 #endif
         /// <summary>The eventName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EventName { get; set; }
-#nullable restore
-#else
-        public string EventName { get; set; }
-#endif
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName? EventName { get; set; }
         /// <summary>Unix timestamp in seconds.</summary>
         public int? EventTime { get; set; }
         /// <summary>The transactionalId property</summary>
@@ -85,7 +79,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>(global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetStringValue(); } },
+                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName>(); } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "transactionalId", n => { TransactionalId = n.GetStringValue(); } },
                 { "transactionalName", n => { TransactionalName = n.GetStringValue(); } },
@@ -101,7 +95,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>("contactIdentity", ContactIdentity);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>("email", Email);
-            writer.WriteStringValue("eventName", EventName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName>("eventName", EventName);
             writer.WriteIntValue("eventTime", EventTime);
             writer.WriteStringValue("transactionalId", TransactionalId);
             writer.WriteStringValue("transactionalName", TransactionalName);

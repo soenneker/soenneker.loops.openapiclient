@@ -39,13 +39,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get; set; }
 #endif
         /// <summary>The eventName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EventName { get; set; }
-#nullable restore
-#else
-        public string EventName { get; set; }
-#endif
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmailOpenedPayloadEventName? EventName { get; set; }
         /// <summary>Unix timestamp in seconds.</summary>
         public int? EventTime { get; set; }
         /// <summary>The ID of the workflow if `sourceType` is `loop`.</summary>
@@ -88,7 +82,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "campaignId", n => { CampaignId = n.GetStringValue(); } },
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>(global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetStringValue(); } },
+                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmailOpenedPayloadEventName>(); } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "loopId", n => { LoopId = n.GetStringValue(); } },
                 { "sourceType", n => { SourceType = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookMarketingEmailMetricPayloadSourceType>(); } },
@@ -105,7 +99,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("campaignId", CampaignId);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>("contactIdentity", ContactIdentity);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>("email", Email);
-            writer.WriteStringValue("eventName", EventName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmailOpenedPayloadEventName>("eventName", EventName);
             writer.WriteIntValue("eventTime", EventTime);
             writer.WriteStringValue("loopId", LoopId);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookMarketingEmailMetricPayloadSourceType>("sourceType", SourceType);

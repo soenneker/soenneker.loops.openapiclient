@@ -17,10 +17,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The data variables used by the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>? DataVariables { get; set; }
+        public UntypedNode? DataVariables { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables> DataVariables { get; set; }
+        public UntypedNode DataVariables { get; set; }
 #endif
         /// <summary>The ID of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dataVariables", n => { DataVariables = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "dataVariables", n => { DataVariables = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lastUpdated", n => { LastUpdated = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -84,7 +84,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalEmail_dataVariables>("dataVariables", DataVariables);
+            writer.WriteObjectValue<UntypedNode>("dataVariables", DataVariables);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lastUpdated", LastUpdated);
             writer.WriteStringValue("name", Name);

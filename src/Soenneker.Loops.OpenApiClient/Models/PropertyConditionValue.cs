@@ -8,27 +8,13 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange"/>
+    /// Composed type wrapper for classes <see cref="double"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyConditionValue : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1? PropertyConditionValueBranch1 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1 PropertyConditionValueBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2? PropertyConditionValueBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2 PropertyConditionValueBranch2 { get; set; }
-#endif
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -36,6 +22,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange PropertyConditionValueDateRange { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? String { get; set; }
+#nullable restore
+#else
+        public string String { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,17 +41,17 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValue();
-            if("PropertyConditionValueBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PropertyConditionValueBranch1 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1();
-            }
-            else if("PropertyConditionValueBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.PropertyConditionValueBranch2 = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2();
-            }
-            else if("PropertyConditionValueDateRange".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("PropertyConditionValueDateRange".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.PropertyConditionValueDateRange = new global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange();
+            }
+            else if(parseNode.GetDoubleValue() is double doubleValue)
+            {
+                result.Double = doubleValue;
+            }
+            else if(parseNode.GetStringValue() is string stringValue)
+            {
+                result.String = stringValue;
             }
             return result;
         }
@@ -67,15 +61,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PropertyConditionValueBranch1 != null)
-            {
-                return PropertyConditionValueBranch1.GetFieldDeserializers();
-            }
-            else if(PropertyConditionValueBranch2 != null)
-            {
-                return PropertyConditionValueBranch2.GetFieldDeserializers();
-            }
-            else if(PropertyConditionValueDateRange != null)
+            if(PropertyConditionValueDateRange != null)
             {
                 return PropertyConditionValueDateRange.GetFieldDeserializers();
             }
@@ -88,17 +74,17 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(PropertyConditionValueBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch1>(null, PropertyConditionValueBranch1);
-            }
-            else if(PropertyConditionValueBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueBranch2>(null, PropertyConditionValueBranch2);
-            }
-            else if(PropertyConditionValueDateRange != null)
+            if(PropertyConditionValueDateRange != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.PropertyConditionValueDateRange>(null, PropertyConditionValueDateRange);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }

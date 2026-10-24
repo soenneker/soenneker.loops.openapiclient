@@ -23,13 +23,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity ContactIdentity { get; set; }
 #endif
         /// <summary>The eventName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EventName { get; set; }
-#nullable restore
-#else
-        public string EventName { get; set; }
-#endif
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactUnsubscribedPayloadEventName? EventName { get; set; }
         /// <summary>Unix timestamp in seconds.</summary>
         public int? EventTime { get; set; }
         /// <summary>The webhookSchemaVersion property</summary>
@@ -60,7 +54,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetStringValue(); } },
+                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactUnsubscribedPayloadEventName>(); } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>(); } },
             };
@@ -73,7 +67,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>("contactIdentity", ContactIdentity);
-            writer.WriteStringValue("eventName", EventName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactUnsubscribedPayloadEventName>("eventName", EventName);
             writer.WriteIntValue("eventTime", EventTime);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>("webhookSchemaVersion", WebhookSchemaVersion);
             writer.WriteAdditionalData(AdditionalData);
