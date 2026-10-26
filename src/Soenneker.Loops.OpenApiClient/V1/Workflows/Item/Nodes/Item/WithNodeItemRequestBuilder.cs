@@ -112,7 +112,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update workflow-node-owned fields for a single node. Shared resources such as email messages and audience segments should be updated through their own APIs.
+        /// Update workflow-node-owned fields for a single node. To update a node, the workflow&apos;s `state` must not be `Sending`. Shared resources such as email messages and audience segments should be updated through their own APIs.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -184,7 +184,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update workflow-node-owned fields for a single node. Shared resources such as email messages and audience segments should be updated through their own APIs.
+        /// Update workflow-node-owned fields for a single node. To update a node, the workflow&apos;s `state` must not be `Sending`. Shared resources such as email messages and audience segments should be updated through their own APIs.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

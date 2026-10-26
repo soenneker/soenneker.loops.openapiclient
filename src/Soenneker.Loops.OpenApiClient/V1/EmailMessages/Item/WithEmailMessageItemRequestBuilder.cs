@@ -73,7 +73,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
+        /// Update fields on an email message (subject, preview text, sender, LMX content). A campaign must be in draft status. You can only edit the draft email message of a transactional email. A workflow must not be sending. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -125,7 +125,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
+        /// Update fields on an email message (subject, preview text, sender, LMX content). A campaign must be in draft status. You can only edit the draft email message of a transactional email. A workflow must not be sending. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.6"
+    "version": "1.22.7"
   },
   "servers": [
     {
@@ -1874,14 +1874,14 @@
         "operationId": "updateEmailMessage",
         "tags": ["Email messages"],
         "summary": "Update an email message",
-        "description": "Update fields on an email message (subject, preview text, sender, LMX content). The campaign must be in draft status. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
+        "description": "Update fields on an email message (subject, preview text, sender, LMX content). A campaign must be in draft status. You can only edit the draft email message of a transactional email. A workflow must not be sending. Supply `expectedRevisionId` matching the current `contentRevisionId` — the server rejects mismatched revisions with 409.",
         "x-mint": {
           "href": "/api-reference/update-email-message",
           "metadata": {
             "description": "Update an email message's subject, preview text, sender, or LMX content.",
             "sidebarTitle": "Update an email"
           },
-          "content": "Supply `expectedRevisionId` matching the current `contentRevisionId`.\n\n<Info>The campaign or transactional email that owns this email message must be in `Draft` status.</Info>"
+          "content": "Supply `expectedRevisionId` matching the current `contentRevisionId`.\n\n<Info>A campaign that owns this email message must be in `Draft` status. You can only edit the draft email message of a transactional email. A workflow's status must not be `Sending`.</Info>"
         },
         "requestBody": {
           "required": true,
@@ -1931,7 +1931,7 @@
             "description": "Wrong HTTP request method."
           },
           "409": {
-            "description": "Campaign is not in draft status, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
+            "description": "Campaign is not in draft status, email message is the published email message of a transactional email, workflow is sending, `contentRevisionId` is stale, content cannot be parsed, or email message uses MJML format.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4666,10 +4666,10 @@
         "tags": ["Workflow nodes"],
         "summary": "Update a workflow node",
         "operationId": "updateWorkflowNode",
-        "description": "Update workflow-node-owned fields for a single node. Shared resources such as email messages and audience segments should be updated through their own APIs.",
+        "description": "Update workflow-node-owned fields for a single node. To update a node, the workflow's `state` must not be `Sending`. Shared resources such as email messages and audience segments should be updated through their own APIs.",
         "x-mint": {
           "href": "/api-reference/update-workflow-node",
-          "content": "Shared resources such as email messages and audience segments should be updated through their own APIs.",
+          "content": "Workflows can only be updated when they are not sending.\n\n<Info>Shared resources such as email messages and audience segments should be updated through their own APIs.</Info>",
           "metadata": {
             "sidebarTitle": "Update a node",
             "description": "Update workflow-node-owned fields for a single node."
@@ -4697,7 +4697,7 @@
             }
           },
           "400": {
-            "description": "Invalid `workflowId`, `nodeId`, request body, or node update.",
+            "description": "Invalid `workflowId`, `nodeId`, request body, or node update, or workflow is sending.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4780,7 +4780,7 @@
             }
           },
           "400": {
-            "description": "Invalid `workflowId`, `nodeId`, request body, or delete target.",
+            "description": "Invalid `workflowId`, `nodeId`, request body, or delete target, or workflow is sending.",
             "content": {
               "application/json": {
                 "schema": {
@@ -5049,7 +5049,7 @@
             }
           },
           "400": {
-            "description": "Invalid `workflowId`, `nodeId`, request body, or delete target.",
+            "description": "Invalid `workflowId`, `nodeId`, request body, or delete target, or workflow is sending.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11428,6 +11428,9 @@
         "examples": [
           {
             "message": "Email message not found."
+          },
+          {
+            "message": "Workflow must not be sending. Current status: Sending."
           }
         ]
       },
