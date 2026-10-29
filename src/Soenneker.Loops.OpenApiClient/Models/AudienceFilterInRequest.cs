@@ -21,7 +21,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public List<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterCondition> Conditions { get; set; }
 #endif
-        /// <summary>The match property</summary>
+        /// <summary>`all` matches contacts that meet every condition, `any` matches contacts that meet at least one.</summary>
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequestMatch? Match { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

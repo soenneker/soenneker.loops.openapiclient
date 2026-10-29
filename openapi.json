@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.7"
+    "version": "1.22.8"
   },
   "servers": [
     {
@@ -16,7 +16,7 @@
     },
     {
       "name": "Audience segments",
-      "description": "View audience segments"
+      "description": "View and create audience segments"
     },
     {
       "name": "Campaigns",
@@ -8071,7 +8071,8 @@
           "description": {
             "type": "string",
             "maxLength": 1000,
-            "description": "An optional description of the audience segment."
+            "description": "An optional description of the audience segment.",
+            "examples": ["Contacts on the pro plan"]
           },
           "filter": {
             "type": "object",
@@ -8079,7 +8080,9 @@
             "properties": {
               "match": {
                 "type": "string",
-                "enum": ["all", "any"]
+                "enum": ["all", "any"],
+                "description": "`all` matches contacts that meet every condition, `any` matches contacts that meet at least one.",
+                "examples": ["all"]
               },
               "conditions": {
                 "type": "array",
@@ -8158,7 +8161,12 @@
         "type": ["object", "null"],
         "description": "A tree of audience conditions combined with `match`.",
         "properties": {
-          "match": { "type": "string", "enum": ["all", "any"] },
+          "match": {
+            "type": "string",
+            "enum": ["all", "any"],
+            "description": "`all` matches contacts that meet every condition, `any` matches contacts that meet at least one.",
+            "examples": ["all"]
+          },
           "conditions": {
             "type": "array",
             "minItems": 1,
@@ -8174,7 +8182,9 @@
         "properties": {
           "match": {
             "type": "string",
-            "enum": ["all", "any"]
+            "enum": ["all", "any"],
+            "description": "`all` matches contacts that meet every condition, `any` matches contacts that meet at least one.",
+            "examples": ["all"]
           },
           "conditions": {
             "type": "array",

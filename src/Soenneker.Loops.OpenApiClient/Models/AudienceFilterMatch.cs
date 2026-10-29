@@ -3,10 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
+    /// <summary>`all` matches contacts that meet every condition, `any` matches contacts that meet at least one.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public enum AudienceFilterMatch
-    #pragma warning restore CS1591
     {
         [EnumMember(Value = "all")]
         #pragma warning disable CS1591

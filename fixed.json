@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.7"
+    "version": "1.22.8"
   },
   "servers": [
     {
@@ -7558,6 +7558,9 @@
             "description": "The name of the audience segment. Must be unique within the team."
           },
           "description": {
+            "examples": [
+              "Contacts on the pro plan"
+            ],
             "maxLength": 1000,
             "type": "string",
             "description": "An optional description of the audience segment."
@@ -14574,11 +14577,15 @@
         }
       },
       "AudienceFilterMatch": {
+        "examples": [
+          "all"
+        ],
         "enum": [
           "all",
           "any"
         ],
         "type": "string",
+        "description": "\u0060all\u0060 matches contacts that meet every condition, \u0060any\u0060 matches contacts that meet at least one.",
         "x-ms-enum": {
           "name": "AudienceFilterMatch",
           "modelAsString": false,
@@ -14595,11 +14602,15 @@
         }
       },
       "AudienceFilterInRequestMatch": {
+        "examples": [
+          "all"
+        ],
         "enum": [
           "all",
           "any"
         ],
         "type": "string",
+        "description": "\u0060all\u0060 matches contacts that meet every condition, \u0060any\u0060 matches contacts that meet at least one.",
         "x-ms-enum": {
           "name": "AudienceFilterInRequestMatch",
           "modelAsString": false,
@@ -15840,11 +15851,15 @@
         }
       },
       "CreateAudienceSegmentRequestFilterMatch": {
+        "examples": [
+          "all"
+        ],
         "enum": [
           "all",
           "any"
         ],
         "type": "string",
+        "description": "\u0060all\u0060 matches contacts that meet every condition, \u0060any\u0060 matches contacts that meet at least one.",
         "x-ms-enum": {
           "name": "CreateAudienceSegmentRequestFilterMatch",
           "modelAsString": false,
@@ -15919,7 +15934,7 @@
     },
     {
       "name": "Audience segments",
-      "description": "View audience segments"
+      "description": "View and create audience segments"
     },
     {
       "name": "Campaigns",
