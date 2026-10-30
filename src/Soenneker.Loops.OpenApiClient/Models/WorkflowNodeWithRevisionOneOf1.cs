@@ -18,7 +18,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("workflowRevisionId") is { } nullNodeWorkflowRevisionId && nullNodeWorkflowRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowRevisionId = null;
+            if (parseNode.GetChildNode("workflowRevisionId") is null) { _explicitNullValueWorkflowRevisionId = default!; _explicitNullProperties?.Remove("workflowRevisionId"); }
+            else if (parseNode.GetChildNode("workflowRevisionId") is { } nullNodeWorkflowRevisionId && nullNodeWorkflowRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowRevisionId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation. Will be `null` for workflows without a revision token yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
+        public string? WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; AdditionalData?.Remove("workflowRevisionId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
         private string? _explicitNullValueWorkflowRevisionId = default!;
 #nullable restore
 #else
-        public string WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
+        public string WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; AdditionalData?.Remove("workflowRevisionId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
         private string _explicitNullValueWorkflowRevisionId = default!;
 #endif
         /// <summary>

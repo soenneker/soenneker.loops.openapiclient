@@ -18,36 +18,39 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("maxBytes") is { } nullNodeMaxBytes && nullNodeMaxBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBytes = null;
-            if (parseNode.GetChildNode("message") is { } nullNodeMessageEscaped && nullNodeMessageEscaped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageEscaped = null;
-            if (parseNode.GetChildNode("supportedContentTypes") is { } nullNodeSupportedContentTypes && nullNodeSupportedContentTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedContentTypes = null;
+            if (parseNode.GetChildNode("maxBytes") is null) { _explicitNullValueMaxBytes = default!; _explicitNullProperties?.Remove("maxBytes"); }
+            else if (parseNode.GetChildNode("maxBytes") is { } nullNodeMaxBytes && nullNodeMaxBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBytes = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessageEscaped = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessageEscaped && nullNodeMessageEscaped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageEscaped = null;
+            if (parseNode.GetChildNode("supportedContentTypes") is null) { _explicitNullValueSupportedContentTypes = default!; _explicitNullProperties?.Remove("supportedContentTypes"); }
+            else if (parseNode.GetChildNode("supportedContentTypes") is { } nullNodeSupportedContentTypes && nullNodeSupportedContentTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedContentTypes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Present when the upload exceeds the size limit. The maximum allowed size in bytes.</summary>
-        public int? MaxBytes { get => _explicitNullValueMaxBytes; set { _explicitNullValueMaxBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxBytes"); else _explicitNullProperties?.Remove("maxBytes"); } }
+        public int? MaxBytes { get => _explicitNullValueMaxBytes; set { _explicitNullValueMaxBytes = value; AdditionalData?.Remove("maxBytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxBytes"); else _explicitNullProperties?.Remove("maxBytes"); } }
         private int? _explicitNullValueMaxBytes = default!;
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string? MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string? _explicitNullValueMessageEscaped = default!;
 #nullable restore
 #else
-        public string MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessageEscaped = default!;
 #endif
         /// <summary>Present when the request was rejected for an unsupported `contentType`. Lists the accepted MIME types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
+        public List<string>? SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; AdditionalData?.Remove("supportedContentTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
         private List<string>? _explicitNullValueSupportedContentTypes = default!;
 #nullable restore
 #else
-        public List<string> SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
+        public List<string> SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; AdditionalData?.Remove("supportedContentTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
         private List<string> _explicitNullValueSupportedContentTypes = default!;
 #endif
         /// <summary>

@@ -17,25 +17,29 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
-            if (parseNode.GetChildNode("eventTime") is { } nullNodeEventTime && nullNodeEventTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTime = null;
-            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
-            if (parseNode.GetChildNode("webhookSchemaVersion") is { } nullNodeWebhookSchemaVersion && nullNodeWebhookSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookSchemaVersion = null;
+            if (parseNode.GetChildNode("eventName") is null) { _explicitNullValueEventName = default!; _explicitNullProperties?.Remove("eventName"); }
+            else if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
+            if (parseNode.GetChildNode("eventTime") is null) { _explicitNullValueEventTime = default!; _explicitNullProperties?.Remove("eventTime"); }
+            else if (parseNode.GetChildNode("eventTime") is { } nullNodeEventTime && nullNodeEventTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTime = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("webhookSchemaVersion") is null) { _explicitNullValueWebhookSchemaVersion = default!; _explicitNullProperties?.Remove("webhookSchemaVersion"); }
+            else if (parseNode.GetChildNode("webhookSchemaVersion") is { } nullNodeWebhookSchemaVersion && nullNodeWebhookSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookSchemaVersion = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The eventName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; AdditionalData?.Remove("eventName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName? _explicitNullValueEventName = default!;
         /// <summary>Unix timestamp in seconds.</summary>
-        public int? EventTime { get => _explicitNullValueEventTime; set { _explicitNullValueEventTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventTime"); else _explicitNullProperties?.Remove("eventTime"); } }
+        public int? EventTime { get => _explicitNullValueEventTime; set { _explicitNullValueEventTime = value; AdditionalData?.Remove("eventTime"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventTime"); else _explicitNullProperties?.Remove("eventTime"); } }
         private int? _explicitNullValueEventTime = default!;
         /// <summary>The message property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.TestMessage? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.TestMessage? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.TestMessage? _explicitNullValueMessage = default!;
         /// <summary>The webhookSchemaVersion property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion? WebhookSchemaVersion { get => _explicitNullValueWebhookSchemaVersion; set { _explicitNullValueWebhookSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhookSchemaVersion"); else _explicitNullProperties?.Remove("webhookSchemaVersion"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion? WebhookSchemaVersion { get => _explicitNullValueWebhookSchemaVersion; set { _explicitNullValueWebhookSchemaVersion = value; AdditionalData?.Remove("webhookSchemaVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhookSchemaVersion"); else _explicitNullProperties?.Remove("webhookSchemaVersion"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion? _explicitNullValueWebhookSchemaVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayload"/> and sets the default values.
@@ -62,10 +66,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName>(); } },
+                { "eventName", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEventName = default; _explicitNullProperties?.Remove("eventName"); AdditionalData["eventName"] = unknown; } else { EventName = parsed; AdditionalData.Remove("eventName"); } } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
-                { "message", n => { Message = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestMessage>(); } },
-                { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion>(); } },
+                { "message", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestMessage>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMessage = default; _explicitNullProperties?.Remove("message"); AdditionalData["message"] = unknown; } else { Message = parsed; AdditionalData.Remove("message"); } } },
+                { "webhookSchemaVersion", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookTestingTestEventPayloadWebhookSchemaVersion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWebhookSchemaVersion = default; _explicitNullProperties?.Remove("webhookSchemaVersion"); AdditionalData["webhookSchemaVersion"] = unknown; } else { WebhookSchemaVersion = parsed; AdditionalData.Remove("webhookSchemaVersion"); } } },
             };
         }
         /// <summary>

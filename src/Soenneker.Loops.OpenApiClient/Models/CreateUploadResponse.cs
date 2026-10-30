@@ -17,8 +17,10 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("emailAssetId") is { } nullNodeEmailAssetId && nullNodeEmailAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAssetId = null;
-            if (parseNode.GetChildNode("presignedUrl") is { } nullNodePresignedUrl && nullNodePresignedUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresignedUrl = null;
+            if (parseNode.GetChildNode("emailAssetId") is null) { _explicitNullValueEmailAssetId = default!; _explicitNullProperties?.Remove("emailAssetId"); }
+            else if (parseNode.GetChildNode("emailAssetId") is { } nullNodeEmailAssetId && nullNodeEmailAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAssetId = null;
+            if (parseNode.GetChildNode("presignedUrl") is null) { _explicitNullValuePresignedUrl = default!; _explicitNullProperties?.Remove("presignedUrl"); }
+            else if (parseNode.GetChildNode("presignedUrl") is { } nullNodePresignedUrl && nullNodePresignedUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresignedUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The ID of the created asset. Pass this as `emailAssetId` to `POST /v1/uploads/{emailAssetId}/complete` once the file has been uploaded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
+        public string? EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; AdditionalData?.Remove("emailAssetId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
         private string? _explicitNullValueEmailAssetId = default!;
 #nullable restore
 #else
-        public string EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
+        public string EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; AdditionalData?.Remove("emailAssetId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
         private string _explicitNullValueEmailAssetId = default!;
 #endif
         /// <summary>The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
+        public string? PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; AdditionalData?.Remove("presignedUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
         private string? _explicitNullValuePresignedUrl = default!;
 #nullable restore
 #else
-        public string PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
+        public string PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; AdditionalData?.Remove("presignedUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
         private string _explicitNullValuePresignedUrl = default!;
 #endif
         /// <summary>

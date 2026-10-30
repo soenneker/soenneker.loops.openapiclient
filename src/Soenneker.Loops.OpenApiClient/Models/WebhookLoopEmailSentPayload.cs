@@ -17,14 +17,22 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("contactIdentity") is { } nullNodeContactIdentity && nullNodeContactIdentity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactIdentity = null;
-            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
-            if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
-            if (parseNode.GetChildNode("eventTime") is { } nullNodeEventTime && nullNodeEventTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTime = null;
-            if (parseNode.GetChildNode("loopId") is { } nullNodeLoopId && nullNodeLoopId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoopId = null;
-            if (parseNode.GetChildNode("loopName") is { } nullNodeLoopName && nullNodeLoopName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoopName = null;
-            if (parseNode.GetChildNode("mailingLists") is { } nullNodeMailingLists && nullNodeMailingLists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailingLists = null;
-            if (parseNode.GetChildNode("webhookSchemaVersion") is { } nullNodeWebhookSchemaVersion && nullNodeWebhookSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookSchemaVersion = null;
+            if (parseNode.GetChildNode("contactIdentity") is null) { _explicitNullValueContactIdentity = default!; _explicitNullProperties?.Remove("contactIdentity"); }
+            else if (parseNode.GetChildNode("contactIdentity") is { } nullNodeContactIdentity && nullNodeContactIdentity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactIdentity = null;
+            if (parseNode.GetChildNode("email") is null) { _explicitNullValueEmail = default!; _explicitNullProperties?.Remove("email"); }
+            else if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("eventName") is null) { _explicitNullValueEventName = default!; _explicitNullProperties?.Remove("eventName"); }
+            else if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
+            if (parseNode.GetChildNode("eventTime") is null) { _explicitNullValueEventTime = default!; _explicitNullProperties?.Remove("eventTime"); }
+            else if (parseNode.GetChildNode("eventTime") is { } nullNodeEventTime && nullNodeEventTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTime = null;
+            if (parseNode.GetChildNode("loopId") is null) { _explicitNullValueLoopId = default!; _explicitNullProperties?.Remove("loopId"); }
+            else if (parseNode.GetChildNode("loopId") is { } nullNodeLoopId && nullNodeLoopId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoopId = null;
+            if (parseNode.GetChildNode("loopName") is null) { _explicitNullValueLoopName = default!; _explicitNullProperties?.Remove("loopName"); }
+            else if (parseNode.GetChildNode("loopName") is { } nullNodeLoopName && nullNodeLoopName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LoopName = null;
+            if (parseNode.GetChildNode("mailingLists") is null) { _explicitNullValueMailingLists = default!; _explicitNullProperties?.Remove("mailingLists"); }
+            else if (parseNode.GetChildNode("mailingLists") is { } nullNodeMailingLists && nullNodeMailingLists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailingLists = null;
+            if (parseNode.GetChildNode("webhookSchemaVersion") is null) { _explicitNullValueWebhookSchemaVersion = default!; _explicitNullProperties?.Remove("webhookSchemaVersion"); }
+            else if (parseNode.GetChildNode("webhookSchemaVersion") is { } nullNodeWebhookSchemaVersion && nullNodeWebhookSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookSchemaVersion = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,61 +40,61 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The contactIdentity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; AdditionalData?.Remove("contactIdentity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? _explicitNullValueContactIdentity = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; AdditionalData?.Remove("contactIdentity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity _explicitNullValueContactIdentity = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail _explicitNullValueEmail = default!;
 #endif
         /// <summary>The eventName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayloadEventName? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayloadEventName? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; AdditionalData?.Remove("eventName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayloadEventName? _explicitNullValueEventName = default!;
         /// <summary>Unix timestamp in seconds.</summary>
-        public int? EventTime { get => _explicitNullValueEventTime; set { _explicitNullValueEventTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventTime"); else _explicitNullProperties?.Remove("eventTime"); } }
+        public int? EventTime { get => _explicitNullValueEventTime; set { _explicitNullValueEventTime = value; AdditionalData?.Remove("eventTime"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventTime"); else _explicitNullProperties?.Remove("eventTime"); } }
         private int? _explicitNullValueEventTime = default!;
         /// <summary>The ID of the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LoopId { get => _explicitNullValueLoopId; set { _explicitNullValueLoopId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopId"); else _explicitNullProperties?.Remove("loopId"); } }
+        public string? LoopId { get => _explicitNullValueLoopId; set { _explicitNullValueLoopId = value; AdditionalData?.Remove("loopId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopId"); else _explicitNullProperties?.Remove("loopId"); } }
         private string? _explicitNullValueLoopId = default!;
 #nullable restore
 #else
-        public string LoopId { get => _explicitNullValueLoopId; set { _explicitNullValueLoopId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopId"); else _explicitNullProperties?.Remove("loopId"); } }
+        public string LoopId { get => _explicitNullValueLoopId; set { _explicitNullValueLoopId = value; AdditionalData?.Remove("loopId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopId"); else _explicitNullProperties?.Remove("loopId"); } }
         private string _explicitNullValueLoopId = default!;
 #endif
         /// <summary>The name of the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LoopName { get => _explicitNullValueLoopName; set { _explicitNullValueLoopName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopName"); else _explicitNullProperties?.Remove("loopName"); } }
+        public string? LoopName { get => _explicitNullValueLoopName; set { _explicitNullValueLoopName = value; AdditionalData?.Remove("loopName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopName"); else _explicitNullProperties?.Remove("loopName"); } }
         private string? _explicitNullValueLoopName = default!;
 #nullable restore
 #else
-        public string LoopName { get => _explicitNullValueLoopName; set { _explicitNullValueLoopName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopName"); else _explicitNullProperties?.Remove("loopName"); } }
+        public string LoopName { get => _explicitNullValueLoopName; set { _explicitNullValueLoopName = value; AdditionalData?.Remove("loopName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("loopName"); else _explicitNullProperties?.Remove("loopName"); } }
         private string _explicitNullValueLoopName = default!;
 #endif
         /// <summary>The mailing list(s) the email was sent to, or an empty array.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>? MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>? MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; AdditionalData?.Remove("mailingLists"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>? _explicitNullValueMailingLists = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList> MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList> MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; AdditionalData?.Remove("mailingLists"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList> _explicitNullValueMailingLists = default!;
 #endif
         /// <summary>The webhookSchemaVersion property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? WebhookSchemaVersion { get => _explicitNullValueWebhookSchemaVersion; set { _explicitNullValueWebhookSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhookSchemaVersion"); else _explicitNullProperties?.Remove("webhookSchemaVersion"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? WebhookSchemaVersion { get => _explicitNullValueWebhookSchemaVersion; set { _explicitNullValueWebhookSchemaVersion = value; AdditionalData?.Remove("webhookSchemaVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhookSchemaVersion"); else _explicitNullProperties?.Remove("webhookSchemaVersion"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? _explicitNullValueWebhookSchemaVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayload"/> and sets the default values.
@@ -115,12 +123,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
             {
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>(global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail.CreateFromDiscriminatorValue); } },
-                { "eventName", n => { EventName = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayloadEventName>(); } },
+                { "eventName", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookLoopEmailSentPayloadEventName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEventName = default; _explicitNullProperties?.Remove("eventName"); AdditionalData["eventName"] = unknown; } else { EventName = parsed; AdditionalData.Remove("eventName"); } } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },
                 { "loopId", n => { LoopId = n.GetStringValue(); } },
                 { "loopName", n => { LoopName = n.GetStringValue(); } },
                 { "mailingLists", n => { MailingLists = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList>(global::Soenneker.Loops.OpenApiClient.Models.WebhookMailingList.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "webhookSchemaVersion", n => { WebhookSchemaVersion = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>(); } },
+                { "webhookSchemaVersion", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueWebhookSchemaVersion = default; _explicitNullProperties?.Remove("webhookSchemaVersion"); AdditionalData["webhookSchemaVersion"] = unknown; } else { WebhookSchemaVersion = parsed; AdditionalData.Remove("webhookSchemaVersion"); } } },
             };
         }
         /// <summary>

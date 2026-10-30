@@ -17,10 +17,14 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
-            if (parseNode.GetChildNode("eventProperties") is { } nullNodeEventProperties && nullNodeEventProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventProperties = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("incomingWebhookPlatform") is { } nullNodeIncomingWebhookPlatform && nullNodeIncomingWebhookPlatform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncomingWebhookPlatform = null;
+            if (parseNode.GetChildNode("eventName") is null) { _explicitNullValueEventName = default!; _explicitNullProperties?.Remove("eventName"); }
+            else if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
+            if (parseNode.GetChildNode("eventProperties") is null) { _explicitNullValueEventProperties = default!; _explicitNullProperties?.Remove("eventProperties"); }
+            else if (parseNode.GetChildNode("eventProperties") is { } nullNodeEventProperties && nullNodeEventProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventProperties = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("incomingWebhookPlatform") is null) { _explicitNullValueIncomingWebhookPlatform = default!; _explicitNullProperties?.Remove("incomingWebhookPlatform"); }
+            else if (parseNode.GetChildNode("incomingWebhookPlatform") is { } nullNodeIncomingWebhookPlatform && nullNodeIncomingWebhookPlatform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncomingWebhookPlatform = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,35 +32,35 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>The name of the event pattern. Use this when sending events with the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        public string? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; AdditionalData?.Remove("eventName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
         private string? _explicitNullValueEventName = default!;
 #nullable restore
 #else
-        public string EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        public string EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; AdditionalData?.Remove("eventName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
         private string _explicitNullValueEventName = default!;
 #endif
         /// <summary>The properties of the event pattern, which can be used in emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>? EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>? EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; AdditionalData?.Remove("eventProperties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>? _explicitNullValueEventProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; AdditionalData?.Remove("eventProperties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> _explicitNullValueEventProperties = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The platform that sent this event pattern, if the event pattern is from an incoming webhook. Will be `null` for custom events.</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.EventPatternIncomingWebhookPlatform? IncomingWebhookPlatform { get => _explicitNullValueIncomingWebhookPlatform; set { _explicitNullValueIncomingWebhookPlatform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incomingWebhookPlatform"); else _explicitNullProperties?.Remove("incomingWebhookPlatform"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventPatternIncomingWebhookPlatform? IncomingWebhookPlatform { get => _explicitNullValueIncomingWebhookPlatform; set { _explicitNullValueIncomingWebhookPlatform = value; AdditionalData?.Remove("incomingWebhookPlatform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incomingWebhookPlatform"); else _explicitNullProperties?.Remove("incomingWebhookPlatform"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.EventPatternIncomingWebhookPlatform? _explicitNullValueIncomingWebhookPlatform = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventPattern"/> and sets the default values.
@@ -86,7 +90,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "eventName", n => { EventName = n.GetStringValue(); } },
                 { "eventProperties", n => { EventProperties = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "incomingWebhookPlatform", n => { IncomingWebhookPlatform = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventPatternIncomingWebhookPlatform>(); } },
+                { "incomingWebhookPlatform", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EventPatternIncomingWebhookPlatform>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueIncomingWebhookPlatform = default; _explicitNullProperties?.Remove("incomingWebhookPlatform"); AdditionalData["incomingWebhookPlatform"] = unknown; } else { IncomingWebhookPlatform = parsed; AdditionalData.Remove("incomingWebhookPlatform"); } } },
             };
         }
         /// <summary>

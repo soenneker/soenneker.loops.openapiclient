@@ -18,29 +18,34 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deliveries") is { } nullNodeDeliveries && nullNodeDeliveries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deliveries = null;
-            if (parseNode.GetChildNode("hardBounces") is { } nullNodeHardBounces && nullNodeHardBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardBounces = null;
-            if (parseNode.GetChildNode("sends") is { } nullNodeSends && nullNodeSends.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sends = null;
-            if (parseNode.GetChildNode("softBounces") is { } nullNodeSoftBounces && nullNodeSoftBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftBounces = null;
-            if (parseNode.GetChildNode("spamReports") is { } nullNodeSpamReports && nullNodeSpamReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpamReports = null;
+            if (parseNode.GetChildNode("deliveries") is null) { _explicitNullValueDeliveries = default!; _explicitNullProperties?.Remove("deliveries"); }
+            else if (parseNode.GetChildNode("deliveries") is { } nullNodeDeliveries && nullNodeDeliveries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deliveries = null;
+            if (parseNode.GetChildNode("hardBounces") is null) { _explicitNullValueHardBounces = default!; _explicitNullProperties?.Remove("hardBounces"); }
+            else if (parseNode.GetChildNode("hardBounces") is { } nullNodeHardBounces && nullNodeHardBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardBounces = null;
+            if (parseNode.GetChildNode("sends") is null) { _explicitNullValueSends = default!; _explicitNullProperties?.Remove("sends"); }
+            else if (parseNode.GetChildNode("sends") is { } nullNodeSends && nullNodeSends.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sends = null;
+            if (parseNode.GetChildNode("softBounces") is null) { _explicitNullValueSoftBounces = default!; _explicitNullProperties?.Remove("softBounces"); }
+            else if (parseNode.GetChildNode("softBounces") is { } nullNodeSoftBounces && nullNodeSoftBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftBounces = null;
+            if (parseNode.GetChildNode("spamReports") is null) { _explicitNullValueSpamReports = default!; _explicitNullProperties?.Remove("spamReports"); }
+            else if (parseNode.GetChildNode("spamReports") is { } nullNodeSpamReports && nullNodeSpamReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpamReports = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of sends delivered.</summary>
-        public int? Deliveries { get => _explicitNullValueDeliveries; set { _explicitNullValueDeliveries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deliveries"); else _explicitNullProperties?.Remove("deliveries"); } }
+        public int? Deliveries { get => _explicitNullValueDeliveries; set { _explicitNullValueDeliveries = value; AdditionalData?.Remove("deliveries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deliveries"); else _explicitNullProperties?.Remove("deliveries"); } }
         private int? _explicitNullValueDeliveries = default!;
         /// <summary>Number of sends that hard bounced.</summary>
-        public int? HardBounces { get => _explicitNullValueHardBounces; set { _explicitNullValueHardBounces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hardBounces"); else _explicitNullProperties?.Remove("hardBounces"); } }
+        public int? HardBounces { get => _explicitNullValueHardBounces; set { _explicitNullValueHardBounces = value; AdditionalData?.Remove("hardBounces"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hardBounces"); else _explicitNullProperties?.Remove("hardBounces"); } }
         private int? _explicitNullValueHardBounces = default!;
         /// <summary>Number of sends.</summary>
-        public int? Sends { get => _explicitNullValueSends; set { _explicitNullValueSends = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sends"); else _explicitNullProperties?.Remove("sends"); } }
+        public int? Sends { get => _explicitNullValueSends; set { _explicitNullValueSends = value; AdditionalData?.Remove("sends"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sends"); else _explicitNullProperties?.Remove("sends"); } }
         private int? _explicitNullValueSends = default!;
         /// <summary>Number of sends that soft bounced.</summary>
-        public int? SoftBounces { get => _explicitNullValueSoftBounces; set { _explicitNullValueSoftBounces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("softBounces"); else _explicitNullProperties?.Remove("softBounces"); } }
+        public int? SoftBounces { get => _explicitNullValueSoftBounces; set { _explicitNullValueSoftBounces = value; AdditionalData?.Remove("softBounces"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("softBounces"); else _explicitNullProperties?.Remove("softBounces"); } }
         private int? _explicitNullValueSoftBounces = default!;
         /// <summary>Number of sends reported as spam.</summary>
-        public int? SpamReports { get => _explicitNullValueSpamReports; set { _explicitNullValueSpamReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spamReports"); else _explicitNullProperties?.Remove("spamReports"); } }
+        public int? SpamReports { get => _explicitNullValueSpamReports; set { _explicitNullValueSpamReports = value; AdditionalData?.Remove("spamReports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spamReports"); else _explicitNullProperties?.Remove("spamReports"); } }
         private int? _explicitNullValueSpamReports = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalMetricsResponse"/> and sets the default values.

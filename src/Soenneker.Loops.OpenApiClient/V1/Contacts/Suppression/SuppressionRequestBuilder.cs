@@ -101,7 +101,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Suppression
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Contacts.Suppression.SuppressionRequestBuilder.SuppressionRequestBuilderDeleteQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://app.loops.so/api", "/v1/contacts/suppression", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -120,7 +120,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Suppression
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Loops.OpenApiClient.V1.Contacts.Suppression.SuppressionRequestBuilder.SuppressionRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://app.loops.so/api", "/v1/contacts/suppression", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

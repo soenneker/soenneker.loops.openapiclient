@@ -17,56 +17,61 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("addToAudience") is { } nullNodeAddToAudience && nullNodeAddToAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddToAudience = null;
-            if (parseNode.GetChildNode("attachments") is { } nullNodeAttachments && nullNodeAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attachments = null;
-            if (parseNode.GetChildNode("dataVariables") is { } nullNodeDataVariables && nullNodeDataVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataVariables = null;
-            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
-            if (parseNode.GetChildNode("transactionalId") is { } nullNodeTransactionalId && nullNodeTransactionalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransactionalId = null;
+            if (parseNode.GetChildNode("addToAudience") is null) { _explicitNullValueAddToAudience = default!; _explicitNullProperties?.Remove("addToAudience"); }
+            else if (parseNode.GetChildNode("addToAudience") is { } nullNodeAddToAudience && nullNodeAddToAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddToAudience = null;
+            if (parseNode.GetChildNode("attachments") is null) { _explicitNullValueAttachments = default!; _explicitNullProperties?.Remove("attachments"); }
+            else if (parseNode.GetChildNode("attachments") is { } nullNodeAttachments && nullNodeAttachments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attachments = null;
+            if (parseNode.GetChildNode("dataVariables") is null) { _explicitNullValueDataVariables = default!; _explicitNullProperties?.Remove("dataVariables"); }
+            else if (parseNode.GetChildNode("dataVariables") is { } nullNodeDataVariables && nullNodeDataVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataVariables = null;
+            if (parseNode.GetChildNode("email") is null) { _explicitNullValueEmail = default!; _explicitNullProperties?.Remove("email"); }
+            else if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("transactionalId") is null) { _explicitNullValueTransactionalId = default!; _explicitNullProperties?.Remove("transactionalId"); }
+            else if (parseNode.GetChildNode("transactionalId") is { } nullNodeTransactionalId && nullNodeTransactionalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransactionalId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If `true`, a contact will be created in your audience using the `email` value (if a matching contact doesn&apos;t already exist).</summary>
-        public bool? AddToAudience { get => _explicitNullValueAddToAudience; set { _explicitNullValueAddToAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addToAudience"); else _explicitNullProperties?.Remove("addToAudience"); } }
+        public bool? AddToAudience { get => _explicitNullValueAddToAudience; set { _explicitNullValueAddToAudience = value; AdditionalData?.Remove("addToAudience"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addToAudience"); else _explicitNullProperties?.Remove("addToAudience"); } }
         private bool? _explicitNullValueAddToAudience = default!;
         /// <summary>A list containing file objects to be sent along with an email message. Attachments must be enabled by Loops support before they can be used with the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>? Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>? _explicitNullValueAttachments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
+        public List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem> Attachments { get => _explicitNullValueAttachments; set { _explicitNullValueAttachments = value; AdditionalData?.Remove("attachments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attachments"); else _explicitNullProperties?.Remove("attachments"); } }
         private List<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem> _explicitNullValueAttachments = default!;
 #endif
         /// <summary>An object containing data as defined by the data variables added to the transactional email template. Values can be of type string or number.If you have added optional data variables to your email, you can exclude them from the dataVariables object or set the value to &quot;&quot;.If you have added an array data variable to your email, make sure to include an array matching the data variables you added to your array block.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty? DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty? DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; AdditionalData?.Remove("dataVariables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty? _explicitNullValueDataVariables = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        public global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; AdditionalData?.Remove("dataVariables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestDataVariablesProperty _explicitNullValueDataVariables = default!;
 #endif
         /// <summary>The recipient&apos;s email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
         private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>The ID of the transactional email to send.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
+        public string? TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; AdditionalData?.Remove("transactionalId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
         private string? _explicitNullValueTransactionalId = default!;
 #nullable restore
 #else
-        public string TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
+        public string TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; AdditionalData?.Remove("transactionalId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
         private string _explicitNullValueTransactionalId = default!;
 #endif
         /// <summary>

@@ -18,7 +18,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("isControl") is { } nullNodeIsControl && nullNodeIsControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsControl = null;
+            if (parseNode.GetChildNode("isControl") is null) { _explicitNullValueIsControl = default!; _explicitNullProperties?.Remove("isControl"); }
+            else if (parseNode.GetChildNode("isControl") is { } nullNodeIsControl && nullNodeIsControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsControl = null;
         }
 
         /// <summary>Use `true` to set this variant as the control of the experiment. This will set `false` on the existing control, if one exists. Experiments do not require a control variant.</summary>

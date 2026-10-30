@@ -2694,7 +2694,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SendTransactionalEmail400Response"
+                  "$ref": "#/components/schemas/SendTransactionalEmail400ResponseError"
                 }
               }
             }
@@ -5522,7 +5522,7 @@
           }
         ],
         "additionalProperties": {
-          "$ref": "#/components/schemas/ContactUpdateRequestAdditionalProperties"
+          "$ref": "#/components/schemas/ContactFieldsAdditionalProperties"
         }
       },
       "ContactSuccessResponse": {
@@ -5856,7 +5856,7 @@
           }
         },
         "additionalProperties": {
-          "$ref": "#/components/schemas/EventRequestAdditionalProperties"
+          "$ref": "#/components/schemas/ContactFieldsAdditionalProperties"
         }
       },
       "EventSuccessResponse": {
@@ -10534,7 +10534,7 @@
             "description": "The IDs of the nodes that are downstream of this node."
           },
           "contactPropertyQuery": {
-            "$ref": "#/components/schemas/SimplifiedContactPropertyTriggerWorkflowNodeContactPropertyQuery"
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
           },
           "reEligible": {
             "type": "boolean",
@@ -11018,7 +11018,7 @@
             "description": "The IDs of the nodes that are downstream of this node."
           },
           "contactPropertyQuery": {
-            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNodeContactPropertyQuery"
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
           },
           "reEligible": {
             "type": "boolean",
@@ -11457,7 +11457,7 @@
         "type": "object",
         "properties": {
           "value": {
-            "$ref": "#/components/schemas/WorkflowContactPropertyComparisonValue"
+            "$ref": "#/components/schemas/ContactFieldsAdditionalProperties"
           },
           "operator": {
             "$ref": "#/components/schemas/WorkflowContactPropertyComparisonOperator"
@@ -14114,11 +14114,11 @@
         }
       },
       "WebhookContactUnsubscribedPayloadEventName": {
-        "const": null,
         "enum": [
           "contact.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.unsubscribed",
         "x-ms-enum": {
           "name": "WebhookContactUnsubscribedPayloadEventName",
           "modelAsString": false,
@@ -14131,11 +14131,11 @@
         }
       },
       "WebhookContactCreatedPayloadEventName": {
-        "const": null,
         "enum": [
           "contact.created"
         ],
         "type": "string",
+        "x-client-original-const": "contact.created",
         "x-ms-enum": {
           "name": "WebhookContactCreatedPayloadEventName",
           "modelAsString": false,
@@ -14148,11 +14148,11 @@
         }
       },
       "WebhookContactDeletedPayloadEventName": {
-        "const": null,
         "enum": [
           "contact.deleted"
         ],
         "type": "string",
+        "x-client-original-const": "contact.deleted",
         "x-ms-enum": {
           "name": "WebhookContactDeletedPayloadEventName",
           "modelAsString": false,
@@ -14165,11 +14165,11 @@
         }
       },
       "WebhookContactMailingListSubscribedPayloadEventName": {
-        "const": null,
         "enum": [
           "contact.mailingList.subscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.mailingList.subscribed",
         "x-ms-enum": {
           "name": "WebhookContactMailingListSubscribedPayloadEventName",
           "modelAsString": false,
@@ -14182,11 +14182,11 @@
         }
       },
       "WebhookContactMailingListUnsubscribedPayloadEventName": {
-        "const": null,
         "enum": [
           "contact.mailingList.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.mailingList.unsubscribed",
         "x-ms-enum": {
           "name": "WebhookContactMailingListUnsubscribedPayloadEventName",
           "modelAsString": false,
@@ -14199,11 +14199,11 @@
         }
       },
       "WebhookTransactionalEmailSentPayloadEventName": {
-        "const": null,
         "enum": [
           "transactional.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "transactional.email.sent",
         "x-ms-enum": {
           "name": "WebhookTransactionalEmailSentPayloadEventName",
           "modelAsString": false,
@@ -14216,11 +14216,11 @@
         }
       },
       "WebhookCampaignEmailSentPayloadEventName": {
-        "const": null,
         "enum": [
           "campaign.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "campaign.email.sent",
         "x-ms-enum": {
           "name": "WebhookCampaignEmailSentPayloadEventName",
           "modelAsString": false,
@@ -14233,11 +14233,11 @@
         }
       },
       "WebhookLoopEmailSentPayloadEventName": {
-        "const": null,
         "enum": [
           "loop.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "loop.email.sent",
         "x-ms-enum": {
           "name": "WebhookLoopEmailSentPayloadEventName",
           "modelAsString": false,
@@ -14250,11 +14250,11 @@
         }
       },
       "WebhookEmailDeliveredPayloadEventName": {
-        "const": null,
         "enum": [
           "email.delivered"
         ],
         "type": "string",
+        "x-client-original-const": "email.delivered",
         "x-ms-enum": {
           "name": "WebhookEmailDeliveredPayloadEventName",
           "modelAsString": false,
@@ -14267,11 +14267,11 @@
         }
       },
       "WebhookEmailSoftBouncedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.softBounced"
         ],
         "type": "string",
+        "x-client-original-const": "email.softBounced",
         "x-ms-enum": {
           "name": "WebhookEmailSoftBouncedPayloadEventName",
           "modelAsString": false,
@@ -14284,11 +14284,11 @@
         }
       },
       "WebhookEmailHardBouncedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.hardBounced"
         ],
         "type": "string",
+        "x-client-original-const": "email.hardBounced",
         "x-ms-enum": {
           "name": "WebhookEmailHardBouncedPayloadEventName",
           "modelAsString": false,
@@ -14301,11 +14301,11 @@
         }
       },
       "WebhookEmailClickedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.clicked"
         ],
         "type": "string",
+        "x-client-original-const": "email.clicked",
         "x-ms-enum": {
           "name": "WebhookEmailClickedPayloadEventName",
           "modelAsString": false,
@@ -14318,11 +14318,11 @@
         }
       },
       "WebhookEmailUnsubscribedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "email.unsubscribed",
         "x-ms-enum": {
           "name": "WebhookEmailUnsubscribedPayloadEventName",
           "modelAsString": false,
@@ -14335,11 +14335,11 @@
         }
       },
       "WebhookEmailResubscribedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.resubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "email.resubscribed",
         "x-ms-enum": {
           "name": "WebhookEmailResubscribedPayloadEventName",
           "modelAsString": false,
@@ -14352,11 +14352,11 @@
         }
       },
       "WebhookEmailOpenedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.opened"
         ],
         "type": "string",
+        "x-client-original-const": "email.opened",
         "x-ms-enum": {
           "name": "WebhookEmailOpenedPayloadEventName",
           "modelAsString": false,
@@ -14369,11 +14369,11 @@
         }
       },
       "WebhookEmailSpamReportedPayloadEventName": {
-        "const": null,
         "enum": [
           "email.spamReported"
         ],
         "type": "string",
+        "x-client-original-const": "email.spamReported",
         "x-ms-enum": {
           "name": "WebhookEmailSpamReportedPayloadEventName",
           "modelAsString": false,
@@ -15536,11 +15536,11 @@
         }
       },
       "Value100WebhookSchemaVersion": {
-        "const": null,
         "enum": [
           "1.0.0"
         ],
         "type": "string",
+        "x-client-original-const": "1.0.0",
         "x-ms-enum": {
           "name": "Value100WebhookSchemaVersion",
           "modelAsString": false,
@@ -15633,11 +15633,11 @@
         }
       },
       "TestingTestEventEventName": {
-        "const": null,
         "enum": [
           "testing.testEvent"
         ],
         "type": "string",
+        "x-client-original-const": "testing.testEvent",
         "x-ms-enum": {
           "name": "TestingTestEventEventName",
           "modelAsString": false,
@@ -15650,11 +15650,11 @@
         }
       },
       "TestMessage": {
-        "const": null,
         "enum": [
           "test"
         ],
         "type": "string",
+        "x-client-original-const": "test",
         "x-ms-enum": {
           "name": "TestMessage",
           "modelAsString": false,
@@ -15667,11 +15667,11 @@
         }
       },
       "WebhookTestingTestEventPayloadWebhookSchemaVersion": {
-        "const": null,
         "enum": [
           "1.0.0"
         ],
         "type": "string",
+        "x-client-original-const": "1.0.0",
         "x-ms-enum": {
           "name": "WebhookTestingTestEventPayloadWebhookSchemaVersion",
           "modelAsString": false,
@@ -15684,11 +15684,11 @@
         }
       },
       "ContactUnsubscribedEventName": {
-        "const": null,
         "enum": [
           "contact.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.unsubscribed",
         "x-ms-enum": {
           "name": "ContactUnsubscribedEventName",
           "modelAsString": false,
@@ -15701,11 +15701,11 @@
         }
       },
       "ContactCreatedEventName": {
-        "const": null,
         "enum": [
           "contact.created"
         ],
         "type": "string",
+        "x-client-original-const": "contact.created",
         "x-ms-enum": {
           "name": "ContactCreatedEventName",
           "modelAsString": false,
@@ -15718,11 +15718,11 @@
         }
       },
       "ContactDeletedEventName": {
-        "const": null,
         "enum": [
           "contact.deleted"
         ],
         "type": "string",
+        "x-client-original-const": "contact.deleted",
         "x-ms-enum": {
           "name": "ContactDeletedEventName",
           "modelAsString": false,
@@ -15735,11 +15735,11 @@
         }
       },
       "ContactMailingListSubscribedEventName": {
-        "const": null,
         "enum": [
           "contact.mailingList.subscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.mailingList.subscribed",
         "x-ms-enum": {
           "name": "ContactMailingListSubscribedEventName",
           "modelAsString": false,
@@ -15752,11 +15752,11 @@
         }
       },
       "ContactMailingListUnsubscribedEventName": {
-        "const": null,
         "enum": [
           "contact.mailingList.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "contact.mailingList.unsubscribed",
         "x-ms-enum": {
           "name": "ContactMailingListUnsubscribedEventName",
           "modelAsString": false,
@@ -15769,11 +15769,11 @@
         }
       },
       "TransactionalEmailSentEventName": {
-        "const": null,
         "enum": [
           "transactional.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "transactional.email.sent",
         "x-ms-enum": {
           "name": "TransactionalEmailSentEventName",
           "modelAsString": false,
@@ -15786,11 +15786,11 @@
         }
       },
       "CampaignEmailSentEventName": {
-        "const": null,
         "enum": [
           "campaign.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "campaign.email.sent",
         "x-ms-enum": {
           "name": "CampaignEmailSentEventName",
           "modelAsString": false,
@@ -15803,11 +15803,11 @@
         }
       },
       "LoopEmailSentEventName": {
-        "const": null,
         "enum": [
           "loop.email.sent"
         ],
         "type": "string",
+        "x-client-original-const": "loop.email.sent",
         "x-ms-enum": {
           "name": "LoopEmailSentEventName",
           "modelAsString": false,
@@ -15820,11 +15820,11 @@
         }
       },
       "EmailDeliveredEventName": {
-        "const": null,
         "enum": [
           "email.delivered"
         ],
         "type": "string",
+        "x-client-original-const": "email.delivered",
         "x-ms-enum": {
           "name": "EmailDeliveredEventName",
           "modelAsString": false,
@@ -15837,11 +15837,11 @@
         }
       },
       "EmailSoftBouncedEventName": {
-        "const": null,
         "enum": [
           "email.softBounced"
         ],
         "type": "string",
+        "x-client-original-const": "email.softBounced",
         "x-ms-enum": {
           "name": "EmailSoftBouncedEventName",
           "modelAsString": false,
@@ -15854,11 +15854,11 @@
         }
       },
       "EmailHardBouncedEventName": {
-        "const": null,
         "enum": [
           "email.hardBounced"
         ],
         "type": "string",
+        "x-client-original-const": "email.hardBounced",
         "x-ms-enum": {
           "name": "EmailHardBouncedEventName",
           "modelAsString": false,
@@ -15871,11 +15871,11 @@
         }
       },
       "EmailClickedEventName": {
-        "const": null,
         "enum": [
           "email.clicked"
         ],
         "type": "string",
+        "x-client-original-const": "email.clicked",
         "x-ms-enum": {
           "name": "EmailClickedEventName",
           "modelAsString": false,
@@ -15888,11 +15888,11 @@
         }
       },
       "EmailUnsubscribedEventName": {
-        "const": null,
         "enum": [
           "email.unsubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "email.unsubscribed",
         "x-ms-enum": {
           "name": "EmailUnsubscribedEventName",
           "modelAsString": false,
@@ -15905,11 +15905,11 @@
         }
       },
       "EmailResubscribedEventName": {
-        "const": null,
         "enum": [
           "email.resubscribed"
         ],
         "type": "string",
+        "x-client-original-const": "email.resubscribed",
         "x-ms-enum": {
           "name": "EmailResubscribedEventName",
           "modelAsString": false,
@@ -15922,11 +15922,11 @@
         }
       },
       "EmailOpenedEventName": {
-        "const": null,
         "enum": [
           "email.opened"
         ],
         "type": "string",
+        "x-client-original-const": "email.opened",
         "x-ms-enum": {
           "name": "EmailOpenedEventName",
           "modelAsString": false,
@@ -15939,11 +15939,11 @@
         }
       },
       "EmailSpamReportedEventName": {
-        "const": null,
         "enum": [
           "email.spamReported"
         ],
         "type": "string",
+        "x-client-original-const": "email.spamReported",
         "x-ms-enum": {
           "name": "EmailSpamReportedEventName",
           "modelAsString": false,
@@ -17624,6 +17624,58 @@
         "required": [
           "workflowRevisionId"
         ]
+      },
+      "SendTransactionalEmail400ResponseError": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "examples": [
+              false
+            ],
+            "type": "boolean"
+          },
+          "message": {
+            "examples": [
+              "Missing required data variable(s): confirmationUrl"
+            ],
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "error": {
+            "x-client-untyped-value": true,
+            "x-client-original-field-schemas": [
+              {
+                "x-client-untyped-value": true,
+                "x-client-original-field-schemas": [
+                  {
+                    "$ref": "#/components/schemas/TransactionalFailure3ResponseError"
+                  },
+                  {
+                    "$ref": "#/components/schemas/TransactionalFailure4ResponseError"
+                  }
+                ]
+              },
+              {
+                "$ref": "#/components/schemas/TransactionalFailure5ResponseError"
+              }
+            ]
+          },
+          "transactionalId": {
+            "examples": [
+              "cll42l54f20i1la0lfooe3z12"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "success"
+        ],
+        "x-client-original-error-schema": {
+          "$ref": "#/components/schemas/SendTransactionalEmail400Response"
+        }
       }
     },
     "parameters": {
