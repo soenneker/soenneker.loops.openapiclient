@@ -55,6 +55,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Campaigns.Item.Metrics
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.CampaignFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMetricsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMetricsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

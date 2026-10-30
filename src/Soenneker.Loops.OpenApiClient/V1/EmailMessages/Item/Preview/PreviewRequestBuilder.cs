@@ -59,6 +59,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

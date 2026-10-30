@@ -12,11 +12,22 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowTimerActionPayload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("amount") is { } nullNodeAmount && nullNodeAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Amount = null;
+            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+        }
+
         /// <summary>The amount of time to wait before triggering the next node. Set to `0` to move to the next node immediately.</summary>
-        public double? Amount { get; set; }
+        public double? Amount { get => _explicitNullValueAmount; set { _explicitNullValueAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amount"); else _explicitNullProperties?.Remove("amount"); } }
+        private double? _explicitNullValueAmount = default!;
         /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? _explicitNullValueUnit = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -25,7 +36,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerActionPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerActionPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerActionPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +58,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("amount", Amount);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

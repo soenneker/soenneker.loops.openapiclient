@@ -11,29 +11,46 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VariantWorkflowMutationNode : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("isControl") is { } nullNodeIsControl && nullNodeIsControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsControl = null;
+            if (parseNode.GetChildNode("nextNodeIds") is { } nullNodeNextNodeIds && nullNodeNextNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextNodeIds = null;
+            if (parseNode.GetChildNode("typeName") is { } nullNodeTypeName && nullNodeTypeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TypeName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Whether this is the control variant of an experiment.</summary>
-        public bool? IsControl { get; set; }
+        public bool? IsControl { get => _explicitNullValueIsControl; set { _explicitNullValueIsControl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isControl"); else _explicitNullProperties?.Remove("isControl"); } }
+        private bool? _explicitNullValueIsControl = default!;
         /// <summary>The IDs of the nodes that are downstream of this node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NextNodeIds { get; set; }
+        public List<string>? NextNodeIds { get => _explicitNullValueNextNodeIds; set { _explicitNullValueNextNodeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextNodeIds"); else _explicitNullProperties?.Remove("nextNodeIds"); } }
+        private List<string>? _explicitNullValueNextNodeIds = default!;
 #nullable restore
 #else
-        public List<string> NextNodeIds { get; set; }
+        public List<string> NextNodeIds { get => _explicitNullValueNextNodeIds; set { _explicitNullValueNextNodeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextNodeIds"); else _explicitNullProperties?.Remove("nextNodeIds"); } }
+        private List<string> _explicitNullValueNextNodeIds = default!;
 #endif
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName? TypeName { get => _explicitNullValueTypeName; set { _explicitNullValueTypeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typeName"); else _explicitNullProperties?.Remove("typeName"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName? _explicitNullValueTypeName = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNode"/> and sets the default values.
         /// </summary>
@@ -49,7 +66,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNode CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNode();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNode(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteBoolValue("isControl", IsControl);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.VariantNodeTypeName>("typeName", TypeName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,22 +12,35 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RerouteNodeConnectionRequest : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+            if (parseNode.GetChildNode("newTargetNodeId") is { } nullNodeNewTargetNodeId && nullNodeNewTargetNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewTargetNodeId = null;
+        }
+
         /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedRevisionId { get; set; }
+        public string? ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string? _explicitNullValueExpectedRevisionId = default!;
 #nullable restore
 #else
-        public string ExpectedRevisionId { get; set; }
+        public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string _explicitNullValueExpectedRevisionId = default!;
 #endif
         /// <summary>The valid workflow node that should receive the connection from the source node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewTargetNodeId { get; set; }
+        public string? NewTargetNodeId { get => _explicitNullValueNewTargetNodeId; set { _explicitNullValueNewTargetNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newTargetNodeId"); else _explicitNullProperties?.Remove("newTargetNodeId"); } }
+        private string? _explicitNullValueNewTargetNodeId = default!;
 #nullable restore
 #else
-        public string NewTargetNodeId { get; set; }
+        public string NewTargetNodeId { get => _explicitNullValueNewTargetNodeId; set { _explicitNullValueNewTargetNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newTargetNodeId"); else _explicitNullProperties?.Remove("newTargetNodeId"); } }
+        private string _explicitNullValueNewTargetNodeId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -37,7 +50,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,7 +72,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
-            writer.WriteStringValue("newTargetNodeId", NewTargetNodeId);
+            writer.WriteStringValue("newTargetNodeId", NewTargetNodeId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -57,6 +57,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Uploads.Item.Complete
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.Loops.OpenApiClient.Models.UploadLimitExceededFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.CompleteUploadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

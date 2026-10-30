@@ -11,36 +11,56 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowDeletedResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("nodeIds") is { } nullNodeNodeIds && nullNodeNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeIds = null;
+            if (parseNode.GetChildNode("queuedContactCount") is { } nullNodeQueuedContactCount && nullNodeQueuedContactCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueuedContactCount = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("workflow") is { } nullNodeWorkflow && nullNodeWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workflow = null;
+            if (parseNode.GetChildNode("workflowRevisionId") is { } nullNodeWorkflowRevisionId && nullNodeWorkflowRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowRevisionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The nodeIds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NodeIds { get; set; }
+        public List<string>? NodeIds { get => _explicitNullValueNodeIds; set { _explicitNullValueNodeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeIds"); else _explicitNullProperties?.Remove("nodeIds"); } }
+        private List<string>? _explicitNullValueNodeIds = default!;
 #nullable restore
 #else
-        public List<string> NodeIds { get; set; }
+        public List<string> NodeIds { get => _explicitNullValueNodeIds; set { _explicitNullValueNodeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeIds"); else _explicitNullProperties?.Remove("nodeIds"); } }
+        private List<string> _explicitNullValueNodeIds = default!;
 #endif
         /// <summary>The number of queued contacts that were removed from the workflow due to the node deletion.</summary>
-        public double? QueuedContactCount { get; set; }
+        public double? QueuedContactCount { get => _explicitNullValueQueuedContactCount; set { _explicitNullValueQueuedContactCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queuedContactCount"); else _explicitNullProperties?.Remove("queuedContactCount"); } }
+        private double? _explicitNullValueQueuedContactCount = default!;
         /// <summary>The status property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus? Status { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus? _explicitNullValueStatus = default!;
         /// <summary>The workflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? _explicitNullValueWorkflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow _explicitNullValueWorkflow = default!;
 #endif
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowRevisionId { get; set; }
+        public string? WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
+        private string? _explicitNullValueWorkflowRevisionId = default!;
 #nullable restore
 #else
-        public string WorkflowRevisionId { get; set; }
+        public string WorkflowRevisionId { get => _explicitNullValueWorkflowRevisionId; set { _explicitNullValueWorkflowRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflowRevisionId"); else _explicitNullProperties?.Remove("workflowRevisionId"); } }
+        private string _explicitNullValueWorkflowRevisionId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponse"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowDeletedResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.DeletedStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

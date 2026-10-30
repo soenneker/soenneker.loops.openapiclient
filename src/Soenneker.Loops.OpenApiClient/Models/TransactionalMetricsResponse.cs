@@ -12,19 +12,36 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TransactionalMetricsResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deliveries") is { } nullNodeDeliveries && nullNodeDeliveries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deliveries = null;
+            if (parseNode.GetChildNode("hardBounces") is { } nullNodeHardBounces && nullNodeHardBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardBounces = null;
+            if (parseNode.GetChildNode("sends") is { } nullNodeSends && nullNodeSends.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sends = null;
+            if (parseNode.GetChildNode("softBounces") is { } nullNodeSoftBounces && nullNodeSoftBounces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftBounces = null;
+            if (parseNode.GetChildNode("spamReports") is { } nullNodeSpamReports && nullNodeSpamReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpamReports = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of sends delivered.</summary>
-        public int? Deliveries { get; set; }
+        public int? Deliveries { get => _explicitNullValueDeliveries; set { _explicitNullValueDeliveries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deliveries"); else _explicitNullProperties?.Remove("deliveries"); } }
+        private int? _explicitNullValueDeliveries = default!;
         /// <summary>Number of sends that hard bounced.</summary>
-        public int? HardBounces { get; set; }
+        public int? HardBounces { get => _explicitNullValueHardBounces; set { _explicitNullValueHardBounces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hardBounces"); else _explicitNullProperties?.Remove("hardBounces"); } }
+        private int? _explicitNullValueHardBounces = default!;
         /// <summary>Number of sends.</summary>
-        public int? Sends { get; set; }
+        public int? Sends { get => _explicitNullValueSends; set { _explicitNullValueSends = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sends"); else _explicitNullProperties?.Remove("sends"); } }
+        private int? _explicitNullValueSends = default!;
         /// <summary>Number of sends that soft bounced.</summary>
-        public int? SoftBounces { get; set; }
+        public int? SoftBounces { get => _explicitNullValueSoftBounces; set { _explicitNullValueSoftBounces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("softBounces"); else _explicitNullProperties?.Remove("softBounces"); } }
+        private int? _explicitNullValueSoftBounces = default!;
         /// <summary>Number of sends reported as spam.</summary>
-        public int? SpamReports { get; set; }
+        public int? SpamReports { get => _explicitNullValueSpamReports; set { _explicitNullValueSpamReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spamReports"); else _explicitNullProperties?.Remove("spamReports"); } }
+        private int? _explicitNullValueSpamReports = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalMetricsResponse"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.TransactionalMetricsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.TransactionalMetricsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.TransactionalMetricsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteIntValue("sends", Sends);
             writer.WriteIntValue("softBounces", SoftBounces);
             writer.WriteIntValue("spamReports", SpamReports);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -55,6 +55,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes.Item
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.ThemeFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.ThemeFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ThemeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ThemeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -82,6 +84,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Themes.Item
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.ThemeFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.ThemeFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.UpdateThemeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.UpdateThemeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

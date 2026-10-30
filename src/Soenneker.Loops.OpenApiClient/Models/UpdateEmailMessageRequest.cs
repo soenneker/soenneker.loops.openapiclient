@@ -11,112 +11,160 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdateEmailMessageRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bccEmail") is { } nullNodeBccEmail && nullNodeBccEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BccEmail = null;
+            if (parseNode.GetChildNode("ccEmail") is { } nullNodeCcEmail && nullNodeCcEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CcEmail = null;
+            if (parseNode.GetChildNode("contactPropertiesFallbacks") is { } nullNodeContactPropertiesFallbacks && nullNodeContactPropertiesFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactPropertiesFallbacks = null;
+            if (parseNode.GetChildNode("dataVariablesFallbacks") is { } nullNodeDataVariablesFallbacks && nullNodeDataVariablesFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataVariablesFallbacks = null;
+            if (parseNode.GetChildNode("emailFormat") is { } nullNodeEmailFormat && nullNodeEmailFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailFormat = null;
+            if (parseNode.GetChildNode("eventPropertiesFallbacks") is { } nullNodeEventPropertiesFallbacks && nullNodeEventPropertiesFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventPropertiesFallbacks = null;
+            if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+            if (parseNode.GetChildNode("fromEmail") is { } nullNodeFromEmail && nullNodeFromEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromEmail = null;
+            if (parseNode.GetChildNode("fromName") is { } nullNodeFromName && nullNodeFromName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromName = null;
+            if (parseNode.GetChildNode("languageCode") is { } nullNodeLanguageCode && nullNodeLanguageCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LanguageCode = null;
+            if (parseNode.GetChildNode("lmx") is { } nullNodeLmx && nullNodeLmx.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lmx = null;
+            if (parseNode.GetChildNode("previewText") is { } nullNodePreviewText && nullNodePreviewText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviewText = null;
+            if (parseNode.GetChildNode("replyToEmail") is { } nullNodeReplyToEmail && nullNodeReplyToEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplyToEmail = null;
+            if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
+        }
+
         /// <summary>BCC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BccEmail { get; set; }
+        public string? BccEmail { get => _explicitNullValueBccEmail; set { _explicitNullValueBccEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bccEmail"); else _explicitNullProperties?.Remove("bccEmail"); } }
+        private string? _explicitNullValueBccEmail = default!;
 #nullable restore
 #else
-        public string BccEmail { get; set; }
+        public string BccEmail { get => _explicitNullValueBccEmail; set { _explicitNullValueBccEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bccEmail"); else _explicitNullProperties?.Remove("bccEmail"); } }
+        private string _explicitNullValueBccEmail = default!;
 #endif
         /// <summary>CC email address. Requires the team to have CC/BCC enabled. Not supported for campaign emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CcEmail { get; set; }
+        public string? CcEmail { get => _explicitNullValueCcEmail; set { _explicitNullValueCcEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ccEmail"); else _explicitNullProperties?.Remove("ccEmail"); } }
+        private string? _explicitNullValueCcEmail = default!;
 #nullable restore
 #else
-        public string CcEmail { get; set; }
+        public string CcEmail { get => _explicitNullValueCcEmail; set { _explicitNullValueCcEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ccEmail"); else _explicitNullProperties?.Remove("ccEmail"); } }
+        private string _explicitNullValueCcEmail = default!;
 #endif
         /// <summary>Fallback values for contact properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty? ContactPropertiesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty? ContactPropertiesFallbacks { get => _explicitNullValueContactPropertiesFallbacks; set { _explicitNullValueContactPropertiesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactPropertiesFallbacks"); else _explicitNullProperties?.Remove("contactPropertiesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty? _explicitNullValueContactPropertiesFallbacks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty ContactPropertiesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty ContactPropertiesFallbacks { get => _explicitNullValueContactPropertiesFallbacks; set { _explicitNullValueContactPropertiesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactPropertiesFallbacks"); else _explicitNullProperties?.Remove("contactPropertiesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestContactPropertiesFallbacksProperty _explicitNullValueContactPropertiesFallbacks = default!;
 #endif
         /// <summary>Fallback values for data variables, keyed by variable name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty? DataVariablesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty? DataVariablesFallbacks { get => _explicitNullValueDataVariablesFallbacks; set { _explicitNullValueDataVariablesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariablesFallbacks"); else _explicitNullProperties?.Remove("dataVariablesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty? _explicitNullValueDataVariablesFallbacks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty DataVariablesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty DataVariablesFallbacks { get => _explicitNullValueDataVariablesFallbacks; set { _explicitNullValueDataVariablesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariablesFallbacks"); else _explicitNullProperties?.Remove("dataVariablesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestDataVariablesFallbacksProperty _explicitNullValueDataVariablesFallbacks = default!;
 #endif
         /// <summary>The rendering format of the email.</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat? EmailFormat { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat? EmailFormat { get => _explicitNullValueEmailFormat; set { _explicitNullValueEmailFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailFormat"); else _explicitNullProperties?.Remove("emailFormat"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat? _explicitNullValueEmailFormat = default!;
         /// <summary>Fallback values for event properties, keyed by property name. Per-key merge: a string value sets the fallback, a null value deletes it, and keys omitted from the map are left unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty? EventPropertiesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty? EventPropertiesFallbacks { get => _explicitNullValueEventPropertiesFallbacks; set { _explicitNullValueEventPropertiesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventPropertiesFallbacks"); else _explicitNullProperties?.Remove("eventPropertiesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty? _explicitNullValueEventPropertiesFallbacks = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty EventPropertiesFallbacks { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty EventPropertiesFallbacks { get => _explicitNullValueEventPropertiesFallbacks; set { _explicitNullValueEventPropertiesFallbacks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventPropertiesFallbacks"); else _explicitNullProperties?.Remove("eventPropertiesFallbacks"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty _explicitNullValueEventPropertiesFallbacks = default!;
 #endif
         /// <summary>The `contentRevisionId` you last fetched, or the `emailMessageContentRevisionId` you received when creating the campaign.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedRevisionId { get; set; }
+        public string? ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string? _explicitNullValueExpectedRevisionId = default!;
 #nullable restore
 #else
-        public string ExpectedRevisionId { get; set; }
+        public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string _explicitNullValueExpectedRevisionId = default!;
 #endif
         /// <summary>The email sender email address, without the team&apos;s sending domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromEmail { get; set; }
+        public string? FromEmail { get => _explicitNullValueFromEmail; set { _explicitNullValueFromEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromEmail"); else _explicitNullProperties?.Remove("fromEmail"); } }
+        private string? _explicitNullValueFromEmail = default!;
 #nullable restore
 #else
-        public string FromEmail { get; set; }
+        public string FromEmail { get => _explicitNullValueFromEmail; set { _explicitNullValueFromEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromEmail"); else _explicitNullProperties?.Remove("fromEmail"); } }
+        private string _explicitNullValueFromEmail = default!;
 #endif
         /// <summary>The fromName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromName { get; set; }
+        public string? FromName { get => _explicitNullValueFromName; set { _explicitNullValueFromName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromName"); else _explicitNullProperties?.Remove("fromName"); } }
+        private string? _explicitNullValueFromName = default!;
 #nullable restore
 #else
-        public string FromName { get; set; }
+        public string FromName { get => _explicitNullValueFromName; set { _explicitNullValueFromName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromName"); else _explicitNullProperties?.Remove("fromName"); } }
+        private string _explicitNullValueFromName = default!;
 #endif
         /// <summary>ISO 639-1 language code for the email, e.g. `en` or `fr`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LanguageCode { get; set; }
+        public string? LanguageCode { get => _explicitNullValueLanguageCode; set { _explicitNullValueLanguageCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("languageCode"); else _explicitNullProperties?.Remove("languageCode"); } }
+        private string? _explicitNullValueLanguageCode = default!;
 #nullable restore
 #else
-        public string LanguageCode { get; set; }
+        public string LanguageCode { get => _explicitNullValueLanguageCode; set { _explicitNullValueLanguageCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("languageCode"); else _explicitNullProperties?.Remove("languageCode"); } }
+        private string _explicitNullValueLanguageCode = default!;
 #endif
         /// <summary>The email body serialized as LMX. Styles must be embedded in the LMX `&lt;Style /&gt;` tag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Lmx { get; set; }
+        public string? Lmx { get => _explicitNullValueLmx; set { _explicitNullValueLmx = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lmx"); else _explicitNullProperties?.Remove("lmx"); } }
+        private string? _explicitNullValueLmx = default!;
 #nullable restore
 #else
-        public string Lmx { get; set; }
+        public string Lmx { get => _explicitNullValueLmx; set { _explicitNullValueLmx = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lmx"); else _explicitNullProperties?.Remove("lmx"); } }
+        private string _explicitNullValueLmx = default!;
 #endif
         /// <summary>The previewText property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviewText { get; set; }
+        public string? PreviewText { get => _explicitNullValuePreviewText; set { _explicitNullValuePreviewText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previewText"); else _explicitNullProperties?.Remove("previewText"); } }
+        private string? _explicitNullValuePreviewText = default!;
 #nullable restore
 #else
-        public string PreviewText { get; set; }
+        public string PreviewText { get => _explicitNullValuePreviewText; set { _explicitNullValuePreviewText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previewText"); else _explicitNullProperties?.Remove("previewText"); } }
+        private string _explicitNullValuePreviewText = default!;
 #endif
         /// <summary>Reply-to email. Must be empty or a valid email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReplyToEmail { get; set; }
+        public string? ReplyToEmail { get => _explicitNullValueReplyToEmail; set { _explicitNullValueReplyToEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replyToEmail"); else _explicitNullProperties?.Remove("replyToEmail"); } }
+        private string? _explicitNullValueReplyToEmail = default!;
 #nullable restore
 #else
-        public string ReplyToEmail { get; set; }
+        public string ReplyToEmail { get => _explicitNullValueReplyToEmail; set { _explicitNullValueReplyToEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replyToEmail"); else _explicitNullProperties?.Remove("replyToEmail"); } }
+        private string _explicitNullValueReplyToEmail = default!;
 #endif
         /// <summary>The subject property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subject { get; set; }
+        public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        private string? _explicitNullValueSubject = default!;
 #nullable restore
 #else
-        public string Subject { get; set; }
+        public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
+        private string _explicitNullValueSubject = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -126,7 +174,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -172,7 +220,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("lmx", Lmx);
             writer.WriteStringValue("previewText", PreviewText);
             writer.WriteStringValue("replyToEmail", ReplyToEmail);
-            writer.WriteStringValue("subject", Subject);
+            writer.WriteStringValue("subject", Subject);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

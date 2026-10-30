@@ -53,6 +53,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.ApiKey
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "401", global::Soenneker.Loops.OpenApiClient.Models.TestApiKey401Response.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TestApiKey200Response>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TestApiKey200Response.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

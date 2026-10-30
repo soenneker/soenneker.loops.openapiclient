@@ -11,24 +11,37 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateUploadResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emailAssetId") is { } nullNodeEmailAssetId && nullNodeEmailAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailAssetId = null;
+            if (parseNode.GetChildNode("presignedUrl") is { } nullNodePresignedUrl && nullNodePresignedUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresignedUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ID of the created asset. Pass this as `emailAssetId` to `POST /v1/uploads/{emailAssetId}/complete` once the file has been uploaded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EmailAssetId { get; set; }
+        public string? EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
+        private string? _explicitNullValueEmailAssetId = default!;
 #nullable restore
 #else
-        public string EmailAssetId { get; set; }
+        public string EmailAssetId { get => _explicitNullValueEmailAssetId; set { _explicitNullValueEmailAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailAssetId"); else _explicitNullProperties?.Remove("emailAssetId"); } }
+        private string _explicitNullValueEmailAssetId = default!;
 #endif
         /// <summary>The pre-signed URL to upload the file to with an HTTP `PUT` request. Send the same `Content-Type` and `Content-Length` used in the create request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PresignedUrl { get; set; }
+        public string? PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
+        private string? _explicitNullValuePresignedUrl = default!;
 #nullable restore
 #else
-        public string PresignedUrl { get; set; }
+        public string PresignedUrl { get => _explicitNullValuePresignedUrl; set { _explicitNullValuePresignedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presignedUrl"); else _explicitNullProperties?.Remove("presignedUrl"); } }
+        private string _explicitNullValuePresignedUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreateUploadResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("emailAssetId", EmailAssetId);
             writer.WriteStringValue("presignedUrl", PresignedUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

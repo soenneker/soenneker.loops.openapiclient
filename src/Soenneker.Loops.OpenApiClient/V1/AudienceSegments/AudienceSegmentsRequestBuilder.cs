@@ -66,6 +66,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.AudienceSegments
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListAudienceSegmentsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListAudienceSegmentsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -93,6 +95,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.AudienceSegments
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.AudienceSegmentResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -50,7 +50,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ListTransactionalsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Send a transactional email to a contact.&lt;br&gt;Please [email us](mailto:help@loops.so) to enable attachments on your account before using them with the API.To set dynamic Subject, From, Reply to, CC, BCC email header fields, add data variables to those fields in the editor, then include data for each variable in the API request. Read our transactional email guide for more details.
@@ -76,6 +76,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Transactional
             {
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.TransactionalFailure3Response.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.IdempotencyKeyFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.TransactionalSuccessResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

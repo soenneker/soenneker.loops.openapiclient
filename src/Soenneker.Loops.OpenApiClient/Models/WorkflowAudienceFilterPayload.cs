@@ -12,24 +12,39 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowAudienceFilterPayload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("appliesDownstream") is { } nullNodeAppliesDownstream && nullNodeAppliesDownstream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppliesDownstream = null;
+            if (parseNode.GetChildNode("audienceFilter") is { } nullNodeAudienceFilter && nullNodeAudienceFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudienceFilter = null;
+            if (parseNode.GetChildNode("audienceSegmentId") is { } nullNodeAudienceSegmentId && nullNodeAudienceSegmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudienceSegmentId = null;
+        }
+
         /// <summary>If `true`, the audience filter will apply to all downstream nodes. If `false`, the audience filter will only apply to the current node. Matches the &quot;Filter scope&quot; option in the UI.</summary>
-        public bool? AppliesDownstream { get; set; }
+        public bool? AppliesDownstream { get => _explicitNullValueAppliesDownstream; set { _explicitNullValueAppliesDownstream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appliesDownstream"); else _explicitNullProperties?.Remove("appliesDownstream"); } }
+        private bool? _explicitNullValueAppliesDownstream = default!;
         /// <summary>A tree of audience conditions combined with `match`. Setting this without also providing `audienceSegmentId` clears any existing `audienceSegmentId`. When both are provided, this filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? AudienceFilter { get => _explicitNullValueAudienceFilter; set { _explicitNullValueAudienceFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceFilter"); else _explicitNullProperties?.Remove("audienceFilter"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? _explicitNullValueAudienceFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest AudienceFilter { get => _explicitNullValueAudienceFilter; set { _explicitNullValueAudienceFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceFilter"); else _explicitNullProperties?.Remove("audienceFilter"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest _explicitNullValueAudienceFilter = default!;
 #endif
         /// <summary>The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AudienceSegmentId { get; set; }
+        public string? AudienceSegmentId { get => _explicitNullValueAudienceSegmentId; set { _explicitNullValueAudienceSegmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceSegmentId"); else _explicitNullProperties?.Remove("audienceSegmentId"); } }
+        private string? _explicitNullValueAudienceSegmentId = default!;
 #nullable restore
 #else
-        public string AudienceSegmentId { get; set; }
+        public string AudienceSegmentId { get => _explicitNullValueAudienceSegmentId; set { _explicitNullValueAudienceSegmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceSegmentId"); else _explicitNullProperties?.Remove("audienceSegmentId"); } }
+        private string _explicitNullValueAudienceSegmentId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +54,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowAudienceFilterPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAudienceFilterPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAudienceFilterPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,7 +78,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("appliesDownstream", AppliesDownstream);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest>("audienceFilter", AudienceFilter);
-            writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);
+            writer.WriteStringValue("audienceSegmentId", AudienceSegmentId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

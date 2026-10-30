@@ -8,13 +8,16 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// Detailed workflow node returned from a mutation, plus the latest workflow revision token.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WorkflowMutationNodeWithRevision : IAdditionalDataHolder, IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
+    public partial class WorkflowMutationNodeWithRevision : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,18 +26,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision AddToListTriggerWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The amount of time to wait before triggering the next node. Set to `0` to move to the next node immediately.</summary>
-        public double? Amount { get; set; }
-        /// <summary>If `true`, the audience filter will apply to all downstream nodes. If `false`, the audience filter will only apply to the current node. Matches the &quot;Filter scope&quot; option in the UI.</summary>
-        public bool? AppliesDownstream { get; set; }
-        /// <summary>A tree of audience conditions combined with `match`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter? AudienceFilter { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter AudienceFilter { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,14 +33,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision AudienceFilterWorkflowMutationNodeWithRevision { get; set; }
-#endif
-        /// <summary>The ID of the audience segment this trigger targets.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AudienceSegmentId { get; set; }
-#nullable restore
-#else
-        public string AudienceSegmentId { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,14 +50,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowMutationNodeWithRevision BranchWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The contactPropertyQuery property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery? ContactPropertyQuery { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery ContactPropertyQuery { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,30 +57,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision ContactPropertyTriggerWorkflowMutationNodeWithRevision { get; set; }
-#endif
-        /// <summary>The ID of the email message to send. To edit this email, use the `POST /v1/email-messages/{emailMessageId}` endpoint.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EmailMessageId { get; set; }
-#nullable restore
-#else
-        public string EmailMessageId { get; set; }
-#endif
-        /// <summary>The name of the event pattern that triggers this node.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EventName { get; set; }
-#nullable restore
-#else
-        public string EventName { get; set; }
-#endif
-        /// <summary>The properties of the event pattern, which can be used in emails.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>? EventProperties { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> EventProperties { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -131,36 +82,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision ExperimentBranchWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The id property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Id { get; set; }
-#nullable restore
-#else
-        public string Id { get; set; }
-#endif
-        /// <summary>Whether this is the control variant of an experiment.</summary>
-        public bool? IsControl { get; set; }
-        /// <summary>The ID of the mailing list this trigger sends to, if set.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? MailingListId { get; set; }
-#nullable restore
-#else
-        public string MailingListId { get; set; }
-#endif
-        /// <summary>The IDs of the nodes that are downstream of this node.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? NextNodeIds { get; set; }
-#nullable restore
-#else
-        public List<string> NextNodeIds { get; set; }
-#endif
-        /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
-        public bool? ReEligible { get; set; }
-        /// <summary>The percentage of contacts that will be sent to variant branches, between `0` and `100`. The remaining percentage will be sent to the control branch. `100` sends all contacts to variant branches.</summary>
-        public double? SamplingRate { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -177,14 +98,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision SignupTriggerWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The subject property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Subject { get; set; }
-#nullable restore
-#else
-        public string Subject { get; set; }
-#endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -193,16 +106,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision TimerActionWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The typeName property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TypeName { get; set; }
-#nullable restore
-#else
-        public string TypeName { get; set; }
-#endif
-        /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -211,21 +114,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision VariantWorkflowMutationNodeWithRevision { get; set; }
 #endif
-        /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? WorkflowRevisionId { get; set; }
-#nullable restore
-#else
-        public string WorkflowRevisionId { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision"/> and sets the default values.
-        /// </summary>
-        public WorkflowMutationNodeWithRevision()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -234,121 +122,84 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision();
-            if("AddToListTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AddToListTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AddToListTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision();
+                
             }
-            else if("AudienceFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AudienceFilterWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AudienceFilterWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision();
+                
             }
-            else if("BlankTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("BlankTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BlankTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowMutationNodeWithRevision();
+                
             }
-            else if("BranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("BranchWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.BranchWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowMutationNodeWithRevision();
+                
             }
-            else if("ContactPropertyTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ContactPropertyTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ContactPropertyTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision();
+                
             }
-            else if("EventTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("EventTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EventTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision();
+                
             }
-            else if("ExitAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ExitActionWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExitActionWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNodeWithRevision();
+                
             }
-            else if("ExperimentBranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("ExperimentBranchWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExperimentBranchWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision();
+                
             }
-            else if("SendEmailAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SendEmailActionWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SendEmailActionWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeWithRevision();
+                
             }
-            else if("SignupTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SignupTriggerWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SignupTriggerWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision();
+                
             }
-            else if("TimerAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TimerActionWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.TimerActionWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision();
+                
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>() is global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit unitValue)
+            else if("VariantWorkflowMutationNodeWithRevision".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.Unit = unitValue;
+                
             }
-            else if("VariantNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.VariantWorkflowMutationNodeWithRevision = new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision();
-            }
-            else if(parseNode.GetDoubleValue() is double amountValue)
-            {
-                result.Amount = amountValue;
-            }
-            else if(parseNode.GetBoolValue() is bool appliesDownstreamValue)
-            {
-                result.AppliesDownstream = appliesDownstreamValue;
-            }
-            else if(parseNode.GetStringValue() is string audienceSegmentIdValue)
-            {
-                result.AudienceSegmentId = audienceSegmentIdValue;
-            }
-            else if(parseNode.GetStringValue() is string emailMessageIdValue)
-            {
-                result.EmailMessageId = emailMessageIdValue;
-            }
-            else if(parseNode.GetStringValue() is string eventNameValue)
-            {
-                result.EventName = eventNameValue;
-            }
-            else if(parseNode.GetStringValue() is string idValue)
-            {
-                result.Id = idValue;
-            }
-            else if(parseNode.GetBoolValue() is bool isControlValue)
-            {
-                result.IsControl = isControlValue;
-            }
-            else if(parseNode.GetStringValue() is string mailingListIdValue)
-            {
-                result.MailingListId = mailingListIdValue;
-            }
-            else if(parseNode.GetBoolValue() is bool reEligibleValue)
-            {
-                result.ReEligible = reEligibleValue;
-            }
-            else if(parseNode.GetDoubleValue() is double samplingRateValue)
-            {
-                result.SamplingRate = samplingRateValue;
-            }
-            else if(parseNode.GetStringValue() is string subjectValue)
-            {
-                result.Subject = subjectValue;
-            }
-            else if(parseNode.GetStringValue() is string typeNameValue)
-            {
-                result.TypeName = typeNameValue;
-            }
-            else if(parseNode.GetStringValue() is string workflowRevisionIdValue)
-            {
-                result.WorkflowRevisionId = workflowRevisionIdValue;
-            }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty> eventPropertiesValue)
-            {
-                result.EventProperties = eventPropertiesValue;
-            }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> nextNodeIdsValue)
-            {
-                result.NextNodeIds = nextNodeIdsValue;
-            }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SignupTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("EventTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ContactPropertyTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("contactPropertyQuery") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AddToListTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("mailingListId") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BlankTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AudienceFilter".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("appliesDownstream") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("TimerAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("amount") != null && parseNode.GetChildNode("unit") != null && (parseNode.GetChildNode("unit")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("m".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "h".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "d".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SendEmailAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("emailMessageId") != null && parseNode.GetChildNode("subject") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch8 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExitAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch9 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch10 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExperimentBranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("samplingRate") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            bool matchesUnionBranch11 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("VariantNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null))();
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.SignupTriggerWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.EventTriggerWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.ContactPropertyTriggerWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.AddToListTriggerWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.BlankTriggerWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.AudienceFilterWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.TimerActionWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.SendEmailActionWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch8 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.ExitActionWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch9 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch10 && !matchesUnionBranch11) result.BranchWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch10 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch11) result.ExperimentBranchWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null && matchesUnionBranch11 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10) result.VariantWorkflowMutationNodeWithRevision = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision(), parseNode);
+            if (result.AddToListTriggerWorkflowMutationNodeWithRevision == null && result.AudienceFilterWorkflowMutationNodeWithRevision == null && result.BlankTriggerWorkflowMutationNodeWithRevision == null && result.BranchWorkflowMutationNodeWithRevision == null && result.ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && result.EventTriggerWorkflowMutationNodeWithRevision == null && result.ExitActionWorkflowMutationNodeWithRevision == null && result.ExperimentBranchWorkflowMutationNodeWithRevision == null && result.SendEmailActionWorkflowMutationNodeWithRevision == null && result.SignupTriggerWorkflowMutationNodeWithRevision == null && result.TimerActionWorkflowMutationNodeWithRevision == null && result.VariantWorkflowMutationNodeWithRevision == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -359,10 +210,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             if(AddToListTriggerWorkflowMutationNodeWithRevision != null)
             {
                 return AddToListTriggerWorkflowMutationNodeWithRevision.GetFieldDeserializers();
-            }
-            else if(AudienceFilter != null)
-            {
-                return AudienceFilter.GetFieldDeserializers();
             }
             else if(AudienceFilterWorkflowMutationNodeWithRevision != null)
             {
@@ -375,10 +222,6 @@ namespace Soenneker.Loops.OpenApiClient.Models
             else if(BranchWorkflowMutationNodeWithRevision != null)
             {
                 return BranchWorkflowMutationNodeWithRevision.GetFieldDeserializers();
-            }
-            else if(ContactPropertyQuery != null)
-            {
-                return ContactPropertyQuery.GetFieldDeserializers();
             }
             else if(ContactPropertyTriggerWorkflowMutationNodeWithRevision != null)
             {
@@ -420,128 +263,82 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AddToListTriggerWorkflowMutationNodeWithRevision != null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (AddToListTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AddToListTriggerWorkflowMutationNodeWithRevision); return; }
+            if (AudienceFilterWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (AudienceFilterWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AudienceFilterWorkflowMutationNodeWithRevision); return; }
+            if (BlankTriggerWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (BlankTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BlankTriggerWorkflowMutationNodeWithRevision); return; }
+            if (BranchWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (BranchWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BranchWorkflowMutationNodeWithRevision); return; }
+            if (ContactPropertyTriggerWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (ContactPropertyTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ContactPropertyTriggerWorkflowMutationNodeWithRevision); return; }
+            if (EventTriggerWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (EventTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EventTriggerWorkflowMutationNodeWithRevision); return; }
+            if (ExitActionWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (ExitActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExitActionWorkflowMutationNodeWithRevision); return; }
+            if (ExperimentBranchWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (ExperimentBranchWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentBranchWorkflowMutationNodeWithRevision); return; }
+            if (SendEmailActionWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (SendEmailActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SendEmailActionWorkflowMutationNodeWithRevision); return; }
+            if (SignupTriggerWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (SignupTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SignupTriggerWorkflowMutationNodeWithRevision); return; }
+            if (TimerActionWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && VariantWorkflowMutationNodeWithRevision == null) { if (TimerActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TimerActionWorkflowMutationNodeWithRevision); return; }
+            if (VariantWorkflowMutationNodeWithRevision != null && AddToListTriggerWorkflowMutationNodeWithRevision == null && AudienceFilterWorkflowMutationNodeWithRevision == null && BlankTriggerWorkflowMutationNodeWithRevision == null && BranchWorkflowMutationNodeWithRevision == null && ContactPropertyTriggerWorkflowMutationNodeWithRevision == null && EventTriggerWorkflowMutationNodeWithRevision == null && ExitActionWorkflowMutationNodeWithRevision == null && ExperimentBranchWorkflowMutationNodeWithRevision == null && SendEmailActionWorkflowMutationNodeWithRevision == null && SignupTriggerWorkflowMutationNodeWithRevision == null && TimerActionWorkflowMutationNodeWithRevision == null) { if (VariantWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, VariantWorkflowMutationNodeWithRevision); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AddToListTriggerWorkflowMutationNodeWithRevision != null)
             {
+                if (AddToListTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerWorkflowMutationNodeWithRevision>(null, AddToListTriggerWorkflowMutationNodeWithRevision);
-            }
-            else if(AudienceFilter != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilter>(null, AudienceFilter);
             }
             else if(AudienceFilterWorkflowMutationNodeWithRevision != null)
             {
+                if (AudienceFilterWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterWorkflowMutationNodeWithRevision>(null, AudienceFilterWorkflowMutationNodeWithRevision);
             }
             else if(BlankTriggerWorkflowMutationNodeWithRevision != null)
             {
+                if (BlankTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.BlankTriggerWorkflowMutationNodeWithRevision>(null, BlankTriggerWorkflowMutationNodeWithRevision);
             }
             else if(BranchWorkflowMutationNodeWithRevision != null)
             {
+                if (BranchWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.BranchWorkflowMutationNodeWithRevision>(null, BranchWorkflowMutationNodeWithRevision);
-            }
-            else if(ContactPropertyQuery != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery>(null, ContactPropertyQuery);
             }
             else if(ContactPropertyTriggerWorkflowMutationNodeWithRevision != null)
             {
+                if (ContactPropertyTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactPropertyTriggerWorkflowMutationNodeWithRevision>(null, ContactPropertyTriggerWorkflowMutationNodeWithRevision);
             }
             else if(EventTriggerWorkflowMutationNodeWithRevision != null)
             {
+                if (EventTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventTriggerWorkflowMutationNodeWithRevision>(null, EventTriggerWorkflowMutationNodeWithRevision);
             }
             else if(ExitActionWorkflowMutationNodeWithRevision != null)
             {
+                if (ExitActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ExitActionWorkflowMutationNodeWithRevision>(null, ExitActionWorkflowMutationNodeWithRevision);
             }
             else if(ExperimentBranchWorkflowMutationNodeWithRevision != null)
             {
+                if (ExperimentBranchWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ExperimentBranchWorkflowMutationNodeWithRevision>(null, ExperimentBranchWorkflowMutationNodeWithRevision);
             }
             else if(SendEmailActionWorkflowMutationNodeWithRevision != null)
             {
+                if (SendEmailActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SendEmailActionWorkflowMutationNodeWithRevision>(null, SendEmailActionWorkflowMutationNodeWithRevision);
             }
             else if(SignupTriggerWorkflowMutationNodeWithRevision != null)
             {
+                if (SignupTriggerWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SignupTriggerWorkflowMutationNodeWithRevision>(null, SignupTriggerWorkflowMutationNodeWithRevision);
             }
             else if(TimerActionWorkflowMutationNodeWithRevision != null)
             {
+                if (TimerActionWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.TimerActionWorkflowMutationNodeWithRevision>(null, TimerActionWorkflowMutationNodeWithRevision);
-            }
-            else if(Unit != null)
-            {
-                writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(null, Unit);
             }
             else if(VariantWorkflowMutationNodeWithRevision != null)
             {
+                if (VariantWorkflowMutationNodeWithRevision is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.VariantWorkflowMutationNodeWithRevision>(null, VariantWorkflowMutationNodeWithRevision);
             }
-            else if(Amount != null)
-            {
-                writer.WriteDoubleValue(null, Amount);
-            }
-            else if(AppliesDownstream != null)
-            {
-                writer.WriteBoolValue(null, AppliesDownstream);
-            }
-            else if(AudienceSegmentId != null)
-            {
-                writer.WriteStringValue(null, AudienceSegmentId);
-            }
-            else if(EmailMessageId != null)
-            {
-                writer.WriteStringValue(null, EmailMessageId);
-            }
-            else if(EventName != null)
-            {
-                writer.WriteStringValue(null, EventName);
-            }
-            else if(Id != null)
-            {
-                writer.WriteStringValue(null, Id);
-            }
-            else if(IsControl != null)
-            {
-                writer.WriteBoolValue(null, IsControl);
-            }
-            else if(MailingListId != null)
-            {
-                writer.WriteStringValue(null, MailingListId);
-            }
-            else if(ReEligible != null)
-            {
-                writer.WriteBoolValue(null, ReEligible);
-            }
-            else if(SamplingRate != null)
-            {
-                writer.WriteDoubleValue(null, SamplingRate);
-            }
-            else if(Subject != null)
-            {
-                writer.WriteStringValue(null, Subject);
-            }
-            else if(TypeName != null)
-            {
-                writer.WriteStringValue(null, TypeName);
-            }
-            else if(WorkflowRevisionId != null)
-            {
-                writer.WriteStringValue(null, WorkflowRevisionId);
-            }
-            else if(EventProperties != null)
-            {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventProperty>(null, EventProperties);
-            }
-            else if(NextNodeIds != null)
-            {
-                writer.WriteCollectionOfPrimitiveValues<string>(null, NextNodeIds);
-            }
-            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -11,33 +11,54 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ListEventPatternsResponsePagination : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("nextCursor") is { } nullNodeNextCursor && nullNodeNextCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextCursor = null;
+            if (parseNode.GetChildNode("nextPage") is { } nullNodeNextPage && nullNodeNextPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextPage = null;
+            if (parseNode.GetChildNode("perPage") is { } nullNodePerPage && nullNodePerPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerPage = null;
+            if (parseNode.GetChildNode("returnedResults") is { } nullNodeReturnedResults && nullNodeReturnedResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnedResults = null;
+            if (parseNode.GetChildNode("totalPages") is { } nullNodeTotalPages && nullNodeTotalPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPages = null;
+            if (parseNode.GetChildNode("totalResults") is { } nullNodeTotalResults && nullNodeTotalResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalResults = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The nextCursor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextCursor { get; set; }
+        public string? NextCursor { get => _explicitNullValueNextCursor; set { _explicitNullValueNextCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextCursor"); else _explicitNullProperties?.Remove("nextCursor"); } }
+        private string? _explicitNullValueNextCursor = default!;
 #nullable restore
 #else
-        public string NextCursor { get; set; }
+        public string NextCursor { get => _explicitNullValueNextCursor; set { _explicitNullValueNextCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextCursor"); else _explicitNullProperties?.Remove("nextCursor"); } }
+        private string _explicitNullValueNextCursor = default!;
 #endif
         /// <summary>The nextPage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextPage { get; set; }
+        public string? NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextPage"); else _explicitNullProperties?.Remove("nextPage"); } }
+        private string? _explicitNullValueNextPage = default!;
 #nullable restore
 #else
-        public string NextPage { get; set; }
+        public string NextPage { get => _explicitNullValueNextPage; set { _explicitNullValueNextPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextPage"); else _explicitNullProperties?.Remove("nextPage"); } }
+        private string _explicitNullValueNextPage = default!;
 #endif
         /// <summary>The perPage property</summary>
-        public double? PerPage { get; set; }
+        public double? PerPage { get => _explicitNullValuePerPage; set { _explicitNullValuePerPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perPage"); else _explicitNullProperties?.Remove("perPage"); } }
+        private double? _explicitNullValuePerPage = default!;
         /// <summary>The returnedResults property</summary>
-        public double? ReturnedResults { get; set; }
+        public double? ReturnedResults { get => _explicitNullValueReturnedResults; set { _explicitNullValueReturnedResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returnedResults"); else _explicitNullProperties?.Remove("returnedResults"); } }
+        private double? _explicitNullValueReturnedResults = default!;
         /// <summary>The totalPages property</summary>
-        public double? TotalPages { get; set; }
+        public double? TotalPages { get => _explicitNullValueTotalPages; set { _explicitNullValueTotalPages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalPages"); else _explicitNullProperties?.Remove("totalPages"); } }
+        private double? _explicitNullValueTotalPages = default!;
         /// <summary>The totalResults property</summary>
-        public double? TotalResults { get; set; }
+        public double? TotalResults { get => _explicitNullValueTotalResults; set { _explicitNullValueTotalResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalResults"); else _explicitNullProperties?.Remove("totalResults"); } }
+        private double? _explicitNullValueTotalResults = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ListEventPatternsResponsePagination"/> and sets the default values.
         /// </summary>
@@ -53,7 +74,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.ListEventPatternsResponsePagination CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ListEventPatternsResponsePagination();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ListEventPatternsResponsePagination(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteDoubleValue("returnedResults", ReturnedResults);
             writer.WriteDoubleValue("totalPages", TotalPages);
             writer.WriteDoubleValue("totalResults", TotalResults);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

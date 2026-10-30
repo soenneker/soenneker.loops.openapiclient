@@ -11,48 +11,70 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EventRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
+            if (parseNode.GetChildNode("eventProperties") is { } nullNodeEventProperties && nullNodeEventProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventProperties = null;
+            if (parseNode.GetChildNode("mailingLists") is { } nullNodeMailingLists && nullNodeMailingLists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailingLists = null;
+            if (parseNode.GetChildNode("userId") is { } nullNodeUserId && nullNodeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The contact&apos;s email address. **Required if `userId` is not provided.**</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>The name of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventName { get; set; }
+        public string? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        private string? _explicitNullValueEventName = default!;
 #nullable restore
 #else
-        public string EventName { get; set; }
+        public string EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        private string _explicitNullValueEventName = default!;
 #endif
         /// <summary>An object containing event property data for the event, available in emails sent by the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty? EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty? EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty? _explicitNullValueEventProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty _explicitNullValueEventProperties = default!;
 #endif
         /// <summary>Manage mailing list subscriptions.Include key-value pairs of mailing list IDs and a `boolean` denoting if the contact should be added (`true`) or removed (`false`) from the list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists? MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists? MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists? _explicitNullValueMailingLists = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists MailingLists { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists MailingLists { get => _explicitNullValueMailingLists; set { _explicitNullValueMailingLists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingLists"); else _explicitNullProperties?.Remove("mailingLists"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists _explicitNullValueMailingLists = default!;
 #endif
         /// <summary>The contact&apos;s unique user ID. **Required if `email` is not provided.**</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserId { get; set; }
+        public string? UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userId"); else _explicitNullProperties?.Remove("userId"); } }
+        private string? _explicitNullValueUserId = default!;
 #nullable restore
 #else
-        public string UserId { get; set; }
+        public string UserId { get => _explicitNullValueUserId; set { _explicitNullValueUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("userId"); else _explicitNullProperties?.Remove("userId"); } }
+        private string _explicitNullValueUserId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.EventRequest"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.EventRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.EventRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.EventRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestEventPropertiesProperty>("eventProperties", EventProperties);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EventRequestMailingLists>("mailingLists", MailingLists);
             writer.WriteStringValue("userId", UserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

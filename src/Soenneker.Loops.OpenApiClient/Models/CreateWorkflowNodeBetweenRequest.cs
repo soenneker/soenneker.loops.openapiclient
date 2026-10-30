@@ -12,34 +12,54 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWorkflowNodeBetweenRequest : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+            if (parseNode.GetChildNode("fromNodeId") is { } nullNodeFromNodeId && nullNodeFromNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromNodeId = null;
+            if (parseNode.GetChildNode("insertMode") is { } nullNodeInsertMode && nullNodeInsertMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsertMode = null;
+            if (parseNode.GetChildNode("nodeTypeName") is { } nullNodeNodeTypeName && nullNodeNodeTypeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeTypeName = null;
+            if (parseNode.GetChildNode("toNodeId") is { } nullNodeToNodeId && nullNodeToNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToNodeId = null;
+        }
+
         /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedRevisionId { get; set; }
+        public string? ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string? _explicitNullValueExpectedRevisionId = default!;
 #nullable restore
 #else
-        public string ExpectedRevisionId { get; set; }
+        public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string _explicitNullValueExpectedRevisionId = default!;
 #endif
         /// <summary>The node to insert after. This node must currently point to `toNodeId`. If this is an `ExperimentBranchNode`, `nodeTypeName` must be `VariantNode` and `toNodeId` cannot already be a `VariantNode`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FromNodeId { get; set; }
+        public string? FromNodeId { get => _explicitNullValueFromNodeId; set { _explicitNullValueFromNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromNodeId"); else _explicitNullProperties?.Remove("fromNodeId"); } }
+        private string? _explicitNullValueFromNodeId = default!;
 #nullable restore
 #else
-        public string FromNodeId { get; set; }
+        public string FromNodeId { get => _explicitNullValueFromNodeId; set { _explicitNullValueFromNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromNodeId"); else _explicitNullProperties?.Remove("fromNodeId"); } }
+        private string _explicitNullValueFromNodeId = default!;
 #endif
         /// <summary>The insertMode property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode? InsertMode { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode? InsertMode { get => _explicitNullValueInsertMode; set { _explicitNullValueInsertMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insertMode"); else _explicitNullProperties?.Remove("insertMode"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode? _explicitNullValueInsertMode = default!;
         /// <summary>Node types that can be created with the API. `*Trigger` nodes and `ExitAction` nodes cannot be created.</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? NodeTypeName { get => _explicitNullValueNodeTypeName; set { _explicitNullValueNodeTypeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeTypeName"); else _explicitNullProperties?.Remove("nodeTypeName"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName? _explicitNullValueNodeTypeName = default!;
         /// <summary>The node to insert before.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToNodeId { get; set; }
+        public string? ToNodeId { get => _explicitNullValueToNodeId; set { _explicitNullValueToNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toNodeId"); else _explicitNullProperties?.Remove("toNodeId"); } }
+        private string? _explicitNullValueToNodeId = default!;
 #nullable restore
 #else
-        public string ToNodeId { get; set; }
+        public string ToNodeId { get => _explicitNullValueToNodeId; set { _explicitNullValueToNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toNodeId"); else _explicitNullProperties?.Remove("toNodeId"); } }
+        private string _explicitNullValueToNodeId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -49,7 +69,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,7 +97,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("fromNodeId", FromNodeId);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.BetweenInsertMode>("insertMode", InsertMode);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeTypeName>("nodeTypeName", NodeTypeName);
-            writer.WriteStringValue("toNodeId", ToNodeId);
+            writer.WriteStringValue("toNodeId", ToNodeId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -12,54 +12,79 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateCampaignRequest : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audienceFilter") is { } nullNodeAudienceFilter && nullNodeAudienceFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudienceFilter = null;
+            if (parseNode.GetChildNode("audienceSegmentId") is { } nullNodeAudienceSegmentId && nullNodeAudienceSegmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AudienceSegmentId = null;
+            if (parseNode.GetChildNode("campaignGroupId") is { } nullNodeCampaignGroupId && nullNodeCampaignGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CampaignGroupId = null;
+            if (parseNode.GetChildNode("mailingListId") is { } nullNodeMailingListId && nullNodeMailingListId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailingListId = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("scheduling") is { } nullNodeScheduling && nullNodeScheduling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scheduling = null;
+        }
+
         /// <summary>A tree of audience conditions combined with `match`. Setting this without also providing `audienceSegmentId` clears any existing `audienceSegmentId`. When both are provided, this filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? AudienceFilter { get => _explicitNullValueAudienceFilter; set { _explicitNullValueAudienceFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceFilter"); else _explicitNullProperties?.Remove("audienceFilter"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest? _explicitNullValueAudienceFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest AudienceFilter { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest AudienceFilter { get => _explicitNullValueAudienceFilter; set { _explicitNullValueAudienceFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceFilter"); else _explicitNullProperties?.Remove("audienceFilter"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest _explicitNullValueAudienceFilter = default!;
 #endif
         /// <summary>The ID of an audience segment. Setting this without also providing `audienceFilter` clears any existing `audienceFilter`. If both are provided, the filter is applied on top of the segment&apos;s filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AudienceSegmentId { get; set; }
+        public string? AudienceSegmentId { get => _explicitNullValueAudienceSegmentId; set { _explicitNullValueAudienceSegmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceSegmentId"); else _explicitNullProperties?.Remove("audienceSegmentId"); } }
+        private string? _explicitNullValueAudienceSegmentId = default!;
 #nullable restore
 #else
-        public string AudienceSegmentId { get; set; }
+        public string AudienceSegmentId { get => _explicitNullValueAudienceSegmentId; set { _explicitNullValueAudienceSegmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audienceSegmentId"); else _explicitNullProperties?.Remove("audienceSegmentId"); } }
+        private string _explicitNullValueAudienceSegmentId = default!;
 #endif
         /// <summary>The ID of the group to move this campaign to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CampaignGroupId { get; set; }
+        public string? CampaignGroupId { get => _explicitNullValueCampaignGroupId; set { _explicitNullValueCampaignGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaignGroupId"); else _explicitNullProperties?.Remove("campaignGroupId"); } }
+        private string? _explicitNullValueCampaignGroupId = default!;
 #nullable restore
 #else
-        public string CampaignGroupId { get; set; }
+        public string CampaignGroupId { get => _explicitNullValueCampaignGroupId; set { _explicitNullValueCampaignGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaignGroupId"); else _explicitNullProperties?.Remove("campaignGroupId"); } }
+        private string _explicitNullValueCampaignGroupId = default!;
 #endif
         /// <summary>The ID of the mailing list to send to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MailingListId { get; set; }
+        public string? MailingListId { get => _explicitNullValueMailingListId; set { _explicitNullValueMailingListId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingListId"); else _explicitNullProperties?.Remove("mailingListId"); } }
+        private string? _explicitNullValueMailingListId = default!;
 #nullable restore
 #else
-        public string MailingListId { get; set; }
+        public string MailingListId { get => _explicitNullValueMailingListId; set { _explicitNullValueMailingListId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingListId"); else _explicitNullProperties?.Remove("mailingListId"); } }
+        private string _explicitNullValueMailingListId = default!;
 #endif
         /// <summary>The updated campaign name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>When the campaign should send. `timestamp` is required and must be in the future when `method` is `schedule`, and must be omitted when `method` is `now`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest? Scheduling { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest? Scheduling { get => _explicitNullValueScheduling; set { _explicitNullValueScheduling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scheduling"); else _explicitNullProperties?.Remove("scheduling"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest? _explicitNullValueScheduling = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest Scheduling { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest Scheduling { get => _explicitNullValueScheduling; set { _explicitNullValueScheduling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scheduling"); else _explicitNullProperties?.Remove("scheduling"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest _explicitNullValueScheduling = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -69,7 +94,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.UpdateCampaignRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateCampaignRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateCampaignRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,7 +124,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("campaignGroupId", CampaignGroupId);
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest>("scheduling", Scheduling);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CampaignSchedulingRequest>("scheduling", Scheduling);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

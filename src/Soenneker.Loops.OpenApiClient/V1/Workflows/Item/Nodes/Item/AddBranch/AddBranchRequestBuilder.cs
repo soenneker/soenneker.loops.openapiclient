@@ -59,6 +59,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item.AddBranch
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.AddWorkflowBranchResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.AddWorkflowBranchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

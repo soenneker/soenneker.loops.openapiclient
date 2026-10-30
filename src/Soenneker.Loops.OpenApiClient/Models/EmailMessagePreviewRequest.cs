@@ -11,38 +11,57 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmailMessagePreviewRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("contactProperties") is { } nullNodeContactProperties && nullNodeContactProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactProperties = null;
+            if (parseNode.GetChildNode("dataVariables") is { } nullNodeDataVariables && nullNodeDataVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataVariables = null;
+            if (parseNode.GetChildNode("emails") is { } nullNodeEmails && nullNodeEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emails = null;
+            if (parseNode.GetChildNode("eventProperties") is { } nullNodeEventProperties && nullNodeEventProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventProperties = null;
+        }
+
         /// <summary>Contact property values to render. Accepted for campaign and workflow previews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty? ContactProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty? ContactProperties { get => _explicitNullValueContactProperties; set { _explicitNullValueContactProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactProperties"); else _explicitNullProperties?.Remove("contactProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty? _explicitNullValueContactProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty ContactProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty ContactProperties { get => _explicitNullValueContactProperties; set { _explicitNullValueContactProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactProperties"); else _explicitNullProperties?.Remove("contactProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty _explicitNullValueContactProperties = default!;
 #endif
         /// <summary>Transactional data variables to render. Accepted for transactional previews only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty? DataVariables { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty? DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty? _explicitNullValueDataVariables = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty DataVariables { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty _explicitNullValueDataVariables = default!;
 #endif
         /// <summary>One or more addresses to send the preview to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Emails { get; set; }
+        public List<string>? Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
+        private List<string>? _explicitNullValueEmails = default!;
 #nullable restore
 #else
-        public List<string> Emails { get; set; }
+        public List<string> Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
+        private List<string> _explicitNullValueEmails = default!;
 #endif
         /// <summary>Event property values to render. Accepted for workflow previews only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty? EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty? EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty? _explicitNullValueEventProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty EventProperties { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty EventProperties { get => _explicitNullValueEventProperties; set { _explicitNullValueEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventProperties"); else _explicitNullProperties?.Remove("eventProperties"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty _explicitNullValueEventProperties = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +71,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +97,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty>("contactProperties", ContactProperties);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty>("dataVariables", DataVariables);
             writer.WriteCollectionOfPrimitiveValues<string>("emails", Emails);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty>("eventProperties", EventProperties);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestEventPropertiesProperty>("eventProperties", EventProperties);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

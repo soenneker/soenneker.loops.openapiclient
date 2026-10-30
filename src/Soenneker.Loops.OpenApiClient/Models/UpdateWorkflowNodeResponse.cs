@@ -8,49 +8,337 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// The updated workflow node, plus the latest simplified workflow.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class UpdateWorkflowNodeResponse : global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision, IParsable
-    {
-        /// <summary>The workflow property</summary>
+    public partial class UpdateWorkflowNodeResponse : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1? UpdateWorkflowNodeResponseOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1 UpdateWorkflowNodeResponseOneOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10? UpdateWorkflowNodeResponseOneOf10 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10 UpdateWorkflowNodeResponseOneOf10 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11? UpdateWorkflowNodeResponseOneOf11 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11 UpdateWorkflowNodeResponseOneOf11 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12? UpdateWorkflowNodeResponseOneOf12 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12 UpdateWorkflowNodeResponseOneOf12 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2? UpdateWorkflowNodeResponseOneOf2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2 UpdateWorkflowNodeResponseOneOf2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3? UpdateWorkflowNodeResponseOneOf3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3 UpdateWorkflowNodeResponseOneOf3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4? UpdateWorkflowNodeResponseOneOf4 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4 UpdateWorkflowNodeResponseOneOf4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5? UpdateWorkflowNodeResponseOneOf5 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5 UpdateWorkflowNodeResponseOneOf5 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6? UpdateWorkflowNodeResponseOneOf6 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6 UpdateWorkflowNodeResponseOneOf6 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7? UpdateWorkflowNodeResponseOneOf7 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7 UpdateWorkflowNodeResponseOneOf7 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8? UpdateWorkflowNodeResponseOneOf8 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8 UpdateWorkflowNodeResponseOneOf8 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9? UpdateWorkflowNodeResponseOneOf9 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9 UpdateWorkflowNodeResponseOneOf9 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse();
+            var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
+            var result = new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse();
+            if("SignupTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ExperimentBranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("VariantNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("EventTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ContactPropertyTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("AddToListTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BlankTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("AudienceFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("TimerAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("SendEmailAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ExitAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SignupTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("EventTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ContactPropertyTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("contactPropertyQuery") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AddToListTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("mailingListId") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BlankTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AudienceFilter".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("appliesDownstream") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("TimerAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("amount") != null && parseNode.GetChildNode("unit") != null && (parseNode.GetChildNode("unit")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("m".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "h".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "d".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SendEmailAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("emailMessageId") != null && parseNode.GetChildNode("subject") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch8 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExitAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch9 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch10 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExperimentBranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("samplingRate") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch11 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("VariantNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf7 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf8 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch8 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf9 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch9 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch10 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf10 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch10 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch11) result.UpdateWorkflowNodeResponseOneOf11 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null && matchesUnionBranch11 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10) result.UpdateWorkflowNodeResponseOneOf12 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12(), parseNode);
+            if (result.UpdateWorkflowNodeResponseOneOf1 == null && result.UpdateWorkflowNodeResponseOneOf10 == null && result.UpdateWorkflowNodeResponseOneOf11 == null && result.UpdateWorkflowNodeResponseOneOf12 == null && result.UpdateWorkflowNodeResponseOneOf2 == null && result.UpdateWorkflowNodeResponseOneOf3 == null && result.UpdateWorkflowNodeResponseOneOf4 == null && result.UpdateWorkflowNodeResponseOneOf5 == null && result.UpdateWorkflowNodeResponseOneOf6 == null && result.UpdateWorkflowNodeResponseOneOf7 == null && result.UpdateWorkflowNodeResponseOneOf8 == null && result.UpdateWorkflowNodeResponseOneOf9 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            if(UpdateWorkflowNodeResponseOneOf1 != null)
             {
-                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue); } },
-            };
+                return UpdateWorkflowNodeResponseOneOf1.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf10 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf10.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf11 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf11.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf12 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf12.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf2 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf2.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf3 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf3.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf4 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf4.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf5 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf5.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf6 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf6.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf7 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf7.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf8 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf8.GetFieldDeserializers();
+            }
+            else if(UpdateWorkflowNodeResponseOneOf9 != null)
+            {
+                return UpdateWorkflowNodeResponseOneOf9.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (UpdateWorkflowNodeResponseOneOf1 != null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf1); return; }
+            if (UpdateWorkflowNodeResponseOneOf10 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf10); return; }
+            if (UpdateWorkflowNodeResponseOneOf11 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf11); return; }
+            if (UpdateWorkflowNodeResponseOneOf12 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf12); return; }
+            if (UpdateWorkflowNodeResponseOneOf2 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf2); return; }
+            if (UpdateWorkflowNodeResponseOneOf3 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf3); return; }
+            if (UpdateWorkflowNodeResponseOneOf4 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf4); return; }
+            if (UpdateWorkflowNodeResponseOneOf5 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf5); return; }
+            if (UpdateWorkflowNodeResponseOneOf6 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf6); return; }
+            if (UpdateWorkflowNodeResponseOneOf7 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf8 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf7); return; }
+            if (UpdateWorkflowNodeResponseOneOf8 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf9 == null) { if (UpdateWorkflowNodeResponseOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf8); return; }
+            if (UpdateWorkflowNodeResponseOneOf9 != null && UpdateWorkflowNodeResponseOneOf1 == null && UpdateWorkflowNodeResponseOneOf10 == null && UpdateWorkflowNodeResponseOneOf11 == null && UpdateWorkflowNodeResponseOneOf12 == null && UpdateWorkflowNodeResponseOneOf2 == null && UpdateWorkflowNodeResponseOneOf3 == null && UpdateWorkflowNodeResponseOneOf4 == null && UpdateWorkflowNodeResponseOneOf5 == null && UpdateWorkflowNodeResponseOneOf6 == null && UpdateWorkflowNodeResponseOneOf7 == null && UpdateWorkflowNodeResponseOneOf8 == null) { if (UpdateWorkflowNodeResponseOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, UpdateWorkflowNodeResponseOneOf9); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
+            if(UpdateWorkflowNodeResponseOneOf1 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1>(null, UpdateWorkflowNodeResponseOneOf1);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf10 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10>(null, UpdateWorkflowNodeResponseOneOf10);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf11 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11>(null, UpdateWorkflowNodeResponseOneOf11);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf12 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12>(null, UpdateWorkflowNodeResponseOneOf12);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf2 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2>(null, UpdateWorkflowNodeResponseOneOf2);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf3 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3>(null, UpdateWorkflowNodeResponseOneOf3);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf4 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4>(null, UpdateWorkflowNodeResponseOneOf4);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf5 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5>(null, UpdateWorkflowNodeResponseOneOf5);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf6 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6>(null, UpdateWorkflowNodeResponseOneOf6);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf7 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7>(null, UpdateWorkflowNodeResponseOneOf7);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf8 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8>(null, UpdateWorkflowNodeResponseOneOf8);
+            }
+            else if(UpdateWorkflowNodeResponseOneOf9 != null)
+            {
+                if (UpdateWorkflowNodeResponseOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9>(null, UpdateWorkflowNodeResponseOneOf9);
+            }
         }
     }
 }

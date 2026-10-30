@@ -53,6 +53,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Find
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.ContactFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.Loops.OpenApiClient.Models.Contact>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.Contact.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

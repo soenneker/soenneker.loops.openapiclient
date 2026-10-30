@@ -12,28 +12,43 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UploadFailureResponse : ApiException, IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("maxBytes") is { } nullNodeMaxBytes && nullNodeMaxBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxBytes = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessageEscaped && nullNodeMessageEscaped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageEscaped = null;
+            if (parseNode.GetChildNode("supportedContentTypes") is { } nullNodeSupportedContentTypes && nullNodeSupportedContentTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedContentTypes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Present when the upload exceeds the size limit. The maximum allowed size in bytes.</summary>
-        public int? MaxBytes { get; set; }
+        public int? MaxBytes { get => _explicitNullValueMaxBytes; set { _explicitNullValueMaxBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxBytes"); else _explicitNullProperties?.Remove("maxBytes"); } }
+        private int? _explicitNullValueMaxBytes = default!;
         /// <summary>The primary error message.</summary>
         public override string Message { get => MessageEscaped ?? string.Empty; }
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MessageEscaped { get; set; }
+        public string? MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessageEscaped = default!;
 #nullable restore
 #else
-        public string MessageEscaped { get; set; }
+        public string MessageEscaped { get => _explicitNullValueMessageEscaped; set { _explicitNullValueMessageEscaped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessageEscaped = default!;
 #endif
         /// <summary>Present when the request was rejected for an unsupported `contentType`. Lists the accepted MIME types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedContentTypes { get; set; }
+        public List<string>? SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
+        private List<string>? _explicitNullValueSupportedContentTypes = default!;
 #nullable restore
 #else
-        public List<string> SupportedContentTypes { get; set; }
+        public List<string> SupportedContentTypes { get => _explicitNullValueSupportedContentTypes; set { _explicitNullValueSupportedContentTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supportedContentTypes"); else _explicitNullProperties?.Remove("supportedContentTypes"); } }
+        private List<string> _explicitNullValueSupportedContentTypes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse"/> and sets the default values.
@@ -50,7 +65,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UploadFailureResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +90,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteIntValue("maxBytes", MaxBytes);
             writer.WriteStringValue("message", MessageEscaped);
             writer.WriteCollectionOfPrimitiveValues<string>("supportedContentTypes", SupportedContentTypes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

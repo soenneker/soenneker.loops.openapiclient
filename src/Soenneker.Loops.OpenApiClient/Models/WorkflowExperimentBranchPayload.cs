@@ -12,9 +12,18 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowExperimentBranchPayload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("samplingRate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+        }
+
         /// <summary>The percentage of contacts that will be sent to variant branches, between `0` and `100`. The remaining percentage will be sent to the control branch. `100` sends all contacts to variant branches.</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("samplingRate"); else _explicitNullProperties?.Remove("samplingRate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -23,7 +32,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowExperimentBranchPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowExperimentBranchPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowExperimentBranchPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -43,7 +52,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDoubleValue("samplingRate", SamplingRate);
+            writer.WriteDoubleValue("samplingRate", SamplingRate);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

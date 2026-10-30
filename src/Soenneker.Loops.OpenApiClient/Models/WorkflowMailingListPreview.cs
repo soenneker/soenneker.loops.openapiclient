@@ -11,21 +11,35 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowMailingListPreview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("mailingListId") is { } nullNodeMailingListId && nullNodeMailingListId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MailingListId = null;
+            if (parseNode.GetChildNode("queuedContactCount") is { } nullNodeQueuedContactCount && nullNodeQueuedContactCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueuedContactCount = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The mailingListId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MailingListId { get; set; }
+        public string? MailingListId { get => _explicitNullValueMailingListId; set { _explicitNullValueMailingListId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingListId"); else _explicitNullProperties?.Remove("mailingListId"); } }
+        private string? _explicitNullValueMailingListId = default!;
 #nullable restore
 #else
-        public string MailingListId { get; set; }
+        public string MailingListId { get => _explicitNullValueMailingListId; set { _explicitNullValueMailingListId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mailingListId"); else _explicitNullProperties?.Remove("mailingListId"); } }
+        private string _explicitNullValueMailingListId = default!;
 #endif
         /// <summary>The number of queued contacts that would be removed from the workflow due to the mailing list changing.</summary>
-        public double? QueuedContactCount { get; set; }
+        public double? QueuedContactCount { get => _explicitNullValueQueuedContactCount; set { _explicitNullValueQueuedContactCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queuedContactCount"); else _explicitNullProperties?.Remove("queuedContactCount"); } }
+        private double? _explicitNullValueQueuedContactCount = default!;
         /// <summary>The status property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus? Status { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreview"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("mailingListId", MailingListId);
             writer.WriteDoubleValue("queuedContactCount", QueuedContactCount);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMailingListPreviewStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

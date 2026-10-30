@@ -11,47 +11,72 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WebhookTransactionalEmailSentPayload : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("contactIdentity") is { } nullNodeContactIdentity && nullNodeContactIdentity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContactIdentity = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("eventName") is { } nullNodeEventName && nullNodeEventName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventName = null;
+            if (parseNode.GetChildNode("eventTime") is { } nullNodeEventTime && nullNodeEventTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventTime = null;
+            if (parseNode.GetChildNode("transactionalId") is { } nullNodeTransactionalId && nullNodeTransactionalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransactionalId = null;
+            if (parseNode.GetChildNode("transactionalName") is { } nullNodeTransactionalName && nullNodeTransactionalName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransactionalName = null;
+            if (parseNode.GetChildNode("webhookSchemaVersion") is { } nullNodeWebhookSchemaVersion && nullNodeWebhookSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookSchemaVersion = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The contactIdentity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? ContactIdentity { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity? _explicitNullValueContactIdentity = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity ContactIdentity { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity ContactIdentity { get => _explicitNullValueContactIdentity; set { _explicitNullValueContactIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contactIdentity"); else _explicitNullProperties?.Remove("contactIdentity"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity _explicitNullValueContactIdentity = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? Email { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail _explicitNullValueEmail = default!;
 #endif
         /// <summary>The eventName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName? EventName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName? EventName { get => _explicitNullValueEventName; set { _explicitNullValueEventName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventName"); else _explicitNullProperties?.Remove("eventName"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayloadEventName? _explicitNullValueEventName = default!;
         /// <summary>Unix timestamp in seconds.</summary>
-        public int? EventTime { get; set; }
+        public int? EventTime { get => _explicitNullValueEventTime; set { _explicitNullValueEventTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventTime"); else _explicitNullProperties?.Remove("eventTime"); } }
+        private int? _explicitNullValueEventTime = default!;
         /// <summary>The transactionalId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TransactionalId { get; set; }
+        public string? TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
+        private string? _explicitNullValueTransactionalId = default!;
 #nullable restore
 #else
-        public string TransactionalId { get; set; }
+        public string TransactionalId { get => _explicitNullValueTransactionalId; set { _explicitNullValueTransactionalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalId"); else _explicitNullProperties?.Remove("transactionalId"); } }
+        private string _explicitNullValueTransactionalId = default!;
 #endif
         /// <summary>The transactionalName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TransactionalName { get; set; }
+        public string? TransactionalName { get => _explicitNullValueTransactionalName; set { _explicitNullValueTransactionalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalName"); else _explicitNullProperties?.Remove("transactionalName"); } }
+        private string? _explicitNullValueTransactionalName = default!;
 #nullable restore
 #else
-        public string TransactionalName { get; set; }
+        public string TransactionalName { get => _explicitNullValueTransactionalName; set { _explicitNullValueTransactionalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalName"); else _explicitNullProperties?.Remove("transactionalName"); } }
+        private string _explicitNullValueTransactionalName = default!;
 #endif
         /// <summary>The webhookSchemaVersion property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? WebhookSchemaVersion { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? WebhookSchemaVersion { get => _explicitNullValueWebhookSchemaVersion; set { _explicitNullValueWebhookSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhookSchemaVersion"); else _explicitNullProperties?.Remove("webhookSchemaVersion"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion? _explicitNullValueWebhookSchemaVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayload"/> and sets the default values.
         /// </summary>
@@ -67,7 +92,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WebhookTransactionalEmailSentPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +125,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("transactionalId", TransactionalId);
             writer.WriteStringValue("transactionalName", TransactionalName);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.Value100WebhookSchemaVersion>("webhookSchemaVersion", WebhookSchemaVersion);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

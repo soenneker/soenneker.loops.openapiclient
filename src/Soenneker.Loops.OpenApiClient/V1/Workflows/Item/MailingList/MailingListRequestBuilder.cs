@@ -59,6 +59,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.MailingList
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ChangeWorkflowMailingListResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

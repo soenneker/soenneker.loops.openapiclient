@@ -12,32 +12,48 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowContactPropertyQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("is") is { } nullNodeIs && nullNodeIs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Is = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("was") is { } nullNodeWas && nullNodeWas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Was = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Comparison for the new contact property value after the update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Is { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Is { get => _explicitNullValueIs; set { _explicitNullValueIs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is"); else _explicitNullProperties?.Remove("is"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? _explicitNullValueIs = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Is { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Is { get => _explicitNullValueIs; set { _explicitNullValueIs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is"); else _explicitNullProperties?.Remove("is"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison _explicitNullValueIs = default!;
 #endif
         /// <summary>The camel-cased `key` of the contact property to query. The property must exist for the team and must be available for Contact Updated triggers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>Comparison for the previous contact property value before the update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Was { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? Was { get => _explicitNullValueWas; set { _explicitNullValueWas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("was"); else _explicitNullProperties?.Remove("was"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison? _explicitNullValueWas = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Was { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison Was { get => _explicitNullValueWas; set { _explicitNullValueWas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("was"); else _explicitNullProperties?.Remove("was"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison _explicitNullValueWas = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>("is", Is);
             writer.WriteStringValue("key", Key);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyComparison>("was", Was);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

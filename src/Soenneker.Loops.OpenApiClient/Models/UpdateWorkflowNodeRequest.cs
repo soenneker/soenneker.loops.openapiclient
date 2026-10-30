@@ -11,22 +11,35 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UpdateWorkflowNodeRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+            if (parseNode.GetChildNode("payload") is { } nullNodePayload && nullNodePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payload = null;
+        }
+
         /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedRevisionId { get; set; }
+        public string? ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string? _explicitNullValueExpectedRevisionId = default!;
 #nullable restore
 #else
-        public string ExpectedRevisionId { get; set; }
+        public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string _explicitNullValueExpectedRevisionId = default!;
 #endif
         /// <summary>Node-type-specific fields to update. The allowed fields depend on the existing node type. Trigger node updates may include `typeName` when changing one trigger node type to another trigger node type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload? Payload { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload? Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload? _explicitNullValuePayload = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload Payload { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload _explicitNullValuePayload = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -36,7 +49,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,7 +71,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload>("payload", Payload);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

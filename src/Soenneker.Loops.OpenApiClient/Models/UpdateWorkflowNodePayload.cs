@@ -12,7 +12,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateWorkflowNodePayload : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,15 +91,20 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodePayload();
-            result.WorkflowAddToListTriggerPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload();
-            result.WorkflowAudienceFilterPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAudienceFilterPayload();
-            result.WorkflowContactPropertyTriggerPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowContactPropertyTriggerPayload();
-            result.WorkflowEventTriggerPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowEventTriggerPayload();
-            result.WorkflowExperimentBranchPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowExperimentBranchPayload();
-            result.WorkflowSignupTriggerPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowSignupTriggerPayload();
-            result.WorkflowTimerActionPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerActionPayload();
-            result.WorkflowVariantPayload = new global::Soenneker.Loops.OpenApiClient.Models.WorkflowVariantPayload();
-            return result;
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("SignupTrigger".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.WorkflowAddToListTriggerPayload == null && result.WorkflowAudienceFilterPayload == null && result.WorkflowContactPropertyTriggerPayload == null && result.WorkflowEventTriggerPayload == null && result.WorkflowExperimentBranchPayload == null && result.WorkflowSignupTriggerPayload == null && result.WorkflowTimerActionPayload == null && result.WorkflowVariantPayload == null && matchesUnionBranch0) result.WorkflowSignupTriggerPayload = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowSignupTriggerPayload(), parseNode);
+            if (result.WorkflowAddToListTriggerPayload == null && result.WorkflowAudienceFilterPayload == null && result.WorkflowContactPropertyTriggerPayload == null && result.WorkflowEventTriggerPayload == null && result.WorkflowExperimentBranchPayload == null && result.WorkflowSignupTriggerPayload == null && result.WorkflowTimerActionPayload == null && result.WorkflowVariantPayload == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +124,17 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (WorkflowAddToListTriggerPayload != null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowAddToListTriggerPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowAddToListTriggerPayload); return; }
+            if (WorkflowAudienceFilterPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowAudienceFilterPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowAudienceFilterPayload); return; }
+            if (WorkflowContactPropertyTriggerPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowContactPropertyTriggerPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowContactPropertyTriggerPayload); return; }
+            if (WorkflowEventTriggerPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowEventTriggerPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowEventTriggerPayload); return; }
+            if (WorkflowExperimentBranchPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowExperimentBranchPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowExperimentBranchPayload); return; }
+            if (WorkflowSignupTriggerPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowTimerActionPayload == null && WorkflowVariantPayload == null) { if (WorkflowSignupTriggerPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowSignupTriggerPayload); return; }
+            if (WorkflowTimerActionPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowVariantPayload == null) { if (WorkflowTimerActionPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowTimerActionPayload); return; }
+            if (WorkflowVariantPayload != null && WorkflowAddToListTriggerPayload == null && WorkflowAudienceFilterPayload == null && WorkflowContactPropertyTriggerPayload == null && WorkflowEventTriggerPayload == null && WorkflowExperimentBranchPayload == null && WorkflowSignupTriggerPayload == null && WorkflowTimerActionPayload == null) { if (WorkflowVariantPayload is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WorkflowVariantPayload); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload>(null, WorkflowAddToListTriggerPayload, WorkflowAudienceFilterPayload, WorkflowContactPropertyTriggerPayload, WorkflowEventTriggerPayload, WorkflowExperimentBranchPayload, WorkflowSignupTriggerPayload, WorkflowTimerActionPayload, WorkflowVariantPayload);
         }

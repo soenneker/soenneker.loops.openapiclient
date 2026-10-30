@@ -8,49 +8,337 @@ using System;
 namespace Soenneker.Loops.OpenApiClient.Models
 {
     /// <summary>
-    /// The updated source node, plus the latest workflow.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8"/>, <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class RerouteNodeConnectionResponse : global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNodeWithRevision, IParsable
-    {
-        /// <summary>The workflow property</summary>
+    public partial class RerouteNodeConnectionResponse : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1? RerouteNodeConnectionResponseOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1 RerouteNodeConnectionResponseOneOf1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10? RerouteNodeConnectionResponseOneOf10 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10 RerouteNodeConnectionResponseOneOf10 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11? RerouteNodeConnectionResponseOneOf11 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11 RerouteNodeConnectionResponseOneOf11 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12? RerouteNodeConnectionResponseOneOf12 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12 RerouteNodeConnectionResponseOneOf12 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2? RerouteNodeConnectionResponseOneOf2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2 RerouteNodeConnectionResponseOneOf2 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3? RerouteNodeConnectionResponseOneOf3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3 RerouteNodeConnectionResponseOneOf3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4? RerouteNodeConnectionResponseOneOf4 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4 RerouteNodeConnectionResponseOneOf4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5? RerouteNodeConnectionResponseOneOf5 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5 RerouteNodeConnectionResponseOneOf5 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6? RerouteNodeConnectionResponseOneOf6 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6 RerouteNodeConnectionResponseOneOf6 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7? RerouteNodeConnectionResponseOneOf7 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7 RerouteNodeConnectionResponseOneOf7 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8? RerouteNodeConnectionResponseOneOf8 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8 RerouteNodeConnectionResponseOneOf8 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9? RerouteNodeConnectionResponseOneOf9 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9 RerouteNodeConnectionResponseOneOf9 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse();
+            var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
+            var result = new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponse();
+            if("SignupTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ExperimentBranchNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("VariantNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("EventTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ContactPropertyTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("AddToListTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BlankTrigger".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("AudienceFilter".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("TimerAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("SendEmailAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ExitAction".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SignupTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("EventTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ContactPropertyTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("contactPropertyQuery") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AddToListTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("mailingListId") != null && parseNode.GetChildNode("reEligible") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BlankTrigger".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("AudienceFilter".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("appliesDownstream") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("TimerAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("amount") != null && parseNode.GetChildNode("unit") != null && (parseNode.GetChildNode("unit")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("m".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "h".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "d".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("SendEmailAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("emailMessageId") != null && parseNode.GetChildNode("subject") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch8 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExitAction".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch9 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("BranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch10 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("ExperimentBranchNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("samplingRate") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            bool matchesUnionBranch11 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("typeName") != null && (parseNode.GetChildNode("typeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("VariantNode".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nextNodeIds") != null && parseNode.GetChildNode("workflowRevisionId") != null && parseNode.GetChildNode("workflow") != null))();
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf7 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf8 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch8 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch9 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf9 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch9 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch10 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf10 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch10 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch11) result.RerouteNodeConnectionResponseOneOf11 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null && matchesUnionBranch11 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7 && !matchesUnionBranch8 && !matchesUnionBranch9 && !matchesUnionBranch10) result.RerouteNodeConnectionResponseOneOf12 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12(), parseNode);
+            if (result.RerouteNodeConnectionResponseOneOf1 == null && result.RerouteNodeConnectionResponseOneOf10 == null && result.RerouteNodeConnectionResponseOneOf11 == null && result.RerouteNodeConnectionResponseOneOf12 == null && result.RerouteNodeConnectionResponseOneOf2 == null && result.RerouteNodeConnectionResponseOneOf3 == null && result.RerouteNodeConnectionResponseOneOf4 == null && result.RerouteNodeConnectionResponseOneOf5 == null && result.RerouteNodeConnectionResponseOneOf6 == null && result.RerouteNodeConnectionResponseOneOf7 == null && result.RerouteNodeConnectionResponseOneOf8 == null && result.RerouteNodeConnectionResponseOneOf9 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-        public override IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
+            if(RerouteNodeConnectionResponseOneOf1 != null)
             {
-                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue); } },
-            };
+                return RerouteNodeConnectionResponseOneOf1.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf10 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf10.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf11 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf11.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf12 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf12.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf2 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf2.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf3 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf3.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf4 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf4.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf5 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf5.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf6 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf6.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf7 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf7.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf8 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf8.GetFieldDeserializers();
+            }
+            else if(RerouteNodeConnectionResponseOneOf9 != null)
+            {
+                return RerouteNodeConnectionResponseOneOf9.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public override void Serialize(ISerializationWriter writer)
+        public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (RerouteNodeConnectionResponseOneOf1 != null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf1); return; }
+            if (RerouteNodeConnectionResponseOneOf10 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf10); return; }
+            if (RerouteNodeConnectionResponseOneOf11 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf11); return; }
+            if (RerouteNodeConnectionResponseOneOf12 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf12); return; }
+            if (RerouteNodeConnectionResponseOneOf2 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf2); return; }
+            if (RerouteNodeConnectionResponseOneOf3 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf3); return; }
+            if (RerouteNodeConnectionResponseOneOf4 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf4); return; }
+            if (RerouteNodeConnectionResponseOneOf5 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf5); return; }
+            if (RerouteNodeConnectionResponseOneOf6 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf6); return; }
+            if (RerouteNodeConnectionResponseOneOf7 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf8 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf7); return; }
+            if (RerouteNodeConnectionResponseOneOf8 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf9 == null) { if (RerouteNodeConnectionResponseOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf8); return; }
+            if (RerouteNodeConnectionResponseOneOf9 != null && RerouteNodeConnectionResponseOneOf1 == null && RerouteNodeConnectionResponseOneOf10 == null && RerouteNodeConnectionResponseOneOf11 == null && RerouteNodeConnectionResponseOneOf12 == null && RerouteNodeConnectionResponseOneOf2 == null && RerouteNodeConnectionResponseOneOf3 == null && RerouteNodeConnectionResponseOneOf4 == null && RerouteNodeConnectionResponseOneOf5 == null && RerouteNodeConnectionResponseOneOf6 == null && RerouteNodeConnectionResponseOneOf7 == null && RerouteNodeConnectionResponseOneOf8 == null) { if (RerouteNodeConnectionResponseOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RerouteNodeConnectionResponseOneOf9); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
-            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
+            if(RerouteNodeConnectionResponseOneOf1 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf1>(null, RerouteNodeConnectionResponseOneOf1);
+            }
+            else if(RerouteNodeConnectionResponseOneOf10 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf10>(null, RerouteNodeConnectionResponseOneOf10);
+            }
+            else if(RerouteNodeConnectionResponseOneOf11 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf11>(null, RerouteNodeConnectionResponseOneOf11);
+            }
+            else if(RerouteNodeConnectionResponseOneOf12 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf12>(null, RerouteNodeConnectionResponseOneOf12);
+            }
+            else if(RerouteNodeConnectionResponseOneOf2 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf2>(null, RerouteNodeConnectionResponseOneOf2);
+            }
+            else if(RerouteNodeConnectionResponseOneOf3 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf3>(null, RerouteNodeConnectionResponseOneOf3);
+            }
+            else if(RerouteNodeConnectionResponseOneOf4 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf4>(null, RerouteNodeConnectionResponseOneOf4);
+            }
+            else if(RerouteNodeConnectionResponseOneOf5 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf5>(null, RerouteNodeConnectionResponseOneOf5);
+            }
+            else if(RerouteNodeConnectionResponseOneOf6 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf6>(null, RerouteNodeConnectionResponseOneOf6);
+            }
+            else if(RerouteNodeConnectionResponseOneOf7 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf7>(null, RerouteNodeConnectionResponseOneOf7);
+            }
+            else if(RerouteNodeConnectionResponseOneOf8 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf8>(null, RerouteNodeConnectionResponseOneOf8);
+            }
+            else if(RerouteNodeConnectionResponseOneOf9 != null)
+            {
+                if (RerouteNodeConnectionResponseOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.RerouteNodeConnectionResponseOneOf9>(null, RerouteNodeConnectionResponseOneOf9);
+            }
         }
     }
 }

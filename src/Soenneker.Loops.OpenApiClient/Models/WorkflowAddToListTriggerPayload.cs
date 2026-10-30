@@ -12,11 +12,22 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WorkflowAddToListTriggerPayload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("reEligible") is { } nullNodeReEligible && nullNodeReEligible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReEligible = null;
+            if (parseNode.GetChildNode("typeName") is { } nullNodeTypeName && nullNodeTypeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TypeName = null;
+        }
+
         /// <summary>If `true`, the contacts will be able to enter this workflow every time the trigger is matched. If `false`, contacts will only ever enter this workflow once. Matches the &quot;Trigger frequency&quot; option in the UI.</summary>
-        public bool? ReEligible { get; set; }
+        public bool? ReEligible { get => _explicitNullValueReEligible; set { _explicitNullValueReEligible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reEligible"); else _explicitNullProperties?.Remove("reEligible"); } }
+        private bool? _explicitNullValueReEligible = default!;
         /// <summary>The typeName property</summary>
-        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName? TypeName { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName? TypeName { get => _explicitNullValueTypeName; set { _explicitNullValueTypeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("typeName"); else _explicitNullProperties?.Remove("typeName"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName? _explicitNullValueTypeName = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -25,7 +36,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.WorkflowAddToListTriggerPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,7 +58,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("reEligible", ReEligible);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName>("typeName", TypeName);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.AddToListTriggerTypeName>("typeName", TypeName);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

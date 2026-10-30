@@ -11,26 +11,41 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ContactSuppressionStatusResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("contact") is { } nullNodeContact && nullNodeContact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Contact = null;
+            if (parseNode.GetChildNode("isSuppressed") is { } nullNodeIsSuppressed && nullNodeIsSuppressed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsSuppressed = null;
+            if (parseNode.GetChildNode("removalQuota") is { } nullNodeRemovalQuota && nullNodeRemovalQuota.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalQuota = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The contact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact? Contact { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact? Contact { get => _explicitNullValueContact; set { _explicitNullValueContact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact"); else _explicitNullProperties?.Remove("contact"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact? _explicitNullValueContact = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact Contact { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact Contact { get => _explicitNullValueContact; set { _explicitNullValueContact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contact"); else _explicitNullProperties?.Remove("contact"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact _explicitNullValueContact = default!;
 #endif
         /// <summary>Whether the contact is suppressed.</summary>
-        public bool? IsSuppressed { get; set; }
+        public bool? IsSuppressed { get => _explicitNullValueIsSuppressed; set { _explicitNullValueIsSuppressed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isSuppressed"); else _explicitNullProperties?.Remove("isSuppressed"); } }
+        private bool? _explicitNullValueIsSuppressed = default!;
         /// <summary>The removal quota for the contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota? RemovalQuota { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota? RemovalQuota { get => _explicitNullValueRemovalQuota; set { _explicitNullValueRemovalQuota = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removalQuota"); else _explicitNullProperties?.Remove("removalQuota"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota? _explicitNullValueRemovalQuota = default!;
 #nullable restore
 #else
-        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota RemovalQuota { get; set; }
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota RemovalQuota { get => _explicitNullValueRemovalQuota; set { _explicitNullValueRemovalQuota = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removalQuota"); else _explicitNullProperties?.Remove("removalQuota"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota _explicitNullValueRemovalQuota = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionStatusResponseContact>("contact", Contact);
             writer.WriteBoolValue("isSuppressed", IsSuppressed);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactSuppressionRemovalQuota>("removalQuota", RemovalQuota);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,76 +11,111 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TransactionalDraftResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("createdAt") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("dataVariables") is { } nullNodeDataVariables && nullNodeDataVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataVariables = null;
+            if (parseNode.GetChildNode("draftEmailMessageContentRevisionId") is { } nullNodeDraftEmailMessageContentRevisionId && nullNodeDraftEmailMessageContentRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftEmailMessageContentRevisionId = null;
+            if (parseNode.GetChildNode("draftEmailMessageId") is { } nullNodeDraftEmailMessageId && nullNodeDraftEmailMessageId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftEmailMessageId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("publishedEmailMessageId") is { } nullNodePublishedEmailMessageId && nullNodePublishedEmailMessageId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublishedEmailMessageId = null;
+            if (parseNode.GetChildNode("transactionalGroupId") is { } nullNodeTransactionalGroupId && nullNodeTransactionalGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransactionalGroupId = null;
+            if (parseNode.GetChildNode("updatedAt") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ISO 8601 timestamp for when the transactional email was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdAt"); else _explicitNullProperties?.Remove("createdAt"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Data variable names used by the published email. Empty for unpublished transactional emails.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DataVariables { get; set; }
+        public List<string>? DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        private List<string>? _explicitNullValueDataVariables = default!;
 #nullable restore
 #else
-        public List<string> DataVariables { get; set; }
+        public List<string> DataVariables { get => _explicitNullValueDataVariables; set { _explicitNullValueDataVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataVariables"); else _explicitNullProperties?.Remove("dataVariables"); } }
+        private List<string> _explicitNullValueDataVariables = default!;
 #endif
         /// <summary>The `contentRevisionId` of the draft email message. Pass this as `expectedRevisionId` on your first update via `POST /v1/email-messages/{emailMessageId}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DraftEmailMessageContentRevisionId { get; set; }
+        public string? DraftEmailMessageContentRevisionId { get => _explicitNullValueDraftEmailMessageContentRevisionId; set { _explicitNullValueDraftEmailMessageContentRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftEmailMessageContentRevisionId"); else _explicitNullProperties?.Remove("draftEmailMessageContentRevisionId"); } }
+        private string? _explicitNullValueDraftEmailMessageContentRevisionId = default!;
 #nullable restore
 #else
-        public string DraftEmailMessageContentRevisionId { get; set; }
+        public string DraftEmailMessageContentRevisionId { get => _explicitNullValueDraftEmailMessageContentRevisionId; set { _explicitNullValueDraftEmailMessageContentRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftEmailMessageContentRevisionId"); else _explicitNullProperties?.Remove("draftEmailMessageContentRevisionId"); } }
+        private string _explicitNullValueDraftEmailMessageContentRevisionId = default!;
 #endif
         /// <summary>The ID of the draft email message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DraftEmailMessageId { get; set; }
+        public string? DraftEmailMessageId { get => _explicitNullValueDraftEmailMessageId; set { _explicitNullValueDraftEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftEmailMessageId"); else _explicitNullProperties?.Remove("draftEmailMessageId"); } }
+        private string? _explicitNullValueDraftEmailMessageId = default!;
 #nullable restore
 #else
-        public string DraftEmailMessageId { get; set; }
+        public string DraftEmailMessageId { get => _explicitNullValueDraftEmailMessageId; set { _explicitNullValueDraftEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draftEmailMessageId"); else _explicitNullProperties?.Remove("draftEmailMessageId"); } }
+        private string _explicitNullValueDraftEmailMessageId = default!;
 #endif
         /// <summary>The ID of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The name of the transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The ID of the published email message. `null` if there is no published version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PublishedEmailMessageId { get; set; }
+        public string? PublishedEmailMessageId { get => _explicitNullValuePublishedEmailMessageId; set { _explicitNullValuePublishedEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publishedEmailMessageId"); else _explicitNullProperties?.Remove("publishedEmailMessageId"); } }
+        private string? _explicitNullValuePublishedEmailMessageId = default!;
 #nullable restore
 #else
-        public string PublishedEmailMessageId { get; set; }
+        public string PublishedEmailMessageId { get => _explicitNullValuePublishedEmailMessageId; set { _explicitNullValuePublishedEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publishedEmailMessageId"); else _explicitNullProperties?.Remove("publishedEmailMessageId"); } }
+        private string _explicitNullValuePublishedEmailMessageId = default!;
 #endif
         /// <summary>The ID of the group this transactional email belongs to. Returned when creating a transactional email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TransactionalGroupId { get; set; }
+        public string? TransactionalGroupId { get => _explicitNullValueTransactionalGroupId; set { _explicitNullValueTransactionalGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalGroupId"); else _explicitNullProperties?.Remove("transactionalGroupId"); } }
+        private string? _explicitNullValueTransactionalGroupId = default!;
 #nullable restore
 #else
-        public string TransactionalGroupId { get; set; }
+        public string TransactionalGroupId { get => _explicitNullValueTransactionalGroupId; set { _explicitNullValueTransactionalGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transactionalGroupId"); else _explicitNullProperties?.Remove("transactionalGroupId"); } }
+        private string _explicitNullValueTransactionalGroupId = default!;
 #endif
         /// <summary>ISO 8601 timestamp for when the transactional email was last updated.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updatedAt"); else _explicitNullProperties?.Remove("updatedAt"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>The URL of the transactional email in the Loops app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get; set; }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get; set; }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse"/> and sets the default values.
@@ -97,7 +132,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.TransactionalDraftResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,6 +171,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("transactionalGroupId", TransactionalGroupId);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteStringValue("url", Url);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

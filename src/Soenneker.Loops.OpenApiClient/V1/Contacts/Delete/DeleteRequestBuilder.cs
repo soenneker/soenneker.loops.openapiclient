@@ -57,6 +57,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Contacts.Delete
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.ContactFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.ContactFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.ContactDeleteResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.ContactDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

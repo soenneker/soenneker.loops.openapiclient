@@ -69,6 +69,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -102,6 +104,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "413", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.Loops.OpenApiClient.Models.EmailMessageFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

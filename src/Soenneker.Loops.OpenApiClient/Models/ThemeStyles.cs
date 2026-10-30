@@ -12,170 +12,269 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ThemeStyles : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("backgroundColor") is { } nullNodeBackgroundColor && nullNodeBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundColor = null;
+            if (parseNode.GetChildNode("backgroundXPadding") is { } nullNodeBackgroundXPadding && nullNodeBackgroundXPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundXPadding = null;
+            if (parseNode.GetChildNode("backgroundYPadding") is { } nullNodeBackgroundYPadding && nullNodeBackgroundYPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundYPadding = null;
+            if (parseNode.GetChildNode("bodyColor") is { } nullNodeBodyColor && nullNodeBodyColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyColor = null;
+            if (parseNode.GetChildNode("bodyFontCategory") is { } nullNodeBodyFontCategory && nullNodeBodyFontCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyFontCategory = null;
+            if (parseNode.GetChildNode("bodyFontFamily") is { } nullNodeBodyFontFamily && nullNodeBodyFontFamily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyFontFamily = null;
+            if (parseNode.GetChildNode("bodyXPadding") is { } nullNodeBodyXPadding && nullNodeBodyXPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyXPadding = null;
+            if (parseNode.GetChildNode("bodyYPadding") is { } nullNodeBodyYPadding && nullNodeBodyYPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyYPadding = null;
+            if (parseNode.GetChildNode("borderColor") is { } nullNodeBorderColor && nullNodeBorderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderColor = null;
+            if (parseNode.GetChildNode("borderRadius") is { } nullNodeBorderRadius && nullNodeBorderRadius.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderRadius = null;
+            if (parseNode.GetChildNode("borderWidth") is { } nullNodeBorderWidth && nullNodeBorderWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderWidth = null;
+            if (parseNode.GetChildNode("buttonBodyColor") is { } nullNodeButtonBodyColor && nullNodeButtonBodyColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBodyColor = null;
+            if (parseNode.GetChildNode("buttonBodyXPadding") is { } nullNodeButtonBodyXPadding && nullNodeButtonBodyXPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBodyXPadding = null;
+            if (parseNode.GetChildNode("buttonBodyYPadding") is { } nullNodeButtonBodyYPadding && nullNodeButtonBodyYPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBodyYPadding = null;
+            if (parseNode.GetChildNode("buttonBorderColor") is { } nullNodeButtonBorderColor && nullNodeButtonBorderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBorderColor = null;
+            if (parseNode.GetChildNode("buttonBorderRadius") is { } nullNodeButtonBorderRadius && nullNodeButtonBorderRadius.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBorderRadius = null;
+            if (parseNode.GetChildNode("buttonBorderWidth") is { } nullNodeButtonBorderWidth && nullNodeButtonBorderWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonBorderWidth = null;
+            if (parseNode.GetChildNode("buttonTextColor") is { } nullNodeButtonTextColor && nullNodeButtonTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonTextColor = null;
+            if (parseNode.GetChildNode("buttonTextFontSize") is { } nullNodeButtonTextFontSize && nullNodeButtonTextFontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonTextFontSize = null;
+            if (parseNode.GetChildNode("buttonTextFormat") is { } nullNodeButtonTextFormat && nullNodeButtonTextFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonTextFormat = null;
+            if (parseNode.GetChildNode("dividerBorderWidth") is { } nullNodeDividerBorderWidth && nullNodeDividerBorderWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DividerBorderWidth = null;
+            if (parseNode.GetChildNode("dividerColor") is { } nullNodeDividerColor && nullNodeDividerColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DividerColor = null;
+            if (parseNode.GetChildNode("heading1Color") is { } nullNodeHeading1Color && nullNodeHeading1Color.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading1Color = null;
+            if (parseNode.GetChildNode("heading1FontSize") is { } nullNodeHeading1FontSize && nullNodeHeading1FontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading1FontSize = null;
+            if (parseNode.GetChildNode("heading1LetterSpacing") is { } nullNodeHeading1LetterSpacing && nullNodeHeading1LetterSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading1LetterSpacing = null;
+            if (parseNode.GetChildNode("heading1LineHeight") is { } nullNodeHeading1LineHeight && nullNodeHeading1LineHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading1LineHeight = null;
+            if (parseNode.GetChildNode("heading2Color") is { } nullNodeHeading2Color && nullNodeHeading2Color.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading2Color = null;
+            if (parseNode.GetChildNode("heading2FontSize") is { } nullNodeHeading2FontSize && nullNodeHeading2FontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading2FontSize = null;
+            if (parseNode.GetChildNode("heading2LetterSpacing") is { } nullNodeHeading2LetterSpacing && nullNodeHeading2LetterSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading2LetterSpacing = null;
+            if (parseNode.GetChildNode("heading2LineHeight") is { } nullNodeHeading2LineHeight && nullNodeHeading2LineHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading2LineHeight = null;
+            if (parseNode.GetChildNode("heading3Color") is { } nullNodeHeading3Color && nullNodeHeading3Color.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading3Color = null;
+            if (parseNode.GetChildNode("heading3FontSize") is { } nullNodeHeading3FontSize && nullNodeHeading3FontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading3FontSize = null;
+            if (parseNode.GetChildNode("heading3LetterSpacing") is { } nullNodeHeading3LetterSpacing && nullNodeHeading3LetterSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading3LetterSpacing = null;
+            if (parseNode.GetChildNode("heading3LineHeight") is { } nullNodeHeading3LineHeight && nullNodeHeading3LineHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heading3LineHeight = null;
+            if (parseNode.GetChildNode("textBaseColor") is { } nullNodeTextBaseColor && nullNodeTextBaseColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextBaseColor = null;
+            if (parseNode.GetChildNode("textBaseFontSize") is { } nullNodeTextBaseFontSize && nullNodeTextBaseFontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextBaseFontSize = null;
+            if (parseNode.GetChildNode("textBaseLetterSpacing") is { } nullNodeTextBaseLetterSpacing && nullNodeTextBaseLetterSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextBaseLetterSpacing = null;
+            if (parseNode.GetChildNode("textBaseLineHeight") is { } nullNodeTextBaseLineHeight && nullNodeTextBaseLineHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextBaseLineHeight = null;
+            if (parseNode.GetChildNode("textLinkColor") is { } nullNodeTextLinkColor && nullNodeTextLinkColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextLinkColor = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The backgroundColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BackgroundColor { get; set; }
+        public string? BackgroundColor { get => _explicitNullValueBackgroundColor; set { _explicitNullValueBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundColor"); else _explicitNullProperties?.Remove("backgroundColor"); } }
+        private string? _explicitNullValueBackgroundColor = default!;
 #nullable restore
 #else
-        public string BackgroundColor { get; set; }
+        public string BackgroundColor { get => _explicitNullValueBackgroundColor; set { _explicitNullValueBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundColor"); else _explicitNullProperties?.Remove("backgroundColor"); } }
+        private string _explicitNullValueBackgroundColor = default!;
 #endif
         /// <summary>The backgroundXPadding property</summary>
-        public double? BackgroundXPadding { get; set; }
+        public double? BackgroundXPadding { get => _explicitNullValueBackgroundXPadding; set { _explicitNullValueBackgroundXPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundXPadding"); else _explicitNullProperties?.Remove("backgroundXPadding"); } }
+        private double? _explicitNullValueBackgroundXPadding = default!;
         /// <summary>The backgroundYPadding property</summary>
-        public double? BackgroundYPadding { get; set; }
+        public double? BackgroundYPadding { get => _explicitNullValueBackgroundYPadding; set { _explicitNullValueBackgroundYPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundYPadding"); else _explicitNullProperties?.Remove("backgroundYPadding"); } }
+        private double? _explicitNullValueBackgroundYPadding = default!;
         /// <summary>The bodyColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BodyColor { get; set; }
+        public string? BodyColor { get => _explicitNullValueBodyColor; set { _explicitNullValueBodyColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyColor"); else _explicitNullProperties?.Remove("bodyColor"); } }
+        private string? _explicitNullValueBodyColor = default!;
 #nullable restore
 #else
-        public string BodyColor { get; set; }
+        public string BodyColor { get => _explicitNullValueBodyColor; set { _explicitNullValueBodyColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyColor"); else _explicitNullProperties?.Remove("bodyColor"); } }
+        private string _explicitNullValueBodyColor = default!;
 #endif
         /// <summary>The bodyFontCategory property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BodyFontCategory { get; set; }
+        public string? BodyFontCategory { get => _explicitNullValueBodyFontCategory; set { _explicitNullValueBodyFontCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyFontCategory"); else _explicitNullProperties?.Remove("bodyFontCategory"); } }
+        private string? _explicitNullValueBodyFontCategory = default!;
 #nullable restore
 #else
-        public string BodyFontCategory { get; set; }
+        public string BodyFontCategory { get => _explicitNullValueBodyFontCategory; set { _explicitNullValueBodyFontCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyFontCategory"); else _explicitNullProperties?.Remove("bodyFontCategory"); } }
+        private string _explicitNullValueBodyFontCategory = default!;
 #endif
         /// <summary>The bodyFontFamily property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BodyFontFamily { get; set; }
+        public string? BodyFontFamily { get => _explicitNullValueBodyFontFamily; set { _explicitNullValueBodyFontFamily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyFontFamily"); else _explicitNullProperties?.Remove("bodyFontFamily"); } }
+        private string? _explicitNullValueBodyFontFamily = default!;
 #nullable restore
 #else
-        public string BodyFontFamily { get; set; }
+        public string BodyFontFamily { get => _explicitNullValueBodyFontFamily; set { _explicitNullValueBodyFontFamily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyFontFamily"); else _explicitNullProperties?.Remove("bodyFontFamily"); } }
+        private string _explicitNullValueBodyFontFamily = default!;
 #endif
         /// <summary>The bodyXPadding property</summary>
-        public double? BodyXPadding { get; set; }
+        public double? BodyXPadding { get => _explicitNullValueBodyXPadding; set { _explicitNullValueBodyXPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyXPadding"); else _explicitNullProperties?.Remove("bodyXPadding"); } }
+        private double? _explicitNullValueBodyXPadding = default!;
         /// <summary>The bodyYPadding property</summary>
-        public double? BodyYPadding { get; set; }
+        public double? BodyYPadding { get => _explicitNullValueBodyYPadding; set { _explicitNullValueBodyYPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bodyYPadding"); else _explicitNullProperties?.Remove("bodyYPadding"); } }
+        private double? _explicitNullValueBodyYPadding = default!;
         /// <summary>The borderColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BorderColor { get; set; }
+        public string? BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string? _explicitNullValueBorderColor = default!;
 #nullable restore
 #else
-        public string BorderColor { get; set; }
+        public string BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string _explicitNullValueBorderColor = default!;
 #endif
         /// <summary>The borderRadius property</summary>
-        public double? BorderRadius { get; set; }
+        public double? BorderRadius { get => _explicitNullValueBorderRadius; set { _explicitNullValueBorderRadius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderRadius"); else _explicitNullProperties?.Remove("borderRadius"); } }
+        private double? _explicitNullValueBorderRadius = default!;
         /// <summary>The borderWidth property</summary>
-        public double? BorderWidth { get; set; }
+        public double? BorderWidth { get => _explicitNullValueBorderWidth; set { _explicitNullValueBorderWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderWidth"); else _explicitNullProperties?.Remove("borderWidth"); } }
+        private double? _explicitNullValueBorderWidth = default!;
         /// <summary>The buttonBodyColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ButtonBodyColor { get; set; }
+        public string? ButtonBodyColor { get => _explicitNullValueButtonBodyColor; set { _explicitNullValueButtonBodyColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBodyColor"); else _explicitNullProperties?.Remove("buttonBodyColor"); } }
+        private string? _explicitNullValueButtonBodyColor = default!;
 #nullable restore
 #else
-        public string ButtonBodyColor { get; set; }
+        public string ButtonBodyColor { get => _explicitNullValueButtonBodyColor; set { _explicitNullValueButtonBodyColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBodyColor"); else _explicitNullProperties?.Remove("buttonBodyColor"); } }
+        private string _explicitNullValueButtonBodyColor = default!;
 #endif
         /// <summary>The buttonBodyXPadding property</summary>
-        public double? ButtonBodyXPadding { get; set; }
+        public double? ButtonBodyXPadding { get => _explicitNullValueButtonBodyXPadding; set { _explicitNullValueButtonBodyXPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBodyXPadding"); else _explicitNullProperties?.Remove("buttonBodyXPadding"); } }
+        private double? _explicitNullValueButtonBodyXPadding = default!;
         /// <summary>The buttonBodyYPadding property</summary>
-        public double? ButtonBodyYPadding { get; set; }
+        public double? ButtonBodyYPadding { get => _explicitNullValueButtonBodyYPadding; set { _explicitNullValueButtonBodyYPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBodyYPadding"); else _explicitNullProperties?.Remove("buttonBodyYPadding"); } }
+        private double? _explicitNullValueButtonBodyYPadding = default!;
         /// <summary>The buttonBorderColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ButtonBorderColor { get; set; }
+        public string? ButtonBorderColor { get => _explicitNullValueButtonBorderColor; set { _explicitNullValueButtonBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBorderColor"); else _explicitNullProperties?.Remove("buttonBorderColor"); } }
+        private string? _explicitNullValueButtonBorderColor = default!;
 #nullable restore
 #else
-        public string ButtonBorderColor { get; set; }
+        public string ButtonBorderColor { get => _explicitNullValueButtonBorderColor; set { _explicitNullValueButtonBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBorderColor"); else _explicitNullProperties?.Remove("buttonBorderColor"); } }
+        private string _explicitNullValueButtonBorderColor = default!;
 #endif
         /// <summary>The buttonBorderRadius property</summary>
-        public double? ButtonBorderRadius { get; set; }
+        public double? ButtonBorderRadius { get => _explicitNullValueButtonBorderRadius; set { _explicitNullValueButtonBorderRadius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBorderRadius"); else _explicitNullProperties?.Remove("buttonBorderRadius"); } }
+        private double? _explicitNullValueButtonBorderRadius = default!;
         /// <summary>The buttonBorderWidth property</summary>
-        public double? ButtonBorderWidth { get; set; }
+        public double? ButtonBorderWidth { get => _explicitNullValueButtonBorderWidth; set { _explicitNullValueButtonBorderWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonBorderWidth"); else _explicitNullProperties?.Remove("buttonBorderWidth"); } }
+        private double? _explicitNullValueButtonBorderWidth = default!;
         /// <summary>The buttonTextColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ButtonTextColor { get; set; }
+        public string? ButtonTextColor { get => _explicitNullValueButtonTextColor; set { _explicitNullValueButtonTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonTextColor"); else _explicitNullProperties?.Remove("buttonTextColor"); } }
+        private string? _explicitNullValueButtonTextColor = default!;
 #nullable restore
 #else
-        public string ButtonTextColor { get; set; }
+        public string ButtonTextColor { get => _explicitNullValueButtonTextColor; set { _explicitNullValueButtonTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonTextColor"); else _explicitNullProperties?.Remove("buttonTextColor"); } }
+        private string _explicitNullValueButtonTextColor = default!;
 #endif
         /// <summary>The buttonTextFontSize property</summary>
-        public double? ButtonTextFontSize { get; set; }
+        public double? ButtonTextFontSize { get => _explicitNullValueButtonTextFontSize; set { _explicitNullValueButtonTextFontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonTextFontSize"); else _explicitNullProperties?.Remove("buttonTextFontSize"); } }
+        private double? _explicitNullValueButtonTextFontSize = default!;
         /// <summary>The buttonTextFormat property</summary>
-        public double? ButtonTextFormat { get; set; }
+        public double? ButtonTextFormat { get => _explicitNullValueButtonTextFormat; set { _explicitNullValueButtonTextFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonTextFormat"); else _explicitNullProperties?.Remove("buttonTextFormat"); } }
+        private double? _explicitNullValueButtonTextFormat = default!;
         /// <summary>The dividerBorderWidth property</summary>
-        public double? DividerBorderWidth { get; set; }
+        public double? DividerBorderWidth { get => _explicitNullValueDividerBorderWidth; set { _explicitNullValueDividerBorderWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dividerBorderWidth"); else _explicitNullProperties?.Remove("dividerBorderWidth"); } }
+        private double? _explicitNullValueDividerBorderWidth = default!;
         /// <summary>The dividerColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DividerColor { get; set; }
+        public string? DividerColor { get => _explicitNullValueDividerColor; set { _explicitNullValueDividerColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dividerColor"); else _explicitNullProperties?.Remove("dividerColor"); } }
+        private string? _explicitNullValueDividerColor = default!;
 #nullable restore
 #else
-        public string DividerColor { get; set; }
+        public string DividerColor { get => _explicitNullValueDividerColor; set { _explicitNullValueDividerColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dividerColor"); else _explicitNullProperties?.Remove("dividerColor"); } }
+        private string _explicitNullValueDividerColor = default!;
 #endif
         /// <summary>The heading1Color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Heading1Color { get; set; }
+        public string? Heading1Color { get => _explicitNullValueHeading1Color; set { _explicitNullValueHeading1Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading1Color"); else _explicitNullProperties?.Remove("heading1Color"); } }
+        private string? _explicitNullValueHeading1Color = default!;
 #nullable restore
 #else
-        public string Heading1Color { get; set; }
+        public string Heading1Color { get => _explicitNullValueHeading1Color; set { _explicitNullValueHeading1Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading1Color"); else _explicitNullProperties?.Remove("heading1Color"); } }
+        private string _explicitNullValueHeading1Color = default!;
 #endif
         /// <summary>The heading1FontSize property</summary>
-        public double? Heading1FontSize { get; set; }
+        public double? Heading1FontSize { get => _explicitNullValueHeading1FontSize; set { _explicitNullValueHeading1FontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading1FontSize"); else _explicitNullProperties?.Remove("heading1FontSize"); } }
+        private double? _explicitNullValueHeading1FontSize = default!;
         /// <summary>The heading1LetterSpacing property</summary>
-        public double? Heading1LetterSpacing { get; set; }
+        public double? Heading1LetterSpacing { get => _explicitNullValueHeading1LetterSpacing; set { _explicitNullValueHeading1LetterSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading1LetterSpacing"); else _explicitNullProperties?.Remove("heading1LetterSpacing"); } }
+        private double? _explicitNullValueHeading1LetterSpacing = default!;
         /// <summary>The heading1LineHeight property</summary>
-        public double? Heading1LineHeight { get; set; }
+        public double? Heading1LineHeight { get => _explicitNullValueHeading1LineHeight; set { _explicitNullValueHeading1LineHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading1LineHeight"); else _explicitNullProperties?.Remove("heading1LineHeight"); } }
+        private double? _explicitNullValueHeading1LineHeight = default!;
         /// <summary>The heading2Color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Heading2Color { get; set; }
+        public string? Heading2Color { get => _explicitNullValueHeading2Color; set { _explicitNullValueHeading2Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading2Color"); else _explicitNullProperties?.Remove("heading2Color"); } }
+        private string? _explicitNullValueHeading2Color = default!;
 #nullable restore
 #else
-        public string Heading2Color { get; set; }
+        public string Heading2Color { get => _explicitNullValueHeading2Color; set { _explicitNullValueHeading2Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading2Color"); else _explicitNullProperties?.Remove("heading2Color"); } }
+        private string _explicitNullValueHeading2Color = default!;
 #endif
         /// <summary>The heading2FontSize property</summary>
-        public double? Heading2FontSize { get; set; }
+        public double? Heading2FontSize { get => _explicitNullValueHeading2FontSize; set { _explicitNullValueHeading2FontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading2FontSize"); else _explicitNullProperties?.Remove("heading2FontSize"); } }
+        private double? _explicitNullValueHeading2FontSize = default!;
         /// <summary>The heading2LetterSpacing property</summary>
-        public double? Heading2LetterSpacing { get; set; }
+        public double? Heading2LetterSpacing { get => _explicitNullValueHeading2LetterSpacing; set { _explicitNullValueHeading2LetterSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading2LetterSpacing"); else _explicitNullProperties?.Remove("heading2LetterSpacing"); } }
+        private double? _explicitNullValueHeading2LetterSpacing = default!;
         /// <summary>The heading2LineHeight property</summary>
-        public double? Heading2LineHeight { get; set; }
+        public double? Heading2LineHeight { get => _explicitNullValueHeading2LineHeight; set { _explicitNullValueHeading2LineHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading2LineHeight"); else _explicitNullProperties?.Remove("heading2LineHeight"); } }
+        private double? _explicitNullValueHeading2LineHeight = default!;
         /// <summary>The heading3Color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Heading3Color { get; set; }
+        public string? Heading3Color { get => _explicitNullValueHeading3Color; set { _explicitNullValueHeading3Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading3Color"); else _explicitNullProperties?.Remove("heading3Color"); } }
+        private string? _explicitNullValueHeading3Color = default!;
 #nullable restore
 #else
-        public string Heading3Color { get; set; }
+        public string Heading3Color { get => _explicitNullValueHeading3Color; set { _explicitNullValueHeading3Color = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading3Color"); else _explicitNullProperties?.Remove("heading3Color"); } }
+        private string _explicitNullValueHeading3Color = default!;
 #endif
         /// <summary>The heading3FontSize property</summary>
-        public double? Heading3FontSize { get; set; }
+        public double? Heading3FontSize { get => _explicitNullValueHeading3FontSize; set { _explicitNullValueHeading3FontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading3FontSize"); else _explicitNullProperties?.Remove("heading3FontSize"); } }
+        private double? _explicitNullValueHeading3FontSize = default!;
         /// <summary>The heading3LetterSpacing property</summary>
-        public double? Heading3LetterSpacing { get; set; }
+        public double? Heading3LetterSpacing { get => _explicitNullValueHeading3LetterSpacing; set { _explicitNullValueHeading3LetterSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading3LetterSpacing"); else _explicitNullProperties?.Remove("heading3LetterSpacing"); } }
+        private double? _explicitNullValueHeading3LetterSpacing = default!;
         /// <summary>The heading3LineHeight property</summary>
-        public double? Heading3LineHeight { get; set; }
+        public double? Heading3LineHeight { get => _explicitNullValueHeading3LineHeight; set { _explicitNullValueHeading3LineHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heading3LineHeight"); else _explicitNullProperties?.Remove("heading3LineHeight"); } }
+        private double? _explicitNullValueHeading3LineHeight = default!;
         /// <summary>The textBaseColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextBaseColor { get; set; }
+        public string? TextBaseColor { get => _explicitNullValueTextBaseColor; set { _explicitNullValueTextBaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textBaseColor"); else _explicitNullProperties?.Remove("textBaseColor"); } }
+        private string? _explicitNullValueTextBaseColor = default!;
 #nullable restore
 #else
-        public string TextBaseColor { get; set; }
+        public string TextBaseColor { get => _explicitNullValueTextBaseColor; set { _explicitNullValueTextBaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textBaseColor"); else _explicitNullProperties?.Remove("textBaseColor"); } }
+        private string _explicitNullValueTextBaseColor = default!;
 #endif
         /// <summary>The textBaseFontSize property</summary>
-        public double? TextBaseFontSize { get; set; }
+        public double? TextBaseFontSize { get => _explicitNullValueTextBaseFontSize; set { _explicitNullValueTextBaseFontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textBaseFontSize"); else _explicitNullProperties?.Remove("textBaseFontSize"); } }
+        private double? _explicitNullValueTextBaseFontSize = default!;
         /// <summary>The textBaseLetterSpacing property</summary>
-        public double? TextBaseLetterSpacing { get; set; }
+        public double? TextBaseLetterSpacing { get => _explicitNullValueTextBaseLetterSpacing; set { _explicitNullValueTextBaseLetterSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textBaseLetterSpacing"); else _explicitNullProperties?.Remove("textBaseLetterSpacing"); } }
+        private double? _explicitNullValueTextBaseLetterSpacing = default!;
         /// <summary>The textBaseLineHeight property</summary>
-        public double? TextBaseLineHeight { get; set; }
+        public double? TextBaseLineHeight { get => _explicitNullValueTextBaseLineHeight; set { _explicitNullValueTextBaseLineHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textBaseLineHeight"); else _explicitNullProperties?.Remove("textBaseLineHeight"); } }
+        private double? _explicitNullValueTextBaseLineHeight = default!;
         /// <summary>The textLinkColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextLinkColor { get; set; }
+        public string? TextLinkColor { get => _explicitNullValueTextLinkColor; set { _explicitNullValueTextLinkColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textLinkColor"); else _explicitNullProperties?.Remove("textLinkColor"); } }
+        private string? _explicitNullValueTextLinkColor = default!;
 #nullable restore
 #else
-        public string TextLinkColor { get; set; }
+        public string TextLinkColor { get => _explicitNullValueTextLinkColor; set { _explicitNullValueTextLinkColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textLinkColor"); else _explicitNullProperties?.Remove("textLinkColor"); } }
+        private string _explicitNullValueTextLinkColor = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles"/> and sets the default values.
@@ -192,7 +291,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.ThemeStyles(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -289,6 +388,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteDoubleValue("textBaseLetterSpacing", TextBaseLetterSpacing);
             writer.WriteDoubleValue("textBaseLineHeight", TextBaseLineHeight);
             writer.WriteStringValue("textLinkColor", TextLinkColor);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

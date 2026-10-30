@@ -12,7 +12,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateWorkflowNodeRequest : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,13 +54,22 @@ namespace Soenneker.Loops.OpenApiClient.Models
             var result = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeRequest();
             if("after".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateWorkflowNodeAfterRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest();
+                
             }
             else if("between".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CreateWorkflowNodeBetweenRequest = new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("expectedRevisionId") != null && parseNode.GetChildNode("insertMode") != null && (parseNode.GetChildNode("insertMode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("between".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nodeTypeName") != null && (parseNode.GetChildNode("nodeTypeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("AudienceFilter".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "BranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "ExperimentBranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "TimerAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "SendEmailAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "VariantNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("fromNodeId") != null && parseNode.GetChildNode("toNodeId") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("expectedRevisionId") != null && parseNode.GetChildNode("insertMode") != null && (parseNode.GetChildNode("insertMode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("before".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nodeTypeName") != null && (parseNode.GetChildNode("nodeTypeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("AudienceFilter".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "BranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "ExperimentBranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "TimerAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "SendEmailAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "VariantNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("expectedRevisionId") != null && parseNode.GetChildNode("insertMode") != null && (parseNode.GetChildNode("insertMode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("after".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("nodeTypeName") != null && (parseNode.GetChildNode("nodeTypeName")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("AudienceFilter".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "BranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "ExperimentBranchNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "TimerAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "SendEmailAction".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "VariantNode".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("fromNodeId") != null))();
+            if (result.CreateWorkflowNodeAfterRequest == null && result.CreateWorkflowNodeBeforeRequest == null && result.CreateWorkflowNodeBetweenRequest == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.CreateWorkflowNodeBetweenRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest(), parseNode);
+            if (result.CreateWorkflowNodeAfterRequest == null && result.CreateWorkflowNodeBeforeRequest == null && result.CreateWorkflowNodeBetweenRequest == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.CreateWorkflowNodeBeforeRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest(), parseNode);
+            if (result.CreateWorkflowNodeAfterRequest == null && result.CreateWorkflowNodeBeforeRequest == null && result.CreateWorkflowNodeBetweenRequest == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.CreateWorkflowNodeAfterRequest = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest(), parseNode);
+            if (result.CreateWorkflowNodeAfterRequest == null && result.CreateWorkflowNodeBeforeRequest == null && result.CreateWorkflowNodeBetweenRequest == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,17 +97,25 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CreateWorkflowNodeAfterRequest == null && CreateWorkflowNodeBeforeRequest == null && CreateWorkflowNodeBetweenRequest == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CreateWorkflowNodeAfterRequest != null && CreateWorkflowNodeBeforeRequest == null && CreateWorkflowNodeBetweenRequest == null) { if (CreateWorkflowNodeAfterRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateWorkflowNodeAfterRequest); return; }
+            if (CreateWorkflowNodeBetweenRequest != null && CreateWorkflowNodeAfterRequest == null && CreateWorkflowNodeBeforeRequest == null) { if (CreateWorkflowNodeBetweenRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateWorkflowNodeBetweenRequest); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(CreateWorkflowNodeAfterRequest != null)
             {
+                if (CreateWorkflowNodeAfterRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeAfterRequest>(null, CreateWorkflowNodeAfterRequest);
             }
             else if(CreateWorkflowNodeBeforeRequest != null)
             {
+                if (CreateWorkflowNodeBeforeRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBeforeRequest>(null, CreateWorkflowNodeBeforeRequest);
             }
             else if(CreateWorkflowNodeBetweenRequest != null)
             {
+                if (CreateWorkflowNodeBetweenRequest is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.CreateWorkflowNodeBetweenRequest>(null, CreateWorkflowNodeBetweenRequest);
             }
         }

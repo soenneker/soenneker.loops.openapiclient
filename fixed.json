@@ -7686,9 +7686,6 @@
         "description": "A tree of audience conditions combined with \u0060match\u0060. Setting this without also providing \u0060audienceSegmentId\u0060 clears any existing \u0060audienceSegmentId\u0060. When both are provided, this filter is applied on top of the segment\u0027s filter."
       },
       "AudienceFilterCondition": {
-        "required": [
-          "type"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/PropertyCondition"
@@ -7700,12 +7697,7 @@
             "$ref": "#/components/schemas/ActivityCondition"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "type",
           "mapping": {
             "PropertyCondition": "#/components/schemas/PropertyCondition",
@@ -8587,9 +8579,6 @@
         "additionalProperties": false
       },
       "WorkflowMutationNode": {
-        "required": [
-          "typeName"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNode"
@@ -8628,13 +8617,8 @@
             "$ref": "#/components/schemas/VariantWorkflowMutationNode"
           }
         ],
-        "properties": {
-          "typeName": {
-            "type": "string"
-          }
-        },
         "description": "Detailed workflow node returned from create and update mutations. The exact fields depend on \u0060typeName\u0060.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "typeName",
           "mapping": {
             "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNode",
@@ -9354,9 +9338,6 @@
         }
       },
       "WorkflowMutationNodeWithRevision": {
-        "required": [
-          "typeName"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision"
@@ -9395,13 +9376,8 @@
             "$ref": "#/components/schemas/VariantWorkflowMutationNodeWithRevision"
           }
         ],
-        "properties": {
-          "typeName": {
-            "type": "string"
-          }
-        },
         "description": "Detailed workflow node returned from a mutation, plus the latest workflow revision token.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "typeName",
           "mapping": {
             "SignupTrigger": "#/components/schemas/SignupTriggerWorkflowMutationNodeWithRevision",
@@ -9847,19 +9823,59 @@
         }
       },
       "CreatedWorkflowNode": {
-        "type": "object",
-        "allOf": [
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/WorkflowMutationNodeWithRevision"
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/CreatedWorkflowNodeOneOf12"
           }
         ],
-        "properties": {
-          "createdChildNodes": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkflowMutationNode"
-            },
-            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+        "discriminator": {
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf1",
+            "EventTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf2",
+            "ContactPropertyTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf3",
+            "AddToListTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf4",
+            "BlankTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf5",
+            "AudienceFilter": "#/components/schemas/CreatedWorkflowNodeOneOf6",
+            "TimerAction": "#/components/schemas/CreatedWorkflowNodeOneOf7",
+            "SendEmailAction": "#/components/schemas/CreatedWorkflowNodeOneOf8",
+            "ExitAction": "#/components/schemas/CreatedWorkflowNodeOneOf9",
+            "BranchNode": "#/components/schemas/CreatedWorkflowNodeOneOf10",
+            "ExperimentBranchNode": "#/components/schemas/CreatedWorkflowNodeOneOf11",
+            "VariantNode": "#/components/schemas/CreatedWorkflowNodeOneOf12"
           }
         }
       },
@@ -9979,21 +9995,62 @@
             }
           }
         ],
-        "required": [
-          "workflow"
-        ],
-        "type": "object",
-        "allOf": [
+        "description": "The updated source node, plus the latest workflow.",
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/WorkflowMutationNodeWithRevision"
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/RerouteNodeConnectionResponseOneOf12"
           }
         ],
-        "properties": {
-          "workflow": {
-            "$ref": "#/components/schemas/SimplifiedWorkflow"
+        "discriminator": {
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/RerouteNodeConnectionResponseOneOf1",
+            "EventTrigger": "#/components/schemas/RerouteNodeConnectionResponseOneOf2",
+            "ContactPropertyTrigger": "#/components/schemas/RerouteNodeConnectionResponseOneOf3",
+            "AddToListTrigger": "#/components/schemas/RerouteNodeConnectionResponseOneOf4",
+            "BlankTrigger": "#/components/schemas/RerouteNodeConnectionResponseOneOf5",
+            "AudienceFilter": "#/components/schemas/RerouteNodeConnectionResponseOneOf6",
+            "TimerAction": "#/components/schemas/RerouteNodeConnectionResponseOneOf7",
+            "SendEmailAction": "#/components/schemas/RerouteNodeConnectionResponseOneOf8",
+            "ExitAction": "#/components/schemas/RerouteNodeConnectionResponseOneOf9",
+            "BranchNode": "#/components/schemas/RerouteNodeConnectionResponseOneOf10",
+            "ExperimentBranchNode": "#/components/schemas/RerouteNodeConnectionResponseOneOf11",
+            "VariantNode": "#/components/schemas/RerouteNodeConnectionResponseOneOf12"
           }
-        },
-        "description": "The updated source node, plus the latest workflow."
+        }
       },
       "UpdateWorkflowNodeRequest": {
         "required": [
@@ -10014,21 +10071,62 @@
         "additionalProperties": false
       },
       "UpdateWorkflowNodeResponse": {
-        "required": [
-          "workflow"
-        ],
-        "type": "object",
-        "allOf": [
+        "description": "The updated workflow node, plus the latest simplified workflow.",
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/WorkflowMutationNodeWithRevision"
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/UpdateWorkflowNodeResponseOneOf12"
           }
         ],
-        "properties": {
-          "workflow": {
-            "$ref": "#/components/schemas/SimplifiedWorkflow"
+        "discriminator": {
+          "propertyName": "typeName",
+          "mapping": {
+            "SignupTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf1",
+            "EventTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf2",
+            "ContactPropertyTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf3",
+            "AddToListTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf4",
+            "BlankTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf5",
+            "AudienceFilter": "#/components/schemas/UpdateWorkflowNodeResponseOneOf6",
+            "TimerAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf7",
+            "SendEmailAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf8",
+            "ExitAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf9",
+            "BranchNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf10",
+            "ExperimentBranchNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf11",
+            "VariantNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf12"
           }
-        },
-        "description": "The updated workflow node, plus the latest simplified workflow."
+        }
       },
       "DeleteWorkflowNodeRequest": {
         "required": [
@@ -10294,9 +10392,6 @@
         }
       },
       "SimplifiedWorkflowNode": {
-        "required": [
-          "typeName"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode"
@@ -10335,12 +10430,7 @@
             "$ref": "#/components/schemas/SimplifiedVariantWorkflowNode"
           }
         ],
-        "properties": {
-          "typeName": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "typeName",
           "mapping": {
             "SimplifiedSignupTriggerWorkflowNode": "#/components/schemas/SimplifiedSignupTriggerWorkflowNode",
@@ -10707,9 +10797,6 @@
         "additionalProperties": false
       },
       "WorkflowNode": {
-        "required": [
-          "typeName"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/SignupTriggerWorkflowNode"
@@ -10748,12 +10835,7 @@
             "$ref": "#/components/schemas/VariantWorkflowNode"
           }
         ],
-        "properties": {
-          "typeName": {
-            "type": "string"
-          }
-        },
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "typeName",
           "mapping": {
             "SignupTriggerWorkflowNode": "#/components/schemas/SignupTriggerWorkflowNode",
@@ -10772,22 +10854,45 @@
         }
       },
       "WorkflowNodeWithRevision": {
-        "required": [
-          "workflowRevisionId"
-        ],
-        "type": "object",
-        "allOf": [
+        "description": "Detailed workflow node returned from read operations. The exact fields depend on \u0060typeName\u0060.",
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/WorkflowNode"
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf2"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf3"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf4"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf5"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf6"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf7"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf8"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf9"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf10"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf11"
+          },
+          {
+            "$ref": "#/components/schemas/WorkflowNodeWithRevisionOneOf12"
           }
-        ],
-        "properties": {
-          "workflowRevisionId": {
-            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
-            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
-          }
-        },
-        "description": "Detailed workflow node returned from read operations. The exact fields depend on \u0060typeName\u0060."
+        ]
       },
       "SignupTriggerWorkflowNode": {
         "title": "Signup trigger",
@@ -15890,6 +15995,1635 @@
             }
           ]
         }
+      },
+      "CreatedWorkflowNodeOneOf1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/EventTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
+            "type": "string",
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "reEligible",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf3": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "contactPropertyQuery",
+          "reEligible",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf4": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list this trigger sends to, if set."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "mailingListId",
+          "reEligible",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf5": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf6": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of the audience segment this trigger targets."
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "appliesDownstream",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf7": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/TimerActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "amount",
+          "unit",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf8": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "emailMessageId",
+          "subject",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf9": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExitActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf10": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf11": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "samplingRate",
+          "workflowRevisionId"
+        ]
+      },
+      "CreatedWorkflowNodeOneOf12": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/VariantNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "createdChildNodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowMutationNode"
+            },
+            "description": "Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode."
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/EventTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
+            "type": "string",
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf3": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "contactPropertyQuery",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf4": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list this trigger sends to, if set."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "mailingListId",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf5": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf6": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of the audience segment this trigger targets."
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "appliesDownstream",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf7": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/TimerActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "amount",
+          "unit",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf8": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "emailMessageId",
+          "subject",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf9": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExitActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf10": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf11": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "samplingRate",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "RerouteNodeConnectionResponseOneOf12": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/VariantNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SignupTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf2": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/EventTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "eventName": {
+            "type": "string",
+            "description": "The name of the event pattern that triggers this node."
+          },
+          "eventProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowEventProperty"
+            },
+            "description": "The properties of the event pattern, which can be used in emails."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf3": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "contactPropertyQuery": {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowMutationNodeContactPropertyQuery"
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "contactPropertyQuery",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf4": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AddToListTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "mailingListId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the mailing list this trigger sends to, if set."
+          },
+          "reEligible": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the contacts will be able to enter this workflow every time the trigger is matched. If \u0060false\u0060, contacts will only ever enter this workflow once. Matches the \u0022Trigger frequency\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "mailingListId",
+          "reEligible",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf5": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BlankTriggerTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf6": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/AudienceFilterTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "audienceFilter": {
+            "description": "A tree of audience conditions combined with \u0060match\u0060.",
+            "$ref": "#/components/schemas/AudienceFilter"
+          },
+          "audienceSegmentId": {
+            "type": "string",
+            "description": "The ID of the audience segment this trigger targets."
+          },
+          "appliesDownstream": {
+            "type": "boolean",
+            "description": "If \u0060true\u0060, the audience filter will apply to all downstream nodes. If \u0060false\u0060, the audience filter will only apply to the current node. Matches the \u0022Filter scope\u0022 option in the UI."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "appliesDownstream",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf7": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/TimerActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount of time to wait before triggering the next node. Set to \u00600\u0060 to move to the next node immediately."
+          },
+          "unit": {
+            "description": "The unit of time for the timer action node. m = minutes, h = hours, d = days.",
+            "$ref": "#/components/schemas/WorkflowTimerUnit"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "amount",
+          "unit",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf8": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/SendEmailActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "emailMessageId": {
+            "type": "string",
+            "description": "The ID of the email message to send. To edit this email, use the \u0060POST /v1/email-messages/{emailMessageId}\u0060 endpoint."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "emailMessageId",
+          "subject",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf9": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExitActionTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf10": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/BranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf11": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/ExperimentBranchNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "samplingRate": {
+            "type": "number",
+            "description": "The percentage of contacts that will be sent to variant branches, between \u00600\u0060 and \u0060100\u0060. The remaining percentage will be sent to the control branch. \u0060100\u0060 sends all contacts to variant branches."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "samplingRate",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "UpdateWorkflowNodeResponseOneOf12": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "typeName": {
+            "$ref": "#/components/schemas/VariantNodeTypeName"
+          },
+          "nextNodeIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The IDs of the nodes that are downstream of this node."
+          },
+          "isControl": {
+            "type": "boolean",
+            "description": "Whether this is the control variant of an experiment."
+          },
+          "workflowRevisionId": {
+            "type": "string",
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation."
+          },
+          "workflow": {
+            "$ref": "#/components/schemas/SimplifiedWorkflow"
+          }
+        },
+        "required": [
+          "id",
+          "typeName",
+          "nextNodeIds",
+          "workflowRevisionId",
+          "workflow"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf1": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SignupTriggerWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf2": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EventTriggerWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf3": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ContactPropertyTriggerWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf4": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AddToListTriggerWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf5": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BlankTriggerWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf6": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AudienceFilterWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf7": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TimerActionWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf8": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SendEmailActionWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf9": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ExitActionWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf10": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BranchWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf11": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ExperimentBranchWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
+      },
+      "WorkflowNodeWithRevisionOneOf12": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/VariantWorkflowNode"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "workflowRevisionId": {
+            "description": "The current workflow revision token. Pass the latest value as \u0060expectedRevisionId\u0060 on the next workflow mutation. Will be \u0060null\u0060 for workflows without a revision token yet.",
+            "$ref": "#/components/schemas/NullableWorkflowRevisionId"
+          }
+        },
+        "required": [
+          "workflowRevisionId"
+        ]
       }
     },
     "parameters": {

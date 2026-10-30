@@ -83,6 +83,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -108,6 +110,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
             {
                 { "400", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.WorkflowNodeWithRevision.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -139,6 +143,8 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows.Item.Nodes.Item
                 { "404", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
                 { "501", global::Soenneker.Loops.OpenApiClient.Models.WorkflowFailureResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse>(requestInfo, global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,16 +11,28 @@ namespace Soenneker.Loops.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DeleteWorkflowRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("confirmDelete") is { } nullNodeConfirmDelete && nullNodeConfirmDelete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmDelete = null;
+            if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+        }
+
         /// <summary>Set to `true` after a confirmation-required `409 Conflict` response to confirm deleting a sending workflow or a workflow with queued contacts.</summary>
-        public bool? ConfirmDelete { get; set; }
+        public bool? ConfirmDelete { get => _explicitNullValueConfirmDelete; set { _explicitNullValueConfirmDelete = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirmDelete"); else _explicitNullProperties?.Remove("confirmDelete"); } }
+        private bool? _explicitNullValueConfirmDelete = default!;
         /// <summary>The workflow revision token returned by the latest workflow read or mutation. Older workflows may return `null` before their first revision-aware mutation; pass `null` back as `expectedRevisionId` in that case. If the token is stale, the API returns a `409 Conflict` error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedRevisionId { get; set; }
+        public string? ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string? _explicitNullValueExpectedRevisionId = default!;
 #nullable restore
 #else
-        public string ExpectedRevisionId { get; set; }
+        public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
+        private string _explicitNullValueExpectedRevisionId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,7 +42,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public static global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.DeleteWorkflowRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,7 +64,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("confirmDelete", ConfirmDelete);
-            writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
+            writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }
