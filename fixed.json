@@ -374,6 +374,17 @@
           },
           "405": {
             "description": "Wrong HTTP request method."
+          },
+          "200": {
+            "description": "Campaign created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCampaignResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -1706,6 +1717,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Component created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComponentResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -2637,6 +2659,17 @@
           },
           "405": {
             "description": "Wrong HTTP request method."
+          },
+          "200": {
+            "description": "Theme created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThemeResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -2901,6 +2934,17 @@
           },
           "405": {
             "description": "Wrong HTTP request method."
+          },
+          "200": {
+            "description": "Transactional email created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionalDraftResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "security": [
@@ -9239,43 +9283,14 @@
       },
       "CreateWorkflowNodeBeforeRequest": {
         "title": "Before a node",
-        "required": [
-          "expectedRevisionId",
-          "insertMode",
-          "nodeTypeName"
-        ],
-        "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestTargetNode"
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1"
           },
           {
-            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestTargetNodeDeprecated"
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
           }
         ],
-        "properties": {
-          "expectedRevisionId": {
-            "description": "The workflow revision token returned by the latest workflow read or mutation. Older workflows may return \u0060null\u0060 before their first revision-aware mutation; pass \u0060null\u0060 back as \u0060expectedRevisionId\u0060 in that case. If the token is stale, the API returns a \u0060409 Conflict\u0060 error.",
-            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
-          },
-          "insertMode": {
-            "$ref": "#/components/schemas/BeforeInsertMode"
-          },
-          "nodeTypeName": {
-            "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
-            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
-          },
-          "toNodeId": {
-            "type": "string",
-            "description": "The node to insert before. The target must have at least one incoming parent and cannot be a trigger node."
-          },
-          "beforeNodeId": {
-            "type": "string",
-            "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
-            "deprecated": true
-          }
-        },
-        "additionalProperties": false,
         "description": "Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \u0022before\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \u0022between\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060."
       },
       "CreateWorkflowNodeAfterRequest": {
@@ -9308,9 +9323,6 @@
         "description": "Insert a new node after \u0060fromNodeId\u0060. This is valid only when \u0060fromNodeId\u0060 has exactly one outgoing node. It is invalid when \u0060fromNodeId\u0060 has no outgoing nodes, multiple outgoing nodes, or is an exit node. When the source has multiple outgoing nodes, use \u0060between\u0060 with the exact \u0060toNodeId\u0060 instead."
       },
       "CreateWorkflowNodeRequest": {
-        "required": [
-          "insertMode"
-        ],
         "oneOf": [
           {
             "$ref": "#/components/schemas/CreateWorkflowNodeBetweenRequest"
@@ -9322,13 +9334,8 @@
             "$ref": "#/components/schemas/CreateWorkflowNodeAfterRequest"
           }
         ],
-        "properties": {
-          "insertMode": {
-            "type": "string"
-          }
-        },
         "description": "Create a new workflow node with an explicit \u0060insertMode\u0060. To configure the node after creation, use the \u0060POST /v1/workflows/{workflowId}/nodes/{nodeId}\u0060 endpoint.",
-        "discriminator": {
+        "x-client-original-discriminator": {
           "propertyName": "insertMode",
           "mapping": {
             "between": "#/components/schemas/CreateWorkflowNodeBetweenRequest",
@@ -15996,6 +16003,68 @@
           ]
         }
       },
+      "CreateWorkflowNodeBeforeRequestOneOf1": {
+        "type": "object",
+        "properties": {
+          "toNodeId": {
+            "type": "string"
+          },
+          "expectedRevisionId": {
+            "description": "The workflow revision token returned by the latest workflow read or mutation. Older workflows may return \u0060null\u0060 before their first revision-aware mutation; pass \u0060null\u0060 back as \u0060expectedRevisionId\u0060 in that case. If the token is stale, the API returns a \u0060409 Conflict\u0060 error.",
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "insertMode": {
+            "$ref": "#/components/schemas/BeforeInsertMode"
+          },
+          "nodeTypeName": {
+            "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
+            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
+          },
+          "beforeNodeId": {
+            "type": "string",
+            "description": "Deprecated. Use \u0060toNodeId\u0060 instead.",
+            "deprecated": true
+          }
+        },
+        "required": [
+          "toNodeId",
+          "expectedRevisionId",
+          "insertMode",
+          "nodeTypeName"
+        ],
+        "additionalProperties": false
+      },
+      "CreateWorkflowNodeBeforeRequestOneOf2": {
+        "type": "object",
+        "properties": {
+          "beforeNodeId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "expectedRevisionId": {
+            "description": "The workflow revision token returned by the latest workflow read or mutation. Older workflows may return \u0060null\u0060 before their first revision-aware mutation; pass \u0060null\u0060 back as \u0060expectedRevisionId\u0060 in that case. If the token is stale, the API returns a \u0060409 Conflict\u0060 error.",
+            "$ref": "#/components/schemas/WorkflowExpectedRevisionId"
+          },
+          "insertMode": {
+            "$ref": "#/components/schemas/BeforeInsertMode"
+          },
+          "nodeTypeName": {
+            "description": "Node types that can be created with the API. \u0060*Trigger\u0060 nodes and \u0060ExitAction\u0060 nodes cannot be created.",
+            "$ref": "#/components/schemas/CreateWorkflowNodeTypeName"
+          },
+          "toNodeId": {
+            "type": "string",
+            "description": "The node to insert before. The target must have at least one incoming parent and cannot be a trigger node."
+          }
+        },
+        "required": [
+          "beforeNodeId",
+          "expectedRevisionId",
+          "insertMode",
+          "nodeTypeName"
+        ],
+        "additionalProperties": false
+      },
       "CreatedWorkflowNodeOneOf1": {
         "type": "object",
         "properties": {
@@ -17624,6 +17693,18 @@
         "required": [
           "workflowRevisionId"
         ]
+      },
+      "CreateWorkflowNodeRequestOneOf2": {
+        "title": "Before a node",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf1"
+          },
+          {
+            "$ref": "#/components/schemas/CreateWorkflowNodeBeforeRequestOneOf2"
+          }
+        ],
+        "description": "Insert a new node before \u0060toNodeId\u0060. \u0060VariantNode\u0060 cannot use \u0060insertMode: \u0022before\u0022\u0060; to restore a missing variant path, use \u0060insertMode: \u0022between\u0022\u0060 with the experiment branch as \u0060fromNodeId\u0060."
       },
       "SendTransactionalEmail400ResponseError": {
         "type": "object",
