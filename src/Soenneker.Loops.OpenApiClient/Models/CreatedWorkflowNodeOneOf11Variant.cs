@@ -9,7 +9,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreatedWorkflowNodeCreatedWorkflowNodeOneOf11 : global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNode, IParsable
+    public partial class CreatedWorkflowNodeOneOf11Variant : global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNode, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -76,12 +76,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf11"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeOneOf11Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf11 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeOneOf11Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf11(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeOneOf11Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model

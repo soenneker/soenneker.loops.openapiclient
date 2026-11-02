@@ -9,7 +9,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreatedWorkflowNodeCreatedWorkflowNodeOneOf8 : global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNode, IParsable
+    public partial class UpdateWorkflowNodeResponseOneOf7Variant : global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse, IParsable
     #pragma warning restore CS1591
     {
         // Track explicitly assigned nulls separately from absent properties.
@@ -18,40 +18,23 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public override void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
             base.CaptureExplicitNulls(parseNode);
-            if (parseNode.GetChildNode("createdChildNodes") is null) { _explicitNullValueCreatedChildNodes = default!; _explicitNullProperties?.Remove("createdChildNodes"); }
-            else if (parseNode.GetChildNode("createdChildNodes") is { } nullNodeCreatedChildNodes && nullNodeCreatedChildNodes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedChildNodes = null;
-            if (parseNode.GetChildNode("emailMessageId") is null) { _explicitNullValueEmailMessageId = default!; _explicitNullProperties?.Remove("emailMessageId"); }
-            else if (parseNode.GetChildNode("emailMessageId") is { } nullNodeEmailMessageId && nullNodeEmailMessageId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailMessageId = null;
+            if (parseNode.GetChildNode("amount") is null) { _explicitNullValueAmount = default!; _explicitNullProperties?.Remove("amount"); }
+            else if (parseNode.GetChildNode("amount") is { } nullNodeAmount && nullNodeAmount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Amount = null;
             if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
             else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
             if (parseNode.GetChildNode("nextNodeIds") is null) { _explicitNullValueNextNodeIds = default!; _explicitNullProperties?.Remove("nextNodeIds"); }
             else if (parseNode.GetChildNode("nextNodeIds") is { } nullNodeNextNodeIds && nullNodeNextNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextNodeIds = null;
-            if (parseNode.GetChildNode("subject") is null) { _explicitNullValueSubject = default!; _explicitNullProperties?.Remove("subject"); }
-            else if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
+            if (parseNode.GetChildNode("unit") is null) { _explicitNullValueUnit = default!; _explicitNullProperties?.Remove("unit"); }
+            else if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+            if (parseNode.GetChildNode("workflow") is null) { _explicitNullValueWorkflow = default!; _explicitNullProperties?.Remove("workflow"); }
+            else if (parseNode.GetChildNode("workflow") is { } nullNodeWorkflow && nullNodeWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workflow = null;
             if (parseNode.GetChildNode("workflowRevisionId") is null) { _explicitNullValueWorkflowRevisionId = default!; _explicitNullProperties?.Remove("workflowRevisionId"); }
             else if (parseNode.GetChildNode("workflowRevisionId") is { } nullNodeWorkflowRevisionId && nullNodeWorkflowRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowRevisionId = null;
         }
 
-        /// <summary>Default child nodes created along with the requested node. BranchNode creation returns two AudienceFilter children. ExperimentBranchNode creation returns two regular VariantNode children and one control VariantNode.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode>? CreatedChildNodes { get => _explicitNullValueCreatedChildNodes; set { _explicitNullValueCreatedChildNodes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdChildNodes"); else _explicitNullProperties?.Remove("createdChildNodes"); } }
-        private List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode>? _explicitNullValueCreatedChildNodes = default!;
-#nullable restore
-#else
-        public List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode> CreatedChildNodes { get => _explicitNullValueCreatedChildNodes; set { _explicitNullValueCreatedChildNodes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdChildNodes"); else _explicitNullProperties?.Remove("createdChildNodes"); } }
-        private List<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode> _explicitNullValueCreatedChildNodes = default!;
-#endif
-        /// <summary>The ID of the email message to send. To edit this email, use the `POST /v1/email-messages/{emailMessageId}` endpoint.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? EmailMessageId { get => _explicitNullValueEmailMessageId; set { _explicitNullValueEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailMessageId"); else _explicitNullProperties?.Remove("emailMessageId"); } }
-        private string? _explicitNullValueEmailMessageId = default!;
-#nullable restore
-#else
-        public string EmailMessageId { get => _explicitNullValueEmailMessageId; set { _explicitNullValueEmailMessageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emailMessageId"); else _explicitNullProperties?.Remove("emailMessageId"); } }
-        private string _explicitNullValueEmailMessageId = default!;
-#endif
+        /// <summary>The amount of time to wait before triggering the next node. Set to `0` to move to the next node immediately.</summary>
+        public double? Amount { get => _explicitNullValueAmount; set { _explicitNullValueAmount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("amount"); else _explicitNullProperties?.Remove("amount"); } }
+        private double? _explicitNullValueAmount = default!;
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,15 +55,18 @@ namespace Soenneker.Loops.OpenApiClient.Models
         public List<string> NextNodeIds { get => _explicitNullValueNextNodeIds; set { _explicitNullValueNextNodeIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextNodeIds"); else _explicitNullProperties?.Remove("nextNodeIds"); } }
         private List<string> _explicitNullValueNextNodeIds = default!;
 #endif
-        /// <summary>The subject property</summary>
+        /// <summary>The unit of time for the timer action node. m = minutes, h = hours, d = days.</summary>
+        public global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit? _explicitNullValueUnit = default!;
+        /// <summary>The workflow property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
-        private string? _explicitNullValueSubject = default!;
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow? _explicitNullValueWorkflow = default!;
 #nullable restore
 #else
-        public string Subject { get => _explicitNullValueSubject; set { _explicitNullValueSubject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject"); else _explicitNullProperties?.Remove("subject"); } }
-        private string _explicitNullValueSubject = default!;
+        public global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow _explicitNullValueWorkflow = default!;
 #endif
         /// <summary>The current workflow revision token. Pass the latest value as `expectedRevisionId` on the next workflow mutation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,12 +81,12 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf8"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7Variant"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf8 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7Variant CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.CreatedWorkflowNodeCreatedWorkflowNodeOneOf8(), parseNode);
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7Variant(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,11 +96,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                { "createdChildNodes", n => { CreatedChildNodes = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode>(global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "emailMessageId", n => { EmailMessageId = n.GetStringValue(); } },
+                { "amount", n => { Amount = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "nextNodeIds", n => { NextNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "subject", n => { Subject = n.GetStringValue(); } },
+                { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>(); } },
+                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>(global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow.CreateFromDiscriminatorValue); } },
                 { "workflowRevisionId", n => { WorkflowRevisionId = n.GetStringValue(); } },
             };
         }
@@ -126,11 +112,11 @@ namespace Soenneker.Loops.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.WorkflowMutationNode>("createdChildNodes", CreatedChildNodes);
-            writer.WriteStringValue("emailMessageId", EmailMessageId);
+            writer.WriteDoubleValue("amount", Amount);
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfPrimitiveValues<string>("nextNodeIds", NextNodeIds);
-            writer.WriteStringValue("subject", Subject);
+            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WorkflowTimerUnit>("unit", Unit);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.SimplifiedWorkflow>("workflow", Workflow);
             writer.WriteStringValue("workflowRevisionId", WorkflowRevisionId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

@@ -8950,18 +8950,18 @@
         "discriminator": {
           "propertyName": "typeName",
           "mapping": {
-            "SignupTrigger": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf1",
-            "EventTrigger": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf2",
-            "ContactPropertyTrigger": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf3",
-            "AddToListTrigger": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf4",
-            "BlankTrigger": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf5",
-            "AudienceFilter": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf6",
-            "TimerAction": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf7",
-            "SendEmailAction": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf8",
-            "ExitAction": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf9",
-            "BranchNode": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf10",
-            "ExperimentBranchNode": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf11",
-            "VariantNode": "#/components/schemas/CreatedWorkflowNodeCreatedWorkflowNodeOneOf12"
+            "SignupTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf1Variant",
+            "EventTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf2Variant",
+            "ContactPropertyTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf3Variant",
+            "AddToListTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf4Variant",
+            "BlankTrigger": "#/components/schemas/CreatedWorkflowNodeOneOf5Variant",
+            "AudienceFilter": "#/components/schemas/CreatedWorkflowNodeOneOf6Variant",
+            "TimerAction": "#/components/schemas/CreatedWorkflowNodeOneOf7Variant",
+            "SendEmailAction": "#/components/schemas/CreatedWorkflowNodeOneOf8Variant",
+            "ExitAction": "#/components/schemas/CreatedWorkflowNodeOneOf9Variant",
+            "BranchNode": "#/components/schemas/CreatedWorkflowNodeOneOf10Variant",
+            "ExperimentBranchNode": "#/components/schemas/CreatedWorkflowNodeOneOf11Variant",
+            "VariantNode": "#/components/schemas/CreatedWorkflowNodeOneOf12Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -9227,18 +9227,18 @@
         "discriminator": {
           "propertyName": "typeName",
           "mapping": {
-            "SignupTrigger": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf1",
-            "EventTrigger": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf2",
-            "ContactPropertyTrigger": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf3",
-            "AddToListTrigger": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf4",
-            "BlankTrigger": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf5",
-            "AudienceFilter": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf6",
-            "TimerAction": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf7",
-            "SendEmailAction": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf8",
-            "ExitAction": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf9",
-            "BranchNode": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf10",
-            "ExperimentBranchNode": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf11",
-            "VariantNode": "#/components/schemas/UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf12"
+            "SignupTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf1Variant",
+            "EventTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf2Variant",
+            "ContactPropertyTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf3Variant",
+            "AddToListTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf4Variant",
+            "BlankTrigger": "#/components/schemas/UpdateWorkflowNodeResponseOneOf5Variant",
+            "AudienceFilter": "#/components/schemas/UpdateWorkflowNodeResponseOneOf6Variant",
+            "TimerAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf7Variant",
+            "SendEmailAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf8Variant",
+            "ExitAction": "#/components/schemas/UpdateWorkflowNodeResponseOneOf9Variant",
+            "BranchNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf10Variant",
+            "ExperimentBranchNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf11Variant",
+            "VariantNode": "#/components/schemas/UpdateWorkflowNodeResponseOneOf12Variant"
           }
         },
         "x-client-original-tagged-union": {
@@ -15590,7 +15590,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf1": {
+      "CreatedWorkflowNodeOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15632,7 +15632,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf2": {
+      "CreatedWorkflowNodeOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15690,7 +15690,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf3": {
+      "CreatedWorkflowNodeOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15741,7 +15741,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf4": {
+      "CreatedWorkflowNodeOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15796,7 +15796,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf5": {
+      "CreatedWorkflowNodeOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15838,7 +15838,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf6": {
+      "CreatedWorkflowNodeOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15893,7 +15893,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf7": {
+      "CreatedWorkflowNodeOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15945,7 +15945,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf8": {
+      "CreatedWorkflowNodeOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -15996,7 +15996,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf9": {
+      "CreatedWorkflowNodeOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -16038,7 +16038,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf10": {
+      "CreatedWorkflowNodeOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -16080,7 +16080,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf11": {
+      "CreatedWorkflowNodeOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -16127,7 +16127,7 @@
           }
         ]
       },
-      "CreatedWorkflowNodeCreatedWorkflowNodeOneOf12": {
+      "CreatedWorkflowNodeOneOf12Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CreatedWorkflowNode"
@@ -16173,7 +16173,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf1": {
+      "UpdateWorkflowNodeResponseOneOf1Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16212,7 +16212,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf2": {
+      "UpdateWorkflowNodeResponseOneOf2Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16267,7 +16267,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf3": {
+      "UpdateWorkflowNodeResponseOneOf3Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16315,7 +16315,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf4": {
+      "UpdateWorkflowNodeResponseOneOf4Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16367,7 +16367,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf5": {
+      "UpdateWorkflowNodeResponseOneOf5Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16406,7 +16406,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf6": {
+      "UpdateWorkflowNodeResponseOneOf6Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16458,7 +16458,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf7": {
+      "UpdateWorkflowNodeResponseOneOf7Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16507,7 +16507,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf8": {
+      "UpdateWorkflowNodeResponseOneOf8Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16555,7 +16555,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf9": {
+      "UpdateWorkflowNodeResponseOneOf9Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16594,7 +16594,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf10": {
+      "UpdateWorkflowNodeResponseOneOf10Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16633,7 +16633,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf11": {
+      "UpdateWorkflowNodeResponseOneOf11Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"
@@ -16677,7 +16677,7 @@
           }
         ]
       },
-      "UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf12": {
+      "UpdateWorkflowNodeResponseOneOf12Variant": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UpdateWorkflowNodeResponse"

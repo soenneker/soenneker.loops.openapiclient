@@ -52,18 +52,18 @@ namespace Soenneker.Loops.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("typeName")?.GetStringValue();
             return mappingValue switch
             {
-                "AddToListTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf4(),
-                "AudienceFilter" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf6(),
-                "BlankTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf5(),
-                "BranchNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf10(),
-                "ContactPropertyTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf3(),
-                "EventTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf2(),
-                "ExitAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf9(),
-                "ExperimentBranchNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf11(),
-                "SendEmailAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf8(),
-                "SignupTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf1(),
-                "TimerAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf7(),
-                "VariantNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseUpdateWorkflowNodeResponseOneOf12(),
+                "AddToListTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf4Variant(),
+                "AudienceFilter" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf6Variant(),
+                "BlankTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf5Variant(),
+                "BranchNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf10Variant(),
+                "ContactPropertyTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf3Variant(),
+                "EventTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf2Variant(),
+                "ExitAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf9Variant(),
+                "ExperimentBranchNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf11Variant(),
+                "SendEmailAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf8Variant(),
+                "SignupTrigger" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf1Variant(),
+                "TimerAction" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf7Variant(),
+                "VariantNode" => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponseOneOf12Variant(),
                 _ => new global::Soenneker.Loops.OpenApiClient.Models.UpdateWorkflowNodeResponse(),
             };
         }
