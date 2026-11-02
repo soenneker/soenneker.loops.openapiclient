@@ -2,10 +2,10 @@
 #nullable enable
 namespace Soenneker.OpenApi.Generated;
 /// <summary>An API error whose response schema could not be represented as a concrete generated exception.</summary>
-public sealed class OpenApiRawError : global::Microsoft.Kiota.Abstractions.ApiException, global::Microsoft.Kiota.Abstractions.Serialization.IParsable, global::Microsoft.Kiota.Abstractions.Serialization.IComposedTypeWrapper
+public class OpenApiRawError : global::Microsoft.Kiota.Abstractions.ApiException, global::Microsoft.Kiota.Abstractions.Serialization.IParsable, global::Microsoft.Kiota.Abstractions.Serialization.IComposedTypeWrapper
 {
     /// <summary>The complete JSON error payload, including unknown fields and non-object responses.</summary>
-    public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? Payload { get; private set; }
+    public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? Payload { get; protected set; }
     /// <summary>Creates an exception while preserving the complete response payload.</summary>
     public static OpenApiRawError CreateFromDiscriminatorValue(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
     {

@@ -105,8 +105,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
         private string _explicitNullValueNotes = default!;
 #endif
         /// <summary>Double opt-in status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus? OptInStatus { get => _explicitNullValueOptInStatus; set { _explicitNullValueOptInStatus = value; AdditionalData?.Remove("optInStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optInStatus"); else _explicitNullProperties?.Remove("optInStatus"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus? _explicitNullValueOptInStatus = default!;
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus OptInStatus { get => _explicitNullValueOptInStatus; set { _explicitNullValueOptInStatus = value; AdditionalData?.Remove("optInStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optInStatus"); else _explicitNullProperties?.Remove("optInStatus"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus _explicitNullValueOptInStatus = default!;
+#endif
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -171,7 +178,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "lastName", n => { LastName = n.GetStringValue(); } },
                 { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactMailingListsProperty.CreateFromDiscriminatorValue); } },
                 { "notes", n => { Notes = n.GetStringValue(); } },
-                { "optInStatus", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOptInStatus = default; _explicitNullProperties?.Remove("optInStatus"); AdditionalData["optInStatus"] = unknown; } else { OptInStatus = parsed; AdditionalData.Remove("optInStatus"); } } },
+                { "optInStatus", n => { OptInStatus = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
@@ -191,7 +198,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("lastName", LastName);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactMailingListsProperty>("mailingLists", MailingLists);
             writer.WriteStringValue("notes", Notes);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus>("optInStatus", OptInStatus);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactOptInStatus>("optInStatus", OptInStatus);
             writer.WriteStringValue("source", Source);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);

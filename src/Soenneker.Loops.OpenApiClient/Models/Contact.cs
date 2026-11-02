@@ -92,8 +92,15 @@ namespace Soenneker.Loops.OpenApiClient.Models
         private global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty _explicitNullValueMailingLists = default!;
 #endif
         /// <summary>Double opt-in status. This will be `null` for contacts unless they are created via a form while double opt-in is enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus? OptInStatus { get => _explicitNullValueOptInStatus; set { _explicitNullValueOptInStatus = value; AdditionalData?.Remove("optInStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optInStatus"); else _explicitNullProperties?.Remove("optInStatus"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus? _explicitNullValueOptInStatus = default!;
+#nullable restore
+#else
+        public global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus OptInStatus { get => _explicitNullValueOptInStatus; set { _explicitNullValueOptInStatus = value; AdditionalData?.Remove("optInStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optInStatus"); else _explicitNullProperties?.Remove("optInStatus"); } }
+        private global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus _explicitNullValueOptInStatus = default!;
+#endif
         /// <summary>The source the contact was created from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -157,7 +164,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "lastName", n => { LastName = n.GetStringValue(); } },
                 { "mailingLists", n => { MailingLists = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty>(global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty.CreateFromDiscriminatorValue); } },
-                { "optInStatus", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOptInStatus = default; _explicitNullProperties?.Remove("optInStatus"); AdditionalData["optInStatus"] = unknown; } else { OptInStatus = parsed; AdditionalData.Remove("optInStatus"); } } },
+                { "optInStatus", n => { OptInStatus = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus>(global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus.CreateFromDiscriminatorValue); } },
                 { "source", n => { Source = n.GetStringValue(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "userGroup", n => { UserGroup = n.GetStringValue(); } },
@@ -176,7 +183,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("lastName", LastName);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactMailingListsProperty>("mailingLists", MailingLists);
-            writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus>("optInStatus", OptInStatus);
+            writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.ContactOptInStatus>("optInStatus", OptInStatus);
             writer.WriteStringValue("source", Source);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("userGroup", UserGroup);
