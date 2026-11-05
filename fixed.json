@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.22.8"
+    "version": "1.23.0"
   },
   "servers": [
     {
@@ -282,6 +282,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "campaignGroupId",
+            "in": "query",
+            "description": "Only return campaigns in this campaign group. An ID that matches no group returns an empty list.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -296,7 +305,7 @@
             }
           },
           "400": {
-            "description": "Invalid \u0060perPage\u0060 value.",
+            "description": "Invalid \u0060perPage\u0060 value, or \u0060campaignGroupId\u0060 is an empty string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1935,6 +1944,44 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/EmailMessagePreviewRequest"
+              },
+              "examples": {
+                "campaign": {
+                  "summary": "Campaign email",
+                  "value": {
+                    "emails": [
+                      "alex@company.com"
+                    ],
+                    "contactProperties": {
+                      "firstName": "Alex"
+                    }
+                  }
+                },
+                "workflow": {
+                  "summary": "Workflow email",
+                  "value": {
+                    "emails": [
+                      "alex@company.com"
+                    ],
+                    "contactProperties": {
+                      "firstName": "Alex"
+                    },
+                    "eventProperties": {
+                      "planName": "Pro"
+                    }
+                  }
+                },
+                "transactional": {
+                  "summary": "Transactional email",
+                  "value": {
+                    "emails": [
+                      "alex@company.com"
+                    ],
+                    "dataVariables": {
+                      "loginUrl": "https://app.company.com/login"
+                    }
+                  }
+                }
               }
             }
           },
@@ -1999,6 +2046,119 @@
           "metadata": {
             "description": "Send a test preview of an email message to one or more addresses.",
             "sidebarTitle": "Preview email"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "emailMessageId",
+          "in": "path",
+          "description": "The ID of the email message.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "cle5f7g9h1i3j5k7l9m1n3p5"
+            ],
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/email-messages/{emailMessageId}/render": {
+      "post": {
+        "tags": [
+          "Email messages"
+        ],
+        "summary": "Render an email message as HTML",
+        "description": "Render the HTML of an email message the way its preview email is rendered. Nothing is sent. The accepted variable fields are the same as for previews - campaigns accept \u0060contactProperties\u0060, workflows accept \u0060contactProperties\u0060 and \u0060eventProperties\u0060, and transactional emails accept \u0060dataVariables\u0060. A variable without a value uses its fallback, or shows a missing-value marker as in a preview email. Supplying a field the parent cannot reference is rejected with 400.",
+        "operationId": "RenderEmailMessage",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailMessageRenderRequest"
+              },
+              "examples": {
+                "campaign": {
+                  "summary": "Campaign email",
+                  "value": {
+                    "contactProperties": {
+                      "firstName": "Alex"
+                    }
+                  }
+                },
+                "workflow": {
+                  "summary": "Workflow email",
+                  "value": {
+                    "contactProperties": {
+                      "firstName": "Alex"
+                    },
+                    "eventProperties": {
+                      "planName": "Pro"
+                    }
+                  }
+                },
+                "transactional": {
+                  "summary": "Transactional email",
+                  "value": {
+                    "dataVariables": {
+                      "loginUrl": "https://app.company.com/login"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rendered email message.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageRenderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body, a variable field the parent cannot reference, a sending domain without a domain or address, or a from or reply-to address that renders to an invalid email.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or content API not enabled for this team."
+          },
+          "404": {
+            "description": "Email message not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessageFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/render-email-message",
+          "content": "Render an email message as HTML without sending it. The HTML is the same as the body of a preview email. Accepted variable fields depend on the parent\u0027s type:\n\n- **Campaign** accepts \u0060contactProperties\u0060.\n- **Workflow** accepts \u0060contactProperties\u0060 and \u0060eventProperties\u0060.\n- **Transactional** accepts \u0060dataVariables\u0060.\n\nSupplying a field the parent cannot reference results in a \u0060400 Bad Request\u0060 error. A variable without a value uses its fallback, or shows a missing-value marker as in a preview email.\n\nThe HTML has no open tracking pixel. As in a preview email, the unsubscribe link opens a page that does not unsubscribe anyone.",
+          "metadata": {
+            "description": "Render an email message as HTML for an immediate preview.",
+            "sidebarTitle": "Render email"
           }
         }
       },
@@ -2849,6 +3009,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "transactionalGroupId",
+            "in": "query",
+            "description": "Only return transactional emails in this transactional group. An ID that matches no group returns an empty list.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2863,7 +3032,7 @@
             }
           },
           "400": {
-            "description": "Invalid \u0060perPage\u0060 value.",
+            "description": "Invalid \u0060perPage\u0060 value, or \u0060transactionalGroupId\u0060 is an empty string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -4058,6 +4227,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "workflowGroupId",
+            "in": "query",
+            "description": "Only return workflows in this workflow group. An ID that matches no group returns an empty list.",
+            "schema": {
+              "minLength": 1,
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4072,7 +4250,7 @@
             }
           },
           "400": {
-            "description": "Invalid \u0060perPage\u0060 or \u0060cursor\u0060 value.",
+            "description": "Invalid \u0060perPage\u0060 or \u0060cursor\u0060 value, or \u0060workflowGroupId\u0060 is an empty string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -10685,22 +10863,6 @@
         }
       },
       "EmailMessagePreviewRequest": {
-        "examples": [
-          {
-            "emails": [
-              "alex@company.com"
-            ],
-            "contactProperties": {
-              "firstName": "Alex"
-            },
-            "eventProperties": {
-              "planName": "Pro"
-            },
-            "dataVariables": {
-              "loginUrl": "https://app.company.com/login"
-            }
-          }
-        ],
         "required": [
           "emails"
         ],
@@ -10743,6 +10905,41 @@
             ],
             "type": "string",
             "description": "The ID of the email message the preview was sent for."
+          }
+        }
+      },
+      "EmailMessageRenderRequest": {
+        "type": "object",
+        "properties": {
+          "contactProperties": {
+            "$ref": "#/components/schemas/EmailMessageRenderRequestContactPropertiesProperty"
+          },
+          "eventProperties": {
+            "$ref": "#/components/schemas/EmailMessageRenderRequestEventPropertiesProperty"
+          },
+          "dataVariables": {
+            "$ref": "#/components/schemas/EmailMessageRenderRequestDataVariablesProperty"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailMessageRenderResponse": {
+        "examples": [
+          {
+            "html": "\u003C!doctype html\u003E\u003Chtml\u003E...\u003C/html\u003E"
+          }
+        ],
+        "required": [
+          "html"
+        ],
+        "type": "object",
+        "properties": {
+          "html": {
+            "examples": [
+              "\u003C!doctype html\u003E\u003Chtml\u003E...\u003C/html\u003E"
+            ],
+            "type": "string",
+            "description": "The rendered HTML. For emails made in the editor, it includes the rendered subject in \u0060\u003Ctitle\u003E\u0060 and the rendered preview text."
           }
         }
       },
@@ -12520,6 +12717,36 @@
           "type": "string"
         },
         "description": "Transactional data variables to render. Accepted for transactional previews only.",
+        "example": {
+          "loginUrl": "https://app.company.com/login"
+        }
+      },
+      "EmailMessageRenderRequestContactPropertiesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Contact property values to render. Accepted for campaign and workflow emails.",
+        "example": {
+          "firstName": "Alex"
+        }
+      },
+      "EmailMessageRenderRequestEventPropertiesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Event property values to render. Accepted for workflow emails only.",
+        "example": {
+          "planName": "Pro"
+        }
+      },
+      "EmailMessageRenderRequestDataVariablesProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Transactional data variables to render. Accepted for transactional emails only.",
         "example": {
           "loginUrl": "https://app.company.com/login"
         }
@@ -20742,6 +20969,36 @@
         "type": "string"
       },
       "description": "Transactional data variables to render. Accepted for transactional previews only.",
+      "example": {
+        "loginUrl": "https://app.company.com/login"
+      }
+    },
+    "EmailMessageRenderRequestContactProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Contact property values to render. Accepted for campaign and workflow emails.",
+      "example": {
+        "firstName": "Alex"
+      }
+    },
+    "EmailMessageRenderRequestEventProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Event property values to render. Accepted for workflow emails only.",
+      "example": {
+        "planName": "Pro"
+      }
+    },
+    "EmailMessageRenderRequestDataVariables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Transactional data variables to render. Accepted for transactional emails only.",
       "example": {
         "loginUrl": "https://app.company.com/login"
       }

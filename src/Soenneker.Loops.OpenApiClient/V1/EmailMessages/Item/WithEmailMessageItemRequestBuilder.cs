@@ -6,6 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.Loops.OpenApiClient.Models;
 using Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Guardian;
 using Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview;
+using Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Render;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -28,6 +29,11 @@ namespace Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item
         public global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview.PreviewRequestBuilder Preview
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Preview.PreviewRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The render property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Render.RenderRequestBuilder Render
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.Render.RenderRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Loops.OpenApiClient.V1.EmailMessages.Item.WithEmailMessageItemRequestBuilder"/> and sets the default values.

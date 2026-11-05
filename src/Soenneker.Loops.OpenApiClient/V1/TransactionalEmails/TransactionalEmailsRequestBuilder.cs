@@ -35,7 +35,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalEmailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails{?cursor*,perPage*}", pathParameters)
+        public TransactionalEmailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails{?cursor*,perPage*,transactionalGroupId*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TransactionalEmailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails{?cursor*,perPage*}", rawUrl)
+        public TransactionalEmailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/transactional-emails{?cursor*,perPage*,transactionalGroupId*}", rawUrl)
         {
         }
         /// <summary>
@@ -173,6 +173,16 @@ namespace Soenneker.Loops.OpenApiClient.V1.TransactionalEmails
 #else
             [QueryParameter("perPage")]
             public string PerPage { get; set; }
+#endif
+            /// <summary>Only return transactional emails in this transactional group. An ID that matches no group returns an empty list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("transactionalGroupId")]
+            public string? TransactionalGroupId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("transactionalGroupId")]
+            public string TransactionalGroupId { get; set; }
 #endif
         }
     }

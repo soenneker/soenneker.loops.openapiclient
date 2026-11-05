@@ -35,7 +35,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WorkflowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/workflows{?cursor*,perPage*}", pathParameters)
+        public WorkflowsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/workflows{?cursor*,perPage*,workflowGroupId*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WorkflowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/workflows{?cursor*,perPage*}", rawUrl)
+        public WorkflowsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/v1/workflows{?cursor*,perPage*,workflowGroupId*}", rawUrl)
         {
         }
         /// <summary>
@@ -173,6 +173,16 @@ namespace Soenneker.Loops.OpenApiClient.V1.Workflows
 #else
             [QueryParameter("perPage")]
             public string PerPage { get; set; }
+#endif
+            /// <summary>Only return workflows in this workflow group. An ID that matches no group returns an empty list.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("workflowGroupId")]
+            public string? WorkflowGroupId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("workflowGroupId")]
+            public string WorkflowGroupId { get; set; }
 #endif
         }
     }
