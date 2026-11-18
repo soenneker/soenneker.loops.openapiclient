@@ -107,7 +107,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "audienceFilter", n => { AudienceFilter = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest>(global::Soenneker.Loops.OpenApiClient.Models.AudienceFilterInRequest.CreateFromDiscriminatorValue); } },
                 { "audienceSegmentId", n => { AudienceSegmentId = n.GetStringValue(); } },

@@ -97,7 +97,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "addToAudience", n => { AddToAudience = n.GetBoolValue(); } },
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem>(global::Soenneker.Loops.OpenApiClient.Models.TransactionalRequestAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },

@@ -64,7 +64,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "eventName", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.TestingTestEventEventName>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEventName = default; _explicitNullProperties?.Remove("eventName"); AdditionalData["eventName"] = unknown; } else { EventName = parsed; AdditionalData.Remove("eventName"); } } },
                 { "eventTime", n => { EventTime = n.GetIntValue(); } },

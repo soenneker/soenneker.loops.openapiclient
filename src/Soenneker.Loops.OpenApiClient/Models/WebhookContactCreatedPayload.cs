@@ -83,7 +83,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(5)
             {
                 { "contact", n => { Contact = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContact>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContact.CreateFromDiscriminatorValue); } },
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },

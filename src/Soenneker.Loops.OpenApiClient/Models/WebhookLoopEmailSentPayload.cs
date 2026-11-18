@@ -119,7 +119,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "contactIdentity", n => { ContactIdentity = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity>(global::Soenneker.Loops.OpenApiClient.Models.WebhookContactIdentity.CreateFromDiscriminatorValue); } },
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail>(global::Soenneker.Loops.OpenApiClient.Models.WebhookEmail.CreateFromDiscriminatorValue); } },

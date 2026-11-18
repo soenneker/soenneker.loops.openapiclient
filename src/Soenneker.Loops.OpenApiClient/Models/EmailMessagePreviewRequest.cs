@@ -83,7 +83,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(4)
             {
                 { "contactProperties", n => { ContactProperties = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestContactPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "dataVariables", n => { DataVariables = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessagePreviewRequestDataVariablesProperty.CreateFromDiscriminatorValue); } },
