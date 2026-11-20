@@ -31,6 +31,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             else if (parseNode.GetChildNode("eventPropertiesFallbacks") is { } nullNodeEventPropertiesFallbacks && nullNodeEventPropertiesFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventPropertiesFallbacks = null;
             if (parseNode.GetChildNode("expectedRevisionId") is null) { _explicitNullValueExpectedRevisionId = default!; _explicitNullProperties?.Remove("expectedRevisionId"); }
             else if (parseNode.GetChildNode("expectedRevisionId") is { } nullNodeExpectedRevisionId && nullNodeExpectedRevisionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedRevisionId = null;
+            if (parseNode.GetChildNode("footerId") is null) { _explicitNullValueFooterId = default!; _explicitNullProperties?.Remove("footerId"); }
+            else if (parseNode.GetChildNode("footerId") is { } nullNodeFooterId && nullNodeFooterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FooterId = null;
             if (parseNode.GetChildNode("fromEmail") is null) { _explicitNullValueFromEmail = default!; _explicitNullProperties?.Remove("fromEmail"); }
             else if (parseNode.GetChildNode("fromEmail") is { } nullNodeFromEmail && nullNodeFromEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromEmail = null;
             if (parseNode.GetChildNode("fromName") is null) { _explicitNullValueFromName = default!; _explicitNullProperties?.Remove("fromName"); }
@@ -109,6 +111,16 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public string ExpectedRevisionId { get => _explicitNullValueExpectedRevisionId; set { _explicitNullValueExpectedRevisionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectedRevisionId"); else _explicitNullProperties?.Remove("expectedRevisionId"); } }
         private string _explicitNullValueExpectedRevisionId = default!;
+#endif
+        /// <summary>Apply a specific footer to this email message. Use `null` for the system default footer. Omit it to keep the current footer. Only for teams with footers enabled, and only for campaign and workflow emails. Transactional emails and critical notices have no footer.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FooterId { get => _explicitNullValueFooterId; set { _explicitNullValueFooterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footerId"); else _explicitNullProperties?.Remove("footerId"); } }
+        private string? _explicitNullValueFooterId = default!;
+#nullable restore
+#else
+        public string FooterId { get => _explicitNullValueFooterId; set { _explicitNullValueFooterId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footerId"); else _explicitNullProperties?.Remove("footerId"); } }
+        private string _explicitNullValueFooterId = default!;
 #endif
         /// <summary>The email sender email address, without the team&apos;s sending domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -196,7 +208,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(14)
+            return new Dictionary<string, Action<IParseNode>>(15)
             {
                 { "bccEmail", n => { BccEmail = n.GetStringValue(); } },
                 { "ccEmail", n => { CcEmail = n.GetStringValue(); } },
@@ -205,6 +217,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "emailFormat", n => { EmailFormat = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat>(); } },
                 { "eventPropertiesFallbacks", n => { EventPropertiesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty.CreateFromDiscriminatorValue); } },
                 { "expectedRevisionId", n => { ExpectedRevisionId = n.GetStringValue(); } },
+                { "footerId", n => { FooterId = n.GetStringValue(); } },
                 { "fromEmail", n => { FromEmail = n.GetStringValue(); } },
                 { "fromName", n => { FromName = n.GetStringValue(); } },
                 { "languageCode", n => { LanguageCode = n.GetStringValue(); } },
@@ -228,6 +241,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEmailFormat>("emailFormat", EmailFormat);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.UpdateEmailMessageRequestEventPropertiesFallbacksProperty>("eventPropertiesFallbacks", EventPropertiesFallbacks);
             writer.WriteStringValue("expectedRevisionId", ExpectedRevisionId);
+            writer.WriteStringValue("footerId", FooterId);
             writer.WriteStringValue("fromEmail", FromEmail);
             writer.WriteStringValue("fromName", FromName);
             writer.WriteStringValue("languageCode", LanguageCode);

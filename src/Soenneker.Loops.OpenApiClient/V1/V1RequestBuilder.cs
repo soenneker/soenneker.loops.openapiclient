@@ -12,6 +12,7 @@ using Soenneker.Loops.OpenApiClient.V1.DedicatedSendingIps;
 using Soenneker.Loops.OpenApiClient.V1.EmailMessages;
 using Soenneker.Loops.OpenApiClient.V1.EventPatterns;
 using Soenneker.Loops.OpenApiClient.V1.Events;
+using Soenneker.Loops.OpenApiClient.V1.Footers;
 using Soenneker.Loops.OpenApiClient.V1.Lists;
 using Soenneker.Loops.OpenApiClient.V1.Themes;
 using Soenneker.Loops.OpenApiClient.V1.Transactional;
@@ -81,6 +82,11 @@ namespace Soenneker.Loops.OpenApiClient.V1
         public global::Soenneker.Loops.OpenApiClient.V1.Events.EventsRequestBuilder Events
         {
             get => new global::Soenneker.Loops.OpenApiClient.V1.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The footers property</summary>
+        public global::Soenneker.Loops.OpenApiClient.V1.Footers.FootersRequestBuilder Footers
+        {
+            get => new global::Soenneker.Loops.OpenApiClient.V1.Footers.FootersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The lists property</summary>
         public global::Soenneker.Loops.OpenApiClient.V1.Lists.ListsRequestBuilder Lists

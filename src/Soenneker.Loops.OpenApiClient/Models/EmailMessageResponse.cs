@@ -33,6 +33,8 @@ namespace Soenneker.Loops.OpenApiClient.Models
             else if (parseNode.GetChildNode("emailFormat") is { } nullNodeEmailFormat && nullNodeEmailFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailFormat = null;
             if (parseNode.GetChildNode("eventPropertiesFallbacks") is null) { _explicitNullValueEventPropertiesFallbacks = default!; _explicitNullProperties?.Remove("eventPropertiesFallbacks"); }
             else if (parseNode.GetChildNode("eventPropertiesFallbacks") is { } nullNodeEventPropertiesFallbacks && nullNodeEventPropertiesFallbacks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventPropertiesFallbacks = null;
+            if (parseNode.GetChildNode("footerId") is null) { _explicitNullValueFooterId = default!; _explicitNullProperties?.Remove("footerId"); }
+            else if (parseNode.GetChildNode("footerId") is { } nullNodeFooterId && nullNodeFooterId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FooterId = null;
             if (parseNode.GetChildNode("fromEmail") is null) { _explicitNullValueFromEmail = default!; _explicitNullProperties?.Remove("fromEmail"); }
             else if (parseNode.GetChildNode("fromEmail") is { } nullNodeFromEmail && nullNodeFromEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromEmail = null;
             if (parseNode.GetChildNode("fromName") is null) { _explicitNullValueFromName = default!; _explicitNullProperties?.Remove("fromName"); }
@@ -131,6 +133,16 @@ namespace Soenneker.Loops.OpenApiClient.Models
 #else
         public global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty EventPropertiesFallbacks { get => _explicitNullValueEventPropertiesFallbacks; set { _explicitNullValueEventPropertiesFallbacks = value; AdditionalData?.Remove("eventPropertiesFallbacks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventPropertiesFallbacks"); else _explicitNullProperties?.Remove("eventPropertiesFallbacks"); } }
         private global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty _explicitNullValueEventPropertiesFallbacks = default!;
+#endif
+        /// <summary>The ID of the email&apos;s footer, or `null` for the system default footer. Only present for workflow emails and campaign emails that are not critical notices, when footers are enabled for the team.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FooterId { get => _explicitNullValueFooterId; set { _explicitNullValueFooterId = value; AdditionalData?.Remove("footerId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footerId"); else _explicitNullProperties?.Remove("footerId"); } }
+        private string? _explicitNullValueFooterId = default!;
+#nullable restore
+#else
+        public string FooterId { get => _explicitNullValueFooterId; set { _explicitNullValueFooterId = value; AdditionalData?.Remove("footerId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footerId"); else _explicitNullProperties?.Remove("footerId"); } }
+        private string _explicitNullValueFooterId = default!;
 #endif
         /// <summary>The email sender email address, without the team&apos;s sending domain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -258,7 +270,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(19)
+            return new Dictionary<string, Action<IParseNode>>(20)
             {
                 { "bccEmail", n => { BccEmail = n.GetStringValue(); } },
                 { "campaignId", n => { CampaignId = n.GetStringValue(); } },
@@ -268,6 +280,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
                 { "dataVariablesFallbacks", n => { DataVariablesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty.CreateFromDiscriminatorValue); } },
                 { "emailFormat", n => { var parsed = n.GetEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEmailFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEmailFormat = default; _explicitNullProperties?.Remove("emailFormat"); AdditionalData["emailFormat"] = unknown; } else { EmailFormat = parsed; AdditionalData.Remove("emailFormat"); } } },
                 { "eventPropertiesFallbacks", n => { EventPropertiesFallbacks = n.GetObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty>(global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty.CreateFromDiscriminatorValue); } },
+                { "footerId", n => { FooterId = n.GetStringValue(); } },
                 { "fromEmail", n => { FromEmail = n.GetStringValue(); } },
                 { "fromName", n => { FromName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -296,6 +309,7 @@ namespace Soenneker.Loops.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseDataVariablesFallbacksProperty>("dataVariablesFallbacks", DataVariablesFallbacks);
             writer.WriteEnumValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEmailFormat>("emailFormat", EmailFormat);
             writer.WriteObjectValue<global::Soenneker.Loops.OpenApiClient.Models.EmailMessageResponseEventPropertiesFallbacksProperty>("eventPropertiesFallbacks", EventPropertiesFallbacks);
+            writer.WriteStringValue("footerId", FooterId);
             writer.WriteStringValue("fromEmail", FromEmail);
             writer.WriteStringValue("fromName", FromName);
             writer.WriteStringValue("id", Id);

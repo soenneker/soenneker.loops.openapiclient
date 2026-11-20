@@ -3,7 +3,7 @@
   "info": {
     "title": "Loops OpenAPI Spec",
     "description": "This is the OpenAPI Spec for the [Loops API](https://loops.so/docs/api).",
-    "version": "1.23.0"
+    "version": "1.24.0"
   },
   "servers": [
     {
@@ -1892,7 +1892,7 @@
             }
           },
           "422": {
-            "description": "LMX failed to compile.",
+            "description": "LMX failed to compile, or \u0060footerId\u0060 is not a published footer of the team.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2376,7 +2376,7 @@
             }
           },
           "400": {
-            "description": "Invalid \u0060perPage\u0060 or \u0060cursor\u0060 value.",
+            "description": "Invalid \u0060perPage\u0060 value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2537,6 +2537,727 @@
           "description": "The ID of the event pattern.",
           "required": true,
           "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/footers": {
+      "get": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "List footers",
+        "description": "Retrieve a paginated list of footers, most recently created first.",
+        "operationId": "ListFooters",
+        "parameters": [
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "How many results to return in each request. Must be between 10 and 50. Default is 20.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "A cursor to return a specific page of results. Cursors can be found from the \u0060pagination.nextCursor\u0060 value in each response.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListFootersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060perPage\u0060 value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/list-footers"
+        }
+      },
+      "post": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Create a footer",
+        "description": "Create a footer with one variant. The variant starts with an unpublished draft that has the company name, company address and unsubscribe link. Emails cannot use the footer until you publish the variant.",
+        "operationId": "CreateFooter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFooterBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Footer created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterWithVariants"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
+          "200": {
+            "description": "Footer created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterWithVariants"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/create-footer",
+          "metadata": {
+            "description": "Create a new custom footer."
+          },
+          "content": "Create a footer, with one variant. The variant starts with an unpublished draft that has the company name, company address and unsubscribe link. Emails cannot use the footer until you publish the variant."
+        }
+      }
+    },
+    "/v1/footers/{footerId}": {
+      "get": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Get a footer",
+        "description": "Retrieve a single footer by ID, with the content of each variant.",
+        "operationId": "GetFooter",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterWithVariants"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/get-footer"
+        }
+      },
+      "post": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Update a footer",
+        "description": "Update a footer\u0027s name or placement. Changes apply at once, also to running workflows. Emails already sent don\u0027t change. To change the default footer, use \u0060POST /v1/footers/{footerId}/set-default\u0060.",
+        "operationId": "UpdateFooter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFooterBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterWithVariants"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/update-footer",
+          "metadata": {
+            "description": "Update a footer\u0027s name or placement."
+          },
+          "content": "Changes apply at once, also to running workflows. Emails already sent don\u0027t change.\n\n\u003CInfo\u003ETo change the default footer, use the [Set the default footer](/api-reference/set-default-footer) endpoint.\u003C/Info\u003E"
+        }
+      },
+      "delete": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Delete a footer",
+        "description": "Delete a footer and its variants. You cannot delete the team\u0027s default footer or a footer that emails use.",
+        "operationId": "DeleteFooter",
+        "responses": {
+          "204": {
+            "description": "Footer deleted. No response body."
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
+          "409": {
+            "description": "The footer is the team\u0027s default footer, or emails use it.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterDeleteFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/delete-footer",
+          "metadata": {
+            "description": "Delete a footer and its variants."
+          },
+          "content": "\u003CInfo\u003EYou cannot delete the team\u0027s default footer or a footer that emails use.\u003C/Info\u003E"
+        }
+      },
+      "parameters": [
+        {
+          "name": "footerId",
+          "in": "path",
+          "description": "The ID of the footer.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/footers/{footerId}/set-default": {
+      "post": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Set the default footer",
+        "description": "Make a published footer the team\u0027s default footer. New campaign and workflow emails use the default footer. \u0060existingEmails\u0060 picks which existing emails switch to it. With \u0060none\u0060, only new emails use it.",
+        "operationId": "SetDefaultFooter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetDefaultFooterBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetDefaultFooterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
+          "409": {
+            "description": "The footer is not published.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/set-default-footer",
+          "metadata": {
+            "description": "Make a published footer the team\u0027s default footer."
+          },
+          "content": "Set your team\u0027s new default footer. New campaign and workflow emails use the default footer. Use \u0060existingEmails\u0060 to choose which existing emails switch to it. With \u0060none\u0060, only new emails use it."
+        }
+      },
+      "parameters": [
+        {
+          "name": "footerId",
+          "in": "path",
+          "description": "The ID of the footer.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/footers/{footerId}/variants/{variantId}": {
+      "get": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Get a footer variant",
+        "description": "Retrieve a footer variant\u0027s draft and published content as LMX.",
+        "operationId": "GetFooterVariant",
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterVariant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060 or \u0060variantId\u0060.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer variant not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/get-footer-variant"
+        }
+      },
+      "post": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Update a footer variant",
+        "description": "Update a footer variant\u0027s LMX content. Emails keep the variant\u0027s published content until you publish the updated variant.",
+        "operationId": "UpdateFooterVariant",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFooterVariantBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterVariant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060, \u0060variantId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer variant not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
+          "409": {
+            "description": "\u0060expectedRevisionId\u0060 is stale.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "LMX body exceeds the size limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid LMX, or LMX that footers do not support.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/update-footer-variant",
+          "metadata": {
+            "description": "Update a footer variant\u0027s LMX content."
+          },
+          "content": "\u003CInfo\u003EEmails keep the variant\u0027s published content until you publish the updated variant.\u003C/Info\u003E"
+        }
+      },
+      "parameters": [
+        {
+          "name": "footerId",
+          "in": "path",
+          "description": "The ID of the footer.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string"
+          }
+        },
+        {
+          "name": "variantId",
+          "in": "path",
+          "description": "The ID of the footer variant.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clv1a2r3i4a5n6t7i8d9e0f1"
+            ],
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "/v1/footers/{footerId}/variants/{variantId}/publish": {
+      "post": {
+        "tags": [
+          "Footers"
+        ],
+        "summary": "Publish a footer variant",
+        "description": "Publish the variant\u0027s draft LMX content, to replace the current published LMX content. Emails that use the footer will immediately use the newly published content. The draft must have \u0060{system.company_name}\u0060 and \u0060{system.company_address}\u0060 in the text, and \u0060{system.unsubscribe_link}\u0060 as the URL of a link or button.",
+        "operationId": "PublishFooterVariant",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublishFooterVariantBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterVariant"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid \u0060footerId\u0060, \u0060variantId\u0060 or request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid API key or footers not enabled for this team."
+          },
+          "404": {
+            "description": "Footer variant not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Wrong HTTP request method."
+          },
+          "409": {
+            "description": "\u0060expectedRevisionId\u0060 is stale.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The draft does not have the required footer variables.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FooterFailureResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
+        "x-mint": {
+          "href": "/api-reference/publish-footer-variant",
+          "metadata": {
+            "description": "Publish the variant\u0027s draft LMX content, to replace the current published LMX content."
+          },
+          "content": "Emails that use the footer will immediately use the newly published content. The draft must have \u0060{system.company_name}\u0060 and \u0060{system.company_address}\u0060 in the text, and \u0060{system.unsubscribe_link}\u0060 as the URL of a link or button."
+        }
+      },
+      "parameters": [
+        {
+          "name": "footerId",
+          "in": "path",
+          "description": "The ID of the footer.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string"
+          }
+        },
+        {
+          "name": "variantId",
+          "in": "path",
+          "description": "The ID of the footer variant.",
+          "required": true,
+          "schema": {
+            "examples": [
+              "clv1a2r3i4a5n6t7i8d9e0f1"
+            ],
             "type": "string"
           }
         }
@@ -4250,7 +4971,7 @@
             }
           },
           "400": {
-            "description": "Invalid \u0060perPage\u0060 or \u0060cursor\u0060 value, or \u0060workflowGroupId\u0060 is an empty string.",
+            "description": "Invalid \u0060perPage\u0060 value, or \u0060workflowGroupId\u0060 is an empty string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -7491,6 +8212,474 @@
           }
         }
       },
+      "Footer": {
+        "examples": [
+          {
+            "id": "clf0o1t2e3r4i5d6a7b8c9d0",
+            "name": "Main footer",
+            "isDefault": true,
+            "placement": "inside",
+            "createdAt": "2026-10-27T10:00:00.000Z",
+            "updatedAt": "2026-11-02T08:30:00.000Z"
+          }
+        ],
+        "required": [
+          "id",
+          "name",
+          "isDefault",
+          "placement",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string",
+            "description": "The ID of the footer."
+          },
+          "name": {
+            "examples": [
+              "Main footer"
+            ],
+            "type": "string",
+            "description": "The name of the footer."
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this is the team\u0027s default footer. New campaign and workflow emails use the default footer."
+          },
+          "placement": {
+            "$ref": "#/components/schemas/FooterPlacement"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer was created.",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer\u0027s own fields last changed, such as its name or placement. Not changed when a variant is updated.",
+            "format": "date-time"
+          }
+        }
+      },
+      "FooterWithVariants": {
+        "examples": [
+          {
+            "id": "clf0o1t2e3r4i5d6a7b8c9d0",
+            "name": "Main footer",
+            "isDefault": true,
+            "placement": "inside",
+            "createdAt": "2026-10-27T10:00:00.000Z",
+            "updatedAt": "2026-11-02T08:30:00.000Z",
+            "variants": [
+              {
+                "id": "clv1a2r3i4a5n6t7i8d9e0f1",
+                "footerId": "clf0o1t2e3r4i5d6a7b8c9d0",
+                "contentRevisionId": "clr2e3v4i5s6i7o8n9i0d1e2",
+                "publishedAt": "2026-11-02T08:30:00.000Z",
+                "createdAt": "2026-10-27T10:00:00.000Z",
+                "updatedAt": "2026-11-02T08:30:00.000Z",
+                "draftLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E",
+                "publishedLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "id",
+          "name",
+          "isDefault",
+          "placement",
+          "createdAt",
+          "updatedAt",
+          "variants"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string",
+            "description": "The ID of the footer."
+          },
+          "name": {
+            "examples": [
+              "Main footer"
+            ],
+            "type": "string",
+            "description": "The name of the footer."
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this is the team\u0027s default footer. New campaign and workflow emails use the default footer."
+          },
+          "placement": {
+            "$ref": "#/components/schemas/FooterWithVariantsPlacement"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer was created.",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer\u0027s own fields last changed, such as its name or placement. Not changed when a variant is updated.",
+            "format": "date-time"
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FooterVariant"
+            },
+            "description": "The footer\u0027s content variants. A footer has at most one variant. A footer created before variants has none."
+          }
+        }
+      },
+      "ListFootersResponse": {
+        "examples": [
+          {
+            "pagination": {
+              "totalResults": 1,
+              "returnedResults": 1,
+              "perPage": 20,
+              "totalPages": 1,
+              "nextCursor": null,
+              "nextPage": null
+            },
+            "data": [
+              {
+                "id": "clf0o1t2e3r4i5d6a7b8c9d0",
+                "name": "Main footer",
+                "isDefault": true,
+                "placement": "inside",
+                "createdAt": "2026-10-27T10:00:00.000Z",
+                "updatedAt": "2026-11-02T08:30:00.000Z"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "pagination",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Footer"
+            }
+          }
+        }
+      },
+      "CreateFooterBody": {
+        "examples": [
+          {
+            "name": "Main footer"
+          }
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "The name of the footer. Default is \u0022Custom footer\u0022 if omitted."
+          }
+        }
+      },
+      "UpdateFooterBody": {
+        "examples": [
+          {
+            "name": "Marketing footer",
+            "placement": "below"
+          }
+        ],
+        "minProperties": 1,
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "description": "The new name of the footer."
+          },
+          "placement": {
+            "$ref": "#/components/schemas/UpdateFooterBodyPlacement"
+          }
+        },
+        "description": "At least one field must be provided."
+      },
+      "SetDefaultFooterBody": {
+        "examples": [
+          {
+            "existingEmails": "all"
+          }
+        ],
+        "required": [
+          "existingEmails"
+        ],
+        "type": "object",
+        "properties": {
+          "existingEmails": {
+            "$ref": "#/components/schemas/SetDefaultFooterBodyExistingEmails"
+          }
+        }
+      },
+      "SetDefaultFooterResponse": {
+        "examples": [
+          {
+            "id": "clf0o1t2e3r4i5d6a7b8c9d0",
+            "name": "Main footer",
+            "isDefault": true,
+            "placement": "inside",
+            "createdAt": "2026-10-27T10:00:00.000Z",
+            "updatedAt": "2026-11-02T08:30:00.000Z",
+            "variants": [
+              {
+                "id": "clv1a2r3i4a5n6t7i8d9e0f1",
+                "footerId": "clf0o1t2e3r4i5d6a7b8c9d0",
+                "contentRevisionId": "clr2e3v4i5s6i7o8n9i0d1e2",
+                "publishedAt": "2026-11-02T08:30:00.000Z",
+                "createdAt": "2026-10-27T10:00:00.000Z",
+                "updatedAt": "2026-11-02T08:30:00.000Z",
+                "draftLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E",
+                "publishedLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E"
+              }
+            ],
+            "updatedEmailCount": 12
+          }
+        ],
+        "required": [
+          "id",
+          "name",
+          "isDefault",
+          "placement",
+          "createdAt",
+          "updatedAt",
+          "variants",
+          "updatedEmailCount"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string",
+            "description": "The ID of the footer."
+          },
+          "name": {
+            "examples": [
+              "Main footer"
+            ],
+            "type": "string",
+            "description": "The name of the footer."
+          },
+          "isDefault": {
+            "type": "boolean",
+            "description": "Whether this is the team\u0027s default footer. New campaign and workflow emails use the default footer."
+          },
+          "placement": {
+            "$ref": "#/components/schemas/FooterWithVariantsPlacement"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer was created.",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the footer\u0027s own fields last changed, such as its name or placement. Not changed when a variant is updated.",
+            "format": "date-time"
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FooterVariant"
+            },
+            "description": "The footer\u0027s content variants. A footer has at most one variant. A footer created before variants has none."
+          },
+          "updatedEmailCount": {
+            "type": "number",
+            "description": "How many existing emails switched to this footer."
+          }
+        }
+      },
+      "FooterVariant": {
+        "examples": [
+          {
+            "id": "clv1a2r3i4a5n6t7i8d9e0f1",
+            "footerId": "clf0o1t2e3r4i5d6a7b8c9d0",
+            "contentRevisionId": "clr2e3v4i5s6i7o8n9i0d1e2",
+            "publishedAt": "2026-11-02T08:30:00.000Z",
+            "createdAt": "2026-10-27T10:00:00.000Z",
+            "draftLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E",
+            "publishedLmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E",
+            "updatedAt": "2026-11-02T08:30:00.000Z"
+          }
+        ],
+        "required": [
+          "id",
+          "footerId",
+          "contentRevisionId",
+          "publishedAt",
+          "createdAt",
+          "draftLmx",
+          "publishedLmx",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "examples": [
+              "clv1a2r3i4a5n6t7i8d9e0f1"
+            ],
+            "type": "string",
+            "description": "The ID of the variant."
+          },
+          "footerId": {
+            "examples": [
+              "clf0o1t2e3r4i5d6a7b8c9d0"
+            ],
+            "type": "string",
+            "description": "The ID of the footer the variant belongs to."
+          },
+          "contentRevisionId": {
+            "examples": [
+              "clr2e3v4i5s6i7o8n9i0d1e2"
+            ],
+            "type": "string",
+            "description": "The variant\u0027s current content revision. Pass it as \u0060expectedRevisionId\u0060 when you update or publish the variant."
+          },
+          "publishedAt": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "ISO 8601 timestamp for when the variant was last published. \u0060null\u0060 if it was never published.",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the variant was created.",
+            "format": "date-time"
+          },
+          "draftLmx": {
+            "examples": [
+              "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E"
+            ],
+            "type": "string",
+            "description": "The draft content as LMX."
+          },
+          "publishedLmx": {
+            "examples": [
+              "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E"
+            ],
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The published content as LMX. \u0060null\u0060 if the variant was never published."
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO 8601 timestamp for when the variant\u0027s draft or published content last changed.",
+            "format": "date-time"
+          }
+        }
+      },
+      "UpdateFooterVariantBody": {
+        "examples": [
+          {
+            "expectedRevisionId": "clr2e3v4i5s6i7o8n9i0d1e2",
+            "lmx": "\u003CParagraph\u003E{system.company_name}, {system.company_address}. \u003CLink href=\u0022{system.unsubscribe_link}\u0022\u003EUnsubscribe\u003C/Link\u003E\u003C/Paragraph\u003E"
+          }
+        ],
+        "required": [
+          "expectedRevisionId",
+          "lmx"
+        ],
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "examples": [
+              "clr2e3v4i5s6i7o8n9i0d1e2"
+            ],
+            "type": "string",
+            "description": "The \u0060contentRevisionId\u0060 you last fetched."
+          },
+          "lmx": {
+            "type": "string",
+            "description": "The new draft content as LMX. Footer LMX can use \u0060{system.company_name}\u0060, \u0060{system.company_address}\u0060, \u0060{system.mailing_list_name}\u0060, \u0060{system.unsubscribe_link}\u0060 and \u0060{contact.email}\u0060. It cannot use \u0060\u003CStyle /\u003E\u0060, components, other contact properties, event properties or data variables."
+          }
+        }
+      },
+      "PublishFooterVariantBody": {
+        "examples": [
+          {
+            "expectedRevisionId": "clr2e3v4i5s6i7o8n9i0d1e2"
+          }
+        ],
+        "required": [
+          "expectedRevisionId"
+        ],
+        "type": "object",
+        "properties": {
+          "expectedRevisionId": {
+            "examples": [
+              "clr2e3v4i5s6i7o8n9i0d1e2"
+            ],
+            "type": "string",
+            "description": "The \u0060contentRevisionId\u0060 you last fetched."
+          }
+        }
+      },
+      "FooterFailureResponse": {
+        "examples": [
+          {
+            "message": "Footer not found."
+          }
+        ],
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "FooterDeleteFailureResponse": {
+        "examples": [
+          {
+            "message": "3 emails use the footer. Change their footer before you delete it.",
+            "emailCount": 3
+          }
+        ],
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "emailCount": {
+            "type": "number",
+            "description": "How many emails use the footer. Only when emails use the footer."
+          }
+        }
+      },
       "AudienceSegment": {
         "examples": [
           {
@@ -10687,6 +11876,13 @@
           "emailFormat": {
             "$ref": "#/components/schemas/UpdateEmailMessageRequestEmailFormat"
           },
+          "footerId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Apply a specific footer to this email message. Use \u0060null\u0060 for the system default footer. Omit it to keep the current footer. Only for teams with footers enabled, and only for campaign and workflow emails. Transactional emails and critical notices have no footer."
+          },
           "lmx": {
             "type": "string",
             "description": "The email body serialized as LMX. Styles must be embedded in the LMX \u0060\u003CStyle /\u003E\u0060 tag."
@@ -10807,6 +12003,13 @@
             ],
             "type": "string",
             "description": "The email body serialized as LMX."
+          },
+          "footerId": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the email\u0027s footer, or \u0060null\u0060 for the system default footer. Only present for workflow emails and campaign emails that are not critical notices, when footers are enabled for the team."
           },
           "contentRevisionId": {
             "examples": [
@@ -12862,6 +14065,99 @@
             {
               "value": "date",
               "name": "Date"
+            }
+          ]
+        }
+      },
+      "FooterPlacement": {
+        "enum": [
+          "inside",
+          "below"
+        ],
+        "type": "string",
+        "description": "Whether the footer is rendered inside the email body (\u0060inside\u0060) or below it (\u0060below\u0060).",
+        "x-ms-enum": {
+          "name": "FooterPlacement",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "inside",
+              "name": "Inside"
+            },
+            {
+              "value": "below",
+              "name": "Below"
+            }
+          ]
+        }
+      },
+      "FooterWithVariantsPlacement": {
+        "enum": [
+          "inside",
+          "below"
+        ],
+        "type": "string",
+        "description": "Whether the footer is rendered inside the email body (\u0060inside\u0060) or below it (\u0060below\u0060).",
+        "x-ms-enum": {
+          "name": "FooterWithVariantsPlacement",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "inside",
+              "name": "Inside"
+            },
+            {
+              "value": "below",
+              "name": "Below"
+            }
+          ]
+        }
+      },
+      "UpdateFooterBodyPlacement": {
+        "enum": [
+          "inside",
+          "below"
+        ],
+        "type": "string",
+        "description": "Whether the footer is rendered inside the email body (\u0060inside\u0060) or below it (\u0060below\u0060).",
+        "x-ms-enum": {
+          "name": "UpdateFooterBodyPlacement",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "inside",
+              "name": "Inside"
+            },
+            {
+              "value": "below",
+              "name": "Below"
+            }
+          ]
+        }
+      },
+      "SetDefaultFooterBodyExistingEmails": {
+        "enum": [
+          "previousDefault",
+          "all",
+          "none"
+        ],
+        "type": "string",
+        "description": "Which existing campaign and workflow emails switch to this footer: the ones that use the previous default footer (\u0060previousDefault\u0060), all of them (\u0060all\u0060), or none (\u0060none\u0060). With \u0060none\u0060, existing emails keep their footer and only new emails use this footer.",
+        "x-ms-enum": {
+          "name": "SetDefaultFooterBodyExistingEmails",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "previousDefault",
+              "name": "PreviousDefault"
+            },
+            {
+              "value": "all",
+              "name": "All"
+            },
+            {
+              "value": "none",
+              "name": "None"
             }
           ]
         }
@@ -17604,6 +18900,10 @@
       "description": "View workflow event patterns"
     },
     {
+      "name": "Footers",
+      "description": "Create and manage email footers"
+    },
+    {
       "name": "Mailing lists",
       "description": "View mailing lists"
     },
@@ -20418,6 +21718,18 @@
         "affectedEmailCount": {
           "type": "number",
           "description": "The number of emails using this component that were updated by the body change. \u00600\u0060 when only the name changed."
+        }
+      }
+    },
+    "SetDefaultFooterResponseAllOf2": {
+      "required": [
+        "updatedEmailCount"
+      ],
+      "type": "object",
+      "properties": {
+        "updatedEmailCount": {
+          "type": "number",
+          "description": "How many existing emails switched to this footer."
         }
       }
     },
